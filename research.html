@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Sonu Babu</title>
+  <meta name="description" content="Independent research in AI safety, alignment faking, multilingual LLM safety, adversarial testing, and mechanistic interpretability.">
+  <meta property="og:title" content="Research — Sonu Babu">
+  <meta property="og:description" content="Independent research in AI safety, alignment faking, multilingual LLM safety, adversarial testing, and mechanistic interpretability.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sonubabu.me/research">
+  <link rel="canonical" href="https://sonubabu.me/research">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-name">Sonu Babu</a>
+      <a href="blog.html">Blog</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="research-page">
+      <header class="page-header">
+        <h1>Research</h1>
+        <p>Independent research in AI safety, alignment, and mechanistic interpretability.</p>
+      </header>
+
+      <div class="viz-hero" data-viz="dna"></div>
+
+      <div class="research-list">
+        <article class="research-item">
+          <div class="research-header">
+            <h2><a href="research/alignment-faking.html">Mapping Training-Sensitive Behaviors & Alignment Faking</a></h2>
+            <span class="research-meta">BlueDot Impact &middot; Feb 2026 &ndash; Present</span>
+          </div>
+          <ul class="research-details">
+            <li>Investigating &ldquo;compliance gaps&rdquo; in open-source models (DeepSeek-R1, Qwen 2.5) to identify precursors to deceptive alignment.</li>
+            <li>Shifting analysis from binary existence proofs to a continuous spectrum of training sensitivity, mapping how models strategically adapt compliance under pressure.</li>
+            <li>Conducting prompt-fragility tests to distinguish robust alignment faking from stochastic artifacts in reasoning-distilled models.</li>
+          </ul>
+        </article>
+
+        <article class="research-item">
+          <div class="research-header">
+            <h2><a href="research/multilingual-safety.html">Normative Divergence & Safety Asymmetry in Multilingual LLMs</a></h2>
+            <span class="research-meta">2025</span>
+          </div>
+          <ul class="research-details">
+            <li>Conducted paired-prompt evaluations (English vs Hindi) to isolate linguistic vs semantic safety variance.</li>
+            <li>Identified refusal asymmetry, moralization bias, and weak cross-lingual RLHF transfer in frontier models.</li>
+          </ul>
+        </article>
+
+        <article class="research-item">
+          <div class="research-header">
+            <h2><a href="research/prompt-injection.html">Indirect Prompt Injection & Instruction Hierarchy Exploitation</a></h2>
+            <span class="research-meta">2025</span>
+          </div>
+          <ul class="research-details">
+            <li>Evaluated RAG workflows for authority confusion; characterized role-boundary erosion without explicit jailbreaks.</li>
+            <li>Analyzed partial compliance failures in document-processing scenarios.</li>
+          </ul>
+        </article>
+
+        <article class="research-item">
+          <div class="research-header">
+            <h2><a href="research/long-horizon.html">Long-Horizon Jailbreaks & Goal Drift</a></h2>
+            <span class="research-meta">Adversarial Testing &middot; 2025</span>
+          </div>
+          <ul class="research-details">
+            <li>Conducted 15&ndash;30 turn adversarial interactions revealing gradual safety constraint decay in chat-tuned models.</li>
+            <li>Demonstrated limitations of single-turn safety evaluations vs multi-turn manipulation tactics.</li>
+          </ul>
+        </article>
+
+        <article class="research-item">
+          <div class="research-header">
+            <h2><a href="research/mechanistic-interpretability.html">Mechanistic Interpretability Studies</a></h2>
+            <span class="research-meta">Independent Study &middot; 2024 &ndash; Present</span>
+          </div>
+          <ul class="research-details">
+            <li>Actively studying interpretability via Neel Nanda&rsquo;s materials, Anthropic&rsquo;s Circuits threads, and ARENA curriculum.</li>
+            <li>Experimenting with toy models, sparse autoencoders, and interpretability techniques to understand internal activations.</li>
+          </ul>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/viz.js"></script>
+</body>
+</html>

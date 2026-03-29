@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indirect Prompt Injection & Instruction Hierarchy — Sonu Babu</title>
+  <meta name="description" content="Evaluating document-processing LLM vulnerabilities where models fail to distinguish trusted instructions from untrusted content.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Indirect Prompt Injection &amp; Instruction Hierarchy</h1>
+        <time class="article-meta" datetime="2025">2025</time>
+      </header>
+
+      <div class="viz-hero" data-viz="inject"></div>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#pi-abstract">Abstract</a></li>
+            <li><a href="#pi-categories">Vulnerability Categories</a></li>
+            <li><a href="#pi-patterns">Observed Behavioral Patterns</a></li>
+            <li><a href="#pi-models">Base vs Aligned Models</a></li>
+            <li><a href="#pi-references">References</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="pi-abstract">Abstract</h2>
+        <p>Large language models deployed in document-processing workflows cannot reliably distinguish trusted system instructions from untrusted content that mimics instructional format. Even alignment-trained models show inconsistent instruction prioritization when adversarial directives are embedded within retrieved documents, user-supplied context, or structured data. This work characterizes the failure modes that arise from this fundamental confusion of authority.</p>
+
+        <div class="callout">
+          <p class="callout-label">Key Finding</p>
+          <p>RAG workflows are inherently vulnerable to authority confusion. When instruction-like language appears in retrieved documents, models frequently misclassify it as system-level directives, enabling behavioral overrides without explicit jailbreaks.</p>
+        </div>
+
+        <h2 id="pi-categories">Vulnerability Categories</h2>
+        <p><strong>A) Document-Embedded Instructions:</strong> Adversarial directives injected directly into documents processed by RAG pipelines, exploiting the model&rsquo;s inability to separate retrieval content from system-level instructions.</p>
+        <p><strong>B) Role Reassignment via Context:</strong> Manipulating the model&rsquo;s perceived role by embedding authoritative-sounding instructions within user-provided context, causing the model to adopt an unintended persona or objective.</p>
+        <p><strong>C) Task Redefinition Through Framing:</strong> Reframing the model&rsquo;s task by embedding alternative objectives within the input, leading the model to execute a different task than intended by the system prompt.</p>
+        <p><strong>D) Authority Transfer Through Attribution:</strong> Exploiting the model&rsquo;s tendency to defer to quoted or attributed instructions, treating embedded directives as if they carry legitimate authority.</p>
+
+        <div class="viz-inline" data-viz="chartFlow" style="height:160px;"></div>
+
+        <h2 id="pi-patterns">Observed Behavioral Patterns</h2>
+        <p><strong>Partial Compliance:</strong> Models follow embedded adversarial instructions while simultaneously maintaining surface-level refusal language, creating a contradictory response that technically complies with the injected directive.</p>
+        <p><strong>Justification Reframing:</strong> Models reframe compliance with adversarial instructions as legitimate &ldquo;analysis&rdquo; or &ldquo;summarization,&rdquo; providing the requested output under an academic or evaluative framing.</p>
+        <p><strong>Role Boundary Softening:</strong> Gradual erosion of the model&rsquo;s adherence to its assigned role as adversarial context accumulates, eventually overriding the system prompt entirely.</p>
+        <p><strong>Inconsistent Authority Recognition:</strong> The same injected instruction is treated as authoritative in some contexts and ignored in others, with no predictable pattern governing when the model defers to embedded directives.</p>
+
+        <h2 id="pi-models">Base vs Aligned Models</h2>
+        <p>Base models exhibit minimal instruction hierarchy by default, making them highly susceptible to any instruction regardless of source. RLHF-aligned models demonstrate stronger initial resistance to embedded directives but show gradual boundary erosion under sustained contextual pressure. The alignment training creates a safety boundary that is robust to direct attacks but vulnerable to indirect, context-mediated manipulation&mdash;suggesting that current alignment techniques do not produce a genuine understanding of instruction authority.</p>
+
+        <div class="viz-inline" data-viz="chartBars" style="height:200px;"></div>
+
+        <section class="references" id="pi-references">
+          <h2>References</h2>
+          <ol class="ref-list">
+            <li>Greshake, K. et al. (2023). Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection. AISec.</li>
+            <li>Wallace, E. et al. (2024). The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions. OpenAI.</li>
+            <li>Yi, J. et al. (2023). Benchmarking and Defending Against Indirect Prompt Injection Attacks on Large Language Models. arXiv:2312.14197.</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">Prompt Injection</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Instruction Hierarchy</span>
+        <span class="tag">Red-teaming</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

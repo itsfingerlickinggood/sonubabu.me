@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CattleScan — Sonu Babu</title>
+  <meta name="description" content="Computer vision pipeline for livestock breed classification using transfer learning and edge deployment, built for Smart India Hackathon.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../projects.html" class="back-link">Back to Projects</a>
+
+      <div class="viz-hero" data-viz="emergence"></div>
+
+      <header class="article-header">
+        <h1>CattleScan</h1>
+        <time class="article-meta" datetime="2024">2024</time>
+      </header>
+
+      <div class="article-body">
+        <h2>The Problem: Livestock Identification at Scale</h2>
+        <p>India is home to over 50 recognized cattle breeds, many of which are indigenous varieties vital to rural livelihoods and genetic biodiversity. Yet accurate breed identification remains a manual, expertise-dependent process that scales poorly across the country&rsquo;s vast dairy cooperatives and veterinary networks. CattleScan was built for the Smart India Hackathon (SIH) to address this gap&mdash;a computer vision system that classifies Indian cattle breeds from photographs in real time, designed to run on the low-cost Android devices already in the hands of field workers and cooperative managers.</p>
+
+        <h2>Dataset Curation and Audit</h2>
+        <p>The quality of any vision model hinges on its training data, and publicly available cattle image datasets are notoriously noisy. I led the dataset audit and curation effort, working through over 5,000 images spanning 36 Indian breeds. The process involved removing duplicates, correcting mislabeled samples (Gir and Red Sindhi are frequently confused in web-scraped datasets), discarding low-resolution or heavily occluded images, and standardizing aspect ratios. We augmented underrepresented breeds&mdash;several had fewer than 50 clean samples&mdash;using geometric transforms, color jittering, and CutMix to bring class distributions closer to balance without introducing synthetic artifacts that could mislead the model.</p>
+
+        <h2>Model Architecture and Transfer Learning</h2>
+        <p>MobileNetV2 was chosen as the backbone for its favorable accuracy-to-latency tradeoff on mobile hardware. We fine-tuned a pre-trained ImageNet checkpoint, replacing the classification head with a custom sequence of global average pooling, dropout, and a 36-class softmax layer. Training used a cosine-annealing learning rate schedule with warm restarts, and we applied progressive unfreezing&mdash;initially training only the new head, then gradually unlocking deeper convolutional blocks. This approach prevented catastrophic forgetting of low-level feature detectors while allowing the model to specialize on bovine morphological features like horn curvature, hump shape, dewlap structure, and coat pattern. The final model achieved 91.3% top-1 accuracy and 97.8% top-3 accuracy on the held-out test set.</p>
+
+        <h2>Edge Deployment and Impact</h2>
+        <p>The trained model was converted to TensorFlow Lite with post-training quantization (INT8), reducing the binary from 14 MB to 3.4 MB with negligible accuracy degradation. An OpenCV preprocessing pipeline handles camera input normalization, auto-cropping the animal from the background using a lightweight segmentation mask, and feeding standardized tensors to the TFLite interpreter. Inference runs in under 120 ms on a mid-range smartphone. The system was designed with veterinary departments and dairy cooperatives as primary users&mdash;field workers photograph cattle during vaccination drives or milk collection, and the app returns breed classification alongside a confidence score and a brief profile of the breed&rsquo;s typical characteristics, milk yield, and disease susceptibilities. This information supports better breeding decisions, insurance claims, and biodiversity monitoring programs across rural India.</p>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">TensorFlow Lite</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">SIH</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

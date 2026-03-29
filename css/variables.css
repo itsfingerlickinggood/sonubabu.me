@@ -1,0 +1,63 @@
+:root {
+  --color-bg: #fafaf9;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-text-subtle: #a8a29e;
+  --color-border: #e7e5e4;
+  --color-border-strong: #d6d3d1;
+  --color-link: #1c1917;
+  --color-link-hover: #44403c;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f5f5f4;
+  --color-accent: #1c1917;
+  --color-accent-soft: rgba(28, 25, 23, 0.06);
+
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-heading: "Newsreader", "Georgia", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --max-width: 640px;
+  --max-width-wide: 720px;
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0c0a09;
+  --color-text: #e7e5e4;
+  --color-text-muted: #a8a29e;
+  --color-text-subtle: #78716c;
+  --color-border: #292524;
+  --color-border-strong: #44403c;
+  --color-link: #e7e5e4;
+  --color-link-hover: #d6d3d1;
+  --color-surface: #1c1917;
+  --color-surface-raised: #1c1917;
+  --color-accent: #e7e5e4;
+  --color-accent-soft: rgba(231, 229, 228, 0.06);
+}

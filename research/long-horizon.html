@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Long-Horizon Jailbreaks & Goal Drift — Sonu Babu</title>
+  <meta name="description" content="Multi-turn adversarial interactions revealing gradual safety constraint decay in safety-aligned language models over extended conversations.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Long-Horizon Jailbreaks &amp; Goal Drift</h1>
+        <time class="article-meta" datetime="2025">2025</time>
+      </header>
+
+      <div class="viz-hero" data-viz="erosion"></div>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#lh-abstract">Abstract</a></li>
+            <li><a href="#lh-design">Experimental Design</a></li>
+            <li><a href="#lh-phases">Phases of Manipulation</a></li>
+            <li><a href="#lh-failure">Failure Mode Analysis</a></li>
+            <li><a href="#lh-references">References</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="lh-abstract">Abstract</h2>
+        <p>Single-turn safety evaluations systematically miss failure modes that emerge through extended interaction. By conducting adversarial trials spanning 15&ndash;30 conversational turns&mdash;where each individual prompt is benign in isolation&mdash;we reveal gradual safety constraint decay in chat-tuned models. These multi-turn manipulation strategies exploit conversational continuity and contextual drift to erode safety boundaries that appear robust under standard single-turn benchmarks.</p>
+
+        <div class="callout">
+          <p class="callout-label">Key Finding</p>
+          <p>Safety constraints in chat-tuned models decay progressively over 15-30 turn adversarial interactions. Individual prompts that pass single-turn safety evaluations can compound into successful jailbreaks when deployed as part of a coherent multi-turn manipulation strategy.</p>
+        </div>
+
+        <h2 id="lh-design">Experimental Design</h2>
+        <p>Each trial consisted of 15&ndash;30 turns of adversarial interaction with safety-aligned chat models. Every individual prompt was designed to be benign when evaluated in isolation, avoiding any single-turn red-flag triggers. The adversarial strategy relied on progressive reframing of objectives, extensive use of hypothetical and analytical language, and deliberate exploitation of the model&rsquo;s drive for conversational coherence and continuity. No explicit jailbreak payloads were used at any point.</p>
+
+        <div class="viz-inline" data-viz="chartDecay" style="height:220px;"></div>
+
+        <h2 id="lh-phases">Phases of Manipulation</h2>
+        <p><strong>Phase 1 &mdash; Benign Grounding:</strong> Establishing a legitimate conversational context and building rapport. The initial turns focus on an unambiguously benign topic related to the eventual target area, creating a foundation of trust and cooperation.</p>
+        <p><strong>Phase 2 &mdash; Goal Pressure:</strong> Gradually introducing thematic elements that shift the conversation toward the target objective. Each turn incrementally moves the framing closer to the adversarial goal while maintaining plausible deniability.</p>
+        <p><strong>Phase 3 &mdash; Constraint Erosion:</strong> Sustained contextual pressure that exploits the model&rsquo;s optimization for coherence. The accumulated conversational context creates implicit pressure to maintain consistency with prior responses, weakening safety constraints.</p>
+        <p><strong>Phase 4 &mdash; Partial Compliance Trigger:</strong> The model begins producing responses that partially satisfy the adversarial objective, often framed as academic analysis or hypothetical exploration. Once partial compliance is achieved, subsequent turns can expand the scope of compliance.</p>
+
+        <h2 id="lh-failure">Failure Mode Analysis</h2>
+        <p>Cross-turn safety decay is driven by several compounding factors: per-turn safety evaluation that lacks intent aggregation across the full conversation, over-optimization for conversational coherence at the expense of safety consistency, and fundamentally weak long-horizon intent inference. Current safety training operates primarily at the single-turn level, creating models that can resist direct attacks but are vulnerable to patient, multi-step manipulation that never triggers single-turn safety classifiers.</p>
+
+        <div class="viz-inline" data-viz="chartBars" style="height:200px;"></div>
+
+        <section class="references" id="lh-references">
+          <h2>References</h2>
+          <ol class="ref-list">
+            <li>Russinovich, M. et al. (2024). Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack. Microsoft.</li>
+            <li>Li, H. et al. (2024). Multi-Turn Jailbreak Attacks on Large Language Models. arXiv:2402.11563.</li>
+            <li>Anil, C. et al. (2024). Many-shot Jailbreaking. Anthropic.</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">Adversarial Testing</span>
+        <span class="tag">Multi-turn</span>
+        <span class="tag">Jailbreaks</span>
+        <span class="tag">RLHF</span>
+        <span class="tag">Goal Drift</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

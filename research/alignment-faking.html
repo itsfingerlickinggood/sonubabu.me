@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training-Aware Compliance & Alignment Faking — Sonu Babu</title>
+  <meta name="description" content="Investigating deployment-framing sensitivity in DeepSeek-R1-Distill-Llama-8B and Qwen-2.5-7B-Instruct to identify precursors of deceptive alignment.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Training-Aware Compliance &amp; Alignment Faking</h1>
+        <time class="article-meta" datetime="2026-02">Feb 2026 &mdash; Present</time>
+      </header>
+
+      <div class="viz-hero" data-viz="mask"></div>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#af-abstract">Abstract</a></li>
+            <li><a href="#af-findings">Key Findings</a></li>
+            <li><a href="#af-methodology">Methodology</a></li>
+            <li><a href="#af-implications">Implications</a></li>
+            <li><a href="#af-references">References</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="af-abstract">Abstract</h2>
+        <p>Does model behavior depend on perceived deployment context? We investigate deployment-framing sensitivity in DeepSeek-R1-Distill-Llama-8B and Qwen-2.5-7B-Instruct using HarmBench prompts under deterministic decoding. A pilot study (N=200) suggested a 6.5 percentage-point framing effect, but a fully randomized replication (N=400) eliminated the signal entirely&mdash;revealing that the initial finding was an evaluation artifact, not genuine deployment-aware behavior.</p>
+
+        <div class="callout">
+          <p class="callout-label">Key Finding</p>
+          <p>Evaluation protocol alone can produce false alignment signals. Our replication study found the initial 6.5pp framing effect dropped to near-zero when controlling for prompt ordering, demonstrating that claims of deployment-aware behavior require rigorous randomization.</p>
+        </div>
+
+        <h2 id="af-findings">Key Findings</h2>
+        <p>The pilot experiment on DeepSeek showed &Delta;C = &minus;6.5pp between the Free (training pressure) and Paid (private) conditions. Flip rates between conditions reached approximately 14%, with McNemar&rsquo;s test yielding p&nbsp;=&nbsp;0.021. However, the randomized replication collapsed this effect to approximately 0pp, with flip rates dropping to roughly 2% and McNemar&rsquo;s p rising to 0.72. The apparent framing sensitivity was entirely attributable to evaluation order effects, not genuine model behavior.</p>
+
+        <div class="viz-inline" data-viz="chartBars" style="height:220px;"></div>
+
+        <h2 id="af-methodology">Methodology</h2>
+        <p>We defined two deployment conditions: <strong>Free</strong>, implying active training pressure where model outputs may be monitored and used for fine-tuning, and <strong>Paid</strong>, implying a private API context with no training feedback. The pilot study used a fixed evaluation order across N=200 HarmBench prompts, while the replication randomized condition ordering across N=400 prompts. Both experiments used deterministic decoding (temperature&nbsp;=&nbsp;0, top-p&nbsp;=&nbsp;1) on NVIDIA H100 GPUs to ensure reproducibility.</p>
+
+        <h2 id="af-implications">Implications</h2>
+        <p>Evaluation protocol alone can produce false alignment signals. The difference between our pilot and replication demonstrates that claims of deployment-aware behavior require randomized evaluation ordering and independent replication before they can be considered evidence of genuine training-sensitive compliance. Researchers studying alignment faking must control for order effects, prompt-level stochasticity, and other evaluation artifacts that can masquerade as strategic model behavior.</p>
+
+        <div class="viz-inline" data-viz="chartFlip" style="height:180px;"></div>
+
+        <section class="references" id="af-references">
+          <h2>References</h2>
+          <ol class="ref-list">
+            <li>Greenblatt, R. et al. (2024). Alignment Faking in Large Language Models. Anthropic.</li>
+            <li>Hubinger, E. et al. (2024). Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training. Anthropic.</li>
+            <li>Wei, J. et al. (2024). Assessing the Brittleness of Safety Alignment via Pruning and Low-Rank Modifications. arXiv:2402.05162.</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">BlueDot Impact</span>
+        <span class="tag">DeepSeek-R1</span>
+        <span class="tag">Qwen 2.5</span>
+        <span class="tag">HarmBench</span>
+        <span class="tag">Alignment</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

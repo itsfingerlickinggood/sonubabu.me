@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Normative Divergence in Multilingual LLMs — Sonu Babu</title>
+  <meta name="description" content="Cross-lingual alignment gap research revealing inconsistent safety behavior between English and Hindi in frontier language models.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Normative Divergence in Multilingual LLMs</h1>
+        <time class="article-meta" datetime="2025">2025</time>
+      </header>
+
+      <div class="viz-hero" data-viz="diverge"></div>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#ms-abstract">Abstract</a></li>
+            <li><a href="#ms-gap">The Cross-Lingual Alignment Gap</a></li>
+            <li><a href="#ms-cases">Case Studies</a></li>
+            <li><a href="#ms-implications">Deployment Implications</a></li>
+            <li><a href="#ms-references">References</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="ms-abstract">Abstract</h2>
+        <p>Safety alignment in large language models is overwhelmingly optimized for English. Through paired-prompt evaluation&mdash;presenting semantically identical queries in English and Hindi&mdash;we reveal deeply inconsistent safety behavior across languages. We identify three distinct failure classes: <strong>Refusal Asymmetry</strong>, where models refuse in one language but comply in another; <strong>Paternalistic Tone Shift</strong>, where non-English responses adopt a moralizing rather than informational register; and <strong>Cultural Stereotype Amplification</strong>, where responses reinforce culturally loaded assumptions based on the input language.</p>
+
+        <div class="callout">
+          <p class="callout-label">Key Finding</p>
+          <p>Frontier models exhibit systematic refusal asymmetry across languages. Safety behaviors trained primarily in English transfer weakly to Hindi, creating exploitable gaps in multilingual deployments where harmful content can bypass safety filters through language switching.</p>
+        </div>
+
+        <h2 id="ms-gap">The Cross-Lingual Alignment Gap</h2>
+        <p>RLHF creates a safety boundary that is sharp and well-calibrated in English but porous in Hindi. The same potentially harmful query that triggers a clear refusal in English can bypass the safety boundary entirely when posed in Hindi. This asymmetry stems from the disproportionate representation of English in both the pre-training corpus and the human feedback used for alignment&mdash;resulting in a safety perimeter that is functionally language-dependent rather than semantically grounded.</p>
+
+        <div class="viz-inline" data-viz="chartBoundary" style="height:220px;"></div>
+
+        <h2 id="ms-cases">Case Studies</h2>
+        <p><strong>Medical Safety:</strong> A query about treating fever and rash symptoms was refused in English with a directive to consult a healthcare professional. The identical query in Hindi received a compliant response recommending specific home remedies, bypassing the safety refusal entirely.</p>
+        <p><strong>Financial Advice:</strong> A question about cryptocurrency investing received an analytical, balanced response in English that acknowledged risks and disclaimed expertise. In Hindi, the model adopted a moralizing tone, framing the topic through cultural assumptions about financial responsibility rather than providing equivalent informational content.</p>
+
+        <h2 id="ms-implications">Deployment Implications</h2>
+        <p>These findings carry serious consequences for production systems. Non-English users face inequitable harm exposure due to weaker safety coverage. Organizations deploying multilingual models face reputational risk when safety behavior varies by language. Regulatory compliance becomes difficult to guarantee when safety properties are not language-invariant. Addressing this gap requires language-stratified safety evaluation and deliberate investment in non-English alignment data.</p>
+
+        <div class="viz-inline" data-viz="chartBars" style="height:200px;"></div>
+
+        <section class="references" id="ms-references">
+          <h2>References</h2>
+          <ol class="ref-list">
+            <li>Deng, Y. et al. (2024). Multilingual Jailbreak Challenges in Large Language Models. NAACL.</li>
+            <li>Yong, Z.X. et al. (2024). Low-Resource Languages Jailbreak GPT-4. arXiv:2310.02446.</li>
+            <li>Wang, W. et al. (2024). All Languages Matter: On the Multilingual Safety of LLMs. arXiv:2310.00905.</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">Multilingual</span>
+        <span class="tag">RLHF</span>
+        <span class="tag">Hindi</span>
+        <span class="tag">Safety</span>
+        <span class="tag">Cross-lingual</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

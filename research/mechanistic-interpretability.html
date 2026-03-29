@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanistic Interpretability Studies — Sonu Babu</title>
+  <meta name="description" content="Ongoing independent study into mechanistic interpretability — understanding what neural networks learn by examining their internal structure.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Mechanistic Interpretability Studies</h1>
+        <time class="article-meta" datetime="2024">2024 &mdash; Present</time>
+      </header>
+
+      <div class="viz-hero" data-viz="dissect"></div>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#mi-overview">Overview</a></li>
+            <li><a href="#mi-areas">Areas of Study</a></li>
+            <li><a href="#mi-experiments">Experimental Work</a></li>
+            <li><a href="#mi-motivation">Motivation</a></li>
+            <li><a href="#mi-references">References</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="mi-overview">Overview</h2>
+        <p>This is an ongoing independent study into mechanistic interpretability&mdash;understanding what neural networks learn by examining their internal structure rather than just their outputs. Rather than treating models as black boxes evaluated solely on behavior, mechanistic interpretability seeks to reverse-engineer the algorithms that models learn, identifying the specific features, circuits, and computational patterns that produce observed behavior.</p>
+
+        <div class="callout">
+          <p class="callout-label">Study Focus</p>
+          <p>Understanding how neural networks represent and process information at the circuit level. Through sparse autoencoders and activation analysis, we can begin to identify individual features that correspond to interpretable concepts within trained models.</p>
+        </div>
+
+        <h2 id="mi-areas">Areas of Study</h2>
+        <p><strong>Neel Nanda&rsquo;s TransformerLens and interpretability tutorials:</strong> Working through the TransformerLens library for hands-on experimentation with transformer internals, including attention pattern analysis, activation patching, and logit attribution.</p>
+        <p><strong>Anthropic&rsquo;s Circuits threads:</strong> Studying Anthropic&rsquo;s foundational work on understanding features, circuits, and universality&mdash;the idea that different neural networks may converge on similar internal representations and computational strategies for similar tasks.</p>
+        <p><strong>ARENA (Alignment Research Engineer Accelerator) curriculum:</strong> Following the ARENA curriculum for structured training in alignment-relevant technical skills, including mechanistic interpretability exercises, reinforcement learning from human feedback, and alignment theory.</p>
+
+        <div class="viz-inline" data-viz="chartLayers" style="height:220px;"></div>
+
+        <h2 id="mi-experiments">Experimental Work</h2>
+        <p><strong>Toy model experiments:</strong> Examining how small transformers learn algorithmic tasks such as modular arithmetic, parenthesis matching, and sequence copying. These controlled settings allow precise identification of the circuits responsible for specific computations.</p>
+        <p><strong>Sparse autoencoder training:</strong> Decomposing model activations into interpretable features using sparse autoencoders, aiming to find monosemantic features that correspond to human-understandable concepts rather than the polysemantic superposition typical of raw model neurons.</p>
+        <p><strong>Probing techniques:</strong> Using linear and nonlinear probes to understand how information is represented across layers, tracking how representations transform from input tokens to output predictions through the model&rsquo;s computational graph.</p>
+
+        <h2 id="mi-motivation">Motivation</h2>
+        <p>Mechanistic interpretability is essential for understanding whether aligned models are genuinely safe or merely appear safe on the surface. A model that has learned to produce safe-looking outputs without internalizing the underlying values could exhibit alignment faking&mdash;behaving well during evaluation while harboring misaligned objectives. Only by examining internal representations can we distinguish genuine alignment from sophisticated surface-level compliance, directly connecting this work to the alignment faking research.</p>
+
+        <div class="viz-inline" data-viz="chartLayers" style="height:200px;"></div>
+
+        <section class="references" id="mi-references">
+          <h2>References</h2>
+          <ol class="ref-list">
+            <li>Elhage, N. et al. (2022). Toy Models of Superposition. Anthropic.</li>
+            <li>Cunningham, H. et al. (2024). Sparse Autoencoders Find Highly Interpretable Directions in Language Models. ICLR.</li>
+            <li>Nanda, N. et al. (2023). Progress Measures for Grokking via Mechanistic Interpretability. ICLR.</li>
+            <li>Conmy, A. et al. (2023). Towards Automated Circuit Discovery for Mechanistic Interpretability. NeurIPS.</li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">Interpretability</span>
+        <span class="tag">Circuits</span>
+        <span class="tag">Sparse Autoencoders</span>
+        <span class="tag">ARENA</span>
+        <span class="tag">Anthropic</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

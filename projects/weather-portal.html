@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Weather Intelligence Portal — Sonu Babu</title>
+  <meta name="description" content="Offline-first weather intelligence SPA for Kerala microclimate analysis with real-time AQI/UV monitoring and geospatial visualization.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../projects.html" class="back-link">Back to Projects</a>
+
+      <div class="viz-hero" data-viz="blueprint"></div>
+
+      <header class="article-header">
+        <h1>Advanced Weather Intelligence Portal</h1>
+        <time class="article-meta" datetime="2026-01">Jan 2026</time>
+      </header>
+
+      <div class="article-body">
+        <h2>Microclimate Intelligence for Kerala</h2>
+        <p>Kerala&rsquo;s geography&mdash;a narrow coastal strip backed by the Western Ghats&mdash;produces wildly different weather patterns across surprisingly short distances. A district receiving monsoon downpour can border one enjoying clear skies. The Advanced Weather Intelligence Portal was built to capture and visualize these microclimatic variations across all 14 districts in near real-time. The application ingests data from automated weather stations, satellite feeds, and IMD bulletins, normalizing them into a unified temporal model that meteorologists and emergency planners can query through story-driven forecasting timelines.</p>
+
+        <h2>Architecture and Offline-First Design</h2>
+        <p>The portal is a single-page application built with React 18 and Vite, designed from the ground up for offline-first operation. Kerala&rsquo;s connectivity infrastructure can be unreliable during the very monsoon events the app is meant to track, so a service worker pre-caches critical data layers and UI shells at install time. TanStack Query (React Query) manages server state with aggressive stale-while-revalidate policies, allowing cached forecasts to remain usable even when the network drops. Background sync queues any user annotations or flagged alerts, replaying them once connectivity is restored. The result is an application that degrades gracefully&mdash;field meteorologists in low-signal hill stations can still access the last-synced forecast, overlay historical comparisons, and log observations that propagate upstream when a connection returns.</p>
+
+        <h2>Geospatial Visualization and Monitoring</h2>
+        <p>MapLibre GL powers the geospatial layer, rendering multi-layer district overlays that combine precipitation heatmaps, wind vector fields, and flood-risk polygons on a single canvas. Users can toggle between satellite imagery and topographic basemaps, with smooth transitions between temporal snapshots to animate storm progression over hours or days. Real-time AQI and UV index gauges use responsive SVG components that adapt from compact mobile indicators to full dashboard panels on wider screens. Each gauge implements threshold-based color coding aligned with CPCB standards, and the UV gauge includes a sunburn-time estimator that factors in local latitude and current cloud cover.</p>
+
+        <h2>Role-Aware Access and Temporal Navigation</h2>
+        <p>Authentication follows a role-aware model with three tiers: public users get access to basic forecasts and safety advisories; registered meteorologists unlock advanced model outputs, station-level telemetry, and the ability to annotate forecasts with field observations; administrators manage station configurations, data pipeline health, and user provisioning. The temporal navigation system is the portal&rsquo;s signature interaction&mdash;a horizontal timeline scrubber that lets users move fluidly between past observations, the current nowcast, and multi-day forecasts, with the map and all gauges updating in lockstep. This story-driven approach transforms weather data from static numbers into a navigable narrative, making it far easier to communicate evolving weather situations to both experts and the public.</p>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">React 18</span>
+        <span class="tag">Vite</span>
+        <span class="tag">React Query</span>
+        <span class="tag">MapLibre</span>
+        <span class="tag">Offline-First</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

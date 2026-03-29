@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sonubabu.me — Sonu Babu</title>
+  <meta name="description" content="A minimal, hand-crafted personal website built with plain HTML, CSS, and vanilla JavaScript — no frameworks, no build tools, no bloat.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-name">Sonu Babu</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../research.html">Research</a>
+      <a href="../learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="article-page">
+      <a href="../projects.html" class="back-link">Back to Projects</a>
+
+      <div class="viz-hero" data-viz="quill"></div>
+
+      <header class="article-header">
+        <h1>sonubabu.me</h1>
+        <time class="article-meta" datetime="2026-03">Mar 2026</time>
+      </header>
+
+      <div class="article-body">
+        <h2>Philosophy: No Frameworks, No Bloat</h2>
+        <p>This website is a deliberate rejection of the modern frontend stack. No React, no Next.js, no Webpack, no npm&mdash;just plain HTML, CSS, and vanilla JavaScript served as static files. The decision wasn&rsquo;t born from ignorance of those tools (several projects in this portfolio use them extensively) but from a conviction that a personal website should embody the simplicity it advocates. Every page loads in under a second on a 3G connection. There are zero runtime dependencies. The entire site fits in a few hundred kilobytes, and every byte earns its place.</p>
+
+        <h2>Canvas Animations</h2>
+        <p>Each page features a unique 2D canvas animation rendered in the hero section, driven by a lightweight visualization engine in <code>viz.js</code>. The animations are generative&mdash;particle systems, flow fields, geometric compositions, emergent patterns&mdash;each tied to a <code>data-viz</code> attribute on the hero element. They respond to the active color theme, pulling palette values from CSS custom properties so dark mode and light mode each produce a distinct visual character. The renderer uses <code>requestAnimationFrame</code> with automatic throttling to cap at 30 fps on low-power devices, and pauses entirely when the canvas scrolls out of the viewport via an IntersectionObserver. The goal was to give each page a living, breathing header without the weight of WebGL or a canvas library.</p>
+
+        <h2>Design and Typography</h2>
+        <p>The typographic system pairs DM Sans for interface elements and navigation, Newsreader for long-form body text, and JetBrains Mono for code snippets. This combination balances geometric clarity with the warmth of a serif reading face&mdash;a nod to the academic style of publications like distill.pub, where information density coexists with visual calm. The color system is built entirely on CSS custom properties scoped under <code>[data-theme]</code> selectors, making theme switching instantaneous with zero flash of unstyled content (a FOUC prevention script in the <code>&lt;head&gt;</code> sets the theme attribute before the first paint). Spacing follows a consistent scale derived from a base unit, and the layout uses CSS Grid for page structure with no media-query breakpoints below tablet width&mdash;the fluid type and spacing scale handle most responsive needs intrinsically.</p>
+
+        <h2>Features and Craft Details</h2>
+        <p>Dark and light modes persist across sessions via <code>localStorage</code>, with the initial theme respecting the user&rsquo;s OS preference through <code>prefers-color-scheme</code>. The research pages use interactive data visualizations rendered inline alongside academic-style prose. The 404 page features a retro airport flip-clock animation that displays the error code with mechanical character-splitting transitions. Navigation is minimal&mdash;five links and a theme toggle&mdash;because the site&rsquo;s architecture is flat enough that deep menus would add complexity without aiding discovery. The entire project is a reminder that the web&rsquo;s core technologies are remarkably capable on their own, and that sometimes the most impressive engineering is knowing what not to include. Inspired by the restraint of ibelick.com and the clarity of distill.pub, this site aims to be fast, readable, and quietly distinctive.</p>
+      </div>
+
+      <div class="article-tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Canvas API</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/viz.js"></script>
+</body>
+</html>

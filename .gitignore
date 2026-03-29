@@ -1,0 +1,8 @@
+.vercel
+.DS_Store
+Thumbs.db
+*.log
+
+# Local agent tooling (omit from GitHub; still excluded from Vercel via .vercelignore if tracked)
+.agents/
+skills-lock.json

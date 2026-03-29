@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learnings — Sonu Babu</title>
+  <meta name="description" content="Notes, references, and things I've learned about design, engineering, and thinking.">
+  <meta property="og:title" content="Learnings — Sonu Babu">
+  <meta property="og:description" content="Notes, references, and things I've learned about design, engineering, and thinking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sonubabu.me/learnings">
+  <link rel="canonical" href="https://sonubabu.me/learnings">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){var t=localStorage.getItem("theme")||
+    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+    document.documentElement.setAttribute("data-theme",t)})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-name">Sonu Babu</a>
+      <a href="blog.html">Blog</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <main class="learnings-page">
+      <header class="page-header">
+        <h1>Learnings</h1>
+        <p>Notes, references, and things I've picked up along the way.</p>
+      </header>
+
+      <div class="viz-small" data-viz="tree"></div>
+
+      <section class="learning-category">
+        <h2>Front-end &amp; Design</h2>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Understanding CSS container queries</span>
+            <time datetime="2026-03">Mar 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>Container queries allow components to adapt based on their parent container's size rather than the viewport. This fundamentally changes how we think about responsive design&mdash;instead of designing page layouts that respond to screen size, we can design self-contained components that respond to the space available to them.</p>
+            <p>The <code>@container</code> rule works with <code>container-type: inline-size</code> on the parent. You define a containment context, then write query blocks that fire when the container crosses a size threshold&mdash;much like media queries but scoped locally.</p>
+            <p>Key insight: container queries make truly reusable component libraries possible because components no longer need to know about the page layout they'll live in. A card component can go from single-column to side-by-side image layout purely based on the width it's given.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">The mental model behind great component APIs</span>
+            <time datetime="2026-02">Feb 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>Great component APIs follow a principle of progressive disclosure: simple things should be simple, complex things should be possible. The best components have sensible defaults that cover 80% of use cases, with escape hatches for the remaining 20%.</p>
+            <p>Composition over configuration&mdash;prefer rendering children over accepting dozens of props. Study how Radix UI and Headless UI separate behavior from styling. Their compound-component patterns let consumers assemble pieces freely while the library manages state, keyboard navigation, and ARIA attributes internally.</p>
+            <p>The &ldquo;inversion of control&rdquo; pattern lets consumers customize rendering while the component manages state and accessibility. Render props and slot-based APIs are two flavors of this idea, and choosing between them depends on whether you prioritize explicit data flow or template ergonomics.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Typography scales that actually work</span>
+            <time datetime="2026-01">Jan 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>A well-chosen type scale creates visual harmony without conscious effort. The most reliable approach: pick a base size (16px) and a ratio (1.25 for &ldquo;major third&rdquo; or 1.333 for &ldquo;perfect fourth&rdquo;). Each step up multiplies by the ratio, giving you a predictable set of sizes that feel proportional.</p>
+            <p>For body text, 1.5&times; to 1.75&times; line-height depending on line length. For headings, tighter line-height (1.1 to 1.3). The key insight from Butterick's <em>Practical Typography</em>: body text is the foundation&mdash;if it's comfortable to read, the rest of the hierarchy falls into place.</p>
+            <p>Negative letter-spacing on large headings (<code>-0.02em</code>) prevents them from looking too loose. At display sizes, the optical spacing between characters becomes exaggerated, so tightening the tracking restores the visual density you'd expect at text sizes.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Accessibility as a design constraint</span>
+            <time datetime="2025-12">Dec 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>Accessibility isn't an afterthought bolted onto finished designs&mdash;it's a design constraint that, when embraced early, leads to better products for everyone. Curb cuts, originally designed for wheelchairs, benefit cyclists, delivery carts, and parents with strollers. The same principle applies to digital products.</p>
+            <p>Key practices: semantic HTML first (proper headings, landmarks, form labels), keyboard navigation (focus indicators, tab order, skip links), sufficient color contrast (WCAG AA minimum 4.5:1 for text), and ARIA only when native HTML semantics aren't enough.</p>
+            <p>The most common accessibility failures are simple: missing alt text, poor contrast, unlabeled form inputs, and missing focus styles. An accessibility audit with a screen reader and keyboard-only navigation reveals most of these in minutes. Building these checks into your workflow from the start is far cheaper than retrofitting later.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="learning-category">
+        <h2>Artificial Intelligence</h2>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">How transformers learn context</span>
+            <time datetime="2026-03">Mar 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>The self-attention mechanism in transformers computes pairwise relationships between all tokens in a sequence. Each attention head can learn different types of relationships&mdash;syntactic (subject-verb agreement), semantic (co-reference), or positional (nearby tokens).</p>
+            <p>Key-query-value decomposition: queries ask &ldquo;what am I looking for?&rdquo;, keys answer &ldquo;what do I contain?&rdquo;, values provide &ldquo;what information do I give?&rdquo;. The dot product between queries and keys produces attention weights, which are then applied to the values to produce the output for each position.</p>
+            <p>Multi-head attention runs these in parallel, allowing the model to attend to different representation subspaces simultaneously. Layer normalization and residual connections are critical for training stability&mdash;without them, gradients vanish or explode in deep networks, making the 100+ layer architectures we rely on today impossible to train.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Prompt engineering patterns</span>
+            <time datetime="2026-01">Jan 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>Effective prompt engineering follows recognizable patterns. Chain-of-thought prompting (&ldquo;think step by step&rdquo;) activates reasoning pathways. Few-shot examples establish format and quality expectations. System prompts set behavioral constraints. Role prompting (&ldquo;you are an expert in X&rdquo;) primes domain knowledge.</p>
+            <p>The most underrated pattern: structured output formatting&mdash;explicitly requesting JSON, markdown tables, or numbered steps dramatically improves response consistency. When the model knows the shape of the output you expect, it spends less capacity on formatting decisions and more on content quality.</p>
+            <p>For complex tasks, decomposition into sub-prompts with clear handoff points outperforms monolithic prompts. Think of it like function composition: each prompt does one thing well, and the results chain together. This also makes debugging easier&mdash;you can inspect and fix each stage independently.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Building useful AI agents</span>
+            <time datetime="2025-11">Nov 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>An AI agent is more than a chatbot&mdash;it observes its environment, makes decisions, and takes actions toward a goal. The ReAct pattern (Reasoning + Acting) alternates between thinking steps and tool calls, giving the model a structured way to plan before acting.</p>
+            <p>Key architecture decisions: tool selection (what capabilities the agent has), memory management (what context to keep vs. summarize), error recovery (what happens when a tool call fails), and termination conditions (when to stop). Each of these choices shapes the agent's reliability envelope.</p>
+            <p>The hardest unsolved problem: reliable planning over long horizons. Current agents work well for 3&ndash;5 step tasks but degrade significantly beyond 10 steps. Compounding error probabilities explain why&mdash;even a 95% success rate per step yields only 60% end-to-end success over 10 steps. Hierarchical planning and checkpoint-based recovery are promising mitigation strategies.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="learning-category">
+        <h2>Quantitative &amp; Logic</h2>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Bayesian thinking for everyday decisions</span>
+            <time datetime="2026-02">Feb 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>Bayesian reasoning is about updating beliefs with evidence. Start with a prior (your current best estimate), observe new evidence, and compute a posterior that incorporates both. The framework gives you a principled way to change your mind incrementally rather than swinging between certainty and doubt.</p>
+            <p>The key insight for daily life: base rates matter enormously. When a medical test has 99% accuracy and the disease affects 1 in 10,000 people, a positive result is still more likely to be a false positive. Bayes' rule: <em>P(A|B) = P(B|A) &times; P(A) / P(B)</em>.</p>
+            <p>In practice: be calibrated about your confidence, seek disconfirming evidence, and update incrementally rather than in large jumps. Keeping a decision journal with explicit probability estimates is one of the best ways to train your Bayesian intuition over time.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Statistical intuition vs. formal proof</span>
+            <time datetime="2025-12">Dec 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>Formal proofs provide certainty; statistical intuition provides guidance under uncertainty. Both are essential, and knowing which tool to reach for in a given situation is a meta-skill worth developing.</p>
+            <p>The law of large numbers explains why casinos always win but individual bettors might not. The central limit theorem explains why averages behave normally even when individual observations don't. Simpson's paradox shows how aggregate data can reverse when you control for a confounding variable&mdash;a famous example: a treatment can appear worse overall yet be better in every subgroup.</p>
+            <p>The key lesson: always ask &ldquo;compared to what?&rdquo; and &ldquo;controlling for what?&rdquo; before drawing conclusions from data. Statistical significance without effect size is meaningless, and correlations without causal models are dangerous. Build the habit of sketching the data-generating process before interpreting results.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Mental models from mathematics</span>
+            <time datetime="2025-10">Oct 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>Mathematical thinking provides powerful frameworks beyond numerical computation. First-principles thinking (axioms &rarr; theorems) forces clarity about assumptions. If you can't state your premises explicitly, your conclusions are built on sand.</p>
+            <p>Marginal analysis asks &ldquo;what's the impact of one more unit?&rdquo;&mdash;applicable to time, money, and effort allocation. Combinatorial thinking reveals how complexity explodes: 10 binary features create 1,024 possible combinations, which is why exhaustive testing is usually impossible and prioritization matters.</p>
+            <p>Graph theory provides vocabulary for networks, dependencies, and flows. The pigeonhole principle explains why hash collisions are inevitable and why birthdays are shared more often than intuition suggests. These aren't abstract curiosities&mdash;they're lenses that sharpen thinking about system design, resource allocation, and risk.</p>
+          </div>
+        </details>
+      </section>
+
+      <section class="learning-category">
+        <h2>Books &amp; References</h2>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Refactoring UI &mdash; key takeaways</span>
+            <time datetime="2026-01">Jan 2026</time>
+          </summary>
+          <div class="learning-body">
+            <p>Steve Schoger and Adam Wathan's design advice for developers. Core principles: start with too much whitespace, then reduce. Use color and weight to create hierarchy, not just font size. Limit your choices&mdash;pick a constrained spacing scale, a deliberate color palette, and a type scale before starting.</p>
+            <p>&ldquo;Don't use grey text on colored backgrounds&rdquo;&mdash;use a semi-transparent version of the background color instead. This keeps the text feeling cohesive with its surroundings rather than floating on top of them. Design in grayscale first to ensure hierarchy works without relying on color.</p>
+            <p>Every element should be intentional&mdash;if you can't explain why it's there, remove it. Borders are a last resort for separation; whitespace and background-color differences almost always work better. The book's most useful reframe: you don't need to be a designer, you need to make good decisions from a constrained set of options.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">The Design of Everyday Things &mdash; notes</span>
+            <time datetime="2025-11">Nov 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>Don Norman's foundational work on human-centered design. Key concepts: affordances (what actions an object suggests), signifiers (how users discover affordances), mapping (relationship between controls and outcomes), and feedback (confirmation that an action had effect).</p>
+            <p>The Gulf of Execution (gap between intention and action) and Gulf of Evaluation (gap between system state and user perception) explain most usability problems. Good design bridges both gulfs&mdash;making it obvious what actions are possible and making the system's response clearly visible.</p>
+            <p>Norman's fundamental principle: when something goes wrong, it's the design's fault, not the user's. Design for error&mdash;people will make mistakes, so make recovery easy. Undo, confirmation dialogs for destructive actions, and sensible defaults are all expressions of this principle in software.</p>
+          </div>
+        </details>
+
+        <details class="learning-item">
+          <summary>
+            <span class="learning-title">Thinking, Fast and Slow &mdash; applied</span>
+            <time datetime="2025-09">Sep 2025</time>
+          </summary>
+          <div class="learning-body">
+            <p>Kahneman's dual-process theory: System 1 (fast, automatic, intuitive) and System 2 (slow, deliberate, analytical). Most decisions use System 1, which is efficient but prone to cognitive biases. Understanding which system is driving a decision is the first step toward better judgment.</p>
+            <p>Anchoring: initial numbers disproportionately influence estimates. Availability heuristic: we judge probability by how easily examples come to mind. Loss aversion: losses feel roughly twice as painful as equivalent gains feel good. These biases aren't bugs&mdash;they're features of a system optimized for speed, not accuracy.</p>
+            <p>Practical applications: when making important decisions, engage System 2 deliberately. Use pre-mortems (&ldquo;imagine this failed&mdash;why?&rdquo;) to counter overconfidence. Write decisions down to avoid hindsight bias. Create checklists for recurring decisions to offload cognitive effort and ensure consistency.</p>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/viz.js"></script>
+</body>
+</html>
