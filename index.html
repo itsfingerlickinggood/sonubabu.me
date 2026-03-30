@@ -1,96 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sonu Babu</title>
-  <meta name="description" content="Sonu Babu — AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic.">
-  <meta property="og:title" content="Sonu Babu">
-  <meta property="og:description" content="AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sonubabu.me">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sonu Babu">
-  <meta name="twitter:description" content="AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic.">
-  <link rel="canonical" href="https://sonubabu.me">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script>
-    (function(){var t=localStorage.getItem("theme")||
-    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-    document.documentElement.setAttribute("data-theme",t)})();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/pages.css">
-</head>
-<body>
-  <div class="site-container">
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-name">Sonu Babu</a>
-      <a href="blog.html">Blog</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="learnings.html">Learnings</a>
-      <button class="theme-toggle" type="button" aria-label="Switch theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonu Babu</title>
+    <meta
+      name="description"
+      content="Sonu Babu — AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic."
+    />
+    <meta property="og:title" content="Sonu Babu" />
+    <meta
+      property="og:description"
+      content="Sonu Babu — AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sonubabu.me/" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sonu Babu" />
+    <meta
+      name="twitter:description"
+      content="Sonu Babu — AI Safety Researcher & Full Stack Developer. Building at the edge of front-end design, AI alignment, and quantitative logic."
+    />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
+    <link rel="canonical" href="https://sonubabu.me/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("theme") ||
+          (matchMedia("(prefers-color-scheme:dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+  </head>
+  <body>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-name">Sonu Babu</a>
+        <a href="blog.html">Blog</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </nav>
 
-    <main>
-      <section class="home-intro">
-        <h1>Sonu Babu</h1>
-        <span class="role">AI Safety Researcher & Full Stack Developer</span>
-        <p class="bio">Building at the edge of front-end design, artificial intelligence, and quantitative logic &mdash; not just products, but possibilities. Craft matters deeply to me. I strive to create technology that empowers and endures.</p>
-        <p class="bio" style="margin-top: var(--space-md);">I study AI alignment through the <a href="https://www.bluedot.org/" target="_blank">BlueDot Impact</a> Technical AI Safety program, and previously worked as an AI Tutor at <a href="https://alignerr.com" target="_blank">Alignerr</a> evaluating frontier models for reasoning quality and instruction adherence.</p>
-      </section>
+      <main>
+        <section class="home-intro">
+          <h1>Sonu Babu</h1>
+          <span class="role">AI Safety Researcher & Full Stack Developer</span>
+          <p class="bio">
+            Building at the edge of front-end design, artificial intelligence,
+            and quantitative logic &mdash; not just products, but possibilities.
+            Craft matters deeply to me. I strive to create technology that
+            empowers and endures.
+          </p>
+          <p class="bio">
+            I study AI alignment through the
+            <a
+              href="https://www.bluedot.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >BlueDot Impact</a
+            >
+            Technical AI Safety program, and previously worked as an AI Tutor at
+            <a
+              href="https://alignerr.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Alignerr</a
+            >
+            evaluating frontier models for reasoning quality and instruction
+            adherence.
+          </p>
+        </section>
 
-      <div class="viz-small" data-viz="identity"></div>
+        <div class="viz-small" data-viz="identity"></div>
 
-      <section class="home-work section">
-        <p class="section-label">Some of my research:</p>
-        <ul class="work-list">
-          <li><a href="research/alignment-faking.html">Alignment faking</a> <span class="work-desc">&ndash; mapping training-sensitive behaviors in open-source models</span></li>
-          <li><a href="research/multilingual-safety.html">Multilingual LLM safety</a> <span class="work-desc">&ndash; normative divergence &amp; safety asymmetry across languages</span></li>
-          <li><a href="research/prompt-injection.html">Prompt injection</a> <span class="work-desc">&ndash; instruction hierarchy exploitation in RAG workflows</span></li>
-          <li><a href="research/long-horizon.html">Adversarial testing</a> <span class="work-desc">&ndash; long-horizon jailbreaks &amp; goal drift over 15&ndash;30 turns</span></li>
-          <li><a href="research/mechanistic-interpretability.html">Mechanistic interpretability</a> <span class="work-desc">&ndash; circuits, sparse autoencoders, internal activations</span></li>
-        </ul>
-      </section>
+        <section class="home-work section">
+          <p class="section-label">Some of my research:</p>
+          <ul class="work-list">
+            <li>
+              <a href="research/alignment-faking.html">Alignment faking</a>
+              <span class="work-desc"
+                >&ndash; mapping training-sensitive behaviors in open-source
+                models</span
+              >
+            </li>
+            <li>
+              <a href="research/multilingual-safety.html"
+                >Multilingual LLM safety</a
+              >
+              <span class="work-desc"
+                >&ndash; normative divergence &amp; safety asymmetry across
+                languages</span
+              >
+            </li>
+            <li>
+              <a href="research/prompt-injection.html">Prompt injection</a>
+              <span class="work-desc"
+                >&ndash; instruction hierarchy exploitation in RAG
+                workflows</span
+              >
+            </li>
+            <li>
+              <a href="research/long-horizon.html">Adversarial testing</a>
+              <span class="work-desc"
+                >&ndash; long-horizon jailbreaks &amp; goal drift over
+                15&ndash;30 turns</span
+              >
+            </li>
+            <li>
+              <a href="research/mechanistic-interpretability.html"
+                >Mechanistic interpretability</a
+              >
+              <span class="work-desc"
+                >&ndash; circuits, sparse autoencoders, internal
+                activations</span
+              >
+            </li>
+          </ul>
+        </section>
 
-      <section class="home-work section">
-        <p class="section-label">Some of my work:</p>
-        <ul class="work-list">
-          <li><a href="projects/arkham-studio.html">Arkham Studio</a> <span class="work-desc">&ndash; design studio bridging humans and AI through interface craft</span></li>
-          <li><a href="projects/market01.html">Market01</a> <span class="work-desc">&ndash; AI-powered GPU marketplace, 6,500+ listings across 43 providers</span></li>
-          <li><a href="projects/gotham.html">GOTHAM</a> <span class="work-desc">&ndash; AI intelligence &amp; analytics platform with terminal-style UI</span></li>
-          <li><a href="projects/openx.html">OpenX</a> <span class="work-desc">&ndash; unified privacy-first super app for your digital life</span></li>
-          <li><a href="projects/weather-portal.html">Weather Intelligence Portal</a> <span class="work-desc">&ndash; offline-first Kerala microclimate analysis</span></li>
-          <li><a href="projects/cattlescan.html">CattleScan</a> <span class="work-desc">&ndash; CV pipeline for livestock classification (SIH)</span></li>
-          <li><a href="projects/codexai.html">CodexAI</a> <span class="work-desc">&ndash; low-resource translation for Nepalese &amp; Sinhalese (SIH)</span></li>
-        </ul>
-      </section>
+        <section class="home-work section">
+          <p class="section-label">Some of my work:</p>
+          <ul class="work-list">
+            <li>
+              <a href="projects/arkham-studio.html">Arkham Studio</a>
+              <span class="work-desc"
+                >&ndash; design studio bridging humans and AI through interface
+                craft</span
+              >
+            </li>
+            <li>
+              <a href="projects/market01.html">Market01</a>
+              <span class="work-desc"
+                >&ndash; AI-powered GPU marketplace, 6,500+ listings across 43
+                providers</span
+              >
+            </li>
+            <li>
+              <a href="projects/gotham.html">GOTHAM</a>
+              <span class="work-desc"
+                >&ndash; AI intelligence &amp; analytics platform with
+                terminal-style UI</span
+              >
+            </li>
+            <li>
+              <a href="projects/openx.html">OpenX</a>
+              <span class="work-desc"
+                >&ndash; unified privacy-first super app for your digital
+                life</span
+              >
+            </li>
+            <li>
+              <a href="projects/weather-portal.html"
+                >Weather Intelligence Portal</a
+              >
+              <span class="work-desc"
+                >&ndash; offline-first Kerala microclimate analysis</span
+              >
+            </li>
+            <li>
+              <a href="projects/cattlescan.html">CattleScan</a>
+              <span class="work-desc"
+                >&ndash; CV pipeline for livestock classification (SIH)</span
+              >
+            </li>
+            <li>
+              <a href="projects/codexai.html">CodexAI</a>
+              <span class="work-desc"
+                >&ndash; low-resource translation for Nepalese &amp; Sinhalese
+                (SIH)</span
+              >
+            </li>
+          </ul>
+        </section>
 
-      <section class="home-elsewhere section">
-        <p>I share thoughts and updates on <a href="https://x.com/sonubabu_" target="_blank">X</a>, and open-source work on <a href="https://github.com/itsfingerlickinggood" target="_blank">GitHub</a>.</p>
-      </section>
+        <section class="home-elsewhere section">
+          <p>
+            I share thoughts and updates on
+            <a
+              href="https://x.com/sonubabu"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X</a
+            >, and open-source work on
+            <a
+              href="https://github.com/itsfingerlickinggood"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >.
+          </p>
+        </section>
 
-      <section class="home-contact">
-        <p>For collaborations, reach at <a href="mailto:sonuipad05@gmail.com">sonuipad05@gmail.com</a>.</p>
-      </section>
-    </main>
+        <section class="home-contact">
+          <p>
+            For collaborations, reach at
+            <a href="mailto:sonuipad05@gmail.com">sonuipad05@gmail.com</a>.
+          </p>
+        </section>
+      </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Sonu Babu</p>
-    </footer>
-  </div>
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
 
-  <script src="js/main.js"></script>
-  <script src="js/viz.js"></script>
-</body>
+    <script src="js/main.js"></script>
+    <script src="js/viz.js"></script>
+  </body>
 </html>

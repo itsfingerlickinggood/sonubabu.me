@@ -47,6 +47,13 @@
   --radius-md: 8px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms linear;
+    --transition-base: 0ms linear;
+  }
+}
+
 [data-theme="dark"] {
   --color-bg: #0c0a09;
   --color-text: #e7e5e4;

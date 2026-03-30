@@ -4,20 +4,36 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
-  transition: background-color 200ms ease, color 200ms ease;
+  transition: background-color var(--transition-base),
+    color var(--transition-base);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-heading);
   line-height: var(--leading-tight);
   text-wrap: balance;
 }
 
-h1 { font-size: var(--text-3xl); font-weight: 500; letter-spacing: -0.02em; }
-h2 { font-size: var(--text-xl); font-weight: 500; }
-h3 { font-size: var(--text-lg); font-weight: 500; }
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: var(--text-xl);
+  font-weight: 500;
+}
+h3 {
+  font-size: var(--text-lg);
+  font-weight: 500;
+}
 
-p { text-wrap: pretty; color: var(--color-text); }
+p {
+  text-wrap: pretty;
+  color: var(--color-text);
+}
 
 a {
   text-decoration-line: underline;
@@ -26,11 +42,24 @@ a {
   text-decoration-thickness: 1px;
   transition: text-decoration-color var(--transition-fast);
 }
-a:hover { text-decoration-color: var(--color-text); }
+a:hover {
+  text-decoration-color: var(--color-text);
+}
 
-strong { font-weight: 600; }
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+}
 
-em { font-style: italic; }
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
 
 code {
   font-family: var(--font-mono);
@@ -67,7 +96,9 @@ blockquote {
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
 }
-blockquote p { color: inherit; }
+blockquote p {
+  color: inherit;
+}
 blockquote cite {
   display: block;
   font-style: normal;
@@ -76,7 +107,9 @@ blockquote cite {
   margin-top: var(--space-sm);
   color: var(--color-text-subtle);
 }
-blockquote cite::before { content: "\2014\00a0"; }
+blockquote cite::before {
+  content: "\2014\00a0";
+}
 
 figure {
   margin: var(--space-2xl) 0;
@@ -101,7 +134,8 @@ table {
   margin: var(--space-xl) 0;
   font-size: var(--text-sm);
 }
-th, td {
+th,
+td {
   padding: var(--space-sm) var(--space-md);
   text-align: left;
   border-bottom: 1px solid var(--color-border);
@@ -119,7 +153,17 @@ th {
   color: var(--color-bg);
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
 @media (max-width: 640px) {
-  h1 { font-size: var(--text-2xl); }
-  h2 { font-size: var(--text-lg); }
+  h1 {
+    font-size: var(--text-2xl);
+  }
+  h2 {
+    font-size: var(--text-lg);
+  }
 }

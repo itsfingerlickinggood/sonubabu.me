@@ -4,24 +4,38 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
 });
 
+function normalizePathname(pathname) {
+  const cleaned = pathname
+    .replace(/\\/g, "/")
+    .replace(/\/index(?:\.html)?$/i, "/")
+    .replace(/\.html$/i, "")
+    .replace(/\/+$/, "");
+
+  return cleaned || "/";
+}
+
+function getSection(pathname) {
+  const parts = normalizePathname(pathname).split("/").filter(Boolean);
+  return parts[0] || "index";
+}
+
 function setActiveNavLink() {
-  const path = window.location.pathname.replace(/\/$/, "") || "/";
-  const segments = path.split("/").filter(Boolean);
-  const page = segments.pop() || "";
+  const currentPath = normalizePathname(window.location.pathname);
+  const currentSection = getSection(currentPath);
 
   document.querySelectorAll(".site-nav a:not(.nav-name)").forEach((link) => {
     const href = link.getAttribute("href");
     if (!href) return;
 
-    const linkPage = href.replace(".html", "").replace("./", "");
+    const targetUrl = new URL(href, window.location.href);
+    const linkPath = normalizePathname(targetUrl.pathname);
+    const linkSection = getSection(linkPath);
 
-    if (
-      linkPage === page ||
-      linkPage === page.replace(".html", "") ||
-      (page === "" && linkPage === "index") ||
-      (page === "index" && linkPage === "index") ||
-      (page === "index.html" && linkPage === "index")
-    ) {
+    const isHomeLink = linkSection === "index";
+    const isExactMatch = linkPath === currentPath;
+    const isSectionMatch = !isHomeLink && linkSection === currentSection;
+
+    if (isExactMatch || isSectionMatch || (isHomeLink && currentPath === "/")) {
       link.setAttribute("aria-current", "page");
     }
   });
@@ -56,12 +70,23 @@ function initThemeToggle() {
 }
 
 function updateToggleLabel(toggle, theme) {
+  if (!toggle) return;
+
   const sunIcon = toggle.querySelector(".icon-sun");
   const moonIcon = toggle.querySelector(".icon-moon");
-  if (sunIcon && moonIcon) {
-    sunIcon.style.display = theme === "dark" ? "block" : "none";
-    moonIcon.style.display = theme === "dark" ? "none" : "block";
+
+  if (sunIcon) {
+    const showSun = theme === "dark";
+    sunIcon.style.display = showSun ? "block" : "none";
+    sunIcon.setAttribute("aria-hidden", showSun ? "false" : "true");
   }
+
+  if (moonIcon) {
+    const showMoon = theme !== "dark";
+    moonIcon.style.display = showMoon ? "block" : "none";
+    moonIcon.setAttribute("aria-hidden", showMoon ? "false" : "true");
+  }
+
   toggle.setAttribute(
     "aria-label",
     theme === "dark" ? "Switch to light mode" : "Switch to dark mode"

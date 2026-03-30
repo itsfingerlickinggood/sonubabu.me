@@ -55,6 +55,11 @@
   color: var(--color-text);
 }
 
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+}
+
 .theme-toggle svg {
   width: 16px;
   height: 16px;
@@ -154,14 +159,17 @@
   padding-bottom: 0;
 }
 
+.project-card h2,
 .project-card h3 {
   margin-bottom: var(--space-xs);
 }
 
+.project-card h2 a,
 .project-card h3 a {
   text-decoration: none;
 }
 
+.project-card h2 a:hover,
 .project-card h3 a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -224,6 +232,12 @@ a[target="_blank"]::after {
 .nav-toggle svg {
   width: 20px;
   height: 20px;
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    gap: var(--space-md);
+  }
 }
 
 @media (max-width: 480px) {

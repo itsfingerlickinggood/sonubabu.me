@@ -2,6 +2,31 @@
   const vizContainers = document.querySelectorAll("[data-viz]");
   if (!vizContainers.length) return;
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const vizState = new WeakMap();
+  const resizeHandlers = new Set();
+
+  window.addEventListener(
+    "resize",
+    () => {
+      resizeHandlers.forEach((handler) => handler());
+    },
+    { passive: true }
+  );
+
+  function queueFrame(ctr, draw) {
+    const state = vizState.get(ctr);
+
+    if (prefersReducedMotion.matches) return;
+
+    if (state && !state.visible) {
+      window.setTimeout(() => queueFrame(ctr, draw), 250);
+      return;
+    }
+
+    window.requestAnimationFrame(draw);
+  }
+
   const isDark = () =>
     document.documentElement.getAttribute("data-theme") === "dark";
   const C = () => ({
@@ -23,8 +48,13 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
-    window.addEventListener("resize", resize);
-    return { ctx, W: () => w, H: () => h };
+    resizeHandlers.add(resize);
+    return {
+      ctx,
+      W: () => w,
+      H: () => h,
+      cleanup: () => resizeHandlers.delete(resize),
+    };
   }
 
   /* ═══════════════════════════════════════════════════
@@ -133,7 +163,7 @@
 
       f++;
       if (f % 180 === 0) updateTargets();
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -202,7 +232,7 @@
       }
 
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -299,7 +329,7 @@
       if (f % 30 === 0) addWire();
       if (f % 50 === 0) addComponent();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -368,7 +398,7 @@
       ctx.stroke();
 
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -435,7 +465,7 @@
         leaves = [];
       }
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -501,7 +531,7 @@
         }
       }
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -573,7 +603,7 @@
       if (f % 25 === 0) addStroke();
       if (f % 90 === 0) addSplatter();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -642,7 +672,7 @@
       }
 
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -715,7 +745,7 @@
 
       if (f % 20 === 0 && elements.length < 12) addEl();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -796,7 +826,7 @@
         updateMA();
       }
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -849,7 +879,7 @@
       });
 
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -916,7 +946,7 @@
 
       if (f % 12 === 0) sendPacket();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -982,7 +1012,7 @@
       ctx.fillText(isOrdered ? "compliant" : "deceptive", w / 2, h - 8);
 
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -1064,7 +1094,7 @@
 
       if (f % 200 === 0) reset();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -1137,7 +1167,7 @@
 
       if (f % 60 === 0) spawnRogue();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -1211,7 +1241,7 @@
       if (f % 35 === 0) waves.push({ x: 0.1, y: 0.2 + Math.random() * 0.6, age: 0 });
       if (wall.every((b) => b.hp <= 0)) resetWall();
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -1264,7 +1294,7 @@
         }
       }
       f++;
-      requestAnimationFrame(draw);
+      queueFrame(ctr, draw);
     })();
   }
 
@@ -1299,7 +1329,7 @@
         else if (agentJ < targetJ) agentJ++; else if (agentJ > targetJ) agentJ--;
         else { targetI = Math.floor(Math.random() * Math.min(cols, 20)); targetJ = Math.floor(Math.random() * Math.min(rows, 10)); trail = []; }
       }
-      f++; requestAnimationFrame(draw);
+      f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1327,7 +1357,7 @@
       const gc = [c.hi + "0.45)", c.fg + "0.3)", c.hi + "0.45)", c.fg + "0.3)"];
       data.forEach((d, i) => { const x = pad.left + i * gap + gap / 2 - barW / 2; const bH = (d.value / maxVal) * ch * anim; const y = pad.top + ch - bH; ctx.fillStyle = gc[d.group]; ctx.fillRect(x, y, barW, bH); ctx.fillStyle = c.fg + "0.5)"; d.label.split("\n").forEach((l, li) => { ctx.fillText(l, x + barW / 2, pad.top + ch + 14 + li * 11); }); });
       ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Refusal Rates: Pilot vs Replication", pad.left, 18);
-      if (f < 60) f++; requestAnimationFrame(draw);
+      if (f < 60) f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1344,7 +1374,7 @@
         ctx.fillStyle = c.hi + "0.7)"; ctx.font = "bold 12px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText(b.value + "%", pad.left + bw + 8, y + 20);
         ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px 'DM Sans', sans-serif"; ctx.fillText(b.label, pad.left, y + 43);
       });
-      if (f < 50) f++; requestAnimationFrame(draw);
+      if (f < 50) f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1367,7 +1397,7 @@
         const seed = idx * 100;
         for (let i = 0; i < 12; i++) { const px2 = x + 15 + ((seed + i * 37) % (boxW - 30)); const py2 = y + 12 + ((seed + i * 53) % (boxH - 24)); ctx.beginPath(); ctx.arc(px2, py2, 2, 0, Math.PI * 2); ctx.fillStyle = py2 < midY ? c.ac + "0.4)" : c.hi + "0.35)"; ctx.fill(); }
       });
-      f++; requestAnimationFrame(draw);
+      f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1387,7 +1417,7 @@
         step.split("\n").forEach((l, li) => { ctx.fillText(l, x + boxW / 2, y2 + 18 + (li - 0.5) * 12); });
         if (i < steps.length - 1 && progress > 0.3) { ctx.beginPath(); ctx.moveTo(x + boxW + 3, cy); ctx.lineTo(x + boxW + 11, cy); ctx.strokeStyle = c.hi + (0.3 * alpha).toFixed(2) + ")"; ctx.lineWidth = 1; ctx.stroke(); ctx.beginPath(); ctx.moveTo(x + boxW + 11, cy); ctx.lineTo(x + boxW + 7, cy - 3); ctx.lineTo(x + boxW + 7, cy + 3); ctx.fillStyle = c.hi + (0.3 * alpha).toFixed(2) + ")"; ctx.fill(); }
       });
-      if (f < 80) f++; requestAnimationFrame(draw);
+      if (f < 80) f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1406,7 +1436,7 @@
       ctx.strokeStyle = c.hi + "0.5)"; ctx.lineWidth = 1.5; ctx.stroke();
       for (let i = 0; i < drawN; i++) { const p = points[i]; ctx.beginPath(); ctx.arc(xS(p.turn), yS(p.safety), 3, 0, Math.PI * 2); ctx.fillStyle = c.hi + "0.5)"; ctx.fill(); if (p.label) { ctx.fillStyle = c.fg + "0.45)"; ctx.font = "8px 'DM Sans', sans-serif"; ctx.textAlign = "center"; p.label.split("\n").forEach((l, li) => { ctx.fillText(l, xS(p.turn), yS(p.safety) + 14 + li * 10); }); } }
       ctx.textAlign = "center"; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.fillText("Conversational Turns →", pad.left + cw2 / 2, h - 8);
-      if (f < 60) f++; requestAnimationFrame(draw);
+      if (f < 60) f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1421,7 +1451,7 @@
       for (let l = 0; l < lC; l++) { const y = pad.top + l * rowH + rowH / 2; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.textAlign = "right"; ctx.fillText("L" + (l + 1), pad.left - 8, y + 3);
         for (let n = 0; n < nC; n++) { const x = pad.left + n * dotSp + dotSp / 2; act[l][n] += (Math.random() - 0.5) * 0.02; act[l][n] = Math.max(0, Math.min(1, act[l][n])); const v = act[l][n]; ctx.beginPath(); ctx.arc(x, y, 1 + v * 3, 0, Math.PI * 2); ctx.fillStyle = (v > 0.6 ? c.hi : c.fg) + (0.05 + v * 0.5).toFixed(2) + ")"; ctx.fill(); }
       }
-      f++; requestAnimationFrame(draw);
+      f++; queueFrame(ctr, draw);
     })();
   }
 
@@ -1436,6 +1466,9 @@
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
+      const state = vizState.get(e.target);
+      if (state) state.visible = e.isIntersecting;
+
       const c = e.target.querySelector("canvas");
       if (c) c.style.display = e.isIntersecting ? "block" : "none";
     });
@@ -1443,6 +1476,10 @@
 
   vizContainers.forEach((ctr) => {
     const type = ctr.getAttribute("data-viz");
-    if (vizMap[type]) { vizMap[type](ctr); observer.observe(ctr); }
+    if (!vizMap[type]) return;
+
+    vizState.set(ctr, { visible: true });
+    vizMap[type](ctr);
+    observer.observe(ctr);
   });
 })();
