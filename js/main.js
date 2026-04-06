@@ -2,7 +2,29 @@ document.addEventListener("DOMContentLoaded", () => {
   setActiveNavLink();
   initExternalLinks();
   initThemeToggle();
+  scheduleVizLoad();
 });
+
+function scheduleVizLoad() {
+  if (!document.querySelector("[data-viz]")) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const run = () => {
+    if (document.querySelector("script[data-sonu-viz]")) return;
+    const ref = document.querySelector('link[href*="site.min.css"]');
+    if (!ref || !ref.href) return;
+    const url = ref.href.replace(/\/css\/site\.min\.css(\?.*)?$/i, "/js/viz.min.js$1");
+    const s = document.createElement("script");
+    s.src = url;
+    s.async = true;
+    s.setAttribute("data-sonu-viz", "");
+    document.body.appendChild(s);
+  };
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(run, { timeout: 600 });
+  } else {
+    setTimeout(run, 16);
+  }
+}
 
 function normalizePathname(pathname) {
   const cleaned = pathname

@@ -6,3 +6,5 @@ Thumbs.db
 # Local agent tooling (omit from GitHub; still excluded from Vercel via .vercelignore if tracked)
 .agents/
 skills-lock.json
+node_modules/
+css/_bundle.css

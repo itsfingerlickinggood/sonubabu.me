@@ -21,14 +21,8 @@
     (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
     document.documentElement.setAttribute("data-theme",t)})();
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="preload" href="../css/site.min.css" as="style">
+  <link rel="stylesheet" href="../css/site.min.css">
 </head>
 <body>
   <div class="site-container">
@@ -78,7 +72,6 @@
     </footer>
   </div>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/viz.js"></script>
+  <script defer src="../js/main.min.js"></script>
 </body>
 </html>

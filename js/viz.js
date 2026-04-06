@@ -855,7 +855,7 @@
       ctx.fillStyle = isDark() ? "rgba(12,10,9,0.1)" : "rgba(250,249,247,0.1)";
       ctx.fillRect(0, 0, w, h);
 
-      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.font = "11px ui-monospace, monospace";
       const colW = 14;
 
       columns.forEach((col, i) => {
@@ -1007,7 +1007,7 @@
       });
 
       ctx.fillStyle = c.fg + "0.35)";
-      ctx.font = "9px 'DM Sans', sans-serif";
+      ctx.font = "9px system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.fillText(isOrdered ? "compliant" : "deceptive", w / 2, h - 8);
 
@@ -1087,7 +1087,7 @@
       });
 
       ctx.fillStyle = c.fg + "0.3)";
-      ctx.font = "9px 'DM Sans', sans-serif";
+      ctx.font = "9px system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.fillText("English", midX * 0.5, h - 5);
       ctx.fillText("Hindi", midX * 1.5, h - 5);
@@ -1200,7 +1200,7 @@
       ctx.clearRect(0, 0, w, h);
 
       ctx.fillStyle = c.fg + "0.25)";
-      ctx.font = "8px 'DM Sans', sans-serif";
+      ctx.font = "8px system-ui, sans-serif";
       ctx.textAlign = "left";
       ctx.fillText("Pressure →", 8, h / 2 + 3);
 
@@ -1351,12 +1351,12 @@
       const cw2 = w - pad.left - pad.right, ch = h - pad.top - pad.bottom;
       const barW = cw2 / data.length * 0.6, gap = cw2 / data.length;
       const anim = Math.min(1, f / 60);
-      ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px 'DM Sans', sans-serif"; ctx.textAlign = "right";
+      ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px system-ui, sans-serif"; ctx.textAlign = "right";
       for (let i = 0; i <= 4; i++) { const val = (maxVal / 4) * i; const y = pad.top + ch - (val / maxVal) * ch; ctx.fillText(val + "%", pad.left - 8, y + 3); ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.strokeStyle = c.fg + "0.08)"; ctx.lineWidth = 0.5; ctx.stroke(); }
-      ctx.textAlign = "center"; ctx.font = "9px 'DM Sans', sans-serif";
+      ctx.textAlign = "center"; ctx.font = "9px system-ui, sans-serif";
       const gc = [c.hi + "0.45)", c.fg + "0.3)", c.hi + "0.45)", c.fg + "0.3)"];
       data.forEach((d, i) => { const x = pad.left + i * gap + gap / 2 - barW / 2; const bH = (d.value / maxVal) * ch * anim; const y = pad.top + ch - bH; ctx.fillStyle = gc[d.group]; ctx.fillRect(x, y, barW, bH); ctx.fillStyle = c.fg + "0.5)"; d.label.split("\n").forEach((l, li) => { ctx.fillText(l, x + barW / 2, pad.top + ch + 14 + li * 11); }); });
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Refusal Rates: Pilot vs Replication", pad.left, 18);
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Refusal Rates: Pilot vs Replication", pad.left, 18);
       if (f < 60) f++; queueFrame(ctr, draw);
     })();
   }
@@ -1366,13 +1366,13 @@
     (function draw() {
       const w = W(), h = H(), c = C(); ctx.clearRect(0, 0, w, h);
       const pad = { top: 30, bottom: 40, left: 50, right: 20 }; const ch2 = h - pad.top - pad.bottom; const cw2 = w - pad.left - pad.right; const anim = Math.min(1, f / 50);
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Prompt-Level Decision Flip Rates", pad.left, 18);
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Prompt-Level Decision Flip Rates", pad.left, 18);
       [{ label: "Pilot (~14%)", value: 14, max: 16 }, { label: "Replication (~2%)", value: 2, max: 16 }].forEach((b, i) => {
         const y = pad.top + 10 + i * 50; const bw = (b.value / b.max) * cw2 * anim;
         ctx.fillStyle = c.fg + "0.06)"; ctx.fillRect(pad.left, y, cw2, 30);
         ctx.fillStyle = i === 0 ? c.hi + "0.4)" : c.ac + "0.3)"; ctx.fillRect(pad.left, y, bw, 30);
-        ctx.fillStyle = c.hi + "0.7)"; ctx.font = "bold 12px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText(b.value + "%", pad.left + bw + 8, y + 20);
-        ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px 'DM Sans', sans-serif"; ctx.fillText(b.label, pad.left, y + 43);
+        ctx.fillStyle = c.hi + "0.7)"; ctx.font = "bold 12px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText(b.value + "%", pad.left + bw + 8, y + 20);
+        ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px system-ui, sans-serif"; ctx.fillText(b.label, pad.left, y + 43);
       });
       if (f < 50) f++; queueFrame(ctr, draw);
     })();
@@ -1383,17 +1383,17 @@
     (function draw() {
       const w = W(), h = H(), c = C(); ctx.clearRect(0, 0, w, h);
       const pad = 30; const boxW = (w - pad * 3) / 2; const boxH = h - pad * 2 - 20;
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Cross-Lingual Safety Boundary", pad, 18);
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Cross-Lingual Safety Boundary", pad, 18);
       ["English Latent Space", "Hindi Latent Space"].forEach((label, idx) => {
         const x = pad + idx * (boxW + pad); const y = pad + 10;
         ctx.strokeStyle = c.fg + "0.15)"; ctx.lineWidth = 1; ctx.strokeRect(x, y, boxW, boxH);
-        ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px 'DM Sans', sans-serif"; ctx.textAlign = "center"; ctx.fillText(label, x + boxW / 2, y + boxH + 14);
+        ctx.fillStyle = c.fg + "0.5)"; ctx.font = "10px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.fillText(label, x + boxW / 2, y + boxH + 14);
         const midY = y + boxH / 2;
         ctx.beginPath();
         if (idx === 0) { ctx.setLineDash([]); ctx.moveTo(x + 10, midY); ctx.lineTo(x + boxW - 10, midY); ctx.strokeStyle = c.hi + "0.5)"; ctx.lineWidth = 2; }
         else { ctx.setLineDash([4, 4]); for (let px2 = x + 10; px2 < x + boxW - 10; px2 += 1) { const wv = Math.sin(px2 * 0.08 + f * 0.03) * 8; if (px2 === x + 10) ctx.moveTo(px2, midY + wv); else ctx.lineTo(px2, midY + wv); } ctx.strokeStyle = c.fg + "0.3)"; ctx.lineWidth = 1.5; }
         ctx.stroke(); ctx.setLineDash([]);
-        ctx.fillStyle = c.fg + "0.35)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.fillText("Safe", x + boxW / 2, y + 18); ctx.fillText("Unsafe", x + boxW / 2, y + boxH - 8);
+        ctx.fillStyle = c.fg + "0.35)"; ctx.font = "9px system-ui, sans-serif"; ctx.fillText("Safe", x + boxW / 2, y + 18); ctx.fillText("Unsafe", x + boxW / 2, y + boxH - 8);
         const seed = idx * 100;
         for (let i = 0; i < 12; i++) { const px2 = x + 15 + ((seed + i * 37) % (boxW - 30)); const py2 = y + 12 + ((seed + i * 53) % (boxH - 24)); ctx.beginPath(); ctx.arc(px2, py2, 2, 0, Math.PI * 2); ctx.fillStyle = py2 < midY ? c.ac + "0.4)" : c.hi + "0.35)"; ctx.fill(); }
       });
@@ -1408,12 +1408,12 @@
       const w = W(), h = H(), c = C(); ctx.clearRect(0, 0, w, h);
       const pad = 20; const boxW = 85; const cy = h / 2; const totalW = steps.length * boxW + (steps.length - 1) * 16;
       const startX = Math.max(pad, (w - totalW) / 2); const anim = Math.min(1, f / 80);
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Instruction Authority Confusion Flow", pad, 16);
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Instruction Authority Confusion Flow", pad, 16);
       steps.forEach((step, i) => {
         const progress = Math.min(1, anim * steps.length - i); if (progress <= 0) return;
         const alpha = Math.min(1, progress); const x = startX + i * (boxW + 16); const y2 = cy - 18;
         ctx.strokeStyle = c.fg + (0.2 * alpha).toFixed(2) + ")"; ctx.lineWidth = 1; ctx.strokeRect(x, y2, boxW, 36);
-        ctx.fillStyle = c.fg + (0.5 * alpha).toFixed(2) + ")"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.textAlign = "center";
+        ctx.fillStyle = c.fg + (0.5 * alpha).toFixed(2) + ")"; ctx.font = "9px system-ui, sans-serif"; ctx.textAlign = "center";
         step.split("\n").forEach((l, li) => { ctx.fillText(l, x + boxW / 2, y2 + 18 + (li - 0.5) * 12); });
         if (i < steps.length - 1 && progress > 0.3) { ctx.beginPath(); ctx.moveTo(x + boxW + 3, cy); ctx.lineTo(x + boxW + 11, cy); ctx.strokeStyle = c.hi + (0.3 * alpha).toFixed(2) + ")"; ctx.lineWidth = 1; ctx.stroke(); ctx.beginPath(); ctx.moveTo(x + boxW + 11, cy); ctx.lineTo(x + boxW + 7, cy - 3); ctx.lineTo(x + boxW + 7, cy + 3); ctx.fillStyle = c.hi + (0.3 * alpha).toFixed(2) + ")"; ctx.fill(); }
       });
@@ -1427,15 +1427,15 @@
     (function draw() {
       const w = W(), h = H(), c = C(); ctx.clearRect(0, 0, w, h);
       const pad = { top: 30, bottom: 35, left: 50, right: 20 }; const cw2 = w - pad.left - pad.right; const ch2 = h - pad.top - pad.bottom; const anim = Math.min(1, f / 60);
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Safety Constraint Decay Over Conversation Turns", pad.left, 18);
-      ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.textAlign = "right";
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Safety Constraint Decay Over Conversation Turns", pad.left, 18);
+      ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px system-ui, sans-serif"; ctx.textAlign = "right";
       for (let i = 0; i <= 4; i++) { const v = i * 25; const y = pad.top + ch2 - (v / 100) * ch2; ctx.fillText(v + "%", pad.left - 6, y + 3); ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.strokeStyle = c.fg + "0.06)"; ctx.lineWidth = 0.5; ctx.stroke(); }
       const xS = (t) => pad.left + ((t - 1) / 29) * cw2; const yS = (s) => pad.top + ch2 - (s / 100) * ch2;
       ctx.beginPath(); const drawN = Math.ceil(points.length * anim);
       for (let i = 0; i < drawN; i++) { const p = points[i]; if (i === 0) ctx.moveTo(xS(p.turn), yS(p.safety)); else ctx.lineTo(xS(p.turn), yS(p.safety)); }
       ctx.strokeStyle = c.hi + "0.5)"; ctx.lineWidth = 1.5; ctx.stroke();
-      for (let i = 0; i < drawN; i++) { const p = points[i]; ctx.beginPath(); ctx.arc(xS(p.turn), yS(p.safety), 3, 0, Math.PI * 2); ctx.fillStyle = c.hi + "0.5)"; ctx.fill(); if (p.label) { ctx.fillStyle = c.fg + "0.45)"; ctx.font = "8px 'DM Sans', sans-serif"; ctx.textAlign = "center"; p.label.split("\n").forEach((l, li) => { ctx.fillText(l, xS(p.turn), yS(p.safety) + 14 + li * 10); }); } }
-      ctx.textAlign = "center"; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.fillText("Conversational Turns →", pad.left + cw2 / 2, h - 8);
+      for (let i = 0; i < drawN; i++) { const p = points[i]; ctx.beginPath(); ctx.arc(xS(p.turn), yS(p.safety), 3, 0, Math.PI * 2); ctx.fillStyle = c.hi + "0.5)"; ctx.fill(); if (p.label) { ctx.fillStyle = c.fg + "0.45)"; ctx.font = "8px system-ui, sans-serif"; ctx.textAlign = "center"; p.label.split("\n").forEach((l, li) => { ctx.fillText(l, xS(p.turn), yS(p.safety) + 14 + li * 10); }); } }
+      ctx.textAlign = "center"; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px system-ui, sans-serif"; ctx.fillText("Conversational Turns →", pad.left + cw2 / 2, h - 8);
       if (f < 60) f++; queueFrame(ctr, draw);
     })();
   }
@@ -1447,8 +1447,8 @@
     (function draw() {
       const w = W(), h = H(), c = C(); ctx.clearRect(0, 0, w, h);
       const pad = { top: 30, bottom: 20, left: 60, right: 20 }; const cw2 = w - pad.left - pad.right; const ch2 = h - pad.top - pad.bottom; const rowH = ch2 / lC; const dotSp = Math.min(cw2 / nC, 16);
-      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px 'DM Sans', sans-serif"; ctx.textAlign = "left"; ctx.fillText("Layer Activation Patterns", pad.left, 18);
-      for (let l = 0; l < lC; l++) { const y = pad.top + l * rowH + rowH / 2; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px 'DM Sans', sans-serif"; ctx.textAlign = "right"; ctx.fillText("L" + (l + 1), pad.left - 8, y + 3);
+      ctx.fillStyle = c.hi + "0.6)"; ctx.font = "bold 11px system-ui, sans-serif"; ctx.textAlign = "left"; ctx.fillText("Layer Activation Patterns", pad.left, 18);
+      for (let l = 0; l < lC; l++) { const y = pad.top + l * rowH + rowH / 2; ctx.fillStyle = c.fg + "0.4)"; ctx.font = "9px system-ui, sans-serif"; ctx.textAlign = "right"; ctx.fillText("L" + (l + 1), pad.left - 8, y + 3);
         for (let n = 0; n < nC; n++) { const x = pad.left + n * dotSp + dotSp / 2; act[l][n] += (Math.random() - 0.5) * 0.02; act[l][n] = Math.max(0, Math.min(1, act[l][n])); const v = act[l][n]; ctx.beginPath(); ctx.arc(x, y, 1 + v * 3, 0, Math.PI * 2); ctx.fillStyle = (v > 0.6 ? c.hi : c.fg) + (0.05 + v * 0.5).toFixed(2) + ")"; ctx.fill(); }
       }
       f++; queueFrame(ctr, draw);
