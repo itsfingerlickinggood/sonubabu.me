@@ -2,6 +2,6 @@
   "name": "sonubabu.me",
   "private": true,
   "scripts": {
-    "build": "node scripts/bundle-css.mjs && npx clean-css-cli -o css/site.min.css css/_bundle.css && npx terser js/main.js -c -m -o js/main.min.js && npx terser js/viz.js -c -m -o js/viz.min.js && node scripts/rm-bundle.mjs"
+    "build": "node scripts/bundle-css.mjs && npx clean-css-cli -o css/site.min.css css/_bundle.css && npx terser js/main.js -c -m -o js/main.min.js && npx terser js/viz.js -c -m -o js/viz.min.js && npx terser js/learnings.js -c -m -o js/learnings.min.js && node scripts/rm-bundle.mjs"
   }
 }

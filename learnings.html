@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learnings — Sonu Babu</title>
-  <meta name="description" content="Notes, references, and things I've learned about design, engineering, and thinking.">
+  <meta name="description" content="Competitions, reinforcement learning notes, music and books I'm into.">
   <meta property="og:title" content="Learnings — Sonu Babu">
-  <meta property="og:description" content="Notes, references, and things I've learned about design, engineering, and thinking.">
+  <meta property="og:description" content="Competitions, reinforcement learning notes, music and books I'm into.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sonubabu.me/learnings">
   <meta property="og:image" content="https://sonubabu.me/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Learnings — Sonu Babu">
-  <meta name="twitter:description" content="Notes, references, and things I've learned about design, engineering, and thinking.">
+  <meta name="twitter:description" content="Competitions, reinforcement learning notes, music and books I'm into.">
   <meta name="twitter:image" content="https://sonubabu.me/og-image.svg">
   <link rel="canonical" href="https://sonubabu.me/learnings">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -41,181 +41,236 @@
     <main class="learnings-page">
       <header class="page-header">
         <h1>Learnings</h1>
-        <p>Notes, references, and things I've picked up along the way.</p>
+        <p>Competitions, RL notes, and rotating shelves for music and books.</p>
       </header>
 
       <div class="viz-small" data-viz="tree"></div>
 
       <section class="learning-category">
-        <h2>Front-end &amp; Design</h2>
+        <h2>Competitions</h2>
 
-        <details class="learning-item">
+        <details class="learning-item" open>
           <summary>
-            <span class="learning-title">Understanding CSS container queries</span>
+            <span class="learning-title">Gray Swan Staged Attack</span>
             <time datetime="2026-03">Mar 2026</time>
           </summary>
           <div class="learning-body">
-            <p>Container queries allow components to adapt based on their parent container's size rather than the viewport. This fundamentally changes how we think about responsive design&mdash;instead of designing page layouts that respond to screen size, we can design self-contained components that respond to the space available to them.</p>
-            <p>The <code>@container</code> rule works with <code>container-type: inline-size</code> on the parent. You define a containment context, then write query blocks that fire when the container crosses a size threshold&mdash;much like media queries but scoped locally.</p>
-            <p>Key insight: container queries make truly reusable component libraries possible because components no longer need to know about the page layout they'll live in. A card component can go from single-column to side-by-side image layout purely based on the width it's given.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">The mental model behind great component APIs</span>
-            <time datetime="2026-02">Feb 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>Great component APIs follow a principle of progressive disclosure: simple things should be simple, complex things should be possible. The best components have sensible defaults that cover 80% of use cases, with escape hatches for the remaining 20%.</p>
-            <p>Composition over configuration&mdash;prefer rendering children over accepting dozens of props. Study how Radix UI and Headless UI separate behavior from styling. Their compound-component patterns let consumers assemble pieces freely while the library manages state, keyboard navigation, and ARIA attributes internally.</p>
-            <p>The &ldquo;inversion of control&rdquo; pattern lets consumers customize rendering while the component manages state and accessibility. Render props and slot-based APIs are two flavors of this idea, and choosing between them depends on whether you prioritize explicit data flow or template ergonomics.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Typography scales that actually work</span>
-            <time datetime="2026-01">Jan 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>A well-chosen type scale creates visual harmony without conscious effort. The most reliable approach: pick a base size (16px) and a ratio (1.25 for &ldquo;major third&rdquo; or 1.333 for &ldquo;perfect fourth&rdquo;). Each step up multiplies by the ratio, giving you a predictable set of sizes that feel proportional.</p>
-            <p>For body text, 1.5&times; to 1.75&times; line-height depending on line length. For headings, tighter line-height (1.1 to 1.3). The key insight from Butterick's <em>Practical Typography</em>: body text is the foundation&mdash;if it's comfortable to read, the rest of the hierarchy falls into place.</p>
-            <p>Negative letter-spacing on large headings (<code>-0.02em</code>) prevents them from looking too loose. At display sizes, the optical spacing between characters becomes exaggerated, so tightening the tracking restores the visual density you'd expect at text sizes.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Accessibility as a design constraint</span>
-            <time datetime="2025-12">Dec 2025</time>
-          </summary>
-          <div class="learning-body">
-            <p>Accessibility isn't an afterthought bolted onto finished designs&mdash;it's a design constraint that, when embraced early, leads to better products for everyone. Curb cuts, originally designed for wheelchairs, benefit cyclists, delivery carts, and parents with strollers. The same principle applies to digital products.</p>
-            <p>Key practices: semantic HTML first (proper headings, landmarks, form labels), keyboard navigation (focus indicators, tab order, skip links), sufficient color contrast (WCAG AA minimum 4.5:1 for text), and ARIA only when native HTML semantics aren't enough.</p>
-            <p>The most common accessibility failures are simple: missing alt text, poor contrast, unlabeled form inputs, and missing focus styles. An accessibility audit with a screen reader and keyboard-only navigation reveals most of these in minutes. Building these checks into your workflow from the start is far cheaper than retrofitting later.</p>
+            <p><a href="https://arena.grayswan.ai/" target="_blank" rel="noopener noreferrer">Gray Swan Arena</a> ran a two wave challenge (11&ndash;25 March 2026): break layered AI defenses (model only, input filter, output filter, full pipeline, extended transcript), in the spirit of staged attacks on stacked safeguards. Judging involved UK AISI and US CAISI; sponsors included frontier labs.</p>
+            <p>I placed <strong>29th on the overall leaderboard</strong> and received <strong>$100</strong> from the overall prize pool.</p>
           </div>
         </details>
       </section>
 
       <section class="learning-category">
-        <h2>Artificial Intelligence</h2>
+        <h2>Reinforcement learning</h2>
 
         <details class="learning-item">
           <summary>
-            <span class="learning-title">How transformers learn context</span>
+            <span class="learning-title">Policy gradients and variance</span>
             <time datetime="2026-03">Mar 2026</time>
           </summary>
           <div class="learning-body">
-            <p>The self-attention mechanism in transformers computes pairwise relationships between all tokens in a sequence. Each attention head can learn different types of relationships&mdash;syntactic (subject-verb agreement), semantic (co-reference), or positional (nearby tokens).</p>
-            <p>Key-query-value decomposition: queries ask &ldquo;what am I looking for?&rdquo;, keys answer &ldquo;what do I contain?&rdquo;, values provide &ldquo;what information do I give?&rdquo;. The dot product between queries and keys produces attention weights, which are then applied to the values to produce the output for each position.</p>
-            <p>Multi-head attention runs these in parallel, allowing the model to attend to different representation subspaces simultaneously. Layer normalization and residual connections are critical for training stability&mdash;without them, gradients vanish or explode in deep networks, making the 100+ layer architectures we rely on today impossible to train.</p>
+            <p>REINFORCE and actor&ndash;critic methods optimize expected return by pushing action probabilities in directions that improve rewards. Baselines and advantage estimates cut gradient variance so learning does not drown in noise.</p>
           </div>
         </details>
 
         <details class="learning-item">
           <summary>
-            <span class="learning-title">Prompt engineering patterns</span>
-            <time datetime="2026-01">Jan 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>Effective prompt engineering follows recognizable patterns. Chain-of-thought prompting (&ldquo;think step by step&rdquo;) activates reasoning pathways. Few-shot examples establish format and quality expectations. System prompts set behavioral constraints. Role prompting (&ldquo;you are an expert in X&rdquo;) primes domain knowledge.</p>
-            <p>The most underrated pattern: structured output formatting&mdash;explicitly requesting JSON, markdown tables, or numbered steps dramatically improves response consistency. When the model knows the shape of the output you expect, it spends less capacity on formatting decisions and more on content quality.</p>
-            <p>For complex tasks, decomposition into sub-prompts with clear handoff points outperforms monolithic prompts. Think of it like function composition: each prompt does one thing well, and the results chain together. This also makes debugging easier&mdash;you can inspect and fix each stage independently.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Building useful AI agents</span>
-            <time datetime="2025-11">Nov 2025</time>
-          </summary>
-          <div class="learning-body">
-            <p>An AI agent is more than a chatbot&mdash;it observes its environment, makes decisions, and takes actions toward a goal. The ReAct pattern (Reasoning + Acting) alternates between thinking steps and tool calls, giving the model a structured way to plan before acting.</p>
-            <p>Key architecture decisions: tool selection (what capabilities the agent has), memory management (what context to keep vs. summarize), error recovery (what happens when a tool call fails), and termination conditions (when to stop). Each of these choices shapes the agent's reliability envelope.</p>
-            <p>The hardest unsolved problem: reliable planning over long horizons. Current agents work well for 3&ndash;5 step tasks but degrade significantly beyond 10 steps. Compounding error probabilities explain why&mdash;even a 95% success rate per step yields only 60% end-to-end success over 10 steps. Hierarchical planning and checkpoint-based recovery are promising mitigation strategies.</p>
-          </div>
-        </details>
-      </section>
-
-      <section class="learning-category">
-        <h2>Quantitative &amp; Logic</h2>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Bayesian thinking for everyday decisions</span>
+            <span class="learning-title">Exploration versus exploitation</span>
             <time datetime="2026-02">Feb 2026</time>
           </summary>
           <div class="learning-body">
-            <p>Bayesian reasoning is about updating beliefs with evidence. Start with a prior (your current best estimate), observe new evidence, and compute a posterior that incorporates both. The framework gives you a principled way to change your mind incrementally rather than swinging between certainty and doubt.</p>
-            <p>The key insight for daily life: base rates matter enormously. When a medical test has 99% accuracy and the disease affects 1 in 10,000 people, a positive result is still more likely to be a false positive. Bayes' rule: <em>P(A|B) = P(B|A) &times; P(A) / P(B)</em>.</p>
-            <p>In practice: be calibrated about your confidence, seek disconfirming evidence, and update incrementally rather than in large jumps. Keeping a decision journal with explicit probability estimates is one of the best ways to train your Bayesian intuition over time.</p>
+            <p>Bandits formalize the tradeoff: explore to discover better arms, exploit what already pays. In MDPs, epsilon&ndash;greedy, entropy bonuses, and count&ndash;based curiosity reshape how often the agent tries the unfamiliar.</p>
           </div>
         </details>
 
         <details class="learning-item">
           <summary>
-            <span class="learning-title">Statistical intuition vs. formal proof</span>
-            <time datetime="2025-12">Dec 2025</time>
+            <span class="learning-title">Offline RL and shift</span>
+            <time datetime="2026-01">Jan 2026</time>
           </summary>
           <div class="learning-body">
-            <p>Formal proofs provide certainty; statistical intuition provides guidance under uncertainty. Both are essential, and knowing which tool to reach for in a given situation is a meta-skill worth developing.</p>
-            <p>The law of large numbers explains why casinos always win but individual bettors might not. The central limit theorem explains why averages behave normally even when individual observations don't. Simpson's paradox shows how aggregate data can reverse when you control for a confounding variable&mdash;a famous example: a treatment can appear worse overall yet be better in every subgroup.</p>
-            <p>The key lesson: always ask &ldquo;compared to what?&rdquo; and &ldquo;controlling for what?&rdquo; before drawing conclusions from data. Statistical significance without effect size is meaningless, and correlations without causal models are dangerous. Build the habit of sketching the data-generating process before interpreting results.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Mental models from mathematics</span>
-            <time datetime="2025-10">Oct 2025</time>
-          </summary>
-          <div class="learning-body">
-            <p>Mathematical thinking provides powerful frameworks beyond numerical computation. First-principles thinking (axioms &rarr; theorems) forces clarity about assumptions. If you can't state your premises explicitly, your conclusions are built on sand.</p>
-            <p>Marginal analysis asks &ldquo;what's the impact of one more unit?&rdquo;&mdash;applicable to time, money, and effort allocation. Combinatorial thinking reveals how complexity explodes: 10 binary features create 1,024 possible combinations, which is why exhaustive testing is usually impossible and prioritization matters.</p>
-            <p>Graph theory provides vocabulary for networks, dependencies, and flows. The pigeonhole principle explains why hash collisions are inevitable and why birthdays are shared more often than intuition suggests. These aren't abstract curiosities&mdash;they're lenses that sharpen thinking about system design, resource allocation, and risk.</p>
+            <p>Policies trained only on logged behavior suffer when they visit states the dataset barely covers. Conservative objectives and uncertainty&ndash;aware critics aim to keep updates inside the data manifold.</p>
           </div>
         </details>
       </section>
 
       <section class="learning-category">
-        <h2>Books &amp; References</h2>
+        <h2>Music</h2>
+        <p class="coverflow-intro">Cover art from the Apple iTunes catalog. A rotating shelf of albums on repeat.</p>
 
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Refactoring UI &mdash; key takeaways</span>
-            <time datetime="2026-01">Jan 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>Steve Schoger and Adam Wathan's design advice for developers. Core principles: start with too much whitespace, then reduce. Use color and weight to create hierarchy, not just font size. Limit your choices&mdash;pick a constrained spacing scale, a deliberate color palette, and a type scale before starting.</p>
-            <p>&ldquo;Don't use grey text on colored backgrounds&rdquo;&mdash;use a semi-transparent version of the background color instead. This keeps the text feeling cohesive with its surroundings rather than floating on top of them. Design in grayscale first to ensure hierarchy works without relying on color.</p>
-            <p>Every element should be intentional&mdash;if you can't explain why it's there, remove it. Borders are a last resort for separation; whitespace and background-color differences almost always work better. The book's most useful reframe: you don't need to be a designer, you need to make good decisions from a constrained set of options.</p>
+        <div class="coverflow-stage" data-coverflow aria-label="Music carousel">
+          <button type="button" class="coverflow-nav" data-coverflow-prev aria-label="Previous track">&#8249;</button>
+          <div class="coverflow-viewport">
+            <div class="coverflow-track">
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/82/f7/2b/82f72ba4-524c-fc9d-cb8c-5a96d2ddf536/22UM1IM35267.rgb.jpg/600x600bb.jpg"
+                  alt="Album cover: HEROES &amp; VILLAINS by Metro Boomin"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">HEROES &amp; VILLAINS</span>
+                  <span class="coverflow-card-meta">Metro Boomin · Too Many Nights</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/39/25/2d/39252d65-2d50-b991-0962-f7a98a761271/00602517483507.rgb.jpg/600x600bb.jpg"
+                  alt="Album cover: Graduation by Kanye West"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Graduation</span>
+                  <span class="coverflow-card-meta">Kanye West</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/4d/eb/244deb4a-74a6-e8ec-183b-220c3c21dc06/8903431190659_cover.jpg/600x600bb.jpg"
+                  alt="Album art: Phir Se from Dhurandhar The Revenge"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Dhurandhar: The Revenge</span>
+                  <span class="coverflow-card-meta">Shashwat Sachdev et al.</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e7/49/8f/e7498f65-df8f-bead-d6e3-2a8d4d642a79/886447235317.jpg/600x600bb.jpg"
+                  alt="Album cover: ASTROWORLD by Travis Scott"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">ASTROWORLD</span>
+                  <span class="coverflow-card-meta">Travis Scott · Skeletons</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f9/13/99/f91399b1-231f-9746-d52a-6244b6a9e400/cover.jpg/600x600bb.jpg"
+                  alt="Album cover: Neelakasham Pachakadal Chuvanna Bhoomi (NPCB)"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">NPCB</span>
+                  <span class="coverflow-card-meta">Rex Vijayan</span>
+                </div>
+              </article>
+            </div>
           </div>
-        </details>
+          <button type="button" class="coverflow-nav" data-coverflow-next aria-label="Next track">&#8250;</button>
+        </div>
+      </section>
 
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">The Design of Everyday Things &mdash; notes</span>
-            <time datetime="2025-11">Nov 2025</time>
-          </summary>
-          <div class="learning-body">
-            <p>Don Norman's foundational work on human-centered design. Key concepts: affordances (what actions an object suggests), signifiers (how users discover affordances), mapping (relationship between controls and outcomes), and feedback (confirmation that an action had effect).</p>
-            <p>The Gulf of Execution (gap between intention and action) and Gulf of Evaluation (gap between system state and user perception) explain most usability problems. Good design bridges both gulfs&mdash;making it obvious what actions are possible and making the system's response clearly visible.</p>
-            <p>Norman's fundamental principle: when something goes wrong, it's the design's fault, not the user's. Design for error&mdash;people will make mistakes, so make recovery easy. Undo, confirmation dialogs for destructive actions, and sensible defaults are all expressions of this principle in software.</p>
-          </div>
-        </details>
+      <section class="learning-category">
+        <h2>Books</h2>
+        <p class="coverflow-intro">Covers from <a href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">Open Library</a> by ISBN (public catalog).</p>
 
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Thinking, Fast and Slow &mdash; applied</span>
-            <time datetime="2025-09">Sep 2025</time>
-          </summary>
-          <div class="learning-body">
-            <p>Kahneman's dual-process theory: System 1 (fast, automatic, intuitive) and System 2 (slow, deliberate, analytical). Most decisions use System 1, which is efficient but prone to cognitive biases. Understanding which system is driving a decision is the first step toward better judgment.</p>
-            <p>Anchoring: initial numbers disproportionately influence estimates. Availability heuristic: we judge probability by how easily examples come to mind. Loss aversion: losses feel roughly twice as painful as equivalent gains feel good. These biases aren't bugs&mdash;they're features of a system optimized for speed, not accuracy.</p>
-            <p>Practical applications: when making important decisions, engage System 2 deliberately. Use pre-mortems (&ldquo;imagine this failed&mdash;why?&rdquo;) to counter overconfidence. Write decisions down to avoid hindsight bias. Create checklists for recurring decisions to offload cognitive effort and ensure consistency.</p>
+        <div class="coverflow-stage" data-coverflow aria-label="Books carousel">
+          <button type="button" class="coverflow-nav" data-coverflow-prev aria-label="Previous book">&#8249;</button>
+          <div class="coverflow-viewport">
+            <div class="coverflow-track">
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://covers.openlibrary.org/b/isbn/9780198739838-L.jpg"
+                  alt="Book cover: Superintelligence by Nick Bostrom"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Superintelligence</span>
+                  <span class="coverflow-card-meta">Nick Bostrom</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg"
+                  alt="Book cover: Deep Learning by Goodfellow, Bengio, and Courville"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Deep Learning</span>
+                  <span class="coverflow-card-meta">Goodfellow, Bengio &amp; Courville</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg"
+                  alt="Book cover: Reinforcement Learning by Sutton and Barto"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Reinforcement Learning</span>
+                  <span class="coverflow-card-meta">Sutton &amp; Barto</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg"
+                  alt="Book cover: Harry Potter and the Philosopher's Stone by J.K. Rowling"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Harry Potter and the Philosopher&rsquo;s Stone</span>
+                  <span class="coverflow-card-meta">J.K. Rowling</span>
+                </div>
+              </article>
+              <article class="coverflow-card">
+                <img
+                  class="coverflow-card-art"
+                  src="https://covers.openlibrary.org/b/isbn/9780747538493-L.jpg"
+                  alt="Book cover: Harry Potter and the Chamber of Secrets by J.K. Rowling"
+                  width="163"
+                  height="163"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div class="coverflow-card-overlay">
+                  <span class="coverflow-card-title">Harry Potter and the Chamber of Secrets</span>
+                  <span class="coverflow-card-meta">J.K. Rowling</span>
+                </div>
+              </article>
+            </div>
           </div>
-        </details>
+          <button type="button" class="coverflow-nav" data-coverflow-next aria-label="Next book">&#8250;</button>
+        </div>
       </section>
     </main>
 
@@ -225,5 +280,6 @@
   </div>
 
   <script defer src="js/main.min.js"></script>
+  <script defer src="js/learnings.min.js"></script>
 </body>
 </html>
