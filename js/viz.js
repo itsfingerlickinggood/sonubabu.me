@@ -412,6 +412,11 @@
     let leaves = [];
     let f = 0;
 
+    function lineScale() {
+      const h = H();
+      return h < 112 ? Math.min(2.25, 96 / Math.max(h, 48)) : 1;
+    }
+
     function grow() {
       const newBranches = [];
       branches.forEach((b) => {
@@ -436,16 +441,18 @@
       const w = W(), h = H(), c = C();
       ctx.clearRect(0, 0, w, h);
 
+      const ls = lineScale();
       branches.forEach((b) => {
         const g = Math.min(1, b.grown);
         if (g <= 0) return;
         const ex = b.x + Math.cos(b.angle) * b.len * g;
         const ey = b.y + Math.sin(b.angle) * b.len * g;
-        const thick = Math.max(0.5, (5 - b.depth) * 0.5);
+        const thick = Math.max(0.85, (5 - b.depth) * 0.55 * ls);
+        const alpha = Math.min(0.92, (0.22 + (5 - b.depth) * 0.08) * (ls > 1 ? 1.05 : 1));
         ctx.beginPath();
         ctx.moveTo(b.x * w, b.y * h);
         ctx.lineTo(ex * w, ey * h);
-        ctx.strokeStyle = c.hi + (0.15 + (5 - b.depth) * 0.06).toFixed(2) + ")";
+        ctx.strokeStyle = c.hi + alpha.toFixed(2) + ")";
         ctx.lineWidth = thick;
         ctx.stroke();
       });
@@ -453,9 +460,10 @@
       leaves.forEach((l) => {
         l.r = Math.min(l.maxR, l.r + 0.05);
         const pulse = Math.sin(f * 0.02 + l.phase) * 0.3;
+        const lr = (l.r + pulse) * Math.min(1.35, ls);
         ctx.beginPath();
-        ctx.arc(l.x * w, l.y * h, l.r + pulse, 0, Math.PI * 2);
-        ctx.fillStyle = c.ac + "0.3)";
+        ctx.arc(l.x * w, l.y * h, lr, 0, Math.PI * 2);
+        ctx.fillStyle = c.ac + (ls > 1 ? "0.42)" : "0.3)");
         ctx.fill();
       });
 

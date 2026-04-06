@@ -308,6 +308,89 @@
   z-index: 2;
 }
 
+/*
+ * Spread coverflow before learnings.js runs (idx 0). Without this, every card sits at
+ * the same transform origin and then eases apart over ~1s once deferred JS loads.
+ * Sync transforms with js/learnings.js render() when idx === 0.
+ */
+.coverflow-stage:not([data-coverflow-ready]) .coverflow-track .coverflow-card:nth-child(1) {
+  transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
+  opacity: 1;
+  z-index: 20;
+  filter: brightness(1.02) saturate(1.03);
+  box-shadow:
+    0 0 0 1px rgba(28, 25, 23, 0.065),
+    0 1px 2px rgba(28, 25, 23, 0.04),
+    0 8px 18px -4px rgba(28, 25, 23, 0.09),
+    0 22px 48px -12px rgba(28, 25, 23, 0.13),
+    0 48px 96px -26px rgba(28, 25, 23, 0.17),
+    0 72px 120px -40px rgba(28, 25, 23, 0.1);
+}
+
+[data-theme="dark"]
+  .coverflow-stage:not([data-coverflow-ready])
+  .coverflow-track
+  .coverflow-card:nth-child(1) {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 10px 22px -6px rgba(0, 0, 0, 0.48),
+    0 32px 64px -18px rgba(0, 0, 0, 0.62),
+    0 58px 112px -28px rgba(0, 0, 0, 0.78),
+    0 84px 140px -42px rgba(0, 0, 0, 0.45);
+}
+
+.coverflow-stage:not([data-coverflow-ready])
+  .coverflow-track
+  .coverflow-card:nth-child(1)
+  .coverflow-card-overlay {
+  opacity: 1;
+}
+
+.coverflow-stage:not([data-coverflow-ready])
+  .coverflow-track
+  .coverflow-card:nth-child(1)::after {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="dark"]
+  .coverflow-stage:not([data-coverflow-ready])
+  .coverflow-track
+  .coverflow-card:nth-child(1)::after {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.coverflow-stage:not([data-coverflow-ready])
+  .coverflow-track
+  .coverflow-card:nth-child(1)
+  .coverflow-card-art {
+  transform: scale(1) translateZ(0);
+}
+.coverflow-stage:not([data-coverflow-ready]) .coverflow-track .coverflow-card:nth-child(2) {
+  transform: translate3d(115px, 0, -29px) rotateY(-25deg) scale(0.91);
+  opacity: 0.38;
+  z-index: 19;
+}
+.coverflow-stage:not([data-coverflow-ready]) .coverflow-track .coverflow-card:nth-child(3) {
+  transform: translate3d(230px, 0, -58px) rotateY(-34deg) scale(0.82);
+  opacity: 0.2;
+  z-index: 18;
+}
+.coverflow-stage:not([data-coverflow-ready]) .coverflow-track .coverflow-card:nth-child(4) {
+  transform: translate3d(345px, 0, -87px) rotateY(-34deg) scale(0.82);
+  opacity: 0.08;
+  z-index: 17;
+}
+.coverflow-stage:not([data-coverflow-ready]) .coverflow-track .coverflow-card:nth-child(5) {
+  transform: translate3d(460px, 0, -116px) rotateY(-34deg) scale(0.82);
+  opacity: 0.08;
+  z-index: 16;
+}
+
 .coverflow-card {
   --coverflow-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --coverflow-dur: 1.05s;
@@ -333,14 +416,17 @@
   cursor: default;
   user-select: none;
   filter: brightness(0.9) saturate(0.94);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.coverflow-stage[data-coverflow-ready] .coverflow-card {
   transition:
     transform var(--coverflow-dur) var(--coverflow-ease),
     opacity calc(var(--coverflow-dur) * 0.95) var(--coverflow-ease),
     filter calc(var(--coverflow-dur) * 0.92) var(--coverflow-ease),
     box-shadow var(--coverflow-dur) var(--coverflow-ease);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .coverflow-card[data-depth="2"] {
@@ -417,6 +503,9 @@
   pointer-events: none;
   z-index: 1;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.11);
+}
+
+.coverflow-stage[data-coverflow-ready] .coverflow-card::after {
   transition: box-shadow var(--coverflow-dur) var(--coverflow-ease);
 }
 
@@ -446,10 +535,13 @@
   display: block;
   transform: scale(1.012) translateZ(0);
   filter: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.coverflow-stage[data-coverflow-ready] .coverflow-card-art {
   transition:
     transform var(--coverflow-dur, 1.05s) cubic-bezier(0.22, 1, 0.36, 1),
     filter calc(var(--coverflow-dur, 1.05s) * 0.95) cubic-bezier(0.22, 1, 0.36, 1);
-  -webkit-font-smoothing: antialiased;
 }
 
 .coverflow-card.is-focused .coverflow-card-art {
@@ -474,6 +566,9 @@
   );
   pointer-events: none;
   opacity: 1;
+}
+
+.coverflow-stage[data-coverflow-ready] .coverflow-card-overlay {
   transition: opacity calc(var(--coverflow-dur, 1.05s) * 0.85) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -509,10 +604,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coverflow-card,
-  .coverflow-card::after,
-  .coverflow-card-art,
-  .coverflow-card-overlay,
+  .coverflow-stage[data-coverflow-ready] .coverflow-card,
+  .coverflow-stage[data-coverflow-ready] .coverflow-card::after,
+  .coverflow-stage[data-coverflow-ready] .coverflow-card-art,
+  .coverflow-stage[data-coverflow-ready] .coverflow-card-overlay,
   .coverflow-nav {
     transition: none;
   }
@@ -603,6 +698,12 @@
   margin: var(--space-md) 0;
   border-radius: var(--radius-sm);
   overflow: hidden;
+}
+
+.learnings-page .viz-small {
+  height: 128px;
+  margin: var(--space-lg) 0;
+  border-radius: var(--radius-md);
 }
 
 /* ═══ Image placeholder ═══ */

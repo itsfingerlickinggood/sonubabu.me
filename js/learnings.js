@@ -71,6 +71,7 @@
       });
     }
     render();
+    stage.setAttribute("data-coverflow-ready", "");
   }
 
   document.querySelectorAll("[data-coverflow]").forEach(initCoverflow);

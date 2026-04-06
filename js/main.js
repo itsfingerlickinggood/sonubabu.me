@@ -19,7 +19,11 @@ function scheduleVizLoad() {
     s.setAttribute("data-sonu-viz", "");
     document.body.appendChild(s);
   };
-  if ("requestIdleCallback" in window) {
+  /* Learnings (and similar) keep a hero viz above the fold — idle-deferred load made the tree pop in late. */
+  const vizAboveFold = document.querySelector(".learnings-page [data-viz]");
+  if (vizAboveFold) {
+    setTimeout(run, 0);
+  } else if ("requestIdleCallback" in window) {
     requestIdleCallback(run, { timeout: 600 });
   } else {
     setTimeout(run, 16);
