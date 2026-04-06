@@ -2,6 +2,19 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
   "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/learnings", "destination": "/learnings.html" },
+    { "source": "/learnings/", "destination": "/learnings.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/blog/", "destination": "/blog.html" },
+    { "source": "/projects", "destination": "/projects.html" },
+    { "source": "/projects/", "destination": "/projects.html" },
+    { "source": "/research", "destination": "/research.html" },
+    { "source": "/research/", "destination": "/research.html" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
+    { "source": "/projects/:slug", "destination": "/projects/:slug.html" },
+    { "source": "/research/:slug", "destination": "/research/:slug.html" }
+  ],
   "headers": [
     {
       "source": "/js/(.*)",
