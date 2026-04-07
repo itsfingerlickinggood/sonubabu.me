@@ -1,293 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learnings — Sonu Babu</title>
-  <meta name="description" content="Competitions, reinforcement learning notes, music and books I'm into.">
-  <meta property="og:title" content="Learnings — Sonu Babu">
-  <meta property="og:description" content="Competitions, reinforcement learning notes, music and books I'm into.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sonubabu.me/learnings">
-  <meta property="og:image" content="https://sonubabu.me/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Learnings — Sonu Babu">
-  <meta name="twitter:description" content="Competitions, reinforcement learning notes, music and books I'm into.">
-  <meta name="twitter:image" content="https://sonubabu.me/og-image.svg">
-  <link rel="canonical" href="https://sonubabu.me/learnings">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script>
-    (function(){var t=localStorage.getItem("theme")||
-    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-    document.documentElement.setAttribute("data-theme",t)})();
-  </script>
-  <link rel="preload" href="/css/site.min.css?v=20260407-1" as="style">
-  <link rel="stylesheet" href="/css/site.min.css?v=20260407-1">
-</head>
-<body>
-  <div class="site-container">
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-name">Sonu Babu</a>
-      <a href="blog.html">Blog</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="learnings.html">Learnings</a>
-      <button class="theme-toggle" type="button" aria-label="Switch theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learnings — Sonu Babu</title>
+    <meta
+      name="description"
+      content="Competitions, reinforcement learning notes, music and books I'm into."
+    />
+    <meta property="og:title" content="Learnings — Sonu Babu" />
+    <meta
+      property="og:description"
+      content="Competitions, reinforcement learning notes, music and books I'm into."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sonubabu.me/learnings" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Learnings — Sonu Babu" />
+    <meta
+      name="twitter:description"
+      content="Competitions, reinforcement learning notes, music and books I'm into."
+    />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
+    <link rel="canonical" href="https://sonubabu.me/learnings" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("theme") ||
+          (matchMedia("(prefers-color-scheme:dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="preload" href="/css/site.min.css?v=20260407-1" as="style" />
+    <link rel="stylesheet" href="/css/site.min.css?v=20260407-1" />
+  </head>
+  <body>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-name">Sonu Babu</a>
+        <a href="blog.html">Blog</a>
+        <a href="projects.html">Projects</a>
+        <a href="research.html">Research</a>
+        <a href="learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </nav>
 
-    <main class="learnings-page">
-      <header class="page-header">
-        <h1>Learnings</h1>
-        <p>Competitions, RL notes, and rotating shelves for music and books.</p>
-      </header>
+      <main class="learnings-page">
+        <header class="page-header">
+          <h1>Learnings</h1>
+          <p>
+            Competitions, RL notes, and rotating shelves for music and books.
+          </p>
+        </header>
 
-      <div class="viz-small" data-viz="tree"></div>
+        <div class="viz-small" data-viz="tree"></div>
 
-      <section class="learning-category">
-        <h2>Competitions</h2>
+        <section class="learning-category">
+          <h2>Competitions</h2>
 
-        <details class="learning-item" open>
-          <summary>
-            <span class="learning-title">Gray Swan Staged Attack</span>
-            <time datetime="2026-03">Mar 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p><a href="https://arena.grayswan.ai/" target="_blank" rel="noopener noreferrer">Gray Swan Arena</a> ran a two wave challenge (11&ndash;25 March 2026): break layered AI defenses (model only, input filter, output filter, full pipeline, extended transcript), in the spirit of staged attacks on stacked safeguards. Judging involved UK AISI and US CAISI; sponsors included frontier labs.</p>
-            <p>I placed <strong>29th on the overall leaderboard</strong> and received <strong>$100</strong> from the overall prize pool.</p>
-          </div>
-        </details>
-      </section>
-
-      <section class="learning-category">
-        <h2>Reinforcement learning</h2>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Policy gradients and variance</span>
-            <time datetime="2026-03">Mar 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>REINFORCE and actor&ndash;critic methods optimize expected return by pushing action probabilities in directions that improve rewards. Baselines and advantage estimates cut gradient variance so learning does not drown in noise.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Exploration versus exploitation</span>
-            <time datetime="2026-02">Feb 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>Bandits formalize the tradeoff: explore to discover better arms, exploit what already pays. In MDPs, epsilon&ndash;greedy, entropy bonuses, and count&ndash;based curiosity reshape how often the agent tries the unfamiliar.</p>
-          </div>
-        </details>
-
-        <details class="learning-item">
-          <summary>
-            <span class="learning-title">Offline RL and shift</span>
-            <time datetime="2026-01">Jan 2026</time>
-          </summary>
-          <div class="learning-body">
-            <p>Policies trained only on logged behavior suffer when they visit states the dataset barely covers. Conservative objectives and uncertainty&ndash;aware critics aim to keep updates inside the data manifold.</p>
-          </div>
-        </details>
-      </section>
-
-      <section class="learning-category">
-        <h2>Music</h2>
-        <p class="coverflow-intro">Cover art from the Apple iTunes catalog. A rotating shelf of albums on repeat.</p>
-
-        <div class="coverflow-stage" data-coverflow aria-label="Music carousel">
-          <button type="button" class="coverflow-nav" data-coverflow-prev aria-label="Previous track">
-            <svg class="coverflow-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-          </button>
-          <div class="coverflow-viewport">
-            <div class="coverflow-track">
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/82/f7/2b/82f72ba4-524c-fc9d-cb8c-5a96d2ddf536/22UM1IM35267.rgb.jpg/600x600bb.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">HEROES &amp; VILLAINS</span>
-                  <span class="coverflow-card-meta">Metro Boomin · Too Many Nights</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/39/25/2d/39252d65-2d50-b991-0962-f7a98a761271/00602517483507.rgb.jpg/600x600bb.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Graduation</span>
-                  <span class="coverflow-card-meta">Kanye West</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/4d/eb/244deb4a-74a6-e8ec-183b-220c3c21dc06/8903431190659_cover.jpg/600x600bb.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Dhurandhar: The Revenge</span>
-                  <span class="coverflow-card-meta">Shashwat Sachdev et al.</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e7/49/8f/e7498f65-df8f-bead-d6e3-2a8d4d642a79/886447235317.jpg/600x600bb.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">ASTROWORLD</span>
-                  <span class="coverflow-card-meta">Travis Scott · Skeletons</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f9/13/99/f91399b1-231f-9746-d52a-6244b6a9e400/cover.jpg/600x600bb.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">NPCB</span>
-                  <span class="coverflow-card-meta">Rex Vijayan</span>
-                </div>
-              </article>
+          <details class="learning-item" open>
+            <summary>
+              <span class="learning-title">Gray Swan Staged Attack</span>
+              <time datetime="2026-03">Mar 2026</time>
+            </summary>
+            <div class="learning-body">
+              <p>
+                <a
+                  href="https://arena.grayswan.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Gray Swan Arena</a
+                >
+                ran a two wave challenge (11&ndash;25 March 2026): break layered
+                AI defenses (model only, input filter, output filter, full
+                pipeline, extended transcript), in the spirit of staged attacks
+                on stacked safeguards. Judging involved UK AISI and US CAISI;
+                sponsors included frontier labs.
+              </p>
+              <p>
+                I placed <strong>29th on the overall leaderboard</strong> and
+                received <strong>$100</strong> from the overall prize pool.
+              </p>
             </div>
-          </div>
-          <button type="button" class="coverflow-nav" data-coverflow-next aria-label="Next track">
-            <svg class="coverflow-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </section>
+          </details>
+        </section>
 
-      <section class="learning-category">
-        <h2>Books</h2>
-        <p class="coverflow-intro">Covers from <a href="https://openlibrary.org/" target="_blank" rel="noopener noreferrer">Open Library</a> by ISBN (public catalog).</p>
+        <section class="learning-category">
+          <h2>Reinforcement learning</h2>
 
-        <div class="coverflow-stage" data-coverflow aria-label="Books carousel">
-          <button type="button" class="coverflow-nav" data-coverflow-prev aria-label="Previous book">
-            <svg class="coverflow-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-          </button>
-          <div class="coverflow-viewport">
-            <div class="coverflow-track">
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://covers.openlibrary.org/b/isbn/9780198739838-L.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Superintelligence</span>
-                  <span class="coverflow-card-meta">Nick Bostrom</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Deep Learning</span>
-                  <span class="coverflow-card-meta">Goodfellow, Bengio &amp; Courville</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Reinforcement Learning</span>
-                  <span class="coverflow-card-meta">Sutton &amp; Barto</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Harry Potter and the Philosopher&rsquo;s Stone</span>
-                  <span class="coverflow-card-meta">J.K. Rowling</span>
-                </div>
-              </article>
-              <article class="coverflow-card">
-                <img
-                  class="coverflow-card-art"
-                  src="https://covers.openlibrary.org/b/isbn/9780747538493-L.jpg"
-                  alt=""
-                  width="163"
-                  height="163"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div class="coverflow-card-overlay">
-                  <span class="coverflow-card-title">Harry Potter and the Chamber of Secrets</span>
-                  <span class="coverflow-card-meta">J.K. Rowling</span>
-                </div>
-              </article>
+          <details class="learning-item">
+            <summary>
+              <span class="learning-title">Policy gradients and variance</span>
+              <time datetime="2026-03">Mar 2026</time>
+            </summary>
+            <div class="learning-body">
+              <p>
+                REINFORCE and actor&ndash;critic methods optimize expected
+                return by pushing action probabilities in directions that
+                improve rewards. Baselines and advantage estimates cut gradient
+                variance so learning does not drown in noise.
+              </p>
             </div>
+          </details>
+
+          <details class="learning-item">
+            <summary>
+              <span class="learning-title"
+                >Exploration versus exploitation</span
+              >
+              <time datetime="2026-02">Feb 2026</time>
+            </summary>
+            <div class="learning-body">
+              <p>
+                Bandits formalize the tradeoff: explore to discover better arms,
+                exploit what already pays. In MDPs, epsilon&ndash;greedy,
+                entropy bonuses, and count&ndash;based curiosity reshape how
+                often the agent tries the unfamiliar.
+              </p>
+            </div>
+          </details>
+
+          <details class="learning-item">
+            <summary>
+              <span class="learning-title">Offline RL and shift</span>
+              <time datetime="2026-01">Jan 2026</time>
+            </summary>
+            <div class="learning-body">
+              <p>
+                Policies trained only on logged behavior suffer when they visit
+                states the dataset barely covers. Conservative objectives and
+                uncertainty&ndash;aware critics aim to keep updates inside the
+                data manifold.
+              </p>
+            </div>
+          </details>
+        </section>
+
+        <section class="learning-category">
+          <h2>Music</h2>
+          <p class="coverflow-intro">
+            Cover art from the Apple iTunes catalog. A rotating shelf of albums
+            on repeat.
+          </p>
+
+          <div
+            class="coverflow-stage"
+            data-coverflow
+            aria-label="Music carousel"
+          >
+            <button
+              type="button"
+              class="coverflow-nav"
+              data-coverflow-prev
+              aria-label="Previous track"
+            >
+              <svg
+                class="coverflow-nav-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <div class="coverflow-viewport">
+              <div class="coverflow-track">
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/82/f7/2b/82f72ba4-524c-fc9d-cb8c-5a96d2ddf536/22UM1IM35267.rgb.jpg/600x600bb.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title"
+                      >HEROES &amp; VILLAINS</span
+                    >
+                    <span class="coverflow-card-meta"
+                      >Metro Boomin · Too Many Nights</span
+                    >
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/39/25/2d/39252d65-2d50-b991-0962-f7a98a761271/00602517483507.rgb.jpg/600x600bb.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title">Graduation</span>
+                    <span class="coverflow-card-meta">Kanye West</span>
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/4d/eb/244deb4a-74a6-e8ec-183b-220c3c21dc06/8903431190659_cover.jpg/600x600bb.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title"
+                      >Dhurandhar: The Revenge</span
+                    >
+                    <span class="coverflow-card-meta"
+                      >Shashwat Sachdev et al.</span
+                    >
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e7/49/8f/e7498f65-df8f-bead-d6e3-2a8d4d642a79/886447235317.jpg/600x600bb.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title">ASTROWORLD</span>
+                    <span class="coverflow-card-meta"
+                      >Travis Scott · Skeletons</span
+                    >
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f9/13/99/f91399b1-231f-9746-d52a-6244b6a9e400/cover.jpg/600x600bb.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title">NPCB</span>
+                    <span class="coverflow-card-meta">Rex Vijayan</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="coverflow-nav"
+              data-coverflow-next
+              aria-label="Next track"
+            >
+              <svg
+                class="coverflow-nav-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
           </div>
-          <button type="button" class="coverflow-nav" data-coverflow-next aria-label="Next book">
-            <svg class="coverflow-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </section>
-    </main>
+        </section>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Sonu Babu</p>
-    </footer>
-  </div>
+        <section class="learning-category">
+          <h2>Books</h2>
+          <p class="coverflow-intro">
+            Covers from
+            <a
+              href="https://openlibrary.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open Library</a
+            >
+            by ISBN (public catalog).
+          </p>
 
-  <script defer src="/js/main.min.js?v=20260407-1"></script>
-  <script defer src="/js/learnings.min.js?v=20260407-1"></script>
-</body>
+          <div
+            class="coverflow-stage"
+            data-coverflow
+            aria-label="Books carousel"
+          >
+            <button
+              type="button"
+              class="coverflow-nav"
+              data-coverflow-prev
+              aria-label="Previous book"
+            >
+              <svg
+                class="coverflow-nav-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <div class="coverflow-viewport">
+              <div class="coverflow-track">
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://covers.openlibrary.org/b/isbn/9780198739838-L.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title">Superintelligence</span>
+                    <span class="coverflow-card-meta">Nick Bostrom</span>
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title">Deep Learning</span>
+                    <span class="coverflow-card-meta"
+                      >Goodfellow, Bengio &amp; Courville</span
+                    >
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title"
+                      >Reinforcement Learning</span
+                    >
+                    <span class="coverflow-card-meta">Sutton &amp; Barto</span>
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title"
+                      >Harry Potter and the Philosopher&rsquo;s Stone</span
+                    >
+                    <span class="coverflow-card-meta">J.K. Rowling</span>
+                  </div>
+                </article>
+                <article class="coverflow-card">
+                  <img
+                    class="coverflow-card-art"
+                    src="https://covers.openlibrary.org/b/isbn/9780747538493-L.jpg"
+                    alt=""
+                    width="163"
+                    height="163"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="coverflow-card-overlay">
+                    <span class="coverflow-card-title"
+                      >Harry Potter and the Chamber of Secrets</span
+                    >
+                    <span class="coverflow-card-meta">J.K. Rowling</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="coverflow-nav"
+              data-coverflow-next
+              aria-label="Next book"
+            >
+              <svg
+                class="coverflow-nav-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
+
+    <script defer src="/js/main.min.js?v=20260407-1"></script>
+    <script defer src="/js/learnings.min.js?v=20260407-1"></script>
+  </body>
 </html>
