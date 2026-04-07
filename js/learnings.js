@@ -4,6 +4,7 @@
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function initCoverflow(stage) {
+    stage.classList.add("coverflow-3d");
     var cards = Array.from(stage.querySelectorAll(".coverflow-card"));
     var prev = stage.querySelector("[data-coverflow-prev]");
     var next = stage.querySelector("[data-coverflow-next]");
@@ -40,13 +41,11 @@
 
         var art = card.querySelector(".coverflow-card-art");
         if (art) {
+          art.style.filter = "none";
           if (reduceMotion || d === 0) {
-            art.style.filter = "none";
             art.style.transform = d === 0 ? "scale(1)" : "scale(1.012)";
           } else {
-            var blurPx = ad === 1 ? 12 : ad === 2 ? 22 : 28;
-            art.style.filter = "blur(" + blurPx + "px)";
-            art.style.transform = "scale(1.06)";
+            art.style.transform = "scale(1.02)";
           }
         }
       });
