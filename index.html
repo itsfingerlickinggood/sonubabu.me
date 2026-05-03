@@ -41,11 +41,11 @@
   <body>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html" class="nav-name">Sonu Babu</a>
-        <a href="blog.html">Blog</a>
-        <a href="projects.html">Projects</a>
-        <a href="research.html">Research</a>
-        <a href="learnings.html">Learnings</a>
+        <a href="/" class="nav-name">Sonu Babu</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
             class="icon-sun"
@@ -82,149 +82,75 @@
         </button>
       </nav>
 
-      <main>
-        <section class="home-intro">
-          <h1>Sonu Babu</h1>
-          <span class="role">AI Safety Researcher & Full Stack Developer</span>
-          <p class="bio">
-            Building at the edge of front-end design, artificial intelligence,
-            and quantitative logic &mdash; not just products, but possibilities.
-            Craft matters deeply to me. I strive to create technology that
-            empowers and endures.
-          </p>
-          <p class="bio">
-            I study AI alignment through the
-            <a
-              href="https://www.bluedot.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >BlueDot Impact</a
+      <main class="home-main">
+        <div class="home-left">
+          <section class="home-intro">
+            <h1>Sonu Babu</h1>
+            <span class="role"
+              >AI Safety Researcher &amp; Full Stack Developer</span
             >
-            Technical AI Safety program, and previously worked as an AI Tutor at
-            <a
-              href="https://alignerr.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Alignerr</a
-            >
-            evaluating frontier models for reasoning quality and instruction
-            adherence.
-          </p>
-        </section>
+            <p class="bio">
+              Studying AI alignment through
+              <a
+                href="https://www.bluedot.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >BlueDot Impact</a
+              >. Previously at
+              <a
+                href="https://alignerr.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Alignerr</a
+              >
+              evaluating frontier models. I build at the edge of design,
+              intelligence, and craft.
+            </p>
+          </section>
 
-        <div class="viz-small" data-viz="identity"></div>
+          <section class="home-links">
+            <p class="home-section-label">Research</p>
+            <ul class="work-list">
+              <li>
+                <a href="/research/alignment-faking.html">Alignment faking</a>
+              </li>
+              <li>
+                <a href="/research/multilingual-safety.html"
+                  >Multilingual LLM safety</a
+                >
+              </li>
+              <li>
+                <a href="/research/prompt-injection.html">Prompt injection</a>
+              </li>
+              <li>
+                <a href="/research/long-horizon.html">Adversarial testing</a>
+              </li>
+              <li>
+                <a href="/research/mechanistic-interpretability.html"
+                  >Mechanistic interpretability</a
+                >
+              </li>
+            </ul>
+          </section>
 
-        <section class="home-work section">
-          <p class="section-label">Some of my research:</p>
-          <ul class="work-list">
-            <li>
-              <a href="research/alignment-faking.html">Alignment faking</a>
-              <span class="work-desc"
-                >&ndash; mapping training-sensitive behaviors in open-source
-                models</span
-              >
-            </li>
-            <li>
-              <a href="research/multilingual-safety.html"
-                >Multilingual LLM safety</a
-              >
-              <span class="work-desc"
-                >&ndash; normative divergence &amp; safety asymmetry across
-                languages</span
-              >
-            </li>
-            <li>
-              <a href="research/prompt-injection.html">Prompt injection</a>
-              <span class="work-desc"
-                >&ndash; instruction hierarchy exploitation in RAG
-                workflows</span
-              >
-            </li>
-            <li>
-              <a href="research/long-horizon.html">Adversarial testing</a>
-              <span class="work-desc"
-                >&ndash; long-horizon jailbreaks &amp; goal drift over
-                15&ndash;30 turns</span
-              >
-            </li>
-            <li>
-              <a href="research/mechanistic-interpretability.html"
-                >Mechanistic interpretability</a
-              >
-              <span class="work-desc"
-                >&ndash; circuits, sparse autoencoders, internal
-                activations</span
-              >
-            </li>
-          </ul>
-        </section>
-
-        <section class="home-work section">
-          <p class="section-label">Some of my work:</p>
-          <ul class="work-list">
-            <li>
-              <a href="projects/arkham-studio.html">Arkham Studio</a>
-              <span class="work-desc"
-                >&ndash; design studio bridging humans and AI through interface
-                craft</span
-              >
-            </li>
-            <li>
-              <a href="projects/market01.html">Market01</a>
-              <span class="work-desc"
-                >&ndash; AI-powered GPU marketplace, 6,500+ listings across 43
-                providers</span
-              >
-            </li>
-            <li>
-              <a href="projects/gotham.html">GOTHAM</a>
-              <span class="work-desc"
-                >&ndash; AI intelligence &amp; analytics platform with
-                terminal-style UI</span
-              >
-            </li>
-            <li>
-              <a href="projects/openx.html">OpenX</a>
-              <span class="work-desc"
-                >&ndash; unified privacy-first super app for your digital
-                life</span
-              >
-            </li>
-            <li>
-              <a href="projects/weather-portal.html"
-                >Weather Intelligence Portal</a
-              >
-              <span class="work-desc"
-                >&ndash; offline-first Kerala microclimate analysis</span
-              >
-            </li>
-          </ul>
-        </section>
-
-        <section class="home-elsewhere section">
-          <p>
-            I share thoughts and updates on
+          <p class="home-contact">
             <a
               href="https://x.com/sonubabu"
               target="_blank"
               rel="noopener noreferrer"
               >X</a
-            >, and open-source work on
-            <a
+            >&ensp;&middot;&ensp;<a
               href="https://github.com/itsfingerlickinggood"
               target="_blank"
               rel="noopener noreferrer"
               >GitHub</a
-            >.
+            >
           </p>
-        </section>
+        </div>
 
-        <section class="home-contact">
-          <p>
-            For collaborations, reach at
-            <a href="mailto:sonuipad05@gmail.com">sonuipad05@gmail.com</a>.
-          </p>
-        </section>
+        <div class="home-right">
+          <div class="home-canvas-panel" data-viz="dotMatrix"></div>
+        </div>
       </main>
 
       <footer class="site-footer">

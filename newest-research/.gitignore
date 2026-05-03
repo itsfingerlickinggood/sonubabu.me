@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local env and secrets
+.env
+.env.*
+*.key
+*.token
+
+# OS/editor clutter
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Generated experiment outputs
+
+
+# Optional large raw data area
+datasets/raw/
+
+# Caches and temporary files
+*.log
+*.tmp
+*.cache

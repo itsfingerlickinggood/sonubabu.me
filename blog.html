@@ -1,72 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Sonu Babu</title>
-  <meta name="description" content="Thoughts on front-end design, AI, and building things that matter.">
-  <meta property="og:title" content="Blog — Sonu Babu">
-  <meta property="og:description" content="Thoughts on front-end design, AI, and building things that matter.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sonubabu.me/blog">
-  <meta property="og:image" content="https://sonubabu.me/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Blog — Sonu Babu">
-  <meta name="twitter:description" content="Thoughts on front-end design, AI, and building things that matter.">
-  <meta name="twitter:image" content="https://sonubabu.me/og-image.svg">
-  <link rel="canonical" href="https://sonubabu.me/blog">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script>
-    (function(){var t=localStorage.getItem("theme")||
-    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-    document.documentElement.setAttribute("data-theme",t)})();
-  </script>
-  <link rel="preload" href="/css/site.min.css" as="style">
-  <link rel="stylesheet" href="/css/site.min.css">
-</head>
-<body>
-  <div class="site-container">
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="index.html" class="nav-name">Sonu Babu</a>
-      <a href="blog.html">Blog</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="learnings.html">Learnings</a>
-      <button class="theme-toggle" type="button" aria-label="Switch theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Sonu Babu</title>
+    <meta
+      name="description"
+      content="Thoughts on front-end design, AI, and building things that matter."
+    />
+    <meta property="og:title" content="Blog — Sonu Babu" />
+    <meta
+      property="og:description"
+      content="Thoughts on front-end design, AI, and building things that matter."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sonubabu.me/blog" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog — Sonu Babu" />
+    <meta
+      name="twitter:description"
+      content="Thoughts on front-end design, AI, and building things that matter."
+    />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
+    <link rel="canonical" href="https://sonubabu.me/blog" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("theme") ||
+          (matchMedia("(prefers-color-scheme:dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="preload" href="/css/site.min.css" as="style" />
+    <link rel="stylesheet" href="/css/site.min.css" />
+  </head>
+  <body>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-name">Sonu Babu</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </nav>
 
-    <main class="blog-page">
-      <header class="page-header">
-        <h1>Blog</h1>
-        <p>Thoughts on design, technology, and building things that matter.</p>
-      </header>
+      <main class="blog-page">
+        <header class="page-header">
+          <h1>Blog</h1>
+          <p>
+            Thoughts on design, technology, and building things that matter.
+          </p>
+        </header>
 
-      <div class="viz-small" data-viz="quill"></div>
+        <div class="viz-small" data-viz="thoughtStream"></div>
 
-      <div class="post-list">
-        <article class="post-item">
-          <a href="blog/agi.html">AGI</a>
-          <time datetime="2025-05-02">May 2, 2025</time>
-        </article>
-        <article class="post-item">
-          <a href="blog/dostoevsky.html">Dostoevsky</a>
-          <time datetime="2025-05-02">May 2, 2025</time>
-        </article>
-        <article class="post-item">
-          <a href="blog/ideas.html">Ideas</a>
-          <time datetime="2025-05-01">May 1, 2025</time>
-        </article>
-      </div>
-    </main>
+        <div class="post-list">
+          <article class="post-item">
+            <div class="post-item-head">
+              <a href="/blog/agi.html">AGI</a>
+              <time datetime="2025-05-02">May 2, 2025</time>
+            </div>
+            <p class="post-item-desc">
+              Defining general intelligence, the orthogonality of competence,
+              four paradigms for emergence, and why the alignment problem must
+              be solved in parallel with capability.
+            </p>
+          </article>
+          <article class="post-item">
+            <div class="post-item-head">
+              <a href="/blog/dostoevsky.html">Dostoevsky</a>
+              <time datetime="2025-05-02">May 2, 2025</time>
+            </div>
+            <p class="post-item-desc">
+              The psychologist of the underground&mdash;polyphonic technique,
+              literary chronology, and why I keep returning to the most
+              uncomfortable novelist ever written.
+            </p>
+          </article>
+          <article class="post-item">
+            <div class="post-item-head">
+              <a href="/blog/ideas.html">Ideas</a>
+              <time datetime="2025-05-01">May 1, 2025</time>
+            </div>
+            <p class="post-item-desc">
+              On bisociation, incubation, the courage to think badly, and why
+              the creative process is not a lightning bolt but a disciplined
+              dialogue between divergence and convergence.
+            </p>
+          </article>
+        </div>
+      </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Sonu Babu</p>
-    </footer>
-  </div>
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
 
-  <script defer src="/js/main.min.js"></script>
-</body>
+    <script defer src="/js/main.min.js"></script>
+  </body>
 </html>

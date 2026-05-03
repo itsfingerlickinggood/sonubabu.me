@@ -1341,6 +1341,97 @@
     })();
   }
 
+  /* ═══════════════════════════════════════════════════
+     ASCII RL — "ascii-rl": A minimalist grid of characters
+     representing Q-values or neural activations in an RL state space.
+     ═══════════════════════════════════════════════════ */
+  function asciiRl(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    
+    const charW = window.matchMedia("(max-width: 640px)").matches ? 12 : 16; 
+    const charH = charW * 1.25;
+    const chars = " ·-~+=*#%@"; 
+    
+    let grid = [];
+    let cols = 0, rows = 0;
+    let agent = { x: 0, y: 0 };
+    
+    function initGrid() {
+      const w = W(), h = H();
+      cols = Math.max(1, Math.floor(w / charW));
+      rows = Math.max(1, Math.floor(h / charH));
+      grid = Array.from({ length: cols }, () => new Float32Array(rows).fill(0));
+      agent.x = Math.floor(cols / 2);
+      agent.y = Math.floor(rows / 2);
+    }
+    
+    initGrid();
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      
+      const newCols = Math.max(1, Math.floor(w / charW));
+      const newRows = Math.max(1, Math.floor(h / charH));
+      if (newCols !== cols || newRows !== rows) {
+        initGrid();
+      }
+
+      ctx.font = `${charW}px var(--font-mono, "Courier New", monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      if (f % 4 === 0) {
+        agent.x += Math.floor(Math.random() * 3) - 1;
+        agent.y += Math.floor(Math.random() * 3) - 1;
+        agent.x = Math.max(0, Math.min(cols - 1, agent.x));
+        agent.y = Math.max(0, Math.min(rows - 1, agent.y));
+        grid[agent.x][agent.y] = 1.5; 
+      }
+
+      if (f % 2 === 0) {
+          let nextGrid = Array.from({ length: cols }, () => new Float32Array(rows).fill(0));
+          for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+              let sum = grid[i][j], count = 1;
+              if (i > 0) { sum += grid[i-1][j]; count++; }
+              if (i < cols-1) { sum += grid[i+1][j]; count++; }
+              if (j > 0) { sum += grid[i][j-1]; count++; }
+              if (j < rows-1) { sum += grid[i][j+1]; count++; }
+              nextGrid[i][j] = (sum / count) * 0.94; 
+            }
+          }
+          grid = nextGrid;
+      }
+
+      const offsetX = (w - cols * charW) / 2 + charW / 2;
+      const offsetY = (h - rows * charH) / 2 + charH / 2;
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const val = Math.max(0, Math.min(1, grid[i][j]));
+          if (val < 0.05) continue; 
+
+          const charIdx = Math.floor(val * (chars.length - 1));
+          const char = chars[tempIdx = Math.max(0, Math.min(chars.length - 1, charIdx))];
+          
+          const x = offsetX + i * charW;
+          const y = offsetY + j * charH;
+          
+          ctx.fillStyle = c.fg + (0.2 + val * 0.6).toFixed(2) + ")";
+          ctx.fillText(char, x, y);
+        }
+      }
+      
+      ctx.fillStyle = c.hi + "0.9)";
+      ctx.fillText("A", offsetX + agent.x * charW, offsetY + agent.y * charH);
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
   /* ═══ CHART RENDERERS (kept from before) ═══ */
 
   function chartBars(ctr) {
@@ -1463,13 +1554,1085 @@
     })();
   }
 
+  /* ═══════════════════════════════════════════════════
+     LATENT FIELD — "latentField": An ASCII vector field
+     flowing like fluid, representing gradient descent paths
+     ═══════════════════════════════════════════════════ */
+  function latentField(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const chars = ["→", "↘", "↓", "↙", "←", "↖", "↑", "↗"];
+    const charW = window.matchMedia("(max-width: 640px)").matches ? 14 : 18;
+    const charH = charW + 2;
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      
+      const cols = Math.floor(w / charW) + 2;
+      const rows = Math.floor(h / charH) + 2;
+      const ox = (w - (cols - 1) * charW) / 2;
+      const oy = (h - (rows - 1) * charH) / 2;
+
+      ctx.font = `11px var(--font-mono, "Courier New", monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const nx = i * 0.15;
+          const ny = j * 0.15;
+          const noise = Math.sin(nx + f * 0.01) * Math.cos(ny + f * 0.015) + Math.sin(nx * 0.5 - ny * 0.5 + f * 0.005);
+          
+          let angle = (noise + 2) * Math.PI; 
+          let idx = Math.floor(((angle / (Math.PI * 2)) % 1) * chars.length);
+          if (idx < 0) idx += chars.length;
+
+          const intensity = Math.abs(noise);
+          if (intensity < 0.2) continue; 
+          
+          const val = Math.min(1, (intensity - 0.2) * 1.5);
+          
+          ctx.fillStyle = c.hi + (0.1 + val * 0.6).toFixed(2) + ")";
+          const x = ox + i * charW;
+          const y = oy + j * charH;
+          
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.fillText(chars[idx], 0, 0);
+          ctx.restore();
+        }
+      }
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     NEURAL TOPOLOGY — "neuralTopo": Rotating 3D neural 
+     representation made entirely out of minimalist text
+     ═══════════════════════════════════════════════════ */
+  function neuralTopo(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const nodes = [];
+    const N = 50;
+    for (let i = 0; i < N; i++) {
+      const phi = Math.acos(1 - 2 * (i + 0.5) / N);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+      nodes.push({ x: Math.cos(theta) * Math.sin(phi), y: Math.sin(theta) * Math.sin(phi), z: Math.cos(phi) });
+    }
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      
+      const cy = h / 2, cx = w / 2;
+      const radius = Math.min(w, h) * 0.35;
+      const rotY = f * 0.005;
+      const rotX = Math.sin(f * 0.002) * 0.5;
+
+      const proj = [];
+      nodes.forEach((n) => {
+        const y1 = n.y * Math.cos(rotX) - n.z * Math.sin(rotX);
+        const z1 = n.y * Math.sin(rotX) + n.z * Math.cos(rotX);
+        const x2 = n.x * Math.cos(rotY) + z1 * Math.sin(rotY);
+        const z2 = -n.x * Math.sin(rotY) + z1 * Math.cos(rotY);
+        proj.push({ x: x2, y: y1, z: z2 });
+      });
+
+      ctx.font = `14px var(--font-mono, monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let i = 0; i < N; i++) {
+        for (let j = i + 1; j < N; j++) {
+          const dx = proj[i].x - proj[j].x, dy = proj[i].y - proj[j].y, dz = proj[i].z - proj[j].z;
+          const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+          
+          if (dist < 0.65) {
+            const zAvg = (proj[i].z + proj[j].z) / 2;
+            if (zAvg < -0.2) continue; 
+            ctx.beginPath();
+            ctx.moveTo(cx + proj[i].x * radius, cy + proj[i].y * radius);
+            ctx.lineTo(cx + proj[j].x * radius, cy + proj[j].y * radius);
+            ctx.strokeStyle = c.fg + "0.12)";
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      proj.forEach((p, i) => {
+        const depth = (p.z + 1) / 2; 
+        const char = i % 3 === 0 ? "+" : (i % 2 === 0 ? "o" : "·");
+        ctx.fillStyle = c.hi + (0.1 + depth * 0.8).toFixed(2) + ")";
+        ctx.fillText(char, cx + p.x * radius, cy + p.y * radius);
+      });
+      f++; queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     STRANGE ATTRACTOR — "attractor": Math chaos plotted 
+     as billions of thin overlapping arcs over time
+     ═══════════════════════════════════════════════════ */
+  function attractor(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let x = 0.1, y = 0.1;
+    const a = -1.4, b = 1.6, c1 = 1.0, d = 0.7;
+    // Pre-calculate background colors to avoid isDark logic in hot loop
+    
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      if (document.documentElement.getAttribute("data-theme") === "dark") {
+         ctx.fillStyle = "rgba(12,10,9,0.03)";
+      } else {
+         ctx.fillStyle = "rgba(250,250,249,0.03)";
+      }
+      ctx.fillRect(0, 0, w, h);
+
+      const cx = w / 2, cy = h / 2;
+      const scale = Math.min(w, h) * 0.22;
+      
+      ctx.fillStyle = c.hi + "0.3)";
+      for(let i=0; i<800; i++) {
+        const nx = Math.sin(a * y) + c1 * Math.cos(a * x);
+        const ny = Math.sin(b * x) + d * Math.cos(b * y);
+        x = nx; y = ny;
+        ctx.fillRect(cx + x * scale, cy + y * scale, 0.8, 0.8);
+      }
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     THOUGHT STREAM — "thoughtStream": A beautiful braided
+     river of particles representing the flow of thought 
+     and the writing process, merging and diverging constantly.
+     ═══════════════════════════════════════════════════ */
+  function thoughtStream(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const paths = Array.from({ length: 6 }, (_, i) => ({
+      yBase: 0.2 + (i / 5) * 0.6,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.005 + Math.random() * 0.005,
+      particles: [],
+    }));
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+
+      paths.forEach((path) => {
+        path.phase += path.speed;
+        if (f % 4 === 0) {
+          path.particles.push({ x: -0.05, age: 0 });
+        }
+        
+        ctx.beginPath();
+        for (let i = 0; i <= 100; i++) {
+          const t = i / 100;
+          const x = t;
+          const yOffset = Math.sin(t * Math.PI * 4 + path.phase) * 0.15;
+          const mergePull = Math.sin(t * Math.PI + f * 0.01) * 0.1;
+          const y = path.yBase + yOffset * (1 - Math.abs(mergePull));
+          if (i === 0) ctx.moveTo(x * w, y * h);
+          else ctx.lineTo(x * w, y * h);
+        }
+        ctx.strokeStyle = c.fg + "0.1)";
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+
+        path.particles.forEach((p) => {
+          p.x += 0.004;
+          p.age++;
+          const yOffset = Math.sin(p.x * Math.PI * 4 + path.phase) * 0.15;
+          const mergePull = Math.sin(p.x * Math.PI + f * 0.01) * 0.1;
+          const y = path.yBase + yOffset * (1 - Math.abs(mergePull));
+          
+          const fade = Math.min(1, p.x * 5) * Math.max(0, 1 - (p.x - 0.8) * 5);
+          
+          ctx.beginPath();
+          ctx.arc(p.x * w, y * h, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = c.hi + (fade * 0.5).toFixed(2) + ")";
+          ctx.fill();
+        });
+        path.particles = path.particles.filter(p => p.x < 1.05);
+      });
+
+      for (let i = 0; i < paths.length; i++) {
+        for (let j = i + 1; j < paths.length; j++) {
+          const pathA = paths[i], pathB = paths[j];
+          for (let pi = 0; Math.min(pathA.particles.length, pathB.particles.length) > pi; pi += 5) {
+            const pA = pathA.particles[pi];
+            const pB = pathB.particles[pi];
+            if (!pA || !pB) continue;
+            
+            const dx = Math.abs(pA.x - pB.x);
+            if (dx < 0.05 && pA.x > 0.2 && pA.x < 0.8) {
+              const yA = pathA.yBase + Math.sin(pA.x * Math.PI * 4 + pathA.phase) * 0.15 * (1 - Math.abs(Math.sin(pA.x * Math.PI + f * 0.01) * 0.1));
+              const yB = pathB.yBase + Math.sin(pB.x * Math.PI * 4 + pathB.phase) * 0.15 * (1 - Math.abs(Math.sin(pB.x * Math.PI + f * 0.01) * 0.1));
+              const dy = Math.abs(yA - yB);
+              
+              if (dy < 0.1) {
+                 ctx.beginPath();
+                 ctx.moveTo(pA.x * w, yA * h);
+                 ctx.lineTo(pB.x * w, yB * h);
+                 ctx.strokeStyle = c.hi + (0.15 * (1 - dy/0.1)).toFixed(2) + ")";
+                 ctx.lineWidth = 0.5;
+                 ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     KNOWLEDGE GRAPH — "knowledgeGraph": Nodes locking
+     together to form structures, mimicking the accumulation
+     of distinct learnings into foundational principles.
+     ═══════════════════════════════════════════════════ */
+  function knowledgeGraph(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let nodes = [];
+    let f = 0;
+
+    function addNode() {
+      const isCore = nodes.length < 3;
+      nodes.push({
+        x: Math.random(),
+        y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.002,
+        vy: (Math.random() - 0.5) * 0.002,
+        r: isCore ? 4 + Math.random() * 2 : 1.5 + Math.random() * 2,
+        core: isCore,
+        age: 0,
+        connections: []
+      });
+    }
+    for(let i=0; i<15; i++) addNode();
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+
+      nodes.forEach((n) => {
+        n.age++;
+        n.x += n.vx;
+        n.y += n.vy;
+        
+        if (n.core) {
+          n.x += (0.5 - n.x) * 0.001;
+          n.y += (0.5 - n.y) * 0.001;
+        }
+
+        if (n.x < 0.1 || n.x > 0.9) n.vx *= -1;
+        if (n.y < 0.1 || n.y > 0.9) n.vy *= -1;
+        n.x = Math.max(0.05, Math.min(0.95, n.x));
+        n.y = Math.max(0.05, Math.min(0.95, n.y));
+      });
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const dx = (a.x - b.x), dy = (a.y - b.y);
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          
+          if (dist < 0.25) {
+             const force = (0.25 - dist) * 0.005;
+             if (!a.core) { a.vx += dx * force; a.vy += dy * force; }
+             if (!b.core) { b.vx -= dx * force; b.vy -= dy * force; }
+             
+             ctx.beginPath();
+             ctx.moveTo(a.x * w, a.y * h);
+             ctx.lineTo(b.x * w, b.y * h);
+             
+             const isStrong = a.core || b.core;
+             ctx.strokeStyle = (isStrong ? c.hi : c.fg) + (0.3 * (1 - dist / 0.25)).toFixed(2) + ")";
+             ctx.lineWidth = isStrong ? 1 : 0.5;
+             ctx.stroke();
+          }
+        }
+      }
+
+      nodes.forEach((n) => {
+        ctx.beginPath();
+        const fade = Math.min(1, n.age / 30);
+        ctx.arc(n.x * w, n.y * h, n.r * fade, 0, Math.PI * 2);
+        ctx.fillStyle = n.core ? c.hi + "0.8)" : c.ac + "0.6)";
+        ctx.fill();
+        
+        if (n.core) {
+          ctx.beginPath();
+          ctx.arc(n.x * w, n.y * h, n.r * 2.5 * fade, 0, Math.PI * 2);
+          ctx.strokeStyle = c.fg + "0.15)";
+          ctx.stroke();
+        }
+      });
+
+      if (f % 60 === 0 && nodes.length < 45) {
+        addNode();
+      }
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     ASCII MAZE — "asciiMaze": High-definition geometric
+     and typography-driven agent mapping simulation. 
+     ═══════════════════════════════════════════════════ */
+  function asciiMaze(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0, cols = 0, rows = 0, cellS = 14;
+    let maze = [], visits = [], qVals = [];
+    let agent = { gx: 1, gy: 1, px: 1, py: 1, trail: [] };
+    let target = { x: 1, y: 1 };
+    let episode = 1;
+
+    function generateMaze(c, r) {
+      const m = Array.from({length: c}, () => new Uint8Array(r).fill(1));
+      const stack = [[1, 1]];
+      m[1][1] = 0;
+      const dirs = [[0, -2], [2, 0], [0, 2], [-2, 0]];
+      while (stack.length) {
+        const [cx, cy] = stack.pop();
+        dirs.sort(() => Math.random() - 0.5);
+        for (let [dx, dy] of dirs) {
+          const nx = cx + dx, ny = cy + dy;
+          if (nx > 0 && nx < c-1 && ny > 0 && ny < r-1 && m[nx][ny] === 1) {
+            m[(cx + nx)/2][(cy + ny)/2] = 0;
+            m[nx][ny] = 0;
+            stack.push([cx, cy]);
+            stack.push([nx, ny]);
+            break;
+          }
+        }
+      }
+      
+      for (let i = 1; i < c - 1; i++) {
+        for (let j = 1; j < r - 1; j++) {
+          if (m[i][j] === 1 && Math.random() < 0.25) m[i][j] = 0;
+        }
+      }
+      
+      for (let i = 1; i <= 3; i++) for (let j = 1; j <= 3; j++) if(i<c && j<r) m[i][j] = 0;
+      for (let i = c - 4; i <= c - 2; i++) for (let j = r - 4; j <= r - 2; j++) if(i>0 && j>0) m[i][j] = 0;
+      return m;
+    }
+
+    function init() {
+      const w = W(), h = H();
+      cellS = window.matchMedia("(max-width: 640px)").matches ? 8 : 12;
+      
+      let newCols = Math.floor((w - 32) / cellS);
+      let newRows = Math.floor((h - 48) / cellS);
+      if (newCols % 2 === 0) newCols--;
+      if (newRows % 2 === 0) newRows--;
+      newCols = Math.max(7, newCols);
+      newRows = Math.max(7, newRows);
+
+      if (newCols !== cols || newRows !== rows) {
+        cols = newCols; rows = newRows;
+        maze = generateMaze(cols, rows);
+        visits = Array.from({length: cols}, () => new Uint32Array(rows).fill(0));
+        qVals = Array.from({length: cols}, () => new Float32Array(rows).fill(0));
+        agent = { gx: 1, gy: 1, px: 1, py: 1, trail: [] };
+        target = { x: cols - 2, y: rows - 2 };
+        if (maze[target.x]) maze[target.x][target.y] = 0;
+        episode = 1;
+      }
+    }
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      init();
+      if (!maze || maze.length === 0) return queueFrame(ctr, draw);
+
+      const ox = (w - cols * cellS) / 2;
+      const oy = (h - rows * cellS) / 2;
+
+      
+      if (Math.abs(agent.px - agent.gx) < 0.05 && Math.abs(agent.py - agent.gy) < 0.05) {
+        let dirs = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+        let valid = [];
+        for (let [dx, dy] of dirs) {
+          let nx = agent.gx + dx, ny = agent.gy + dy;
+          if (nx >= 0 && nx < cols && ny >= 0 && ny < rows && maze[nx][ny] === 0) {
+            valid.push([nx, ny]);
+          }
+        }
+
+        if (valid.length > 0) {
+          let best = valid[0];
+          let bestScore = -Infinity;
+          let epsilon = Math.max(0.01, 1 - episode * 0.02);
+
+          if (Math.random() < epsilon) {
+            valid.sort(() => Math.random() - 0.5);
+            let minAvg = Infinity;
+            for (let v of valid) {
+               if (visits[v[0]][v[1]] < minAvg) {
+                  minAvg = visits[v[0]][v[1]];
+                  best = v;
+               }
+            }
+          } else {
+            for (let [nx, ny] of valid) {
+              if (qVals[nx][ny] > bestScore) {
+                bestScore = qVals[nx][ny];
+                best = [nx, ny];
+              }
+            }
+          }
+
+          let reward = (best[0] === target.x && best[1] === target.y) ? 100 : -0.2;
+          let maxNextQ = valid.reduce((max, [nx, ny]) => Math.max(max, qVals[nx][ny]), -Infinity);
+          qVals[agent.gx][agent.gy] += 0.3 * (reward + 0.95 * maxNextQ - qVals[agent.gx][agent.gy]);
+          
+          visits[agent.gx][agent.gy]++;
+          agent.gx = best[0];
+          agent.gy = best[1];
+
+          if (agent.gx === target.x && agent.gy === target.y) {
+              qVals[agent.gx][agent.gy] = 100;
+              episode++;
+              agent.gx = 1; agent.gy = 1;
+              agent.px = 1; agent.py = 1;
+              agent.trail = [];
+          }
+        } else {
+          agent.gx = 1; agent.gy = 1;
+        }
+      }
+
+      agent.px += (agent.gx - agent.px) * 0.4;
+      agent.py += (agent.gy - agent.py) * 0.4;
+      agent.trail.push([agent.px, agent.py]);
+      if (agent.trail.length > 15) agent.trail.shift();
+
+      ctx.beginPath();
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = ox + i * cellS;
+          const y = oy + j * cellS;
+          
+          if (maze[i][j] === 1) {
+            ctx.fillStyle = c.fg + "0.1)";
+            ctx.fillRect(x, y, cellS, cellS);
+            ctx.strokeStyle = c.fg + "0.15)";
+            ctx.strokeRect(x, y, cellS, cellS);
+          } else {
+            ctx.fillStyle = c.fg + "0.05)";
+            ctx.fillRect(x + cellS/2 - 0.5, y + cellS/2 - 0.5, 1, 1);
+
+            let q = qVals[i][j];
+            if (q > 0) {
+              const intensity = Math.min(1, q / 50);
+              ctx.fillStyle = c.hi + (intensity * 0.4).toFixed(2) + ")";
+              ctx.fillRect(x + 1, y + 1, cellS - 2, cellS - 2);
+            }
+
+            if (i === target.x && j === target.y) {
+              ctx.strokeStyle = c.hi + "0.6)";
+              ctx.lineWidth = 1;
+              ctx.strokeRect(x + 2, y + 2, cellS - 4, cellS - 4);
+              const pulse = Math.sin(f * 0.1) * 0.5 + 0.5;
+              ctx.fillStyle = c.hi + (0.2 + pulse * 0.4).toFixed(2) + ")";
+              ctx.fillRect(x + 4, y + 4, cellS - 8, cellS - 8);
+            }
+          }
+        }
+      }
+
+      if (agent.trail.length > 1) {
+        ctx.beginPath();
+        for (let i = 0; i < agent.trail.length; i++) {
+          const ax = ox + agent.trail[i][0] * cellS + cellS / 2;
+          const ay = oy + agent.trail[i][1] * cellS + cellS / 2;
+          if (i === 0) ctx.moveTo(ax, ay); else ctx.lineTo(ax, ay);
+        }
+        ctx.strokeStyle = c.hi + "0.5)";
+        ctx.lineWidth = Math.max(1.5, cellS / 3);
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+      }
+
+      const cx = ox + agent.px * cellS + cellS / 2;
+      const cy = oy + agent.py * cellS + cellS / 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, Math.max(2, cellS / 2.5), 0, Math.PI * 2);
+      ctx.fillStyle = isDark() ? "#fff" : "#000";
+      ctx.fill();
+      
+      ctx.beginPath();
+      ctx.arc(cx, cy, cellS * 0.8 + Math.sin(f*0.2)*cellS*0.2, 0, Math.PI * 2);
+      ctx.strokeStyle = c.hi + "0.4)";
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      ctx.fillStyle = c.hi + "0.8)";
+      ctx.font = "9px var(--font-mono, monospace)";
+      ctx.textAlign = "left";
+      ctx.fillText(`EPISODE: ${episode.toString().padStart(4, '0')}`, ox, oy - 6);
+      ctx.textAlign = "right";
+      let eps = Math.max(0.01, 1 - episode * 0.02).toFixed(2);
+      ctx.fillText(`EPSILON: ${eps}`, ox + cols * cellS, oy - 6);
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     MECHANISTIC INTERPRETABILITY — "mechSense": Beautiful ASCII/Geometric network parsing
+     ═══════════════════════════════════════════════════ */
+  function mechSense(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0, nodes = [], signals = [];
+
+    function init() {
+      const w = W(), h = H();
+      nodes = [];
+      const layers = 5;
+      for (let l = 0; l < layers; l++) {
+        const cx = (w * 0.1) + (w * 0.8) * (l / (layers - 1));
+        const numNodes = [4, 7, 5, 8, 3][l] || 4;
+        for (let i = 0; i < numNodes; i++) {
+          const cy = (h * 0.15) + (h * 0.7) * (i / Math.max(1, numNodes - 1));
+          nodes.push({ x: cx, y: cy, l: l, id: `${l}-${i}`, activation: 0, hover: false });
+        }
+      }
+    }
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      if (!nodes.length) init();
+
+      if (f % 5 === 0 && Math.random() > 0.4) {
+        const startNodes = nodes.filter(n => n.l === 0);
+        if (startNodes.length) {
+            let n = startNodes[Math.floor(Math.random() * startNodes.length)];
+            signals.push({ x: n.x, y: n.y, tx: n.x, ty: n.y, l: 0, delay: 0 });
+        }
+      }
+
+      ctx.beginPath();
+      for (let n of nodes) {
+        let targets = nodes.filter(tn => tn.l === n.l + 1);
+        for (let tn of targets) {
+          ctx.moveTo(n.x + 10, n.y);
+          ctx.lineTo(tn.x - 10, tn.y);
+        }
+      }
+      ctx.strokeStyle = c.fg + "0.1)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      for (let i = signals.length - 1; i >= 0; i--) {
+        let s = signals[i];
+        if (s.delay > 0) { s.delay--; continue; }
+        
+        let dx = s.tx - s.x;
+        let dy = s.ty - s.y;
+        s.x += dx * 0.15;
+        s.y += dy * 0.15;
+
+        ctx.fillStyle = c.hi + "0.8)";
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) {
+            let targets = nodes.filter(tn => tn.l === s.l + 1);
+            if (targets.length) {
+                const target = targets[Math.floor(Math.random() * targets.length)];
+                s.tx = target.x; s.ty = target.y;
+                s.l++;
+                let tNode = nodes.find(n => n.x === s.tx && n.y === s.ty);
+                if (tNode) tNode.activation = 1;
+            } else {
+                signals.splice(i, 1);
+            }
+        }
+      }
+
+      ctx.font = "10px var(--font-mono, monospace)";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let n of nodes) {
+        n.activation *= 0.95;
+        const radius = 12 + n.activation * 4;
+        
+        ctx.fillStyle = c.bg;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = `rgba(${isDark() ? '255,255,255' : '0,0,0'}, ${0.2 + n.activation * 0.8})`;
+        ctx.lineWidth = 1 + n.activation * 2;
+        ctx.stroke();
+
+        ctx.fillStyle = isDark() ? "#fff" : "#000";
+        if (n.activation > 0.1) {
+            ctx.fillStyle = c.hi;
+            ctx.fillText(n.activation.toFixed(1).replace("0.", "."), n.x, n.y + 1);
+        } else {
+            ctx.fillStyle = c.fg + "0.6)";
+            ctx.fillText("0", n.x, n.y + 1);
+        }
+      }
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     GRADIENT DESCENT — "gradientDescent": ASCII contour map
+     with a particle rolling down a loss surface, leaving a 
+     fading trail. Each contour ring is a different ASCII char.
+     ═══════════════════════════════════════════════════ */
+  function gradientDescent(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const chars = "·:;+=*#%@";
+    const charSz = window.matchMedia("(max-width: 640px)").matches ? 10 : 13;
+    const trail = [];
+    let px = 0.7, py = 0.3;
+    let vx = 0, vy = 0;
+
+    function landscape(x, y, t) {
+      return Math.sin(x * 3.5 + t * 0.003) * Math.cos(y * 2.8 - t * 0.002)
+        + 0.6 * Math.sin(x * 1.2 - y * 1.8 + t * 0.001)
+        + 0.3 * Math.cos(x * 5 + y * 4);
+    }
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      const cols = Math.floor(w / charSz);
+      const rows = Math.floor(h / charSz);
+      const ox = (w - cols * charSz) / 2 + charSz / 2;
+      const oy = (h - rows * charSz) / 2 + charSz / 2;
+
+      ctx.font = `${charSz - 1}px var(--font-mono, monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const nx = i / cols, ny = j / rows;
+          const val = (landscape(nx * 6, ny * 6, f) + 2) / 4;
+          const v = Math.max(0, Math.min(1, val));
+          if (v < 0.08) continue;
+          const ci = Math.floor(v * (chars.length - 1));
+          ctx.fillStyle = c.fg + (0.06 + v * 0.25).toFixed(3) + ")";
+          ctx.fillText(chars[ci], ox + i * charSz, oy + j * charSz);
+        }
+      }
+
+      const gx = landscape(px * 6 + 0.01, py * 6, f) - landscape(px * 6 - 0.01, py * 6, f);
+      const gy = landscape(px * 6, py * 6 + 0.01, f) - landscape(px * 6, py * 6 - 0.01, f);
+      vx = vx * 0.92 - gx * 0.008;
+      vy = vy * 0.92 - gy * 0.008;
+      px += vx; py += vy;
+      if (px < 0.05 || px > 0.95) { vx *= -0.5; px = Math.max(0.05, Math.min(0.95, px)); }
+      if (py < 0.05 || py > 0.95) { vy *= -0.5; py = Math.max(0.05, Math.min(0.95, py)); }
+
+      trail.push({ x: px, y: py });
+      if (trail.length > 40) trail.shift();
+
+      for (let t = 0; t < trail.length; t++) {
+        const alpha = (t / trail.length) * 0.5;
+        const sx = ox + trail[t].x * (cols - 1) * charSz;
+        const sy = oy + trail[t].y * (rows - 1) * charSz;
+        ctx.fillStyle = c.hi + alpha.toFixed(2) + ")";
+        ctx.fillText("·", sx, sy);
+      }
+
+      const sx = ox + px * (cols - 1) * charSz;
+      const sy = oy + py * (rows - 1) * charSz;
+      ctx.fillStyle = c.hi + "0.85)";
+      ctx.fillText("●", sx, sy);
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     LOSS LANDSCAPE — "lossLandscape": Topographic iso-lines
+     rendered as ASCII, with slowly morphing terrain showing
+     minima, saddle points, and ridges — a rotating 3D surface
+     projected onto 2D character grid.
+     ═══════════════════════════════════════════════════ */
+  function lossLandscape(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const isoChars = [" ", ".", ":", "-", "~", "+", "=", "#"];
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      const sz = window.matchMedia("(max-width: 640px)").matches ? 9 : 11;
+      const cols = Math.floor(w / sz);
+      const rows = Math.floor(h / sz);
+      const ox = (w - cols * sz) / 2 + sz / 2;
+      const oy = (h - rows * sz) / 2 + sz / 2;
+
+      ctx.font = `${sz}px var(--font-mono, monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      const phase = f * 0.004;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const u = (i / cols - 0.5) * 8;
+          const v = (j / rows - 0.5) * 6;
+          const z = Math.sin(u * u + v * v + phase) * 0.5
+            + 0.3 * Math.cos(u * 2 - v + phase * 1.5)
+            + 0.2 * Math.sin((u + v) * 1.5 - phase * 0.7);
+          const nz = (z + 1) / 2;
+          const ci = Math.floor(nz * (isoChars.length - 1));
+          const ch = isoChars[Math.max(0, Math.min(isoChars.length - 1, ci))];
+          if (ch === " ") continue;
+          const alpha = 0.08 + nz * 0.35;
+          ctx.fillStyle = c.fg + alpha.toFixed(3) + ")";
+          ctx.fillText(ch, ox + i * sz, oy + j * sz);
+        }
+      }
+
+      const cx = w / 2, cy = h / 2;
+      const labels = ["minimum", "saddle"];
+      const pts = [
+        { x: cx + Math.cos(phase * 0.5) * w * 0.15, y: cy + Math.sin(phase * 0.5) * h * 0.12 },
+        { x: cx - Math.cos(phase * 0.3) * w * 0.22, y: cy - Math.sin(phase * 0.3) * h * 0.15 },
+      ];
+      ctx.font = `${sz - 2}px var(--font-mono, monospace)`;
+      pts.forEach((p, idx) => {
+        ctx.fillStyle = c.hi + "0.5)";
+        ctx.fillText("×", p.x, p.y);
+        ctx.fillStyle = c.fg + "0.3)";
+        ctx.fillText(labels[idx], p.x, p.y + sz + 2);
+      });
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     TOKEN FLOW — "tokenFlow": Visualizes prompt tokens
+     flowing through transformer attention layers as a
+     waterfall of ASCII characters, with injection-point
+     tokens highlighted in a different intensity.
+     ═══════════════════════════════════════════════════ */
+  function tokenFlow(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const layers = 6;
+    const tokensPerRow = 20;
+    const glyphs = "abcdefghijklmnopqrstuvwxyz0123456789";
+    const injectionRange = [7, 11];
+    const particles = [];
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      const sz = window.matchMedia("(max-width: 640px)").matches ? 11 : 14;
+      const layerH = h / (layers + 1);
+      const tokenW = Math.min(sz + 4, (w - 40) / tokensPerRow);
+      const startX = (w - tokensPerRow * tokenW) / 2 + tokenW / 2;
+
+      ctx.font = `${sz}px var(--font-mono, monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      if (f % 8 === 0 && particles.length < 80) {
+        const tok = Math.floor(Math.random() * tokensPerRow);
+        particles.push({ tok, layer: 0, progress: 0, char: glyphs[Math.floor(Math.random() * glyphs.length)] });
+      }
+
+      for (let l = 0; l < layers; l++) {
+        const y = layerH * (l + 0.8);
+        ctx.fillStyle = c.fg + "0.06)";
+        ctx.fillRect(startX - tokenW / 2, y - 1, tokensPerRow * tokenW, 1);
+
+        for (let t = 0; t < tokensPerRow; t++) {
+          const x = startX + t * tokenW;
+          const isInject = t >= injectionRange[0] && t <= injectionRange[1];
+          const pulse = Math.sin(f * 0.04 + t * 0.3 + l * 0.5) * 0.5 + 0.5;
+          const base = isInject ? 0.12 + pulse * 0.2 : 0.04 + pulse * 0.08;
+          ctx.fillStyle = (isInject ? c.hi : c.fg) + base.toFixed(3) + ")";
+          ctx.fillText("·", x, y);
+        }
+      }
+
+      const alive = [];
+      particles.forEach(p => {
+        p.progress += 0.02;
+        if (p.progress >= 1) { p.layer++; p.progress = 0; }
+        if (p.layer >= layers) return;
+        alive.push(p);
+
+        const y = layerH * (p.layer + 0.8 + p.progress);
+        const x = startX + p.tok * tokenW;
+        const isInject = p.tok >= injectionRange[0] && p.tok <= injectionRange[1];
+        const alpha = isInject ? 0.7 : 0.35;
+        ctx.fillStyle = (isInject ? c.hi : c.fg) + alpha.toFixed(2) + ")";
+        ctx.fillText(p.char, x, y);
+      });
+      particles.length = 0;
+      particles.push(...alive);
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     SAE LATENT — "saeLatent": Sparse Autoencoder feature
+     activations — a grid of features where most are dormant
+     (faint) and a sparse set fire brightly, with the active
+     set slowly rotating through the feature dictionary.
+     ═══════════════════════════════════════════════════ */
+  function saeLatent(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const dictSize = 256;
+    const activations = new Float32Array(dictSize);
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      const sz = window.matchMedia("(max-width: 640px)").matches ? 8 : 10;
+      const gridCols = Math.floor((w - 20) / (sz + 2));
+      const gridRows = Math.ceil(dictSize / gridCols);
+      const ox = (w - gridCols * (sz + 2)) / 2 + sz / 2;
+      const oy = (h - gridRows * (sz + 2)) / 2 + sz / 2;
+
+      for (let i = 0; i < dictSize; i++) {
+        const sparseTrigger = Math.sin(f * 0.015 + i * 0.37) * Math.cos(f * 0.008 + i * 0.73);
+        const target = sparseTrigger > 0.85 ? Math.min(1, (sparseTrigger - 0.85) * 6.5) : 0;
+        activations[i] += (target - activations[i]) * 0.08;
+      }
+
+      ctx.font = `${sz}px var(--font-mono, monospace)`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let i = 0; i < dictSize; i++) {
+        const col = i % gridCols;
+        const row = Math.floor(i / gridCols);
+        if (row >= gridRows) break;
+        const x = ox + col * (sz + 2);
+        const y = oy + row * (sz + 2);
+        const v = activations[i];
+        const char = v > 0.6 ? "█" : v > 0.3 ? "▓" : v > 0.1 ? "░" : "·";
+        const alpha = 0.06 + v * 0.75;
+        ctx.fillStyle = (v > 0.3 ? c.hi : c.fg) + alpha.toFixed(3) + ")";
+        ctx.fillText(char, x, y);
+      }
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══════════════════════════════════════════════════
+     CIRCUIT TRACE — "circuitTrace": Shows signal propagation
+     through a neural circuit — nodes at fixed positions with
+     animated pulses traveling along weighted edges, representing
+     how an induction head or safety circuit fires.
+     ═══════════════════════════════════════════════════ */
+  function circuitTrace(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    let f = 0;
+    const layerSizes = [4, 6, 8, 6, 4, 2];
+    const pulses = [];
+
+    (function draw() {
+      const w = W(), h = H(), c = C();
+      ctx.clearRect(0, 0, w, h);
+      const pad = 30;
+      const layerGap = (w - pad * 2) / (layerSizes.length - 1);
+
+      const nodePositions = [];
+      layerSizes.forEach((count, l) => {
+        const lx = pad + l * layerGap;
+        const layerNodes = [];
+        const nodeGap = (h - pad * 2) / (count + 1);
+        for (let n = 0; n < count; n++) {
+          layerNodes.push({ x: lx, y: pad + (n + 1) * nodeGap });
+        }
+        nodePositions.push(layerNodes);
+      });
+
+      if (f % 20 === 0) {
+        const srcLayer = Math.floor(Math.random() * (layerSizes.length - 1));
+        const srcNode = Math.floor(Math.random() * layerSizes[srcLayer]);
+        const dstNode = Math.floor(Math.random() * layerSizes[srcLayer + 1]);
+        pulses.push({ srcL: srcLayer, srcN: srcNode, dstN: dstNode, t: 0 });
+      }
+
+      for (let l = 0; l < layerSizes.length - 1; l++) {
+        for (let a = 0; a < layerSizes[l]; a++) {
+          for (let b = 0; b < layerSizes[l + 1]; b += 2) {
+            const from = nodePositions[l][a];
+            const to = nodePositions[l + 1][b];
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
+            ctx.strokeStyle = c.fg + "0.04)";
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      const alive = [];
+      pulses.forEach(p => {
+        p.t += 0.025;
+        if (p.t > 1) {
+          if (p.srcL + 1 < layerSizes.length - 1) {
+            pulses.push({ srcL: p.srcL + 1, srcN: p.dstN, dstN: Math.floor(Math.random() * layerSizes[p.srcL + 2]), t: 0 });
+          }
+          return;
+        }
+        alive.push(p);
+        const from = nodePositions[p.srcL][p.srcN];
+        const to = nodePositions[p.srcL + 1][p.dstN];
+        const x = from.x + (to.x - from.x) * p.t;
+        const y = from.y + (to.y - from.y) * p.t;
+
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.strokeStyle = c.hi + "0.15)";
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = c.hi + "0.6)";
+        ctx.fill();
+      });
+      pulses.length = 0;
+      pulses.push(...alive);
+
+      nodePositions.forEach((layer, l) => {
+        layer.forEach((node, n) => {
+          const activity = Math.sin(f * 0.03 + l * 1.5 + n * 0.8) * 0.5 + 0.5;
+          const r = 2 + activity * 1.5;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = (activity > 0.65 ? c.hi : c.fg) + (0.15 + activity * 0.4).toFixed(2) + ")";
+          ctx.fill();
+        });
+      });
+
+      f++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
+  /* ═══ DOT MATRIX — homepage right panel ═══ */
+  function dotMatrix(ctr) {
+    const { ctx, W, H } = initCanvas(ctr);
+    const S = 13;
+    let t = 0;
+    const sources = [];
+    let nextSpawn = 25;
+
+    (function draw() {
+      const w = W(), h = H();
+      const c = C();
+      ctx.clearRect(0, 0, w, h);
+
+      const cols = Math.floor(w / S);
+      const rows = Math.floor(h / S);
+      /* Left-align grid so the art sits flush beside the text column (no dead band). */
+      const ox = S / 2;
+      const oy = (h - rows * S) / 2 + S / 2;
+
+      if (t >= nextSpawn) {
+        const mg = 3;
+        sources.push({
+          cx: mg + Math.random() * (cols - mg * 2),
+          cy: mg + Math.random() * (rows - mg * 2),
+          life: 0,
+          maxLife: 160 + Math.floor(Math.random() * 100),
+          spd: 0.052 + Math.random() * 0.028,
+        });
+        nextSpawn = t + 65 + Math.floor(Math.random() * 85);
+      }
+
+      for (let r = 0; r < rows; r++) {
+        for (let col = 0; col < cols; col++) {
+          const x = ox + col * S;
+          const y = oy + r * S;
+
+          const a1 = Math.sin(col * 0.31 + t * 0.016 + r * 0.09) * 0.5 + 0.5;
+          const a2 = Math.sin(r * 0.27 - t * 0.013 + col * 0.11) * 0.5 + 0.5;
+          const ambient = a1 * a2 * 0.18 + 0.04;
+
+          let peak = 0;
+          for (const src of sources) {
+            const dx = col - src.cx;
+            const dy = r - src.cy;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const waveFront = src.life * src.spd;
+            const diff = dist - waveFront;
+            const decay = Math.pow(1 - src.life / src.maxLife, 1.3);
+            if (diff > -2.5 && diff < 0.9) {
+              const ring = Math.exp(-diff * diff * 0.55) * decay * 0.88;
+              if (ring > peak) peak = ring;
+            }
+          }
+
+          const total = Math.min(1, ambient + peak);
+          const alpha = Math.pow(total, 0.72) * 0.88;
+          const rad = 0.75 + total * 0.75;
+
+          ctx.beginPath();
+          ctx.arc(x, y, rad, 0, 6.2832);
+          ctx.fillStyle = c.hi + alpha.toFixed(2) + ")";
+          ctx.fill();
+        }
+      }
+
+      for (let i = sources.length - 1; i >= 0; i--) {
+        sources[i].life++;
+        if (sources[i].life >= sources[i].maxLife) sources.splice(i, 1);
+      }
+
+      t++;
+      queueFrame(ctr, draw);
+    })();
+  }
+
   /* ═══ REGISTRY ═══ */
   const vizMap = {
     identity, quill, blueprint, dna, tree,
-    emergence, manuscript, lightbulb,
+    emergence, manuscript, lightbulb, mechSense,
     compose, exchange, terminal, ecosystem,
-    mask, diverge, inject, erosion, dissect, gridwalk,
+    mask, diverge, inject, erosion, dissect, gridwalk, asciiRl,
+    latentField, neuralTopo, attractor, thoughtStream, knowledgeGraph, asciiMaze,
     chartBars, chartFlip, chartBoundary, chartFlow, chartDecay, chartLayers,
+    gradientDescent, lossLandscape, tokenFlow, saeLatent, circuitTrace,
+    dotMatrix,
   };
 
   const observer = new IntersectionObserver((entries) => {

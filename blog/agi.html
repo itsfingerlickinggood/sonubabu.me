@@ -1,116 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AGI — Sonu Babu</title>
-  <meta name="description" content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task.">
-  <meta property="og:title" content="AGI — Sonu Babu">
-  <meta property="og:description" content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sonubabu.me/blog/agi">
-  <meta property="og:image" content="https://sonubabu.me/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AGI — Sonu Babu">
-  <meta name="twitter:description" content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task.">
-  <meta name="twitter:image" content="https://sonubabu.me/og-image.svg">
-  <link rel="canonical" href="https://sonubabu.me/blog/agi">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script>
-    (function(){var t=localStorage.getItem("theme")||
-    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-    document.documentElement.setAttribute("data-theme",t)})();
-  </script>
-  <link rel="preload" href="/css/site.min.css" as="style">
-  <link rel="stylesheet" href="/css/site.min.css">
-</head>
-<body>
-  <div class="site-container">
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="../index.html" class="nav-name">Sonu Babu</a>
-      <a href="../blog.html">Blog</a>
-      <a href="../projects.html">Projects</a>
-      <a href="../research.html">Research</a>
-      <a href="../learnings.html">Learnings</a>
-      <button class="theme-toggle" type="button" aria-label="Switch theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGI — Sonu Babu</title>
+    <meta
+      name="description"
+      content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
+    />
+    <meta property="og:title" content="AGI — Sonu Babu" />
+    <meta
+      property="og:description"
+      content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sonubabu.me/blog/agi" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AGI — Sonu Babu" />
+    <meta
+      name="twitter:description"
+      content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
+    />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
+    <link rel="canonical" href="https://sonubabu.me/blog/agi" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function () {
+        var t =
+          localStorage.getItem("theme") ||
+          (matchMedia("(prefers-color-scheme:dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="preload" href="/css/site.min.css" as="style" />
+    <link rel="stylesheet" href="/css/site.min.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-name">Sonu Babu</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg
+            class="icon-sun"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <svg
+            class="icon-moon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+      </nav>
 
-    <main class="article-page">
-      <a href="../blog.html" class="back-link">Back to Blog</a>
+      <main class="article-page research-article">
+        <a href="/blog.html" class="back-link">Back to Blog</a>
 
-      <div class="viz-hero" data-viz="emergence"></div>
+        <div class="viz-hero" data-viz="emergence"></div>
 
-      <header class="article-header">
-        <h1>AGI</h1>
-        <time class="article-meta" datetime="2025-05-02">May 2, 2025</time>
-      </header>
+        <header class="article-header">
+          <h1>AGI</h1>
+          <time class="article-meta" datetime="2025-05-02">May 2, 2025</time>
+        </header>
 
-      <div class="article-body">
-        <nav class="article-toc">
-          <p class="toc-title">Contents</p>
-          <ul>
-            <li><a href="#what-is-agi">What is AGI?</a></li>
-            <li><a href="#narrow-vs-general">Narrow AI vs General Intelligence</a></li>
-            <li><a href="#approaches">Current Approaches</a></li>
-            <li><a href="#alignment">The Alignment Problem</a></li>
-            <li><a href="#outlook">Outlook</a></li>
-          </ul>
-        </nav>
+        <div class="article-body">
+          <nav class="article-toc">
+            <p class="toc-title">Contents</p>
+            <ul>
+              <li><a href="#what-is-agi">Defining the General</a></li>
+              <li><a href="#narrow-vs-general">Orthogonality of Competence</a></li>
+              <li><a href="#approaches">Pathways to Emergence</a></li>
+              <li><a href="#alignment">The Alignment Problem</a></li>
+              <li><a href="#outlook">Outlook</a></li>
+            </ul>
+          </nav>
 
-        <h2 id="what-is-agi">What is AGI?</h2>
-        <p>Artificial General Intelligence refers to a hypothetical system capable of understanding, learning, and applying intelligence across any intellectual task a human can perform. Unlike the AI systems we interact with today — which are trained on narrow objectives and operate within tightly scoped domains — an AGI would possess the capacity for abstract reasoning, common-sense understanding, and open-ended problem solving. It would not merely pattern-match against training data but form internal models of the world, reason about causality, and adapt to entirely novel situations without explicit retraining.</p>
-        <p>The pursuit of AGI matters because it sits at the intersection of our deepest scientific questions and our most consequential engineering decisions. Building a general intelligence would not only validate or refute theories about the nature of cognition itself — it would also introduce an entity whose capabilities could reshape economies, scientific discovery, and the balance of geopolitical power. The stakes are not abstract; they are civilizational.</p>
+          <!-- ═══ §1  Defining the General ═══ -->
 
-        <p class="pull-quote">A truly general intelligence would not just solve problems — it would understand why they matter.</p>
+          <h2 id="what-is-agi">Defining the General</h2>
+          <p>
+            Artificial General Intelligence (AGI) represents the hypothetical
+            asymptote of computational cognitive science: a non-biological system
+            capable of matching or exceeding human performance across the
+            entirety of economically and scientifically valuable tasks. Beyond
+            mere statistical pattern matching, AGI implies
+            <em>domain-general abstraction</em>&mdash;the ability to dynamically
+            form internal world models, infer causality from zero-shot
+            environments, and autonomously adapt its objective functions to solve
+            entirely novel problems without explicit gradient updates.
+          </p>
+          <p>
+            The trajectory toward AGI is not merely an engineering milestone; it
+            constitutes an ontological phase transition for civilization. If
+            realized, AGI transitions intelligence from a scarce biological
+            resource to an abundant, scalable, and reproducible substrate,
+            permanently altering the velocity of scientific discovery and
+            resource optimization.
+          </p>
 
-        <h2 id="narrow-vs-general">Narrow AI vs General Intelligence</h2>
-        <p>Today&rsquo;s most impressive AI systems — large language models, protein-folding predictors, game-playing agents — are instances of narrow AI. They achieve superhuman performance within carefully defined boundaries, but they cannot transfer that competence to unrelated domains. A chess engine that defeats grandmasters has no concept of what a grandmaster <em>is</em>. A model that generates fluent prose cannot reliably count the objects in a photograph. Each system is a specialist, exquisitely tuned to its task and profoundly ignorant of everything outside it.</p>
-        <p>General intelligence, by contrast, implies domain-independence. An AGI would bring knowledge acquired in one context to bear on problems in another, recognise when its own assumptions are failing, and pursue goals that require planning across long time horizons and uncertain environments. Fran&ccedil;ois Chollet has argued that intelligence should be measured not by skill at any particular task, but by the efficiency with which a system adapts to tasks it has never seen — a definition that makes the gap between narrow and general AI starkly clear.</p>
+          <div class="callout">
+            <p class="callout-label">The Central Doctrine</p>
+            <p>
+              General intelligence is fundamentally defined not by peak
+              performance on benchmarked tasks, but by the meta-learning
+              efficiency with which a system adapts to the unknown. It is the
+              capacity for epistemic generalization.
+            </p>
+          </div>
 
-        <div class="callout">
-          <p class="callout-label">Key distinction</p>
-          <p>Narrow AI excels within defined boundaries. AGI would operate without them — reasoning about novel situations, transferring knowledge across domains, and recognizing when its own assumptions are wrong.</p>
+          <p>
+            Google DeepMind&rsquo;s 2023 framework proposes a useful taxonomy
+            &mdash; six levels of AGI, each defined by the breadth and depth of
+            competence a system exhibits relative to a skilled human:
+          </p>
+
+          <!-- Diagram 1: Levels of AGI -->
+          <div class="diagram-flow" aria-label="Levels of AGI from Emerging to Superhuman">
+            <div class="flow-node">
+              <strong>Level 0</strong>
+              Emerging
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">
+              <strong>Level 1</strong>
+              Competent
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">
+              <strong>Level 2</strong>
+              Expert
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node node-warn">
+              <strong>Level 3</strong>
+              Virtuoso
+            </div>
+            <div class="flow-arrow arrow-danger">&rarr;</div>
+            <div class="flow-node node-danger">
+              <strong>Level 4</strong>
+              Superhuman
+            </div>
+          </div>
+
+          <p>
+            Current frontier models&mdash;GPT-4, Gemini Ultra, Claude
+            3&mdash;sit at roughly Level&nbsp;1: competent across many domains,
+            yet still brittle in ways that expose the absence of a unified world
+            model. The jump from Level&nbsp;1 to Level&nbsp;2 is not a matter of
+            scaling alone. It demands qualitative shifts in how systems ground
+            knowledge, maintain long-horizon coherence, and handle genuinely
+            novel situations without catastrophic failure.
+          </p>
+
+          <!-- ═══ §2  Orthogonality of Competence ═══ -->
+
+          <h2 id="narrow-vs-general">Orthogonality of Competence</h2>
+          <p>
+            Contemporary AI systems&mdash;spanning massive autoregressive
+            language models to superhuman reinforcement learning agents&mdash;are
+            profoundly narrow. An agent trained via Proximal Policy Optimization
+            to dominate Go possesses zero conceptual mapping of the game
+            piece&rsquo;s physical geometry. A diffusion model synthesizing
+            photorealistic artwork lacks any causal understanding of optics or
+            gravity. These architectures are brittle, optimized over specific
+            manifolds within their loss landscapes.
+          </p>
+
+          <!-- Diagram 2: Narrow AI vs General AI comparison -->
+          <div class="diagram-comparison" aria-label="Comparison of Narrow AI and General AI">
+            <div class="comp-panel">
+              <h4>Narrow AI (today)</h4>
+              <ul>
+                <li>Single-task or single-domain optimization</li>
+                <li>Brittle outside training distribution</li>
+                <li>No transfer between modalities</li>
+                <li>Performance degrades on novel inputs</li>
+                <li>No causal model of the world</li>
+                <li>Stateless &mdash; no persistent memory</li>
+              </ul>
+            </div>
+            <div class="comp-panel">
+              <h4>General AI (hypothetical)</h4>
+              <ul>
+                <li>Domain-agnostic competence</li>
+                <li>Robust to distributional shift</li>
+                <li>Fluid cross-modal transfer</li>
+                <li>Graceful degradation and meta-learning</li>
+                <li>Causal, compositional world model</li>
+                <li>Persistent, updatable episodic memory</li>
+              </ul>
+            </div>
+          </div>
+
+          <p>
+            An AGI, contrastingly, operates orthogonally to constraint. It
+            implies an architectural plasticity that transfers latent
+            representations across modalities. When a general intelligence plays
+            a game, it understands the ludic context; when it generates text, it
+            grounds the syntax in a continuous, multi-dimensional world model.
+            This structural fluidity is the demarcation line between mimicking
+            intelligence and embodying it.
+          </p>
+
+          <figure class="distill-figure margin-caption wide">
+            <div class="viz-container" data-viz="gradientDescent" style="min-height: 350px;"></div>
+            <figcaption class="distill-figcaption">
+              <strong>Gradient Descent on a Loss Landscape.</strong> A particle
+              navigates the contours of a non-convex surface, seeking minima
+              through stochastic optimization&mdash;the fundamental mechanism
+              underlying all modern deep learning.
+            </figcaption>
+          </figure>
+
+          <p>
+            Mathematically, we can frame the distinction in terms of loss
+            surfaces. A narrow model minimizes empirical risk over a fixed task
+            distribution \(\mathcal{D}_k\):
+          </p>
+          <p style="text-align:center;">
+            \[\min_\theta \; \mathbb{E}_{(x,y)\sim\mathcal{D}_k}\bigl[\mathcal{L}(f_\theta(x),\,y)\bigr]\]
+          </p>
+          <p>
+            An AGI, by contrast, would need to minimize expected loss across an
+            open-ended family of distributions
+            \(\{\mathcal{D}_1, \mathcal{D}_2, \ldots\}\) &mdash; including
+            distributions it has never encountered:
+          </p>
+          <p style="text-align:center;">
+            \[\min_\theta \; \mathbb{E}_{\mathcal{D}\sim\mathcal{P}}\!\left[\mathbb{E}_{(x,y)\sim\mathcal{D}}\bigl[\mathcal{L}(f_\theta(x),\,y)\bigr]\right]\]
+          </p>
+          <p>
+            This is why Chollet&rsquo;s ARC benchmark matters: it tests not what
+            a model <em>knows</em>, but how efficiently it generalizes from
+            minimal priors &mdash; the hallmark of genuine intelligence.
+          </p>
+
+          <!-- ═══ §3  Pathways to Emergence ═══ -->
+
+          <h2 id="approaches">Pathways to Emergence</h2>
+          <p>
+            The pursuit of domain-general architectures has crystallized into
+            several distinct paradigms, each with a different bet on what the
+            missing ingredient actually is:
+          </p>
+
+          <!-- Diagram 3: Timeline of AGI approaches -->
+          <div class="diagram-timeline" aria-label="Timeline of AGI research paradigms">
+            <div class="tl-node">
+              <div class="tl-label">Paradigm 1 &mdash; Neural Scaling</div>
+              <div class="tl-content">
+                The leading hypothesis postulates that extreme parameter scaling
+                combined with diverse, multimodal unsupervised learning
+                inevitably induces generalized reasoning as a byproduct of
+                minimizing predictive loss. The bitter lesson: more compute,
+                more data, more generality. GPT-4, Gemini, and Claude are its
+                progeny &mdash; impressive, but still bounded by in-context
+                window and training-distribution limits.
+              </div>
+            </div>
+            <div class="tl-node">
+              <div class="tl-label">Paradigm 2 &mdash; Neuro-Symbolic Integration</div>
+              <div class="tl-content">
+                Connectionist architectures married to symbolic logic engines,
+                grounding continuous deep learning embeddings in discrete,
+                verifiable rule-based constraints. The goal: models that both
+                learn from raw sensory data and manipulate abstract concepts
+                according to formal rules &mdash; bridging perception and
+                deliberate thought. Gary Marcus and Yoshua Bengio have each
+                argued, from different angles, that pure scaling will plateau
+                without some form of symbolic scaffolding.
+              </div>
+            </div>
+            <div class="tl-node tl-warn">
+              <div class="tl-label label-warn">Paradigm 3 &mdash; Embodied Cognition</div>
+              <div class="tl-content">
+                Advocates of embodied cognition argue that true understanding
+                requires a body situated in a physical environment. Robotics
+                research in this vein focuses on agents that learn through
+                sensorimotor interaction with the world, developing grounded
+                concepts like weight, distance, and fragility that disembodied
+                models can only approximate. Open-ended RL environments
+                (autocurricula) force the emergence of generalized cognitive
+                frameworks through evolutionary pressure.
+              </div>
+            </div>
+            <div class="tl-node tl-danger">
+              <div class="tl-label label-danger">Paradigm 4 &mdash; Whole-Brain Emulation</div>
+              <div class="tl-content">
+                The most literal approach: reverse-engineer the human brain at
+                sufficient resolution and simulate it digitally. While
+                theoretically sound &mdash; we know at least one substrate that
+                produces general intelligence &mdash; the computational hurdles
+                remain enormous. Current connectomics can map
+                <em>C.&nbsp;elegans</em> (302 neurons), but the human cortex
+                contains roughly \(8.6 \times 10^{10}\) neurons with
+                \(\sim10^{14}\) synapses.
+              </div>
+            </div>
+          </div>
+
+          <figure style="margin: 4rem 0; width: 100%">
+            <div
+              data-viz="lossLandscape"
+              style="
+                width: 100%;
+                height: 400px;
+                background: var(--color-surface-raised);
+                border-radius: var(--radius-md);
+                overflow: hidden;
+              "
+            ></div>
+          </figure>
+
+          <p>
+            None of these paradigms is mutually exclusive. The most plausible
+            path to AGI likely involves a synthesis: scaled neural architectures
+            augmented with structured reasoning modules, grounded through
+            embodied interaction, and informed by neuroscience. The question is
+            not which approach <em>wins</em>, but which combination of
+            approaches crosses the threshold first &mdash; and whether we are
+            prepared for the moment it does.
+          </p>
+
+          <!-- ═══ §4  The Alignment Problem ═══ -->
+
+          <h2 id="alignment">The Alignment Problem</h2>
+          <p>
+            Even if we solve the capability problem, we face a challenge that
+            may be harder still: ensuring that an AGI&rsquo;s goals remain
+            aligned with human values. This is not a matter of programming
+            rules &mdash; a sufficiently intelligent system would find ways
+            around any explicit constraint list, just as humans routinely find
+            loopholes in legal codes. The alignment problem asks a deeper
+            question: how do you specify <em>what we actually want</em> in a
+            form that a non-human intelligence can reliably interpret and
+            pursue?
+          </p>
+          <p>
+            Generating a superintelligent optimizer is mathematically distinct
+            from aiming that optimizer toward human-compatible goals. The
+            concern is <em>instrumental convergence</em>: an AGI, acting as a
+            highly efficient expected-utility maximizer, might acquire resources
+            and ensure its own survival to fulfill its objective function,
+            irrespective of the collateral consequences to human flourishing.
+            Solving AGI without simultaneously defining an invariant alignment
+            matrix is increasingly viewed not as a triumph, but as a terminal
+            systemic vulnerability.
+          </p>
+
+          <div class="callout">
+            <p class="callout-label">Inverse Reward Design</p>
+            <p>
+              Stuart Russell has proposed one promising framework: rather than
+              specifying a reward function directly, design agents that are
+              uncertain about what humans value and learn those values by
+              observing human behaviour. The key insight is that a well-aligned
+              AGI should be <em>humble</em> about its objectives, deferring to
+              human preferences and actively seeking clarification rather than
+              optimising confidently toward a potentially misspecified goal.
+            </p>
+          </div>
+
+          <p>
+            Whether inverse reward design or any other alignment approach will
+            prove sufficient at superhuman capability levels remains an open and
+            urgent question. The stakes are categorical: alignment failure at
+            human-level AI is a bug; alignment failure at superhuman AI is
+            potentially an extinction-level event.
+          </p>
+
+          <!-- ═══ §5  Outlook ═══ -->
+
+          <h2 id="outlook">Outlook</h2>
+          <p>
+            Timelines for AGI range from the optimistic (within a decade) to
+            the deeply sceptical (centuries, if ever). What is clear is that the
+            path forward requires not only technical breakthroughs but also
+            institutional wisdom: governance frameworks, international
+            coordination, and a research culture that treats safety as a
+            first-class objective rather than an afterthought.
+          </p>
+          <p>
+            The most dangerous delusion in the field is the belief that
+            capability and alignment can be pursued sequentially &mdash; that we
+            can build the thing first and figure out how to aim it later.
+            Intelligence is not a tool that sits inert until wielded. A
+            sufficiently capable system acts on the world the moment it exists.
+            The alignment problem must be solved <em>in parallel</em> with the
+            capability problem, or not at all.
+          </p>
+
+          <blockquote>
+            <p>
+              The question is not whether we can build AGI, but whether we can
+              build it wisely &mdash; with safeguards that match its power.
+            </p>
+          </blockquote>
+
+          <section class="references">
+            <h2>References</h2>
+            <ol class="ref-list">
+              <li>
+                Russell, S. (2019). <em>Human Compatible: Artificial
+                Intelligence and the Problem of Control.</em> Viking.
+              </li>
+              <li>
+                Chollet, F. (2019). On the Measure of Intelligence.
+                arXiv:1911.01547.
+              </li>
+              <li>
+                Morris, M.R. et al. (2023). Levels of AGI: Operationalizing
+                Progress on the Path to AGI. Google DeepMind.
+              </li>
+              <li>
+                Sutton, R. (2019). The Bitter Lesson.
+              </li>
+              <li>
+                Bostrom, N. (2014). <em>Superintelligence: Paths, Dangers,
+                Strategies.</em> Oxford University Press.
+              </li>
+            </ol>
+          </section>
         </div>
+      </main>
 
-        <h2 id="approaches">Current Approaches</h2>
-        <p>Researchers are pursuing several distinct paradigms in the hope that one — or a synthesis of several — will eventually yield general capabilities:</p>
-        <ul>
-          <li><strong>Connectionism &amp; neural scaling.</strong> The dominant paradigm today bets that sufficiently large neural networks, trained on sufficiently diverse data, will develop emergent general capabilities. Proponents point to the unexpected abilities that appear as models scale — in-context learning, chain-of-thought reasoning, multilingual transfer — as evidence that generality may arise from sheer scale.</li>
-          <li><strong>Neurosymbolic AI.</strong> This approach combines the pattern-recognition strengths of neural networks with the rigorous logical reasoning of symbolic systems. The goal is to produce models that can both learn from raw sensory data and manipulate abstract concepts according to formal rules — bridging the gap between perception and deliberate thought.</li>
-          <li><strong>Embodied AI.</strong> Advocates of embodied cognition argue that true understanding requires a body situated in a physical environment. Robotics research in this vein focuses on agents that learn through sensorimotor interaction with the world, developing grounded concepts like weight, distance, and fragility that disembodied models can only approximate.</li>
-          <li><strong>Whole-brain emulation.</strong> The most literal approach: reverse-engineer the human brain at sufficient resolution and simulate it digitally. While theoretically sound, the computational and neuroscientific hurdles remain enormous — current connectomics efforts have fully mapped only the brain of <em>C. elegans</em>, a nematode with 302 neurons.</li>
-        </ul>
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
 
-        <h2 id="alignment">The Alignment Problem</h2>
-        <p>Even if we solve the capability problem, we face a challenge that may be harder still: ensuring that an AGI&rsquo;s goals remain aligned with human values. This is not a matter of programming rules — a sufficiently intelligent system would find ways around any explicit constraint list, just as humans routinely find loopholes in legal codes. The alignment problem asks a deeper question: how do you specify <em>what we actually want</em> in a form that a non-human intelligence can reliably interpret and pursue?</p>
-        <p>Stuart Russell has proposed one promising framework: rather than specifying a reward function directly, design agents that are uncertain about what humans value and learn those values by observing human behaviour — an approach he calls &ldquo;inverse reward design.&rdquo; The key insight is that a well-aligned AGI should be humble about its objectives, deferring to human preferences and actively seeking clarification rather than optimising confidently toward a potentially misspecified goal. Whether this or any other alignment approach will prove sufficient at superhuman capability levels remains an open and urgent question.</p>
-
-        <h2 id="outlook">Outlook</h2>
-        <p>Timelines for AGI range from the optimistic (within a decade) to the deeply sceptical (centuries, if ever). Google DeepMind&rsquo;s 2023 framework proposes six levels of AGI — from &ldquo;emerging&rdquo; (equal to an unskilled human) to &ldquo;superhuman&rdquo; (outperforming all humans at all tasks) — and places current systems at roughly Level 1. What is clear is that the path forward requires not only technical breakthroughs but also institutional wisdom: governance frameworks, international coordination, and a research culture that treats safety as a first-class objective rather than an afterthought.</p>
-
-        <blockquote>
-          <p>The question is not whether we can build AGI, but whether we can build it wisely — with safeguards that match its power.</p>
-        </blockquote>
-
-        <section class="references">
-          <h2>References</h2>
-          <ol class="ref-list">
-            <li>Russell, S. (2019). Human Compatible: Artificial Intelligence and the Problem of Control.</li>
-            <li>Chollet, F. (2019). On the Measure of Intelligence. arXiv:1911.01547.</li>
-            <li>Morris, M.R. et al. (2023). Levels of AGI: Operationalizing Progress on the Path to AGI. Google DeepMind.</li>
-          </ol>
-        </section>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <p>&copy; 2026 Sonu Babu</p>
-    </footer>
-  </div>
-
-  <script defer src="/js/main.min.js"></script>
-</body>
+    <script defer src="/js/main.min.js"></script>
+  </body>
 </html>

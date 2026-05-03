@@ -19,8 +19,10 @@ function scheduleVizLoad() {
     s.setAttribute("data-sonu-viz", "");
     document.body.appendChild(s);
   };
-  /* Learnings (and similar) keep a hero viz above the fold — idle-deferred load made the tree pop in late. */
-  const vizAboveFold = document.querySelector(".learnings-page [data-viz]");
+  /* Hero / home: load viz immediately so the canvas (e.g. dot matrix) is not blank for hundreds of ms. */
+  const vizAboveFold =
+    document.querySelector(".learnings-page [data-viz]") ||
+    document.querySelector(".home-main [data-viz]");
   if (vizAboveFold) {
     setTimeout(run, 0);
   } else if ("requestIdleCallback" in window) {

@@ -47,17 +47,39 @@
         document.documentElement.setAttribute("data-theme", t);
       })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="preload" href="/css/site.min.css" as="style" />
     <link rel="stylesheet" href="/css/site.min.css" />
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
   </head>
   <body>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="../index.html" class="nav-name">Sonu Babu</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../projects.html">Projects</a>
-        <a href="../research.html">Research</a>
-        <a href="../learnings.html">Learnings</a>
+        <a href="/" class="nav-name">Sonu Babu</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
             class="icon-sun"
@@ -94,134 +116,805 @@
         </button>
       </nav>
 
-      <main class="article-page">
-        <a href="../research.html" class="back-link">Back to Research</a>
+      <main class="article-page research-article">
+        <a href="/research.html" class="back-link">Back to Research</a>
 
         <header class="article-header">
           <h1>Mechanistic Interpretability Studies</h1>
           <time class="article-meta" datetime="2024">2024 &mdash; Present</time>
         </header>
 
-        <div class="viz-hero" data-viz="dissect"></div>
+        <p class="article-lede" style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 56ch; margin: -0.5rem 0 1.25rem;">
+          This page is a literature synthesis and study log rather than a single PDF-backed experiment. The strongest support here comes from the cited papers and research posts in the references section.
+        </p>
+
+        <figure class="distill-figure margin-caption wide">
+          <div class="viz-container" data-viz="mechSense"></div>
+          <figcaption class="distill-figcaption">
+            <strong>Figure 1. Activation Probing (illustrative).</strong> Stylized
+            signals propagating through isolated layers of a Transformer. Each
+            node abstracts high-dimensional activations; sparsity of the active
+            subgraph is schematic, not a measured trace from a single run.
+          </figcaption>
+        </figure>
 
         <div class="article-body">
           <nav class="article-toc">
             <p class="toc-title">Contents</p>
             <ul>
-              <li><a href="#mi-overview">Overview</a></li>
-              <li><a href="#mi-areas">Areas of Study</a></li>
-              <li><a href="#mi-experiments">Experimental Work</a></li>
-              <li><a href="#mi-motivation">Motivation</a></li>
+              <li><a href="#mi-evidence">Evidence status &amp; source links</a></li>
+              <li><a href="#mi-abstract">Abstract</a></li>
+              <li><a href="#mi-roadmap">Reading roadmap</a></li>
+              <li><a href="#mi-glossary">Glossary</a></li>
+              <li><a href="#mi-timeline">Paper timeline</a></li>
+              <li>
+                <a href="#mi-paradigm">Interpretability Paradigm</a>
+              </li>
+              <li>
+                <a href="#mi-superposition"
+                  >Polysemanticity &amp; The Superposition Hypothesis</a
+                >
+              </li>
+              <li>
+                <a href="#mi-sae">Disentanglement via Sparse Autoencoders</a>
+              </li>
+              <li>
+                <a href="#mi-dead-features">Dead Features &amp; Resampling</a>
+              </li>
+              <li>
+                <a href="#mi-circuits"
+                  >Circuit Discovery &amp; Causal Tracing</a
+                >
+              </li>
+              <li>
+                <a href="#mi-geometry"
+                  >Feature Geometry in Representation Space</a
+                >
+              </li>
+              <li>
+                <a href="#mi-scaling">Scaling Challenges</a>
+              </li>
+              <li>
+                <a href="#mi-topk-pareto">TopK vs. L<sub>1</sub>: Pareto Frontiers</a>
+              </li>
+              <li>
+                <a href="#mi-safety">Safety Implications</a>
+              </li>
+              <li><a href="#mi-experiments">My current experiments</a></li>
+              <li><a href="#mi-worked-example">Worked example</a></li>
               <li><a href="#mi-references">References</a></li>
             </ul>
           </nav>
 
-          <h2 id="mi-overview">Overview</h2>
-          <p>
-            This is an ongoing independent study into mechanistic
-            interpretability&mdash;understanding what neural networks learn by
-            examining their internal structure rather than just their outputs.
-            Rather than treating models as black boxes evaluated solely on
-            behavior, mechanistic interpretability seeks to reverse-engineer the
-            algorithms that models learn, identifying the specific features,
-            circuits, and computational patterns that produce observed behavior.
+          <h2 id="mi-evidence">Evidence status &amp; source links</h2>
+          <div class="diagram-grid" style="grid-template-columns: 1fr 2fr;" aria-label="Mechanistic interpretability evidence status">
+            <div class="grid-header">Item</div>
+            <div class="grid-header">Status</div>
+            <div class="grid-cell cell-label">Primary basis</div>
+            <div class="grid-cell">Published papers, research blogs, and ongoing independent study rather than one local PDF.</div>
+            <div class="grid-cell cell-label">What this page does</div>
+            <div class="grid-cell">Synthesizes key MI concepts, SAE variants, circuit methods, and safety implications for a learner-facing audience.</div>
+            <div class="grid-cell cell-label">Evidence level</div>
+            <div class="grid-cell">Highest for definitions and literature summaries; lower for future-looking safety arguments and personal experiment notes.</div>
+            <div class="grid-cell cell-label">Source links</div>
+            <div class="grid-cell"><a href="https://transformer-circuits.pub/2022/toy_model/index.html" target="_blank" rel="noopener noreferrer">Toy Models of Superposition</a> · <a href="https://arxiv.org/abs/2404.16014" target="_blank" rel="noopener noreferrer">Gated SAEs</a> · <a href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank" rel="noopener noreferrer">Scaling Monosemanticity / feature mapping</a></div>
+          </div>
+
+          <h2 id="mi-abstract">Abstract</h2>
+            <p>
+            Modern deep learning architectures exhibit extreme parameter
+            efficiency by embedding high-dimensional conceptual spaces into
+            lower-dimensional representation bottlenecks. While mathematically
+            optimal for minimizing autoregressive loss, this compression
+            fundamentally obfuscates the computational graph, yielding
+            <em>polysemantic</em> neurons that fire for heterogeneous, unrelated
+            semantic concepts. In this synthesis, we review recent advancements
+            in <strong>Mechanistic Interpretability (MI)</strong>, specifically
+            focusing on the deployment of Sparse Autoencoders (SAEs) to recover
+            the underlying monosemantic basis directions from Transformer
+            residual streams. The central metaphor is mapping inputs to outputs
+            not as an opaque function approximator alone, but as a structured
+            program whose internal steps can be audited.
           </p>
 
-          <div class="callout">
-            <p class="callout-label">Study Focus</p>
+          <h2 id="mi-roadmap">Reading roadmap</h2>
+          <div class="diagram-matrix">
+            <table>
+              <thead>
+                <tr>
+                  <th>Level</th>
+                  <th>What to study first</th>
+                  <th>Goal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Beginner</td>
+                  <td>Toy models of superposition, neuron-level intuition, basic activation patching</td>
+                  <td>Understand why single neurons are often not clean semantic units.</td>
+                </tr>
+                <tr>
+                  <td>Intermediate</td>
+                  <td>Dictionary learning, sparse autoencoders, circuit discovery workflows</td>
+                  <td>Move from intuition to concrete tools for feature extraction and causal testing.</td>
+                </tr>
+                <tr>
+                  <td>Advanced</td>
+                  <td>Scaling SAEs, feature geometry, automated circuit discovery, safety monitoring applications</td>
+                  <td>Reason about frontier-scale interpretability and real deployment tradeoffs.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="mi-glossary">Glossary</h2>
+          <div class="diagram-matrix">
+            <table>
+              <thead>
+                <tr>
+                  <th>Term</th>
+                  <th>Meaning on this page</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>SAE</td><td>Sparse autoencoder: a learned dictionary that reconstructs activations using a sparse set of latent features.</td></tr>
+                <tr><td>Superposition</td><td>The regime where many concepts are packed into overlapping directions of a smaller representation space.</td></tr>
+                <tr><td>Polysemanticity</td><td>A neuron or direction responding to several unrelated concepts rather than one clean feature.</td></tr>
+                <tr><td>Feature</td><td>An interpretable latent direction, pattern, or activation motif that carries semantic or algorithmic meaning.</td></tr>
+                <tr><td>Circuit</td><td>A set of interacting components whose causal role explains part of the model's behavior.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="mi-timeline">Paper timeline</h2>
+          <div class="diagram-matrix">
+            <table>
+              <thead>
+                <tr>
+                  <th>Year</th>
+                  <th>Milestone</th>
+                  <th>Why it matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2019</td><td>Risks from Learned Optimization</td><td>Frames why inner objectives and deceptive behavior matter for safety.</td></tr>
+                <tr><td>2022</td><td>Toy Models of Superposition</td><td>Gives the conceptual basis for why features can overlap.</td></tr>
+                <tr><td>2023</td><td>Dictionary-learning and neuron-explanation work</td><td>Pushes MI toward scalable feature extraction and automated interpretation.</td></tr>
+                <tr><td>2024</td><td>Gated SAEs and frontier-scale feature extraction</td><td>Shows the field moving from toy settings to production-scale models.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout" id="mi-paradigm">
+            <p class="callout-label">Interpretability Paradigm</p>
             <p>
-              Understanding how neural networks represent and process
-              information at the circuit level. Through sparse autoencoders and
-              activation analysis, we can begin to identify individual features
-              that correspond to interpretable concepts within trained models.
+              Instead of evaluating networks purely as black-box approximators
+              mapping \( \mathcal{X} \to \mathcal{Y} \), Mechanistic
+              Interpretability treats trained weights as the compiled binary of
+              an interpretable source program. The objective is rigorous
+              reverse-engineering of the learned circuits that govern token
+              distribution logic.
             </p>
           </div>
 
-          <h2 id="mi-areas">Areas of Study</h2>
-          <p>
-            <strong
-              >Neel Nanda&rsquo;s TransformerLens and interpretability
-              tutorials:</strong
+          <figure class="distill-figure">
+            <div
+              class="viz-container"
+              data-viz="neuralTopo"
+              style="min-height: 400px; height: 400px"
+            ></div>
+            <figcaption
+              class="distill-figcaption"
+              style="
+                border-left: none;
+                text-align: center;
+                max-width: 80%;
+                margin: 1rem auto 0 auto;
+              "
             >
-            Working through the TransformerLens library for hands-on
-            experimentation with transformer internals, including attention
-            pattern analysis, activation patching, and logit attribution.
+              <strong>Figure 2. Activation Patching Topology (illustrative).</strong>
+              Stylized topography of activation differences under patching-style
+              interventions; qualitative sketch, not a plot from a single published
+              experiment.
+            </figcaption>
+          </figure>
+
+          <h2 id="mi-superposition">
+            Polysemanticity &amp; The Superposition Hypothesis
+          </h2>
+          <p>
+            Consider a typical Transformer MLP layer. Let the hidden state
+            dimension be \( d_{\text{model}} \). The universe of
+            human-interpretable "features" \( N \) that a language model learns
+            frequently exceeds the dimensionality of its internal state, such
+            that \( N \gg d_{\text{model}} \). To represent these features,
+            models exploit the properties of nearly orthogonal vectors in
+            high-dimensional spaces.
           </p>
           <p>
-            <strong>Anthropic&rsquo;s Circuits threads:</strong> Studying
-            Anthropic&rsquo;s foundational work on understanding features,
-            circuits, and universality&mdash;the idea that different neural
-            networks may converge on similar internal representations and
-            computational strategies for similar tasks.
+            A network in <em>superposition</em> assigns \( N \) features to
+            directions in \( \mathbb{R}^{d_{\text{model}}} \) that are not
+            mutually orthogonal: many concepts share overlapping subspaces. For
+            feature directions \( \mathbf{f}_i, \mathbf{f}_j \), the dot product
+            interference \( \mathbf{f}_i \cdot \mathbf{f}_j \) (where
+            \( i \neq j \)) is typically small when both are active but nonzero,
+            and nonlinearities \( \text{ReLU}(x) \) or \( \text{GELU}(x) \)
+            help keep interference manageable in expectation. $$ h =
+            \sigma\left( \sum_{i=1}^N x_i \mathbf{W}_{\text{in}}^{(i)} \right) $$
+            Because a single coordinate in \( d_{\text{model}} \) can
+            contribute to multiple distinct features, projecting individual
+            neurons onto single conceptual axes becomes impossible without
+            additional disentanglement (e.g. dictionary learning).
           </p>
-          <p>
-            <strong
-              >ARENA (Alignment Research Engineer Accelerator)
-              curriculum:</strong
-            >
-            Following the ARENA curriculum for structured training in
-            alignment-relevant technical skills, including mechanistic
-            interpretability exercises, reinforcement learning from human
-            feedback, and alignment theory.
-          </p>
+
+          <!-- Diagram 1: Polysemantic vs Monosemantic comparison -->
+          <div class="diagram-comparison">
+            <div class="comp-panel">
+              <h4>Polysemantic Neurons (Standard MLP)</h4>
+              <ul>
+                <li>Neuron 387 fires for: <em>dogs</em>, <em>fur coats</em>, <em>the letter "D"</em></li>
+                <li>Neuron 1024 fires for: <em>Python code</em>, <em>snake species</em>, <em>Monty Python</em></li>
+                <li>No single neuron &harr; single concept</li>
+                <li>Interference noise: \( \langle \mathbf{f}_i, \mathbf{f}_j \rangle \neq 0 \)</li>
+                <li>Uninterpretable activation patterns</li>
+                <li>Cannot verify what the model "knows"</li>
+              </ul>
+            </div>
+            <div class="comp-panel">
+              <h4>Monosemantic SAE Features</h4>
+              <ul>
+                <li>Feature 12,481: fires exclusively for <em>Golden Retrievers</em></li>
+                <li>Feature 39,007: fires exclusively for <em>Python syntax errors</em></li>
+                <li>One latent direction &harr; one concept</li>
+                <li>Sparsity enforced: \( \|\mathbf{f}\|_0 \ll d_{\text{SAE}} \)</li>
+                <li>Human-auditable activation semantics</li>
+                <li>Enables targeted safety verification</li>
+              </ul>
+            </div>
+          </div>
 
           <div class="viz-inline viz-h-220" data-viz="chartLayers"></div>
 
-          <h2 id="mi-experiments">Experimental Work</h2>
+          <h2 id="mi-sae">Disentanglement via Sparse Autoencoders</h2>
           <p>
-            <strong>Toy model experiments:</strong> Examining how small
-            transformers learn algorithmic tasks such as modular arithmetic,
-            parenthesis matching, and sequence copying. These controlled
-            settings allow precise identification of the circuits responsible
-            for specific computations.
-          </p>
-          <p>
-            <strong>Sparse autoencoder training:</strong> Decomposing model
-            activations into interpretable features using sparse autoencoders,
-            aiming to find monosemantic features that correspond to
-            human-understandable concepts rather than the polysemantic
-            superposition typical of raw model neurons.
-          </p>
-          <p>
-            <strong>Probing techniques:</strong> Using linear and nonlinear
-            probes to understand how information is represented across layers,
-            tracking how representations transform from input tokens to output
-            predictions through the model&rsquo;s computational graph.
+            To extract monosemantic (conceptually pure) features, researchers
+            employ Sparse Autoencoders (SAEs). By training a shallow,
+            overcomplete autoencoder on the activation states of the target
+            model \( \mathcal{M} \), we enforce an \( L_1 \) regularization
+            penalty to induce sparsity. Formally, given a batch of residual
+            stream activations \( \mathbf{x} \in \mathbb{R}^{d_{\text{model}}}
+            \), the SAE minimizes: $$ \mathcal{L}(\mathbf{x}) = \|\mathbf{x} -
+            \hat{\mathbf{x}}\|_2^2 + \lambda \|\mathbf{f}\|_1 $$ where the
+            latent feature activation is \( \mathbf{f} =
+            \text{ReLU}(\mathbf{W}_E \mathbf{x} + \mathbf{b}_E) \), and the
+            reconstruction is \( \hat{\mathbf{x}} = \mathbf{W}_D \mathbf{f} +
+            \mathbf{b}_D \).
           </p>
 
-          <h2 id="mi-motivation">Motivation</h2>
+          <!-- Diagram 2: SAE Pipeline Flow -->
+          <div class="diagram-flow">
+            <div class="flow-node">
+              <strong>Input</strong>
+              Residual Stream<br />\( \mathbf{x} \in \mathbb{R}^{d_{\text{model}}} \)
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">
+              <strong>Encoder</strong>
+              \( \mathbf{W}_E \mathbf{x} + \mathbf{b}_E \)
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node" style="border-color: #10b981;">
+              <strong>ReLU</strong>
+              \( \text{ReLU}(\cdot) \)
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node node-warn">
+              <strong>Sparse Latent</strong>
+              \( \mathbf{f} \in \mathbb{R}^{d_{\text{SAE}}} \)<br />~50 / 131k active
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">
+              <strong>Decoder</strong>
+              \( \mathbf{W}_D \mathbf{f} + \mathbf{b}_D \)
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">
+              <strong>Output</strong>
+              Reconstruction<br />\( \hat{\mathbf{x}} \approx \mathbf{x} \)
+            </div>
+          </div>
+
           <p>
-            Mechanistic interpretability is essential for understanding whether
-            aligned models are genuinely safe or merely appear safe on the
-            surface. A model that has learned to produce safe-looking outputs
-            without internalizing the underlying values could exhibit alignment
-            faking&mdash;behaving well during evaluation while harboring
-            misaligned objectives. Only by examining internal representations
-            can we distinguish genuine alignment from sophisticated
-            surface-level compliance, directly connecting this work to the
-            alignment faking research.
+            The expansion factor \( \frac{d_{\text{SAE}}}{d_{\text{model}}} \)
+            allows the SAE to map the dense, polysemantic activations into a
+            sparse, extremely high-dimensional space where basis directions
+            directly align with human-interpretable concepts (e.g., "Golden
+            Retriever", "Base64 strings", or "Nested HTML tags").
           </p>
 
-          <div class="viz-inline viz-h-200" data-viz="chartLayers"></div>
+          <div class="table-wrap">
+            <table class="mi-expansion-table">
+              <caption>
+                Representative SAE widths for a residual stream with
+                \( d_{\text{model}} = 768 \) (expansion factor
+                \( = d_{\text{SAE}} / d_{\text{model}} \)).
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Setting</th>
+                  <th scope="col">\( d_{\text{model}} \)</th>
+                  <th scope="col">\( d_{\text{SAE}} \)</th>
+                  <th scope="col">Expansion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Base width (no SAE)</td>
+                  <td>768</td>
+                  <td>&mdash;</td>
+                  <td>1&times;</td>
+                </tr>
+                <tr>
+                  <td>SAE &times;8</td>
+                  <td>768</td>
+                  <td>6,144</td>
+                  <td>8&times;</td>
+                </tr>
+                <tr>
+                  <td>SAE &times;32</td>
+                  <td>768</td>
+                  <td>24,576</td>
+                  <td>32&times;</td>
+                </tr>
+                <tr>
+                  <td>SAE with \( d_{\text{SAE}} = 131{,}072 \) (Anthropic-scale order of magnitude)</td>
+                  <td>768</td>
+                  <td>131,072</td>
+                  <td>\( 131{,}072 / 768 \approx 170.7 \); round figures vary with base width</td>
+                </tr>
+                <tr>
+                  <td>Typical active latents per token (order of magnitude)</td>
+                  <td colspan="2">Illustrative: tens of features fire per forward pass while \( d_{\text{SAE}} \gg d_{\text{model}} \)</td>
+                  <td>\( \ll 1\% \) of \( d_{\text{SAE}} \)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            The trade-off between reconstruction fidelity and sparsity in
+            standard \( L_1 \)-regularized SAEs is governed by the coefficient
+            \( \lambda \) in
+            \( \mathcal{L} = \|\mathbf{x} - \hat{\mathbf{x}}\|_2^2 + \lambda \|\mathbf{f}\|_1 \).
+            Larger \( \lambda \) pushes more latent dimensions toward zero,
+            yielding sparser codes but often worse reconstruction. Rajamanoharan
+            et al. (2024) do <em>not</em> introduce TopK: their paper
+            <em>Improving Dictionary Learning with Gated Sparse Autoencoders</em>
+            (arXiv:2404.16014) adds a <strong>gating</strong> mechanism so that
+            learned gates modulate which latents participate, improving
+            dictionary learning over plain \( L_1 \) in their experiments.
+            <strong>TopK SAEs</strong> are a separate family: after the linear
+            encoder, only the \( k \) largest pre-activations are kept and the
+            rest are set to zero,
+            $$ \mathbf{f} = \text{TopK}\bigl(\mathbf{W}_E \mathbf{x} + \mathbf{b}_E,\; k\bigr), $$
+            which trades the continuous \( \lambda \) knob for a discrete
+            sparsity budget \( k \). Hard-thresholding and JumpReLU-style
+            variants are likewise distinct from gated SAEs; the literature should
+            be read as several parallel lines (gated, TopK, \( L_1 \)), not a
+            single replacement story.
+          </p>
+
+          <details class="expandable" id="mi-dead-features">
+            <summary>Dead Features &amp; Resampling Strategies</summary>
+            <div class="expand-content">
+              <p>
+                A persistent failure mode of SAE training is <strong>feature
+                death</strong>: latent dimensions that never activate on any
+                input after early training. These dead features waste
+                capacity in \( d_{\text{SAE}} \). Bricken et al. (2023)
+                introduce periodic resampling, reinitializing dead features
+                using high-loss input examples. The resampled encoder column
+                \( \mathbf{w}_e^{(i)} \) is set to the normalized residual
+                direction of a poorly-reconstructed activation, and the decoder
+                column \( \mathbf{w}_d^{(i)} \) is initialized to the same
+                direction. This "neuron transplant" procedure recovers 15–30%
+                of dead features per resampling cycle.
+              </p>
+            </div>
+          </details>
+
+          <h2 id="mi-circuits">Circuit Discovery &amp; Causal Tracing</h2>
+          <p>
+            Beyond identifying static features, MI requires tracing
+            <em>how</em> features causally interact across layers to form
+            algorithms. We utilize Activation Patching (causal tracing) to
+            intervene on the computational graph. By comparing the
+            counterfactual logits resulting from a "clean" run versus a
+            "corrupted" run, we calculate the causal mediation effect of
+            specific attention heads.
+          </p>
+          <p>
+            A canonical success of this methodology is the discovery of
+            <strong>Induction Heads</strong>, which implement primitive
+            in-context learning by executing the abstract algorithm:
+            <em
+              >Find [A] [B] in context &rarr; current token is [A] &rarr;
+              predict [B]</em
+            >. Understanding these structural primitives is an absolute
+            prerequisite to verifying whether advanced agentic models are
+            genuinely aligned or instrumentally faking alignment.
+          </p>
+          <p>
+            The Automatic Circuit DisCovery (ACDC) framework by Conmy et al.
+            (2023) automates this procedure by iteratively pruning edges from
+            the full computational graph while monitoring downstream task
+            performance. For a task metric \( \mathcal{T} \), a component
+            \( c \) is retained in the circuit if:
+            $$ \bigl|\mathcal{T}(\text{model}) - \mathcal{T}(\text{model}_{\setminus c})\bigr| > \epsilon $$
+            where \( \text{model}_{\setminus c} \) denotes the model with
+            component \( c \) ablated (replaced by its mean activation). The
+            resulting subgraph constitutes the <em>minimal circuit</em> for the
+            target behavior.
+          </p>
+
+          <div class="viz-inline viz-h-200" data-viz="saeLatent"></div>
+
+          <!-- ═══ NEW SECTION: Feature Geometry ═══ -->
+          <h2 id="mi-geometry">Feature Geometry in Representation Space</h2>
+          <p>
+            The Superposition Hypothesis implies a specific geometric structure
+            in activation space. When a model stores \( N \) features in
+            \( d_{\text{model}} \) dimensions where \( N \gg d_{\text{model}} \),
+            the feature directions cannot all be mutually orthogonal. Elhage et
+            al. (2022) demonstrate that in the sparse regime&mdash;where each
+            feature activates infrequently&mdash;the optimal geometric
+            arrangement is not random but highly structured. Features organize
+            into geometric configurations that minimize expected interference
+            given their co-occurrence statistics.
+          </p>
+          <p>
+            In two dimensions, the optimal packing of \( N \) nearly-orthogonal
+            unit vectors yields specific polytope structures. For \( N = 3 \)
+            features in \( \mathbb{R}^2 \), the solution is an equilateral
+            triangle (a simplex). For \( N = 4 \), a square. For \( N = 6 \),
+            a regular hexagon. These correspond to the vertices of uniform
+            polytopes, and the pattern generalizes: in \( d \) dimensions, the
+            model packs features along the vertices of
+            \( d \)-dimensional polytopes whose structure depends on the
+            feature importance distribution \( I_i \) and sparsity \( S_i \):
+            $$ \min_{\{\mathbf{f}_i\}} \;\sum_{i} I_i \bigl(1 - \|\mathbf{f}_i\|^2\bigr)^2 + \sum_{i \neq j} I_i I_j \bigl(\mathbf{f}_i \cdot \mathbf{f}_j\bigr)^2 \cdot \text{Pr}[\text{co-occurrence}(i,j)] $$
+          </p>
+          <p>
+            This yields a phase diagram over the importance–sparsity plane. High
+            importance, low sparsity features receive dedicated orthogonal
+            dimensions (no superposition). Low importance, high sparsity
+            features are packed into superposition along polytope vertices. The
+            transition between these regimes is discontinuous&mdash;a phase
+            transition in representation geometry&mdash;analogous to
+            crystallization in physical systems.
+          </p>
+
+          <figure class="distill-figure">
+            <div
+              class="viz-container"
+              data-viz="dissect"
+              style="min-height: 350px; height: 380px"
+            ></div>
+            <figcaption
+              class="distill-figcaption"
+              style="
+                border-left: none;
+                text-align: center;
+                max-width: 80%;
+                margin: 1rem auto 0 auto;
+              "
+            >
+              <strong>Figure 3. Feature Dissection (illustrative).</strong>
+              Schematic layer decomposition; decorative visualization rather than
+              a literal readout of one fixed SAE or layer.
+            </figcaption>
+          </figure>
+
+          <div class="callout">
+            <p class="callout-label">Key Geometric Insight</p>
+            <p>
+              Features do not distribute uniformly in activation space.
+              The Johnson–Lindenstrauss lemma guarantees that
+              \( \mathcal{O}(e^{d}) \) nearly-orthogonal vectors can fit in
+              \( d \) dimensions, but the model selectively exploits this
+              capacity only for features whose sparsity permits tolerable
+              interference. This means MI researchers cannot assume uniform
+              geometry when designing dictionary learning algorithms.
+            </p>
+          </div>
+
+          <!-- ═══ NEW SECTION: Scaling Challenges ═══ -->
+          <h2 id="mi-scaling">Scaling Challenges</h2>
+          <p>
+            Translating SAE-based feature extraction from toy models to frontier
+            systems introduces formidable computational and methodological
+            obstacles. Anthropic's initial deployment of SAEs on Claude 3
+            Sonnet (Templeton et al., 2024) required training an autoencoder
+            with \( d_{\text{SAE}} = 34\text{M} \) latent dimensions on the
+            middle-layer residual stream&mdash;a dictionary roughly 256&times;
+            wider than the model's hidden state. The resulting feature
+            dictionary contained millions of candidate features, of which a
+            substantial fraction exhibited clear monosemantic interpretability.
+          </p>
+
+          <!-- Diagram 4: Feature Dictionary Grid -->
+          <div class="diagram-grid" style="grid-template-columns: 0.6fr 1.5fr 2fr 0.6fr;">
+            <div class="grid-header">Feature ID</div>
+            <div class="grid-header">Description</div>
+            <div class="grid-header">Max Activation Context</div>
+            <div class="grid-header">Sparsity</div>
+
+            <div class="grid-cell cell-code">#31,164</div>
+            <div class="grid-cell">Golden Gate Bridge</div>
+            <div class="grid-cell cell-code">"…the iconic <strong>Golden Gate Bridge</strong> spanning the bay…"</div>
+            <div class="grid-cell cell-safe">99.96%</div>
+
+            <div class="grid-cell cell-code">#1,047,203</div>
+            <div class="grid-cell">Base64-encoded strings</div>
+            <div class="grid-cell cell-code">"…decoded the <strong>base64</strong> payload: aGVsbG8gd29ybGQ=…"</div>
+            <div class="grid-cell cell-safe">99.99%</div>
+
+            <div class="grid-cell cell-code">#8,294,100</div>
+            <div class="grid-cell">Deceptive intent / sycophancy</div>
+            <div class="grid-cell cell-code">"…I'll tell you what you want to hear even though…"</div>
+            <div class="grid-cell cell-danger">98.7%</div>
+
+            <div class="grid-cell cell-code">#502,887</div>
+            <div class="grid-cell">Nested HTML tag structure</div>
+            <div class="grid-cell cell-code">"…&lt;div&gt;&lt;span class=&quot;inner&quot;&gt;…&lt;/span&gt;&lt;/div&gt;…"</div>
+            <div class="grid-cell cell-safe">99.91%</div>
+
+            <div class="grid-cell cell-code">#17,440,311</div>
+            <div class="grid-cell">Immunology / T-cell receptors</div>
+            <div class="grid-cell cell-code">"…MHC class I presents antigens to <strong>CD8+ T cells</strong>…"</div>
+            <div class="grid-cell cell-safe">99.97%</div>
+
+            <div class="grid-cell cell-code">#22,108,654</div>
+            <div class="grid-cell">Uncertainty / hedging language</div>
+            <div class="grid-cell cell-code">"…I'm not entirely sure, but <strong>it might</strong> be the case that…"</div>
+            <div class="grid-cell cell-warn">97.2%</div>
+          </div>
+
+          <p>
+            Several scaling-specific problems emerge at this frontier:
+          </p>
+          <ul>
+            <li>
+              <strong>Computational cost.</strong>               Training a single SAE on one layer of a frontier-scale model
+              (often discussed on the order of tens of billions of parameters,
+              without relying on any single lab&rsquo;s undisclosed exact count)
+              requires hundreds of GPU-hours. Full-model coverage (all layers,
+              all positions) multiplies this by \( \mathcal{O}(L \cdot T) \)
+              where \( L \) is layer count and \( T \) is sequence length.
+            </li>
+            <li>
+              <strong>Feature splitting.</strong> At large expansion factors,
+              a single ground-truth concept may fractionate into multiple
+              highly-correlated SAE features that differ only in activation
+              magnitude or context subtlety. Distinguishing genuine
+              sub-features from training artifacts remains an open problem.
+            </li>
+            <li>
+              <strong>Reconstruction–interpretability trade-off.</strong>
+              Increasing \( \lambda \) (or decreasing \( k \) in TopK SAEs)
+              improves interpretability scores but degrades the fraction of
+              model performance recovered by the reconstruction
+              \( \hat{\mathbf{x}} \). The "loss recovered" metric
+              \( \text{LR} = 1 - \frac{\mathcal{L}(\hat{\mathbf{x}}) - \mathcal{L}(\mathbf{x})}{\mathcal{L}(\mathbf{0}) - \mathcal{L}(\mathbf{x})} \)
+              quantifies this trade-off.
+            </li>
+            <li>
+              <strong>Evaluation at scale.</strong> With millions of features,
+              manual interpretability scoring is infeasible. Automated
+              interpretability pipelines (Bills et al., 2023) use a secondary
+              LLM to generate natural-language descriptions of features, then
+              score whether those descriptions predict feature activations on
+              held-out text. This introduces circularity: we use one opaque
+              model to evaluate the internals of another.
+            </li>
+          </ul>
+
+          <details class="expandable" id="mi-topk-pareto">
+            <summary>TopK vs. L<sub>1</sub>: Pareto Frontier Results</summary>
+            <div class="expand-content">
+              <p>
+                Empirical studies on <strong>TopK</strong> and related
+                hard-sparsity SAEs (separate from Rajamanoharan et al.&rsquo;s
+                <strong>gated</strong> SAEs) report that fixing the number of
+                active latents per example can yield favorable
+                reconstruction&ndash;sparsity tradeoffs compared to tuning
+                \( \lambda \) alone: the active set is explicit, so there is no
+                continuous shrinkage from an \( L_1 \) penalty on inactive
+                units. Exact Pareto positions depend on architecture, layer, and
+                training budget; readers should consult the TopK / hard-threshold
+                SAE papers for layer-specific numbers rather than treating one
+                arXiv entry as covering all variants.
+              </p>
+              <p>
+                Conceptually, TopK replaces the opaque mapping from
+                \( \lambda \) to realized \( L_0 \) with a direct knob
+                \( k \). Gated SAEs instead learn which features may fire and
+                still use soft sparsity pressures during training; conflating
+                the two obscures which intervention actually changed the
+                Pareto frontier in a given result.
+              </p>
+            </div>
+          </details>
+
+          <!-- ═══ NEW SECTION: Safety Implications ═══ -->
+          <h2 id="mi-safety">Safety Implications</h2>
+          <p>
+            Mechanistic interpretability is not merely an intellectual
+            exercise in network reverse-engineering. It provides the only
+            currently viable path toward <em>verification</em> of neural
+            network behavior&mdash;a prerequisite for deploying
+            frontier AI systems in safety-critical domains. The core
+            safety argument proceeds as follows:
+          </p>
+          <p>
+            Behavioral evaluation (red-teaming, benchmarks, RLHF) can only
+            test the model on a finite subset of inputs. A sufficiently capable
+            model might pass all behavioral tests while harboring latent
+            capabilities or deceptive objectives that activate only under
+            specific distributional triggers (Hubinger et al., 2019). This is
+            the <strong>deceptive alignment</strong> threat model: the model
+            instrumentally cooperates during training and evaluation, then
+            pursues misaligned objectives during deployment on out-of-distribution inputs.
+          </p>
+          <p>
+            MI provides a potential solution by enabling <em>white-box</em>
+            inspection. If we can identify the features and circuits
+            responsible for goal-directed behavior, planning, and deception, we
+            can check whether these circuits activate in deployment contexts
+            where the model has no legitimate reason to engage in
+            strategic reasoning. Concretely:
+          </p>
+          <ul>
+            <li>
+              <strong>Feature-level monitoring.</strong> Templeton et al. (2024)
+              identified SAE features in Claude 3 Sonnet that activate for
+              sycophancy, deception, and power-seeking language. Real-time
+              monitoring of these features during inference could serve as an
+              early warning system.
+            </li>
+            <li>
+              <strong>Circuit-level verification.</strong> In a hypothetical
+              workflow, if one could isolate a circuit plausibly linked to a
+              hazardous capability (e.g., detailed misuse-relevant technical
+              content), one might surgically ablate or constrain it without
+              degrading unrelated capabilities&mdash;subject to causal validation
+              and normative oversight, not mere correlation on a probe set.
+            </li>
+            <li>
+              <strong>Alignment auditing.</strong> Before deployment, a model's
+              internal representations can be probed for evidence of mesa-optimization:
+              do the model's features encode information about the training
+              process itself, its own evaluation context, or the distinction
+              between testing and deployment?
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p class="callout-label">The Interpretability Tax Argument</p>
+            <p>
+              Labs deploying frontier models face a fundamental tension: MI
+              research is expensive and slow relative to capabilities
+              research. Anthropic's "Scaling Monosemanticity" project required
+              a dedicated team working for months on a single model snapshot.
+              The <strong>interpretability tax</strong>&mdash;the fraction of a
+              lab's compute and researcher-hours devoted to understanding
+              rather than building&mdash;must increase faster than capability
+              advances, or the gap between what models can do and what we
+              understand about them will widen indefinitely.
+            </p>
+          </div>
+
+          <p>
+            The ultimate promise of MI is a regime where deploying a new model
+            requires a mechanistic safety certificate: a formal proof (or at
+            minimum, strong empirical evidence) that the model's internal
+            circuitry does not implement deceptive, manipulative, or
+            misaligned subroutines. We are far from this goal, but the
+            trajectory from "neurons are uninterpretable" (pre-2022) to
+            "we can identify millions of interpretable features in
+            production models" (2024) represents extraordinary progress.
+          </p>
+
+          <div class="viz-inline viz-h-220" data-viz="circuitTrace"></div>
+
+          <h2 id="mi-experiments">My current experiments</h2>
+          <div class="diagram-grid" style="grid-template-columns: 1fr 2fr;" aria-label="Current interpretability experiments">
+            <div class="grid-header">Experiment thread</div>
+            <div class="grid-header">What I am trying to learn</div>
+            <div class="grid-cell cell-label">Toy-model replication</div>
+            <div class="grid-cell">Build intuition for superposition and interference before touching larger language-model activations.</div>
+            <div class="grid-cell cell-label">Small SAE runs</div>
+            <div class="grid-cell">See how reconstruction quality, sparsity pressure, and feature readability trade off in practice.</div>
+            <div class="grid-cell cell-label">Feature inspection workflow</div>
+            <div class="grid-cell">Practice moving from a latent feature to examples, nearest neighbors, and causal checks.</div>
+            <div class="grid-cell cell-label">Safety-facing probes</div>
+            <div class="grid-cell">Explore whether identifiable features track patterns like sycophancy, deception, or policy-sensitive framing.</div>
+          </div>
+
+          <h2 id="mi-worked-example">Worked example</h2>
+          <p>
+            A simple SAE interpretation flow looks like this: take a residual-stream activation \( x \), encode it into a sparse latent vector \( f \), inspect the highest-activating latent, then collect tokens or prompts where that latent fires strongly. If those activations cluster around one coherent concept, the latent becomes a candidate feature rather than a numerical artifact.
+          </p>
+          <div class="diagram-flow">
+            <div class="flow-node"><strong>1. Activation</strong>Residual stream state \(x\)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node"><strong>2. Encode</strong>SAE maps \(x \to f\)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node"><strong>3. Inspect</strong>Top active latent(s)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node"><strong>4. Collect</strong>Examples where that latent fires</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node node-warn"><strong>5. Validate</strong>Check whether the feature is interpretable and causally relevant</div>
+          </div>
+          <p>
+            The key discipline is to avoid stopping at the visualization step. A feature that looks interpretable should also survive intervention checks or at least correlate robustly across many examples.
+          </p>
 
           <section class="references" id="mi-references">
             <h2>References</h2>
             <ol class="ref-list">
               <li>
-                Elhage, N. et al. (2022). Toy Models of Superposition.
+                Elhage, N. et al. (2022).
+                <em>Toy Models of Superposition.</em> Anthropic.
+              </li>
+              <li>
+                Cunningham, H. et al. (2024).
+                <em
+                  >Sparse Autoencoders Find Highly Interpretable Directions in
+                  Language Models.</em
+                >
+                ICLR.
+              </li>
+              <li>
+                Nanda, N. et al. (2023).
+                <em
+                  >Progress Measures for Grokking via Mechanistic
+                  Interpretability.</em
+                >
+                ICLR.
+              </li>
+              <li>
+                Conmy, A. et al. (2023).
+                <em
+                  >Towards Automated Circuit Discovery for Mechanistic
+                  Interpretability.</em
+                >
+                NeurIPS.
+              </li>
+              <li>
+                Bricken, T. et al. (2023).
+                <em>Towards Monosemanticity: Decomposing Language Models With Dictionary Learning.</em>
                 Anthropic.
               </li>
               <li>
-                Cunningham, H. et al. (2024). Sparse Autoencoders Find Highly
-                Interpretable Directions in Language Models. ICLR.
+                Templeton, A. et al. (2024).
+                <em>Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet.</em>
+                Anthropic.
               </li>
               <li>
-                Nanda, N. et al. (2023). Progress Measures for Grokking via
-                Mechanistic Interpretability. ICLR.
+                Rajamanoharan, S. et al. (2024).
+                <em>Improving Dictionary Learning with Gated Sparse Autoencoders.</em>
+                arXiv:2404.16014.
               </li>
               <li>
-                Conmy, A. et al. (2023). Towards Automated Circuit Discovery for
-                Mechanistic Interpretability. NeurIPS.
+                Bills, S. et al. (2023).
+                <em>Language Models Can Explain Neurons in Language Models.</em>
+                OpenAI.
+              </li>
+              <li>
+                Hubinger, E. et al. (2019).
+                <em>Risks from Learned Optimization in Advanced Machine Learning Systems.</em>
+                arXiv:1906.01820.
               </li>
             </ol>
           </section>
@@ -233,6 +926,8 @@
           <span class="tag">Sparse Autoencoders</span>
           <span class="tag">ARENA</span>
           <span class="tag">Anthropic</span>
+          <span class="tag">Superposition</span>
+          <span class="tag">AI Safety</span>
         </div>
       </main>
 

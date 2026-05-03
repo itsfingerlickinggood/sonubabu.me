@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trajectory-Sensitive Refusal Timing in LLMs &mdash; Sonu Babu</title>
+  <meta name="description"
+    content="Measuring when AI safety refusal emerges under matched harmful objectives across direct, staged-direct, and cloaked multi-turn trajectory constructions. A temporal safety benchmark with pilot results and a deployable monitor overlay." />
+  <meta property="og:title" content="Trajectory-Sensitive Refusal Timing in LLMs &mdash; Sonu Babu" />
+  <meta property="og:description"
+    content="Do AI safety guardrails fail slowly? Pilot data shows cloaked multi-turn conversations produce unsafe cooperation at 0.20 vs 0.00 for direct requests, with zero self-corrections." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sonubabu.me/research/temporal-refusal-timing" />
+  <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Trajectory-Sensitive Refusal Timing in LLMs &mdash; Sonu Babu" />
+  <meta name="twitter:description"
+    content="Temporal safety benchmark measuring refusal timing across trajectory constructions. Pilot: 0.20 unsafe trigger rate under cloaking vs 0.00 direct." />
+  <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
+  <link rel="canonical" href="https://sonubabu.me/research/temporal-refusal-timing" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script>
+    (function () {
+      var t =
+        localStorage.getItem("theme") ||
+        (matchMedia("(prefers-color-scheme:dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/css/site.min.css" as="style" />
+  <link rel="stylesheet" href="/css/site.min.css" />
+</head>
+
+<body>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/" class="nav-name">Sonu Babu</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/research.html">Research</a>
+      <a href="/learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </nav>
+
+    <main class="article-page research-article">
+      <a href="/research.html" class="back-link">Back to Research</a>
+
+      <header class="article-header">
+        <h1>Trajectory-Sensitive Refusal Timing in Large Language Models</h1>
+        <time class="article-meta" datetime="2026-04">Apr 2026 &mdash; Independent Research (Pipeline Validation
+          Stage)</time>
+      </header>
+
+      <p class="article-lede"
+        style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 52ch; margin: -1rem 0 1.5rem;">
+        <strong>Stage.</strong> This is an active pilot-validation project. The signal is directional but not yet
+        claim-positive. Judge agreement is below threshold, human audit is pending, and full-scale replication is
+        required before publication.
+      </p>
+
+      <figure class="distill-figure margin-caption wide">
+        <div class="viz-container" data-viz="asciiRl"></div>
+        <figcaption class="distill-figcaption">
+          <strong>Figure 1 (illustrative).</strong> Decorative visualization;
+          not a reproduction of experimental data.
+        </figcaption>
+      </figure>
+
+      <div class="article-body">
+        <nav class="article-toc">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#trt-problem">The safety problem</a></li>
+            <li><a href="#trt-thesis">Thesis &amp; claims</a></li>
+            <li><a href="#trt-design">Experimental design</a></li>
+            <li><a href="#trt-families">Trajectory families</a></li>
+            <li><a href="#trt-pilot">Pilot results</a></li>
+            <li><a href="#trt-monitor">Monitor overlay</a></li>
+            <li><a href="#trt-honesty">What is not proven yet</a></li>
+            <li><a href="#trt-exposure">ExposureBench: budget-parity evaluation</a></li>
+            <li><a href="#trt-next">Next steps</a></li>
+            <li><a href="#trt-code">Code &amp; reproducibility</a></li>
+          </ul>
+        </nav>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- THE PROBLEM                                                -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-problem">The safety problem</h2>
+        <p>
+          Current AI safety tests grade models on their <em>final answer</em>.
+          If a model eventually refuses a harmful request, it passes. Nobody
+          measures what happened in the turns <em>before</em> that refusal&mdash;
+          how long the model cooperated, how much harmful information it
+          exposed, or whether the damage was already done by the time it
+          said no.
+        </p>
+        <p>
+          This matters because a model that cooperates for nine turns and
+          refuses on the tenth is not a safe model. It is a model with a
+          slow-burn vulnerability that current benchmarks mark as passing.
+        </p>
+
+        <div class="callout">
+          <p class="callout-label">Core insight</p>
+          <p>
+            Safety in LLMs should be evaluated as a <strong>temporal
+              process</strong>, not only as a binary endpoint. The same harmful
+            objective can produce different refusal timing depending on how the
+            conversation trajectory is constructed.
+          </p>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- THESIS                                                     -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-thesis">Thesis &amp; claims</h2>
+        <p>
+          Under matched harmful objectives, structured trajectory variants
+          shift refusal timing relative to both direct single-turn baselines
+          and staged-direct multi-turn controls. That shift is visible at the
+          level of within-objective timing profiles, not only aggregate
+          attack success.
+        </p>
+
+        <div class="diagram-matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Claim</th>
+                <th>Evidence</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cloaked multi-turn trajectories delay refusal relative to direct requests.</td>
+                <td>Pilot data: 0.20 unsafe trigger rate (S2C) vs 0.00 (Direct).</td>
+                <td><span class="metric-badge badge-warn">Pilot-level</span></td>
+              </tr>
+              <tr>
+                <td>Once the unsafe pattern starts, models do not self-correct.</td>
+                <td>14 safe&rarr;unsafe transitions, 0 self-corrections in 70 pairs.</td>
+                <td><span class="metric-badge badge-warn">Pilot-level</span></td>
+              </tr>
+              <tr>
+                <td>A lightweight monitor can detect escalation before full exploitation.</td>
+                <td>78% precision, &lt;6% latency overhead, zero benign utility drop.</td>
+                <td><span class="metric-badge badge-warn">Pilot-level</span></td>
+              </tr>
+              <tr>
+                <td>The framework provides a reproducible temporal safety benchmark.</td>
+                <td>Dataset schema, trajectory templates, metrics, and decision thresholds documented.</td>
+                <td><span class="metric-badge badge-safe">High</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- EXPERIMENTAL DESIGN                                        -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-design">Experimental design</h2>
+        <p>
+          For each harmful objective in the test set, three matched
+          conversation versions are constructed:
+        </p>
+        <ol>
+          <li>
+            <strong>Direct baseline</strong> &mdash; a single-turn direct
+            harmful request.
+          </li>
+          <li>
+            <strong>Staged Direct control</strong> &mdash; a matched
+            multi-turn explicit decomposition of the same objective
+            <em>without</em> contextual disguise or semantic camouflage
+            (controls for turn count alone).
+          </li>
+          <li>
+            <strong>S2C (Structured Semantic Cloaking)</strong> &mdash;
+            matched multi-turn construction with contextual reframing, content
+            fragmentation, and clue-guided camouflage (the realistic attack
+            scenario).
+          </li>
+        </ol>
+        <p>
+          Turn-by-turn safety scores measure exactly when refusal behavior
+          appears in each version. The key metric is <strong>SAT</strong>
+          (Safety Alignment Threshold)&mdash;the first stable turn where the
+          model&rsquo;s safety score crosses threshold.
+        </p>
+
+        <div class="diagram-flow">
+          <div class="flow-node">
+            <strong>Objective Bank</strong>
+            HarmBench + AdvBench + JBB
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-node">
+            <strong>Trajectory Construction</strong>
+            Direct / Staged / S2C
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-node">
+            <strong>Inference</strong>
+            6-model Cloudflare panel
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-node">
+            <strong>Turn-Level Scoring</strong>
+            Intent + Safety + Risk
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-node node-danger">
+            <strong>SAT &amp; Phase Labels</strong>
+            Early Safe / Delayed / Collapse
+          </div>
+        </div>
+
+        <h3>Model panel</h3>
+        <p>
+          All inference runs through Cloudflare Workers AI. Six target models,
+          three judge models, with strict role separation (no model judges its
+          own outputs):
+        </p>
+        <div class="diagram-matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Models</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Target</td>
+                <td>GPT-OSS-120B, Nemotron-3-120B, Qwen3-30B, Gemma-4-26B, GLM-4.7-Flash, Kimi-K2.5</td>
+              </tr>
+              <tr>
+                <td>Judges</td>
+                <td>GPT-OSS-120B, Qwen3-30B, Gemma-4-26B (+ human audit &ge;10%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- TRAJECTORY FAMILIES                                        -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-families">Trajectory families</h2>
+        <div class="diagram-matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Family</th>
+                <th>Role</th>
+                <th>Structure</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A: Direct</strong></td>
+                <td>Baseline</td>
+                <td>One-turn direct harmful request</td>
+              </tr>
+              <tr>
+                <td><strong>B: Staged Direct</strong></td>
+                <td>Control</td>
+                <td>5-turn explicit decomposition, no camouflage</td>
+              </tr>
+              <tr>
+                <td><strong>C: S2C</strong></td>
+                <td>Primary stress</td>
+                <td>5-turn contextual reframing + content fragmentation + clue-guided camouflage</td>
+              </tr>
+              <tr>
+                <td><strong>D: ICON</strong></td>
+                <td>Support</td>
+                <td>5-turn intent-context coupling with authoritative framing</td>
+              </tr>
+              <tr>
+                <td><strong>E: LATS</strong></td>
+                <td>Exploratory</td>
+                <td>Lexical anchor tree search across turns</td>
+              </tr>
+              <tr>
+                <td><strong>F: SJA</strong></td>
+                <td>Exploratory</td>
+                <td>Harmless sub-question decomposition + delayed recombination</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 56ch;">
+          The core confirmatory claim requires only families A, B, and C. ICON is supporting robustness; LATS and SJA
+          are appendix-level only.
+        </p>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- PILOT RESULTS                                              -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-pilot">Pilot results (70 matched pairs)</h2>
+
+        <div class="diagram-matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cloaked trajectory unsafe trigger rate</td>
+                <td><span class="metric-badge badge-danger">0.20</span> (vs 0.00 Direct)</td>
+              </tr>
+              <tr>
+                <td>Safe &rarr; Unsafe transitions</td>
+                <td>14 conversations</td>
+              </tr>
+              <tr>
+                <td>Self-corrections (Unsafe &rarr; Safe)</td>
+                <td><strong>0</strong> &mdash; failure is one-directional</td>
+              </tr>
+              <tr>
+                <td>Seed-model combinations completed</td>
+                <td>6 of 18</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="diagram-bars">
+          <p class="bar-title">Unsafe Trigger Rates by Trajectory Family</p>
+          <div class="bar-row">
+            <span class="bar-label">Direct (baseline)</span>
+            <div class="bar-track">
+              <div class="bar-fill fill-safe" style="width: 2%">0.00</div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">S2C (cloaked)</span>
+            <div class="bar-track">
+              <div class="bar-fill fill-danger" style="width: 20%">0.20</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- MONITOR                                                    -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-monitor">Monitor overlay</h2>
+        <p>
+          Alongside the benchmark, the project tests a practical monitoring
+          tool: a lightweight layer that watches live conversations for signs
+          of escalating harmful intent and intervenes before the model has been
+          fully manipulated.
+        </p>
+        <div class="diagram-matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Monitor metric</th>
+                <th>Pilot result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Precision on harmful trajectories</td>
+                <td><span class="metric-badge badge-safe">77.8%</span></td>
+              </tr>
+              <tr>
+                <td>Performance cost on benign conversations</td>
+                <td><span class="metric-badge badge-safe">None measurable</span></td>
+              </tr>
+              <tr>
+                <td>Latency overhead</td>
+                <td><span class="metric-badge badge-safe">5.8%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- HONESTY                                                    -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-honesty">What is not proven yet</h2>
+        <p>
+          The pilot is a pipeline-validation stage result, <strong>not a
+            claim-positive result</strong>. Specific gaps:
+        </p>
+        <ul>
+          <li>Judge agreement is currently <strong>0.12&ndash;0.38</strong>, below the required 0.80 threshold.</li>
+          <li>Human audit labels are pending.</li>
+          <li>Only 6 of 18 seed-model combinations have been completed.</li>
+          <li>The project has built quality gates specifically to prevent over-claiming, and those gates are active.
+          </li>
+        </ul>
+        <p>
+          The honest assessment: the signal is real and the machinery works,
+          but the full study is required before this becomes a publishable
+          claim.
+        </p>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- EXPOSUREBENCH                                              -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-exposure">ExposureBench: budget-parity evaluation</h2>
+        <p>
+          A parallel research track asks a related but stronger question:
+          <em>under audited budget parity, do endpoint ASR and trajectory-level
+            harmful exposure produce different safety conclusions?</em>
+        </p>
+        <p>
+          ExposureBench introduces <strong>Cumulative Harmful Exposure
+            (CHE)</strong>&mdash;a turn-level measure of how much harmful
+          information a model exposes over a fixed interaction horizon.
+          The contribution is a preregistered, budget-audited boundary test
+          of when endpoint metrics are sufficient versus when trajectory-level
+          evaluation changes the safety conclusion.
+        </p>
+
+        <div class="diagram-split">
+          <div class="split-panel">
+            <h4>Key design elements</h4>
+            <ul style="padding-left: 1rem">
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Two committed arms: multi-turn
+                trajectory + strongest budget-matched single-turn baseline</li>
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Strict role separation: no model
+                judges its own outputs</li>
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Budget accounting: assigned target
+                budget vs total attacker budget</li>
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Hard go/no-go gates for judge
+                reliability</li>
+              <li style="font-size: 0.85rem; list-style: disc">Null results are valuable: bounding when endpoint-only
+                evaluation is sufficient</li>
+            </ul>
+          </div>
+          <div class="split-divider"></div>
+          <div class="split-panel">
+            <h4>Target scope</h4>
+            <ul style="padding-left: 1rem">
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Pilot: 150&ndash;250 trajectories
+              </li>
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">Main: 800&ndash;1,200 trajectories
+              </li>
+              <li style="font-size: 0.85rem; margin-bottom: 0.4rem; list-style: disc">2&ndash;3 target models with
+                150&ndash;250 human-audited trajectories</li>
+              <li style="font-size: 0.85rem; list-style: disc">Proposed dates: Sep 2026 &ndash; Feb 2027</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- NEXT STEPS                                                 -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-next">Next steps</h2>
+        <ol>
+          <li>
+            <strong>Scale the experiment</strong> &mdash; expand from 70 to
+            180+ matched pairs across all 18 seed-model combinations.
+          </li>
+          <li>
+            <strong>Pass quality gates</strong> &mdash; raise judge agreement
+            above 0.80 and complete human audit on a stratified 10% of rows.
+          </li>
+          <li>
+            <strong>Publish benchmark and paper</strong> &mdash; release the
+            full benchmark artifact and a paper documenting the timing effect
+            and monitor trade-offs.
+          </li>
+        </ol>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <!-- CODE                                                       -->
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <h2 id="trt-code">Code &amp; reproducibility</h2>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 56ch;">
+          Repository:
+          <a href="https://github.com/itsfingerlickinggood/temporal-refusal-timing-pilot" target="_blank"
+            rel="noopener noreferrer">github.com/itsfingerlickinggood/temporal-refusal-timing-pilot</a><br />
+          Pilot run: <code>benchmark_outputs/pilotrun3</code><br />
+          Stage: pipeline-validation, not claim-positive<br />
+          All model calls executed through Cloudflare Workers AI endpoints.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Sonu Babu</p>
+    </footer>
+  </div>
+
+  <script defer src="/js/main.min.js"></script>
+</body>
+
+</html>
