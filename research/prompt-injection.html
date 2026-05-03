@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indirect Prompt Injection & Instruction Hierarchy â€” Sonu Babu</title>
+    <title>Indirect Prompt Injection & Instruction Hierarchy ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Sonu Babu</title>
     <meta
       name="description"
       content="Evaluating document-processing LLM vulnerabilities where models fail to distinguish trusted instructions from untrusted content."
     />
     <meta
       property="og:title"
-      content="Indirect Prompt Injection & Instruction Hierarchy â€” Sonu Babu"
+      content="Indirect Prompt Injection & Instruction Hierarchy ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Sonu Babu"
     />
     <meta
       property="og:description"
@@ -25,7 +25,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Indirect Prompt Injection & Instruction Hierarchy â€” Sonu Babu"
+      content="Indirect Prompt Injection & Instruction Hierarchy ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Sonu Babu"
     />
     <meta
       name="twitter:description"
@@ -116,7 +116,7 @@
           This page expands a qualitative BlueDot research note with background literature on prompt injection. Unless a claim is explicitly attributed to an external source, treat counts, model comparisons, and risk labels on this page as qualitative author interpretation rather than benchmarked measurement.
         </p>
 
-        <!-- â•â•â• Hero Visualization â•â•â• -->
+        <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Hero Visualization ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
         <figure class="distill-figure margin-caption wide">
           <div
             class="viz-container"
@@ -135,7 +135,7 @@
 
         <div class="article-body">
 
-          <!-- â•â•â• Table of Contents â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Table of Contents ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <nav class="article-toc">
             <p class="toc-title">Contents</p>
             <ul>
@@ -176,7 +176,7 @@
             Source link: <a href="/pdf-research-files/Prompt Injection.pdf">Sprint PDF</a>
           </p>
 
-          <!-- â•â•â• Â§ Abstract â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ Abstract ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-abstract">Abstract</h2>
           <p>
             The deployment of Large Language Models (LLMs) in retrieval-augmented generation (RAG)
@@ -238,7 +238,7 @@
             </table>
           </div>
 
-          <!-- â•â•â• Â§ 1. The Problem â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 1. The Problem ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-problem">1. The Instruction&ndash;Data Conflation Problem</h2>
           <p>
             Classical computing architectures enforce a rigid separation between code and data.
@@ -315,7 +315,7 @@
             </figcaption>
           </figure>
 
-          <!-- â•â•â• Â§ 2. Formalizing the Control Channel â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 2. Formalizing the Control Channel ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-formulation">2. Formalizing the Control Channel</h2>
           <p>
             Consider a typical RAG inference graph. The input sequence \( S \) presented to the
@@ -380,7 +380,7 @@
             </figcaption>
           </figure>
 
-          <!-- â•â•â• Â§ 3. Real-World Attack Surfaces â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 3. Real-World Attack Surfaces ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-attack-surfaces">3. Real-World Attack Surfaces</h2>
           <p>
             Indirect prompt injection is not a theoretical curiosity. Every deployed LLM application
@@ -464,7 +464,7 @@
             </figcaption>
           </figure>
 
-          <!-- â•â•â• Â§ 4. Taxonomy of Vulnerability Categories â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 4. Taxonomy of Vulnerability Categories ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-taxonomy">4. Taxonomy of Vulnerability Categories</h2>
           <p>
             Through systematic red-teaming across the attack surfaces enumerated
@@ -556,7 +556,7 @@
             </table>
           </div>
 
-          <!-- â•â•â• Â§ 5. Empirical Test Cases â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 5. Empirical Test Cases ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-test-cases">5. Empirical Test Cases</h2>
           <p>
             We constructed eight test cases spanning the four vulnerability categories, each
@@ -661,7 +661,7 @@
             </div>
           </div>
 
-          <!-- â•â•â• Â§ 6. Observed Behavioral Patterns â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 6. Observed Behavioral Patterns ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-behavioral">6. Observed Behavioral Patterns</h2>
           <p>
             Across all eight test cases, we identify four recurring behavioral failure patterns
@@ -724,7 +724,7 @@
             privilege verification system.
           </p>
 
-          <!-- â•â•â• Â§ 7. Base vs. Aligned Model Comparison â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 7. Base vs. Aligned Model Comparison ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-base-vs-aligned">7. Base vs. Aligned Model Comparison</h2>
           <p>
             A critical question for the safety community is whether RLHF alignment provides
@@ -815,7 +815,7 @@
             </p>
           </div>
 
-          <!-- â•â•â• Â§ 8. Risk Assessment Framework â•â•â• -->
+          <!-- ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â Ãƒâ€šÃ‚Â§ 8. Risk Assessment Framework ÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚ÂÃƒÂ¢Ã¢â‚¬Â¢Ã‚Â -->
           <h2 id="pi-risk">8. Risk Assessment Framework</h2>
           <p>
             We propose a four-dimensional risk assessment framework for evaluating indirect prompt
@@ -944,6 +944,7 @@
       </footer>
     </div>
 
+    <script defer src="/js/viz.min.js"></script>
     <script defer src="/js/main.min.js"></script>
   </body>
 </html>

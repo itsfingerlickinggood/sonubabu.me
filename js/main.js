@@ -10,6 +10,7 @@ function scheduleVizLoad() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const run = () => {
     if (document.querySelector("script[data-sonu-viz]")) return;
+    if (document.querySelector('script[src*="viz.min.js"]')) return;
     const ref = document.querySelector('link[href*="site.min.css"]');
     if (!ref || !ref.href) return;
     const url = ref.href.replace(/\/css\/site\.min\.css(\?.*)?$/i, "/js/viz.min.js$1");
