@@ -1,0 +1,33 @@
+/* Small, complete collections. Artwork is content, not an invented player. */
+.personal-shelf .shelf-intro { margin: -.5rem 0 1.75rem; font-size: .875rem; line-height: 1.7; color: var(--color-text-muted); }
+.shelf-grid { display: grid; gap: 1.75rem 1.5rem; }
+.record-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shelf-item { min-width: 0; }
+.shelf-cover { position: relative; }
+.record-list .shelf-cover { width: 100%; aspect-ratio: 1; margin-bottom: .875rem; }
+.shelf-cover img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: bottom left; border-radius: .375rem; }
+.record-list .shelf-cover img { box-shadow: 0 0 0 1px rgb(0 0 0 / .04), 0 2px 5px rgb(0 0 0 / .06); }
+.learnings-page .shelf-copy h3 { margin: 0 0 .25rem; padding: 0; font: 500 .875rem/1.45 var(--font-body); letter-spacing: -.01em; text-wrap: pretty; }
+.learnings-page .shelf-copy p { margin: 0; font: 400 .8125rem/1.6 var(--font-body); color: var(--color-text-muted); }
+.learnings-page .shelf-group-title { margin: 0 0 1.25rem; font: 400 .8125rem/1.5 var(--font-body); color: var(--color-text-muted); letter-spacing: 0; }
+.book-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.book-list .shelf-cover { height: 12rem; width: min(100%, 8rem); margin-bottom: 1rem; }
+.book-list .shelf-cover img { border-radius: .125rem; }
+.book-list + .shelf-group-title { margin-top: 2.5rem; }
+.story-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.story-list .shelf-item { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: 1rem; }
+.story-list .shelf-cover { width: 4rem; height: 5.5rem; }
+.story-list .shelf-cover img { object-position: center; border-radius: .125rem; }
+.shelf-placeholder { display: none; }
+.shelf-cover[data-cover-error] img { visibility: hidden; }
+.shelf-cover[data-cover-error] .shelf-placeholder { display: grid; place-items: center; position: absolute; inset: 0; padding: .5rem; background: var(--color-wash); font-size: .75rem; line-height: 1.5; text-align: center; border-radius: .375rem; color: var(--color-text-muted); }
+.personal-shelf .shelf-credit { margin-top: 1.75rem; }
+@container site-shell (max-width: 28em) {
+  .record-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 1.25rem; }
+  .book-list, .story-list { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+  .book-list .shelf-item { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: 1rem; }
+  .book-list .shelf-cover { width: 4rem; height: 6rem; margin: 0; }
+}
+@media (prefers-contrast: more) {
+  .shelf-cover[data-cover-error] { outline: 1px solid currentColor; }
+}

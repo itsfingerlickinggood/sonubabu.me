@@ -1,0 +1,216 @@
+{
+  "retrieved": "2026-09-13",
+  "note": "Existing catalog imagery from the user-provided Learnings page, cached locally and resized without cropping or recoloring. Copyright remains with the respective rights holders; source attribution is retained.",
+  "items": [
+    {
+      "key": "heroes-villains",
+      "kind": "music",
+      "title": "HEROES & VILLAINS",
+      "creator": "Metro Boomin · Too Many Nights",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/82/f7/2b/82f72ba4-524c-fc9d-cb8c-5a96d2ddf536/22UM1IM35267.rgb.jpg/600x600bb.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/heroes-villains-240.webp",
+          "bytes": 2902
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/heroes-villains-480.webp",
+          "bytes": 6526
+        }
+      ]
+    },
+    {
+      "key": "graduation",
+      "kind": "music",
+      "title": "Graduation",
+      "creator": "Kanye West",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/39/25/2d/39252d65-2d50-b991-0962-f7a98a761271/00602517483507.rgb.jpg/600x600bb.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/graduation-240.webp",
+          "bytes": 13222
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/graduation-480.webp",
+          "bytes": 31078
+        }
+      ]
+    },
+    {
+      "key": "dhurandhar-revenge",
+      "kind": "music",
+      "title": "Dhurandhar: The Revenge",
+      "creator": "Shashwat Sachdev et al.",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/4d/eb/244deb4a-74a6-e8ec-183b-220c3c21dc06/8903431190659_cover.jpg/600x600bb.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/dhurandhar-revenge-240.webp",
+          "bytes": 20896
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/dhurandhar-revenge-480.webp",
+          "bytes": 53868
+        }
+      ]
+    },
+    {
+      "key": "astroworld",
+      "kind": "music",
+      "title": "ASTROWORLD",
+      "creator": "Travis Scott · Skeletons",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e7/49/8f/e7498f65-df8f-bead-d6e3-2a8d4d642a79/886447235317.jpg/600x600bb.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/astroworld-240.webp",
+          "bytes": 17638
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/astroworld-480.webp",
+          "bytes": 47868
+        }
+      ]
+    },
+    {
+      "key": "npcb",
+      "kind": "music",
+      "title": "NPCB",
+      "creator": "Rex Vijayan",
+      "source": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f9/13/99/f91399b1-231f-9746-d52a-6244b6a9e400/cover.jpg/600x600bb.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/npcb-240.webp",
+          "bytes": 17040
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/npcb-480.webp",
+          "bytes": 41898
+        }
+      ]
+    },
+    {
+      "key": "superintelligence",
+      "kind": "book",
+      "title": "Superintelligence",
+      "creator": "Nick Bostrom",
+      "source": "https://covers.openlibrary.org/b/isbn/9780198739838-L.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 358,
+          "path": "/assets/learnings/superintelligence-240.webp",
+          "bytes": 25364
+        },
+        {
+          "width": 480,
+          "height": 716,
+          "path": "/assets/learnings/superintelligence-480.webp",
+          "bytes": 70076
+        }
+      ]
+    },
+    {
+      "key": "deep-learning",
+      "kind": "book",
+      "title": "Deep Learning",
+      "creator": "Goodfellow, Bengio & Courville",
+      "source": "https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 320,
+          "path": "/assets/learnings/deep-learning-240.webp",
+          "bytes": 36304
+        },
+        {
+          "width": 480,
+          "height": 639,
+          "path": "/assets/learnings/deep-learning-480.webp",
+          "bytes": 92014
+        }
+      ]
+    },
+    {
+      "key": "reinforcement-learning",
+      "kind": "book",
+      "title": "Reinforcement Learning",
+      "creator": "Sutton & Barto",
+      "source": "https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 331,
+          "path": "/assets/learnings/reinforcement-learning-240.webp",
+          "bytes": 10640
+        },
+        {
+          "width": 480,
+          "height": 661,
+          "path": "/assets/learnings/reinforcement-learning-480.webp",
+          "bytes": 23072
+        }
+      ]
+    },
+    {
+      "key": "philosophers-stone",
+      "kind": "book",
+      "title": "Harry Potter and the Philosopher’s Stone",
+      "creator": "J.K. Rowling",
+      "source": "https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 240,
+          "path": "/assets/learnings/philosophers-stone-240.webp",
+          "bytes": 9428
+        },
+        {
+          "width": 480,
+          "height": 480,
+          "path": "/assets/learnings/philosophers-stone-480.webp",
+          "bytes": 21182
+        }
+      ]
+    },
+    {
+      "key": "chamber-secrets",
+      "kind": "book",
+      "title": "Harry Potter and the Chamber of Secrets",
+      "creator": "J.K. Rowling",
+      "source": "https://covers.openlibrary.org/b/isbn/9780747538493-L.jpg",
+      "variants": [
+        {
+          "width": 240,
+          "height": 348,
+          "path": "/assets/learnings/chamber-secrets-240.webp",
+          "bytes": 22296
+        },
+        {
+          "width": 480,
+          "height": 696,
+          "path": "/assets/learnings/chamber-secrets-480.webp",
+          "bytes": 50772
+        }
+      ]
+    }
+  ]
+}

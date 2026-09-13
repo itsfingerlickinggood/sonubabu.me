@@ -1,0 +1,51 @@
+/* Small feedback, shared everywhere. Reading and navigation never wait on motion. */
+.theme-toggle { position: relative; }
+.theme-toggle svg { position: absolute; inset: 0; margin: auto; display: block; pointer-events: none; opacity: 0; transform: rotate(-25deg) scale(.8); transition: opacity var(--duration-press) var(--ease-out), transform var(--duration-press) var(--ease-out); }
+.theme-toggle .icon-moon, [data-theme="dark"] .theme-toggle .icon-sun { opacity: 1; transform: none; transition-duration: var(--duration-feedback); }
+[data-theme="dark"] .theme-toggle .icon-moon { opacity: 0; transform: rotate(25deg) scale(.8); transition-duration: var(--duration-press); }
+
+:root[data-input="pointer"] button { touch-action: manipulation; transition: transform var(--duration-press) var(--ease-out); }
+:root[data-input="pointer"] button:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(.97); }
+button[aria-disabled="true"]:active { transform: none; }
+:where(a, button, summary, input, select):focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
+.entry-arrow, a[target="_blank"]::after, .back-link::before, .essay-next a > span > span { display: inline-block; transition: transform var(--duration-feedback) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  :root[data-input="pointer"] .essay-entry:hover .entry-arrow,
+  :root[data-input="pointer"] a[target="_blank"]:hover::after { transform: translate(2px, -2px); }
+  :root[data-input="pointer"] .back-link:hover::before { transform: translateX(-2px); }
+  :root[data-input="pointer"] .essay-next a:hover > span > span { transform: translateX(2px); }
+}
+
+/* Native disclosure semantics remain the source of truth. Height is temporary. */
+details[data-disclosure-moving] { overflow: clip; }
+.note-toggle-v { transition: opacity var(--duration-feedback) var(--ease-out); }
+.learning-item[data-motion-open="true"] .note-toggle-v { opacity: 0; }
+.learning-item[data-motion-open="false"] .note-toggle-v { opacity: 1; }
+.reading-article .expandable summary::before { transition: transform var(--duration-feedback) var(--ease-out); }
+.reading-article .expandable[data-motion-open="true"] summary::before { transform: rotate(90deg); }
+.reading-article .expandable[data-motion-open="false"] summary::before { transform: rotate(0deg); }
+
+/* Only explanatory geometry moves. Numerical readings and prose remain instant. */
+.authority-admitted { clip-path: inset(0 0 0 0); transition: clip-path var(--duration-enter) var(--ease-in-out); }
+.publishing-links [data-source-edge] { opacity: .4; transition: opacity var(--duration-feedback) var(--ease-out); }
+.publishing-links [data-source-edge].is-selected { opacity: 1; }
+.bv-message { transition-timing-function: var(--ease-in-out); }
+.home-right { display: flex; flex-direction: column; }
+.home-canvas-panel { flex: 1; min-height: 0; }
+.home-right .viz-playback { align-self: flex-end; flex: none; margin-block: .5rem 0; }
+.home-right .viz-playback[hidden] { display: none; }
+
+/* Keyboard or assistive activation cannot inherit a previous pointer animation. */
+:root:not([data-input="pointer"]) :is(button, .theme-toggle svg, .work-art img, .art-affordance, .entry-arrow, .note-toggle-v, .bv-motion, .authority-admitted, .publishing-links [data-source-edge], .essay-next a > span > span),
+:root:not([data-input="pointer"]) :is(a, summary)::before,
+:root:not([data-input="pointer"]) a::after { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  :root :is(button, .theme-toggle svg, .work-art img, .art-affordance, .entry-arrow, .note-toggle-v, .bv-motion, .authority-admitted, .publishing-links [data-source-edge], .essay-next a > span > span),
+  :root :is(a, summary)::before, :root a::after { transition: none !important; }
+  :root button:active:not(:disabled):not([aria-disabled="true"]),
+  :root .essay-entry:hover .entry-arrow, :root a[target="_blank"]:hover::after,
+  :root .back-link:hover::before, :root .essay-next a:hover > span > span { transform: none; }
+}
+@media print {
+  .home-right .viz-playback { display: none; }
+}

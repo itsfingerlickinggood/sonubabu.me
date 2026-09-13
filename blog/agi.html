@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AGI Ã¢â‚¬â€ Sonu Babu</title>
+    <title>AGI — Sonu Babu</title>
     <meta
       name="description"
       content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
     />
-    <meta property="og:title" content="AGI Ã¢â‚¬â€ Sonu Babu" />
+    <meta property="og:title" content="AGI — Sonu Babu" />
     <meta
       property="og:description"
       content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://sonubabu.me/blog/agi" />
     <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AGI Ã¢â‚¬â€ Sonu Babu" />
+    <meta name="twitter:title" content="AGI — Sonu Babu" />
     <meta
       name="twitter:description"
       content="Artificial General Intelligence represents an intensely pursued milestone in AI development: a machine capable of understanding, learning, and applying intelligence across any intellectual task."
@@ -25,30 +25,23 @@
     <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
     <link rel="canonical" href="https://sonubabu.me/blog/agi" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preload" href="/css/site.min.css" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/essay.min.css?v=57ea2f4a76dc" as="style" />
+    <link rel="stylesheet" href="/css/essay.min.css?v=57ea2f4a76dc" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-name">Sonu Babu</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/research.html">Research</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
         <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
@@ -86,18 +79,27 @@
         </button>
       </nav>
 
-      <main class="article-page research-article">
+      <main id="main-content" class="article-page research-article reading-article">
         <a href="/blog.html" class="back-link">Back to Blog</a>
 
-        <div class="viz-hero" data-viz="emergence"></div>
 
         <header class="article-header">
           <h1>AGI</h1>
           <time class="article-meta" datetime="2025-05-02">May 2, 2025</time>
+          <p class="article-lede">What does it mean to be generally intelligent—and what does capability leave unanswered?</p>
+          <p class="essay-note">An interpretive essay, not a forecast. Revised September 2026; examples distinguish cited frameworks from my own views.</p>
         </header>
 
+          <figure class="essay-art essay-opening">
+            <picture>
+              <source data-blog-dark media="not all" srcset="/assets/blog/agi-dark-360.webp 360w, /assets/blog/agi-dark-720.webp 720w, /assets/blog/agi-dark-1200.webp 1200w" sizes="(max-width: 540px) calc(100vw - 48px), 240px">
+              <img src="/assets/blog/agi-light-720.webp" srcset="/assets/blog/agi-light-360.webp 360w, /assets/blog/agi-light-720.webp 720w, /assets/blog/agi-light-1200.webp 1200w" sizes="(max-width: 540px) calc(100vw - 48px), 240px" width="1536" height="1024" loading="eager" decoding="async" alt="An Impressionist landscape with a wooden bridge and paths across small islands.">
+            </picture>
+            <figcaption><strong>Beyond one island.</strong> The bridge is a metaphor for transfer: success in one domain leaves the question of what carries across to another.</figcaption>
+          </figure>
+
         <div class="article-body">
-          <nav class="article-toc">
+          <nav class="article-toc" aria-label="Article contents">
             <p class="toc-title">Contents</p>
             <ul>
               <li><a href="#what-is-agi">Defining the General</a></li>
@@ -108,7 +110,7 @@
             </ul>
           </nav>
 
-          <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§1  Defining the General Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+          <!-- ═══ §1  Defining the General ═══ -->
 
           <h2 id="what-is-agi">Defining the General</h2>
           <p>
@@ -142,61 +144,56 @@
           </div>
 
           <p>
-            Google DeepMind&rsquo;s 2023 framework proposes a useful taxonomy
-            &mdash; six levels of AGI, each defined by the breadth and depth of
-            competence a system exhibits relative to a skilled human:
+            Google DeepMind&rsquo;s 2023 framework proposes six performance
+            levels, numbered 0 through 5, and separately distinguishes narrow
+            from general systems. In abbreviated form:
           </p>
 
-          <!-- Diagram 1: Levels of AGI -->
-          <div class="diagram-flow" aria-label="Levels of AGI from Emerging to Superhuman">
-            <div class="flow-node">
-              <strong>Level 0</strong>
-              Emerging
+          <figure class="blog-visual" data-blog-visual="breadth" aria-labelledby="breadth-title">
+            <header><span class="bv-kicker">01 / Two dimensions</span><h3 id="breadth-title">Being better is not the same as being broader</h3><p>Compare three hypothetical systems. Performance and generality are separate questions.</p></header>
+            <div class="bv-stage">
+              <div class="bv-axis-note"><span>Performance ↑</span><span>Generality →</span></div>
+              <table class="bv-matrix" aria-label="Six performance levels across narrow and general capabilities">
+                <thead><tr><th scope="col">Level</th><th scope="col">Narrow</th><th scope="col">General</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">5 · Superhuman</th><td><span class="bv-marker bv-motion" data-cell="5-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="5-general" aria-hidden="true"></span></td></tr>
+                  <tr><th scope="row">4 · Virtuoso</th><td><span class="bv-marker bv-motion is-current" data-cell="4-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="4-general" aria-hidden="true"></span></td></tr>
+                  <tr><th scope="row">3 · Expert</th><td><span class="bv-marker bv-motion" data-cell="3-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="3-general" aria-hidden="true"></span></td></tr>
+                  <tr><th scope="row">2 · Competent</th><td><span class="bv-marker bv-motion" data-cell="2-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="2-general" aria-hidden="true"></span></td></tr>
+                  <tr><th scope="row">1 · Emerging</th><td><span class="bv-marker bv-motion" data-cell="1-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="1-general" aria-hidden="true"></span></td></tr>
+                  <tr><th scope="row">0 · No AI</th><td><span class="bv-marker bv-motion" data-cell="0-narrow" aria-hidden="true"></span></td><td><span class="bv-marker bv-motion" data-cell="0-general" aria-hidden="true"></span></td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-node">
-              <strong>Level 1</strong>
-              Competent
+            <div class="bv-controls " role="group" aria-label="Choose a hypothetical capability profile" hidden>
+              <button type="button" data-choice="specialist" aria-pressed="true">Specialist</button>
+              <button type="button" data-choice="uneven" aria-pressed="false">Broad, uneven</button>
+              <button type="button" data-choice="strong" aria-pressed="false">Broad, strong</button>
             </div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-node">
-              <strong>Level 2</strong>
-              Expert
+            <div class="bv-panels">
+              <div class="bv-panel" data-panel="specialist"><strong>Narrow · Level 4 — Virtuoso</strong><p>Imagine exceptional performance in one bounded domain. That depth does not establish competence across unrelated tasks.</p></div>
+              <div class="bv-panel" data-panel="uneven"><strong>General · Level 1 — Emerging</strong><p>Imagine a wide range of tasks, but a low performance floor. Breadth alone does not establish expert-level general intelligence.</p></div>
+              <div class="bv-panel" data-panel="strong"><strong>General · Level 3 — Expert</strong><p>Imagine expert-level performance across the broad task set required by the framework. This is an illustrative category, not a claim about a current model.</p></div>
             </div>
-            <div class="flow-arrow">&rarr;</div>
-            <div class="flow-node node-warn">
-              <strong>Level 3</strong>
-              Virtuoso
-            </div>
-            <div class="flow-arrow arrow-danger">&rarr;</div>
-            <div class="flow-node node-danger">
-              <strong>Level 4</strong>
-              Superhuman
-            </div>
-          </div>
-
+            <figcaption>Conceptual examples using the two-axis framework in <a href="https://arxiv.org/abs/2311.02462">Morris et al., <em>Levels of AGI</em></a>. Not a benchmark, forecast, or assessment of autonomy. The dot marks the selected example.</figcaption>
+          </figure>
           <p>
-            Current frontier models&mdash;GPT-4, Gemini Ultra, Claude
-            3&mdash;sit at roughly Level&nbsp;1: competent across many domains,
-            yet still brittle in ways that expose the absence of a unified world
-            model. The jump from Level&nbsp;1 to Level&nbsp;2 is not a matter of
-            scaling alone. It demands qualitative shifts in how systems ground
-            knowledge, maintain long-horizon coherence, and handle genuinely
-            novel situations without catastrophic failure.
+            Assigning any particular model to one of these levels requires a
+            broad task set and a declared standard of comparison. This essay
+            therefore does not give current systems a definitive AGI level.
           </p>
 
-          <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§2  Orthogonality of Competence Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+          <!-- ═══ §2  Orthogonality of Competence ═══ -->
 
           <h2 id="narrow-vs-general">Orthogonality of Competence</h2>
           <p>
-            Contemporary AI systems&mdash;spanning massive autoregressive
-            language models to superhuman reinforcement learning agents&mdash;are
-            profoundly narrow. An agent trained via Proximal Policy Optimization
-            to dominate Go possesses zero conceptual mapping of the game
-            piece&rsquo;s physical geometry. A diffusion model synthesizing
-            photorealistic artwork lacks any causal understanding of optics or
-            gravity. These architectures are brittle, optimized over specific
-            manifolds within their loss landscapes.
+            Contemporary AI systems can be extremely capable while remaining
+            uneven across tasks. A game-playing agent may exceed human
+            performance inside a formal environment without transferring that
+            competence to unrelated physical tasks. An image generator can
+            produce convincing scenes while still making systematic errors in
+            geometry and causality. Those limitations motivate tests of breadth,
+            transfer, robustness, and adaptation.
           </p>
 
           <!-- Diagram 2: Narrow AI vs General AI comparison -->
@@ -204,12 +201,12 @@
             <div class="comp-panel">
               <h4>Narrow AI (today)</h4>
               <ul>
-                <li>Single-task or single-domain optimization</li>
-                <li>Brittle outside training distribution</li>
-                <li>No transfer between modalities</li>
-                <li>Performance degrades on novel inputs</li>
-                <li>No causal model of the world</li>
-                <li>Stateless &mdash; no persistent memory</li>
+                <li>Often optimized for a bounded task or interface</li>
+                <li>May be brittle under distribution shift</li>
+                <li>Transfer can be uneven across modalities</li>
+                <li>Novel inputs can expose sharp failures</li>
+                <li>Causal reasoning remains inconsistent</li>
+                <li>Persistent memory, when present, is system-dependent</li>
               </ul>
             </div>
             <div class="comp-panel">
@@ -226,23 +223,32 @@
           </div>
 
           <p>
-            An AGI, contrastingly, operates orthogonally to constraint. It
-            implies an architectural plasticity that transfers latent
-            representations across modalities. When a general intelligence plays
-            a game, it understands the ludic context; when it generates text, it
-            grounds the syntax in a continuous, multi-dimensional world model.
-            This structural fluidity is the demarcation line between mimicking
-            intelligence and embodying it.
+            A stronger notion of generality would require reliable transfer and
+            adaptation across domains. Whether that requires a unified world
+            model, a particular architecture, embodiment, or some combination
+            remains an open research question.
           </p>
 
-          <figure class="distill-figure margin-caption wide">
-            <div class="viz-container" data-viz="gradientDescent" style="min-height: 350px;"></div>
-            <figcaption class="distill-figcaption">
-              <strong>Gradient Descent on a Loss Landscape.</strong> A particle
-              navigates the contours of a non-convex surface, seeking minima
-              through stochastic optimization&mdash;the fundamental mechanism
-              underlying all modern deep learning.
-            </figcaption>
+          <figure class="blog-visual" data-blog-visual="loss" aria-labelledby="loss-title">
+            <header><span class="bv-kicker">02 / A small learning experiment</span><h3 id="loss-title">One objective. One step at a time.</h3><p>For the toy loss L(w) = (w − 1)², take a step against the slope and watch the error fall.</p></header>
+            <div class="bv-stage">
+              <div class="bv-axis-note"><span>Loss L(w)</span><span>Minimum at w = 1</span></div>
+              <div class="bv-plot" role="img" aria-label="A U-shaped loss curve, with its minimum at w equals 1. The ochre dot starts at w equals negative 2, loss 9. Current values appear below.">
+                <svg viewBox="0 0 480 240" aria-hidden="true">
+                  <path class="bv-axis" d="M40 24V220H456" />
+                  <path class="bv-curve" d="M40 50Q240 390 440 50" />
+                  <g class="bv-loss-history"></g>
+                  <circle class="bv-optimum" cx="240" cy="220" r="5" />
+                  <g class="bv-loss-dot bv-motion"><circle class="bv-point" r="7" /></g>
+                </svg>
+                <div class="bv-ticks" aria-hidden="true"><span>−2</span><span>1</span><span>4</span></div>
+              </div>
+              <dl class="bv-metrics"><div><dt>Step</dt><dd data-step-value>0</dd></div><div><dt>Parameter w</dt><dd data-weight>−2.000</dd></div><div><dt>Loss L(w)</dt><dd data-loss>9.0000</dd></div></dl>
+              <div class="bv-update" aria-label="Calculation for the next step"><span>Next update</span><p data-update-equation>−2.000 − 0.2 × (−6.000) = −0.800</p><small>Current value − learning rate × slope = next value</small></div>
+            </div>
+            <div class="bv-controls" role="group" aria-label="Control the toy optimization" hidden><button type="button" data-step>Take one step</button><button type="button" data-reset disabled>Reset</button></div>
+            <p>Start at w = −2. With a learning rate of 0.2, each update is w ← w − 0.4(w − 1). The first step gives w = −0.8 and loss 3.24.</p>
+            <figcaption>The ochre point is the current step; the hollow points retain earlier steps. Values are calculated from this quadratic, not AI training data. Lower loss on one objective is not evidence of generality or alignment. The demonstration stops after 12 steps.</figcaption>
           </figure>
 
           <p>
@@ -250,7 +256,7 @@
             surfaces. A narrow model minimizes empirical risk over a fixed task
             distribution \(\mathcal{D}_k\):
           </p>
-          <p style="text-align:center;">
+          <p class="math-block" tabindex="0" role="region" aria-label="Fixed-task risk objective; scroll horizontally if needed" style="text-align:center;">
             \[\min_\theta \; \mathbb{E}_{(x,y)\sim\mathcal{D}_k}\bigl[\mathcal{L}(f_\theta(x),\,y)\bigr]\]
           </p>
           <p>
@@ -259,7 +265,7 @@
             \(\{\mathcal{D}_1, \mathcal{D}_2, \ldots\}\) &mdash; including
             distributions it has never encountered:
           </p>
-          <p style="text-align:center;">
+          <p class="math-block" tabindex="0" role="region" aria-label="Cross-distribution risk objective; scroll horizontally if needed" style="text-align:center;">
             \[\min_\theta \; \mathbb{E}_{\mathcal{D}\sim\mathcal{P}}\!\left[\mathbb{E}_{(x,y)\sim\mathcal{D}}\bigl[\mathcal{L}(f_\theta(x),\,y)\bigr]\right]\]
           </p>
           <p>
@@ -268,7 +274,7 @@
             minimal priors &mdash; the hallmark of genuine intelligence.
           </p>
 
-          <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§3  Pathways to Emergence Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+          <!-- ═══ §3  Pathways to Emergence ═══ -->
 
           <h2 id="approaches">Pathways to Emergence</h2>
           <p>
@@ -278,7 +284,7 @@
           </p>
 
           <!-- Diagram 3: Timeline of AGI approaches -->
-          <div class="diagram-timeline" aria-label="Timeline of AGI research paradigms">
+          <div class="diagram-timeline" aria-label="AGI research approaches">
             <div class="tl-node">
               <div class="tl-label">Paradigm 1 &mdash; Neural Scaling</div>
               <div class="tl-content">
@@ -322,28 +328,16 @@
               <div class="tl-content">
                 The most literal approach: reverse-engineer the human brain at
                 sufficient resolution and simulate it digitally. While
-                theoretically sound &mdash; we know at least one substrate that
-                produces general intelligence &mdash; the computational hurdles
-                remain enormous. Current connectomics can map
-                <em>C.&nbsp;elegans</em> (302 neurons), but the human cortex
-                contains roughly \(8.6 \times 10^{10}\) neurons with
-                \(\sim10^{14}\) synapses.
+                motivated by the fact that biological brains produce general
+                intelligence, but it is not established that a structural scan
+                alone would be sufficient. The computational and measurement
+                hurdles remain enormous: the human brain contains roughly 86
+                billion neurons, while the cerebral cortex accounts for only a
+                fraction of that total.
               </div>
             </div>
           </div>
 
-          <figure style="margin: 4rem 0; width: 100%">
-            <div
-              data-viz="lossLandscape"
-              style="
-                width: 100%;
-                height: 400px;
-                background: var(--color-surface-raised);
-                border-radius: var(--radius-md);
-                overflow: hidden;
-              "
-            ></div>
-          </figure>
 
           <p>
             None of these paradigms is mutually exclusive. The most plausible
@@ -355,7 +349,7 @@
             prepared for the moment it does.
           </p>
 
-          <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§4  The Alignment Problem Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+          <!-- ═══ §4  The Alignment Problem ═══ -->
 
           <h2 id="alignment">The Alignment Problem</h2>
           <p>
@@ -376,9 +370,9 @@
             highly efficient expected-utility maximizer, might acquire resources
             and ensure its own survival to fulfill its objective function,
             irrespective of the collateral consequences to human flourishing.
-            Solving AGI without simultaneously defining an invariant alignment
-            matrix is increasingly viewed not as a triumph, but as a terminal
-            systemic vulnerability.
+            This creates a risk-management problem: increased capability can
+            amplify the consequences of misspecified objectives, weak oversight,
+            or unsafe deployment incentives.
           </p>
 
           <div class="callout">
@@ -402,7 +396,7 @@
             potentially an extinction-level event.
           </p>
 
-          <!-- Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â Ã‚Â§5  Outlook Ã¢â€¢ÂÃ¢â€¢ÂÃ¢â€¢Â -->
+          <!-- ═══ §5  Outlook ═══ -->
 
           <h2 id="outlook">Outlook</h2>
           <p>
@@ -414,13 +408,10 @@
             first-class objective rather than an afterthought.
           </p>
           <p>
-            The most dangerous delusion in the field is the belief that
-            capability and alignment can be pursued sequentially &mdash; that we
-            can build the thing first and figure out how to aim it later.
-            Intelligence is not a tool that sits inert until wielded. A
-            sufficiently capable system acts on the world the moment it exists.
-            The alignment problem must be solved <em>in parallel</em> with the
-            capability problem, or not at all.
+            Capability and alignment should not be treated as strictly
+            sequential projects. Safety evaluation, governance, and deployment
+            controls should develop alongside capability research, with claims
+            and safeguards tested rather than assumed.
           </p>
 
           <blockquote>
@@ -454,6 +445,11 @@
               </li>
             </ol>
           </section>
+          <nav class="essay-next" aria-label="More essays">
+            <p>Keep reading</p>
+            <a href="/blog/dostoevsky.html"><span>Dostoevsky <span aria-hidden="true">→</span></span><small>Fiction that holds difficult questions open.</small></a>
+            <a href="/blog/ideas.html"><span>Ideas <span aria-hidden="true">→</span></span><small>Connections, small trials, and room to reconsider.</small></a>
+          </nav>
         </div>
       </main>
 
@@ -462,7 +458,7 @@
       </footer>
     </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
+    <script defer src="/js/blog-visuals.min.js?v=3aee7fc85cac"></script>
+    <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
   </body>
 </html>

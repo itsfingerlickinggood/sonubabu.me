@@ -1,8 +1,10 @@
 :root {
   --color-bg: #fafaf9;
   --color-text: #1c1917;
-  --color-text-muted: #78716c;
-  --color-text-subtle: #a8a29e;
+  --color-text-muted: #686762;
+  --color-text-subtle: #78716c;
+  --color-prose: #343330;
+  --color-wash: rgb(28 25 23 / .035);
   --color-border: #e7e5e4;
   --color-border-strong: #d6d3d1;
   --color-link: #1c1917;
@@ -12,14 +14,16 @@
   --color-accent: #1c1917;
   --color-accent-soft: rgba(28, 25, 23, 0.06);
 
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
-  --font-heading: "Iowan Old Style", "Palatino Linotype", Palatino,
-    "Book Antiqua", Georgia, "Times New Roman", serif;
+  --font-body: var(--font-sans);
+  --font-heading: var(--font-sans);
   --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     monospace;
-  --font-article: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --font-article: var(--font-sans);
+  --tracking-body: 0;
+  --tracking-heading: -.022em;
+  --tracking-meta: .01em;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -50,6 +54,13 @@
   --max-width-article: 700px;
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 120ms;
+  --duration-feedback: 180ms;
+  --duration-disclosure: 200ms;
+  --duration-enter: 250ms;
+  --duration-exit: 180ms;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -65,8 +76,10 @@
 [data-theme="dark"] {
   --color-bg: #0c0a09;
   --color-text: #e7e5e4;
-  --color-text-muted: #a8a29e;
-  --color-text-subtle: #78716c;
+  --color-text-muted: #aaa8a2;
+  --color-text-subtle: #9c9993;
+  --color-prose: #deddd9;
+  --color-wash: rgb(255 255 255 / .045);
   --color-border: #292524;
   --color-border-strong: #44403c;
   --color-link: #e7e5e4;

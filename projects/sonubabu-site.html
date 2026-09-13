@@ -1,81 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sonubabu.me Ã¢â‚¬â€ Sonu Babu</title>
-  <meta name="description" content="A minimal, hand-crafted personal website built with plain HTML, CSS, and vanilla JavaScript Ã¢â‚¬â€ no frameworks, no build tools, no bloat.">
-  <meta property="og:title" content="sonubabu.me Ã¢â‚¬â€ Sonu Babu">
-  <meta property="og:description" content="A minimal, hand-crafted personal website built with plain HTML, CSS, and vanilla JavaScript Ã¢â‚¬â€ no frameworks, no build tools, no bloat.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://sonubabu.me/projects/sonubabu-site">
-  <meta property="og:image" content="https://sonubabu.me/og-image.svg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="sonubabu.me Ã¢â‚¬â€ Sonu Babu">
-  <meta name="twitter:description" content="A minimal, hand-crafted personal website built with plain HTML, CSS, and vanilla JavaScript Ã¢â‚¬â€ no frameworks, no build tools, no bloat.">
-  <meta name="twitter:image" content="https://sonubabu.me/og-image.svg">
-  <link rel="canonical" href="https://sonubabu.me/projects/sonubabu-site">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script>
-    (function(){var t=localStorage.getItem("theme")||
-    (matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
-    document.documentElement.setAttribute("data-theme",t)})();
-  </script>
-  <link rel="preload" href="/css/site.min.css" as="style">
-  <link rel="stylesheet" href="/css/site.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sonubabu.me — Sonu Babu</title>
+  <meta name="description" content="How the sonubabu.me static portfolio is built." />
+  <meta property="og:title" content="sonubabu.me — Sonu Babu" />
+  <meta property="og:description" content="A static portfolio built with semantic HTML, modular CSS, and vanilla JavaScript." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sonubabu.me/projects/sonubabu-site" />
+  <meta property="og:image" content="https://sonubabu.me/assets/work/monet-v2/portfolio-light.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sonubabu.me/assets/work/monet-v2/portfolio-light.webp" />
+  <link rel="canonical" href="https://sonubabu.me/projects/sonubabu-site" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+  <link rel="preload" href="/css/work.min.css?v=ea6a87a3ecbe" as="style" /><link rel="stylesheet" href="/css/work.min.css?v=ea6a87a3ecbe" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to article</a>
   <div class="site-container">
     <nav class="site-nav" aria-label="Main navigation">
-      <a href="/" class="nav-name">Sonu Babu</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/projects.html">Projects</a>
-      <a href="/research.html">Research</a>
-      <a href="/learnings.html">Learnings</a>
-      <button class="theme-toggle" type="button" aria-label="Switch theme">
-        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <a href="/" class="nav-name">Sonu Babu</a><a href="/about.html">About</a><a href="/projects.html" aria-current="page">Projects</a><a href="/research.html">Research</a><a href="/blog.html">Blog</a><a href="/learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.2 4.2l1.4 1.4m12.8 12.8 1.4 1.4M1 12h2m18 0h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </nav>
-
-    <main class="article-page">
+    <main id="main-content" class="article-page work-article">
       <a href="/projects.html" class="back-link">Back to Projects</a>
 
-      <div class="viz-hero" data-viz="quill"></div>
-
       <header class="article-header">
+        <span class="status-label">Live website</span>
         <h1>sonubabu.me</h1>
-        <time class="article-meta" datetime="2026-03">Mar 2026</time>
+        <p class="article-lede">A deliberately small static portfolio with research writing and lightweight visualizations.</p>
       </header>
-
+      <figure class="article-art">
+        <a class="work-art work-art-large" href="/assets/work/monet-v2/portfolio-light.webp" data-art-light="/assets/work/monet-v2/portfolio-light.webp" data-art-dark="/assets/work/monet-v2/portfolio-dark.webp" data-art data-art-style="painting" data-art-title="sonubabu.me" data-art-caption="A small home for research and writing. The cottage and notebook represent this personal website, not a separate product." aria-label="View illustration: sonubabu.me">
+          <picture>
+            <source data-art-dark-source media="not all" srcset="/assets/work/monet-v2/portfolio-dark-160.webp 160w, /assets/work/monet-v2/portfolio-dark-320.webp 320w, /assets/work/monet-v2/portfolio-dark-640.webp 640w" sizes="(max-width: 540px) 80px, 112px" />
+            <img src="/assets/work/monet-v2/portfolio-light-320.webp" srcset="/assets/work/monet-v2/portfolio-light-160.webp 160w, /assets/work/monet-v2/portfolio-light-320.webp 320w, /assets/work/monet-v2/portfolio-light-640.webp 640w" sizes="(max-width: 540px) 80px, 112px" width="320" height="320" alt="An open notebook in front of a small cottage beside a garden pond." loading="eager" decoding="async" />
+          </picture>
+              <span class="art-affordance" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 3h4v4M13 3 9 7M7 13H3V9M3 13l4-4"/></svg></span>
+            </a>
+        <figcaption>A small home for research and writing. The cottage and notebook represent this personal website, not a separate product. <span class="art-disclosure">Concept illustration · open for a closer look.</span></figcaption>
+      </figure>
       <div class="article-body">
-        <h2>Philosophy: No Frameworks, No Bloat</h2>
-        <p>This website is a deliberate rejection of the modern frontend stack. No React, no Next.js, no Webpack, no npm&mdash;just plain HTML, CSS, and vanilla JavaScript served as static files. The decision wasn&rsquo;t born from ignorance of those tools (several projects in this portfolio use them extensively) but from a conviction that a personal website should embody the simplicity it advocates. Every page loads in under a second on a 3G connection. There are zero runtime dependencies. The entire site fits in a few hundred kilobytes, and every byte earns its place.</p>
+        <figure class="explainer" data-explainer="publishing" aria-labelledby="publishing-title">
+          <header class="explainer-heading"><span class="explainer-kicker">Explore the idea</span><h2 id="publishing-title">One page, a few small parts.</h2><p>Select a source layer to see which part of the reading experience it supplies.</p></header>
+          <div class="explainer-controls" role="group" aria-label="Inspect a source layer" data-lab-controls hidden><button type="button" data-choice="html" aria-pressed="false">HTML</button><button type="button" data-choice="css" aria-pressed="false">CSS</button><button type="button" data-choice="js" aria-pressed="false">JavaScript</button></div>
+          <div class="publishing-map">
+            <div class="publishing-source"><span class="diagram-label">Source</span><code data-source-file>research/alignment-faking.html</code></div>
+            <svg class="publishing-links" viewBox="0 0 480 64" aria-hidden="true"><path data-source-edge="html" d="M240 0V22H80V60"/><path data-source-edge="css" d="M240 0V60"/><path data-source-edge="js" d="M240 0V22H400V60"/></svg>
+            <div class="publishing-outputs"><div data-output-layer="html"><span>01</span><strong>Words &amp; evidence</strong></div><div data-output-layer="css"><span>02</span><strong>Layout &amp; theme</strong></div><div data-output-layer="js"><span>03</span><strong>Optional interaction</strong></div></div>
+          </div>
+          <p class="explainer-observation" data-source-output role="status">HTML carries the article and its evidence. Reading and ordinary links do not require JavaScript.</p>
+          <figcaption>Based on this website’s actual static structure. CSS and JavaScript are bundled/minified by the existing build; there is no application framework to initialize.</figcaption>
+        </figure>
+        <h2>Architecture</h2>
+        <p>The site uses semantic HTML, modular CSS, and vanilla JavaScript. A small Node build script concatenates CSS and invokes command-line minifiers for CSS and JavaScript. Vercel rewrites preserve extension-free public URLs.</p>
 
-        <h2>Canvas Animations</h2>
-        <p>Each page features a unique 2D canvas animation rendered in the hero section, driven by a lightweight visualization engine in <code>viz.js</code>. The animations are generative&mdash;particle systems, flow fields, geometric compositions, emergent patterns&mdash;each tied to a <code>data-viz</code> attribute on the hero element. They respond to the active color theme, pulling palette values from CSS custom properties so dark mode and light mode each produce a distinct visual character. The renderer uses <code>requestAnimationFrame</code> with automatic throttling to cap at 30 fps on low-power devices, and pauses entirely when the canvas scrolls out of the viewport via an IntersectionObserver. The goal was to give each page a living, breathing header without the weight of WebGL or a canvas library.</p>
+        <h2>Interface</h2>
+        <p>The design uses system fonts for the core interface and an article font on some long-form pages. It includes a persisted light/dark theme, responsive layouts, keyboard focus styles, reduced-motion-aware CSS, and canvas-based decorative visualizations.</p>
 
-        <h2>Design and Typography</h2>
-        <p>The typographic system pairs DM Sans for interface elements and navigation, Newsreader for long-form body text, and JetBrains Mono for code snippets. This combination balances geometric clarity with the warmth of a serif reading face&mdash;a nod to the academic style of publications like distill.pub, where information density coexists with visual calm. The color system is built entirely on CSS custom properties scoped under <code>[data-theme]</code> selectors, making theme switching instantaneous with zero flash of unstyled content (a FOUC prevention script in the <code>&lt;head&gt;</code> sets the theme attribute before the first paint). Spacing follows a consistent scale derived from a base unit, and the layout uses CSS Grid for page structure with no media-query breakpoints below tablet width&mdash;the fluid type and spacing scale handle most responsive needs intrinsically.</p>
+        <h2>Content discipline</h2>
+        <p>This revision adds status labels and source boundaries throughout the site. Completed studies, pilots, prototypes, concepts, and proposals are no longer presented as interchangeable forms of evidence.</p>
 
-        <h2>Features and Craft Details</h2>
-        <p>Dark and light modes persist across sessions via <code>localStorage</code>, with the initial theme respecting the user&rsquo;s OS preference through <code>prefers-color-scheme</code>. The research pages use interactive data visualizations rendered inline alongside academic-style prose. The 404 page features a retro airport flip-clock animation that displays the error code with mechanical character-splitting transitions. Navigation is minimal&mdash;five links and a theme toggle&mdash;because the site&rsquo;s architecture is flat enough that deep menus would add complexity without aiding discovery. The entire project is a reminder that the web&rsquo;s core technologies are remarkably capable on their own, and that sometimes the most impressive engineering is knowing what not to include. Inspired by the restraint of ibelick.com and the clarity of distill.pub, this site aims to be fast, readable, and quietly distinctive.</p>
+        <h2>Source</h2>
+        <p><a href="https://github.com/itsfingerlickinggood/sonubabu.me" target="_blank" rel="noopener noreferrer">Inspect the public repository</a>.</p>
       </div>
-
-      <div class="article-tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Canvas API</span>
-      </div>
+      <div class="article-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Vercel</span></div>
     </main>
-
-    <footer class="site-footer">
-      <p>&copy; 2026 Sonu Babu</p>
-    </footer>
-  </div>
-
-  <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
+    <footer class="site-footer"><p>&copy; 2026 Sonu Babu</p></footer>
+  </div><script defer src="/js/explainers.min.js?v=17f531926122"></script><script defer src="/js/work-art.min.js?v=ea45f4cfe8b5"></script><script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
 </body>
 </html>

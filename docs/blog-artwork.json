@@ -1,0 +1,140 @@
+{
+  "mode": "built-in image_gen",
+  "generated": "2026-09-13",
+  "disclosure": "AI-generated editorial metaphors; not evidence, historical records, or original Monet paintings.",
+  "entries": [
+    {
+      "id": "agi",
+      "theme": "light",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-809debbb-bd79-44cc-a300-1251fdfcd86c.png",
+      "original": "assets/blog/originals/agi-light.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/agi-light-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/agi-light-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/agi-light-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, light-mode variant.\nPrimary request: A small weathered wooden footbridge connects several low grassy islands across still water, with different branching footpaths beyond. A quiet visual metaphor for transferring learning between domains. No people, no robots, no neural-network clipart.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: soft daylight, warm ivory and pale stone, muted sage, dusty blue, small ochre accents. Luminous but low saturation, gentle contrast for an off-white reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "bab3c2e3663dcd7a907137c592d6cd09580e42f88890bc3f36f05dcb94479c47"
+    },
+    {
+      "id": "agi",
+      "theme": "dark",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-5098afb3-9938-42a1-8a99-4fe9427d93e5.png",
+      "original": "assets/blog/originals/agi-dark.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/agi-dark-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/agi-dark-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/agi-dark-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, dark-mode variant.\nPrimary request: A small weathered wooden footbridge connects several low grassy islands across still water, with different branching footpaths beyond. A quiet visual metaphor for transferring learning between domains. No people, no robots, no neural-network clipart.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: moonlit and lamplit low-key atmosphere, deep charcoal and blue-gray, muted sage, restrained warm ochre highlights. Clearly readable silhouettes, no glaring white areas, intended for a near-black reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "d962b946630b4e92254558a65ce1452077eae8a0633a550a3daf5f642645283c"
+    },
+    {
+      "id": "dostoevsky",
+      "theme": "light",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-d79c2c3f-203d-497e-b283-a8fc07e914d1.png",
+      "original": "assets/blog/originals/dostoevsky-light.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/dostoevsky-light-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/dostoevsky-light-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/dostoevsky-light-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, light-mode variant.\nPrimary request: An imagined nineteenth-century Petersburg-inspired reading room: an open unlettered book on a modest wooden table, three empty chairs oriented differently, a tall window looking onto a canal. An intimate literary metaphor for independent voices, not a real historical room or author portrait.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: soft daylight, warm ivory and pale stone, muted sage, dusty blue, small ochre accents. Luminous but low saturation, gentle contrast for an off-white reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "039df10d1d15701e7d6c8dcad4688c038e6415894270b9152f0ca0ca3f279ce9"
+    },
+    {
+      "id": "dostoevsky",
+      "theme": "dark",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-982bae5a-bdf3-4337-8b26-ab628692725a.png",
+      "original": "assets/blog/originals/dostoevsky-dark.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/dostoevsky-dark-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/dostoevsky-dark-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/dostoevsky-dark-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, dark-mode variant.\nPrimary request: An imagined nineteenth-century Petersburg-inspired reading room: an open unlettered book on a modest wooden table, three empty chairs oriented differently, a tall window looking onto a canal. An intimate literary metaphor for independent voices, not a real historical room or author portrait.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: moonlit and lamplit low-key atmosphere, deep charcoal and blue-gray, muted sage, restrained warm ochre highlights. Clearly readable silhouettes, no glaring white areas, intended for a near-black reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "2234e2c6022eee63f5e2b1bece9583ebd8f5121957e06c03c540fa905a69ab3f"
+    },
+    {
+      "id": "ideas",
+      "theme": "light",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-98414ea3-b4b5-4ea4-a49f-12cb1b9acd49.png",
+      "original": "assets/blog/originals/ideas-light.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/ideas-light-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/ideas-light-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/ideas-light-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, light-mode variant.\nPrimary request: An open unlettered sketchbook on a simple worktable, two distinct blue and ochre paper shapes beside it and a third hand-assembled form combining their qualities. A tactile visual metaphor for making connections and trying ideas, with a single pencil.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: soft daylight, warm ivory and pale stone, muted sage, dusty blue, small ochre accents. Luminous but low saturation, gentle contrast for an off-white reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "d30cdcdb78af835f7c4d322f5154058fb2fe4a38ed91a2cf547a6bbb7ce859fd"
+    },
+    {
+      "id": "ideas",
+      "theme": "dark",
+      "source": "/Users/sonu/.codex/generated_images/01a0953f-20f0-7b22-afbd-22dad418f4d5/exec-3a074d2f-7a10-4ec8-aef4-a5d9c2d0b216.png",
+      "original": "assets/blog/originals/ideas-dark.png",
+      "variants": [
+        {
+          "width": 360,
+          "path": "assets/blog/ideas-dark-360.webp"
+        },
+        {
+          "width": 720,
+          "path": "assets/blog/ideas-dark-720.webp"
+        },
+        {
+          "width": 1200,
+          "path": "assets/blog/ideas-dark-1200.webp"
+        }
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: original editorial illustration for a minimalist personal essay website, dark-mode variant.\nPrimary request: An open unlettered sketchbook on a simple worktable, two distinct blue and ochre paper shapes beside it and a third hand-assembled form combining their qualities. A tactile visual metaphor for making connections and trying ideas, with a single pencil.\nStyle/medium: human, restrained French Impressionist oil-paint study, Claude Monet-inspired broken brushwork, soft atmospheric edges, visible subtle canvas texture, carefully observed light, elegant rather than ornamental.\nComposition: landscape 3:2, one coherent scene, quiet balanced composition with generous breathing room; important objects fully in frame; designed to read at 600px wide, not a collage or triptych.\nLighting and palette: moonlit and lamplit low-key atmosphere, deep charcoal and blue-gray, muted sage, restrained warm ochre highlights. Clearly readable silhouettes, no glaring white areas, intended for a near-black reading page.\nConstraints: no text, lettering, typography, numbers, symbols, logos, watermark, UI, borders or frame; no photorealistic historical claims; no decorative swirls, galaxies, neon gradients, shiny 3D rendering. Keep the scene calm and meaningful.",
+      "originalSha256": "0423556885676f8ae1cd88f7cc377b8366361158aa18710b048ec988a824b3c7"
+    }
+  ],
+  "sourceMasters": "Editable PNG masters remain locally at original paths, excluded from Git and deployment. Responsive public WebP exports and source-master SHA-256 digests are retained."
+}

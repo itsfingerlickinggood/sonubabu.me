@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Not Found Ã¢â‚¬â€ Sonu Babu</title>
+    <title>Not Found — Sonu Babu</title>
     <meta
       name="description"
       content="Page not found. Navigate back home or explore blog, projects, research, and learnings."
     />
-    <meta property="og:title" content="Not Found Ã¢â‚¬â€ Sonu Babu" />
+    <meta property="og:title" content="Not Found — Sonu Babu" />
     <meta
       property="og:description"
       content="Page not found. Navigate back home or explore blog, projects, research, and learnings."
@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://sonubabu.me/404" />
     <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Not Found Ã¢â‚¬â€ Sonu Babu" />
+    <meta name="twitter:title" content="Not Found — Sonu Babu" />
     <meta
       name="twitter:description"
       content="Page not found. Navigate back home or explore blog, projects, research, and learnings."
@@ -26,18 +26,9 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href="https://sonubabu.me/404" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preload" href="/css/site.min.css" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/not-found.min.css?v=0b33e1647b7c" as="style" />
+    <link rel="stylesheet" href="/css/not-found.min.css?v=0b33e1647b7c" />
     <style>
       .board-page {
         min-height: 80vh;
@@ -64,7 +55,7 @@
         border: 0;
       }
       .board-header {
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-body);
         font-size: 11px;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -89,7 +80,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-body);
         font-size: 48px;
         font-weight: 500;
         color: var(--color-text);
@@ -106,7 +97,7 @@
         background: var(--color-border);
       }
       .board-status {
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-body);
         font-size: 13px;
         letter-spacing: 0.1em;
         color: var(--color-text-muted);
@@ -129,7 +120,7 @@
         align-items: center;
         padding: 8px 0;
         border-bottom: 1px solid var(--color-border);
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-body);
         font-size: 12px;
       }
       .dest-row:last-child {
@@ -170,9 +161,10 @@
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-name">Sonu Babu</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/research.html">Research</a>
+        <a href="/blog.html">Blog</a>
         <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
@@ -264,8 +256,8 @@
       </footer>
     </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
+    <script defer src="/js/viz.min.js?v=260745a9118e"></script>
+    <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
     <script>
       (function () {
         var el = document.getElementById("board-clock");

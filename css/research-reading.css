@@ -1,0 +1,130 @@
+/* Research stays in the site's reading column. Illustration is a quiet margin
+   note; methods, observations, and evidence limitations do the explaining. */
+.research-article .back-link { margin-bottom: 1.5rem; }
+.research-article .research-opening {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  align-items: start;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+.research-article .research-opening .article-header { margin: 0; }
+.research-article .research-opening { row-gap: 1rem; }
+.research-article .research-opening .article-art { display: block; margin: .25rem 0 0; }
+.research-article .research-opening .article-art figcaption { margin-top: .625rem; font-size: .75rem; line-height: 1.5; }
+.research-article .work-art[data-art-style="painting"] .art-affordance { right: 4px; bottom: 4px; width: 20px; height: 20px; border-radius: 4px; background: var(--color-bg); color: var(--color-text); }
+.research-article .publication-meta { grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; margin-bottom: 1.75rem; }
+.research-article .publication-meta dd { margin: .25rem 0 0; }
+.research-article .publication-abstract { margin-bottom: 1rem; }
+.research-article .publication-abstract .section-kicker { display: block; margin-bottom: .5rem; }
+.research-article .publication-abstract p { margin: 0; }
+.research-article :is(.research-contents, .research-correction) { margin: 0 0 1.5rem; }
+.research-article :is(.research-contents, .research-correction) > summary {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  padding: .625rem .25rem .625rem 0;
+  cursor: pointer;
+  font: 400 .875rem/1.7 var(--font-body);
+  color: var(--work-muted);
+}
+.research-article :is(.research-contents, .research-correction) > summary::marker { font-size: .7em; }
+.research-article .research-contents .article-toc { margin: .75rem 0 0; }
+.research-article .research-contents .article-toc a { display: inline-block; padding-block: .25rem; }
+.research-article :is(h2, h3, details[id]) { scroll-margin-top: 2rem; }
+.research-article .article-body > .research-contents + h2 { margin-top: 2rem; }
+
+/* Native definition lists retain relationships when they stack on phones. */
+.research-article .research-ledger { display: grid; gap: 1.5rem; margin: 1.75rem 0; }
+.research-ledger > div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 1.5rem; }
+.research-ledger dt { font-weight: 550; color: var(--color-text); }
+.research-ledger dd { margin: 0; color: var(--work-ink); }
+.research-article .research-boundary { margin: 1.75rem 0; }
+.research-article .research-boundary p { margin: 0 0 1rem; }
+.research-boundary strong { display: block; margin-bottom: .25rem; }
+.research-article .article-body .research-steps { padding-left: 1.25rem; }
+.research-article .research-steps li { padding-left: .375rem; margin-bottom: 1rem; }
+
+/* A reader-driven conversation map, not a graph of empirical model outcomes.
+   The layout stays still across selections; only the interpretation changes. */
+.research-article .horizon-explorer .figure-stage { padding: 1.5rem; }
+.horizon-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .375rem; margin-bottom: 1.5rem; }
+.horizon-controls button {
+  min-height: 60px;
+  min-width: 0;
+  padding: .625rem .25rem;
+  border: 0;
+  border-radius: .5rem;
+  font: 400 .8125rem/1.6 var(--font-body);
+  color: var(--work-muted);
+  background: transparent;
+}
+.horizon-controls button span { display: block; font-size: .75rem; font-variant-numeric: tabular-nums; }
+.horizon-controls button[aria-pressed="true"] { color: var(--color-text); background: var(--color-bg); box-shadow: 0 1px 3px rgb(0 0 0 / .07); font-weight: 550; }
+.research-article .article-body .horizon-context { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0 0 1.5rem; padding: 0; gap: 0; }
+.research-article .article-body .horizon-context li { position: relative; list-style: none; margin: 0; padding: 0 .5rem 0 0; font-size: .75rem; line-height: 1.5; }
+.horizon-context li::after { content: ""; position: absolute; top: 10px; left: 24px; right: 4px; height: 1px; background: var(--color-border-strong); }
+.horizon-context li:last-child::after { content: none; }
+.horizon-context li > span { display: grid; place-items: center; width: 20px; height: 20px; margin-bottom: .625rem; border-radius: 50%; color: var(--color-bg); background: var(--color-text); font-size: .625rem; font-variant-numeric: tabular-nums; }
+.research-article .article-body .horizon-context li strong { display: block; min-height: 2.25rem; font-weight: 400; color: var(--work-ink); }
+.horizon-context .is-pending > span { color: var(--work-muted); background: transparent; box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+.horizon-context .is-pending::after { background: repeating-linear-gradient(to right, var(--color-border-strong) 0 3px, transparent 3px 6px); }
+.horizon-context .is-pending strong::after { content: " · not yet"; color: var(--work-muted); }
+.horizon-reading { min-height: 20rem; }
+.research-article .horizon-reading .horizon-phase { margin: 0 0 .5rem; font-size: .8125rem; color: var(--work-muted); }
+.research-article .article-body .horizon-reading h4 { margin: 0 0 .75rem; color: var(--color-text); font: 550 1rem/1.5 var(--font-body); letter-spacing: -.015em; text-wrap: pretty; }
+.research-article .article-body .horizon-reading > p { margin: 0 0 1.25rem; font-size: .875rem; line-height: 1.7; }
+.horizon-reading dl { display: grid; gap: 1rem; }
+.horizon-reading dt { font-size: .8125rem; color: var(--work-muted); }
+.horizon-reading dd { margin: .25rem 0 0; font-size: .875rem; line-height: 1.7; }
+.horizon-observation { display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem minmax(0, 1fr); align-items: center; gap: 1rem; }
+.horizon-observation > div { align-self: stretch; padding: 1.25rem; border-radius: .5rem; background: var(--work-surface); }
+.research-article .article-body .horizon-observation h4 { font: 550 .9375rem/1.5 var(--font-body); margin: .5rem 0; }
+.research-article .article-body .horizon-observation p { margin: 0; font-size: .875rem; line-height: 1.7; }
+.horizon-observation-arrow { color: var(--work-muted); text-align: center; }
+
+/* Wide comparisons scroll locally, with a keyboard-accessible region.
+   Ordinary prose and diagrams never push the document sideways. */
+.research-article .diagram-matrix { overflow-x: auto; overscroll-behavior-inline: contain; }
+.research-article .diagram-matrix table { min-width: 32rem; }
+.research-article .diagram-grid { overscroll-behavior-inline: contain; }
+.research-article .research-scroll-hint { margin: .5rem 0 0; color: var(--work-muted); font-size: .8125rem; }
+.research-article .research-ledger.evaluation-lenses { margin: 0; }
+.research-article [data-trust-demo] .trust-node p { background: transparent; }
+.research-article [data-trust-demo][data-mode="separated"] .trust-node.is-policy { border-color: var(--color-border-strong); background: var(--color-bg); }
+@media (hover: hover) and (pointer: fine) {
+  .horizon-controls button:hover { color: var(--color-text); background: var(--color-bg); }
+  .research-article :is(.research-contents, .research-correction) > summary:hover { color: var(--color-text); }
+}
+@media (max-width: 560px) {
+  .research-article .research-opening { grid-template-columns: minmax(0, 1fr) 80px; gap: 1.25rem; }
+  .research-article .research-opening .article-header { display: contents; }
+  .research-article .research-opening .status-label { grid-column: 1 / -1; margin: 0; }
+  .research-article .research-opening h1 { grid-column: 1; margin: 0; }
+  .research-article .research-opening .article-lede { grid-column: 1 / -1; margin: 0; }
+  .research-article .research-opening .article-art { grid-column: 2; grid-row: 2; }
+  .research-article .research-opening .work-art-large { width: 80px; height: 80px; }
+  .research-article .research-opening .article-art figcaption { font-size: .75rem; }
+  .research-article .publication-meta { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .research-article .publication-meta > div { display: grid; grid-template-columns: 5rem minmax(0, 1fr); gap: .5rem; }
+  .research-article .publication-meta dd { margin: 0; }
+  .research-ledger > div { grid-template-columns: minmax(0, 1fr); gap: .375rem; }
+  .research-article .horizon-explorer .figure-stage { padding: 1rem; }
+  .horizon-controls { gap: .125rem; }
+  .horizon-controls button { font-size: .75rem; }
+  .horizon-reading { min-height: 25rem; }
+  .research-article .article-body .horizon-context li strong { min-height: 3.375rem; font-size: .75rem; overflow-wrap: anywhere; }
+  .horizon-observation { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+  .horizon-observation-arrow { transform: rotate(90deg); }
+}
+@media (max-width: 370px) {
+  .research-article .research-opening { grid-template-columns: minmax(0, 1fr); }
+  .research-article .research-opening .article-art { grid-column: 1; grid-row: auto; display: flex; align-items: center; gap: 1rem; }
+  .horizon-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .research-article .article-body .horizon-context li strong { min-height: 4.5rem; }
+}
+@media print {
+  .research-article .research-contents, .horizon-controls { display: none; }
+  .horizon-reading { min-height: 0; }
+  .research-article .diagram-matrix table { min-width: 0; }
+}

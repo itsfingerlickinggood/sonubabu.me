@@ -1,0 +1,20 @@
+{
+  "generator": "Built-in image_gen",
+  "date": "2026-09-13",
+  "style": "Original Claude Monet-inspired pond studies; not reproductions or works attributed to Monet.",
+  "purpose": "Theme-specific brushwork for the compact interactive maze",
+  "items": [
+    {
+      "theme": "light",
+      "source": "assets/learnings/pond-light-original.png",
+      "web": "assets/learnings/pond-light.webp",
+      "prompt": "Use case: stylized-concept. Asset type: painted texture for a small interactive maze on a minimalist personal website. Primary request: an original Claude Monet-inspired impressionist water-lily pond study, seen straight down, with authentic broken oil-paint brushwork, visible dabs and layered scumbles. Horizontal 5:3 composition, the pond fills the entire canvas, no horizon, no frame. Small lily pads and loose reflected foliage distributed across the image, plenty of quiet water. This will be used as a texture inside code-drawn maze banks, so avoid large focal objects. No maze, no interface, no text, no letters, no watermark, no people or animals. Painterly, hand-made, subtle and elegant, not a smooth digital gradient, not vector art. Light-mode variant: misty morning light, celadon green, sage, powder blue, soft lavender, tiny dusty-rose blossom flecks. A light-to-mid value painting with delicate but visible brushwork."
+    },
+    {
+      "theme": "dark",
+      "source": "assets/learnings/pond-dark-original.png",
+      "web": "assets/learnings/pond-dark.webp",
+      "prompt": "Use case: stylized-concept. Asset type: painted texture for a small interactive maze on a minimalist personal website. Primary request: an original Claude Monet-inspired impressionist water-lily pond study, seen straight down, with authentic broken oil-paint brushwork, visible dabs and layered scumbles. Horizontal 5:3 composition, the pond fills the entire canvas, no horizon, no frame. Small lily pads and loose reflected foliage distributed across the image, plenty of quiet water. This will be used as a texture inside code-drawn maze banks, so avoid large focal objects. No maze, no interface, no text, no letters, no watermark, no people or animals. Painterly, hand-made, subtle and elegant, not a smooth digital gradient, not vector art. Dark-mode variant: the pond at blue hour, deep blue-green, smoky teal, muted indigo, olive reflections, subtle silver-lavender and dusty-rose blossom flecks. Deep but readable, quiet luminous brushwork, no black void and no neon."
+    }
+  ]
+}

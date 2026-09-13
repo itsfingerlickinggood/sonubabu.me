@@ -8,3 +8,22 @@ Thumbs.db
 skills-lock.json
 node_modules/
 css/_bundle.css
+dist/
+.local-archive/
+docs/qa/
+plans/
+# Keep historical design iterations locally; publish current documentation only.
+docs/*
+!docs/work-artwork.json
+!docs/blog-artwork.json
+!docs/learnings-covers.json
+!docs/learnings-pond-artwork.json
+!docs/project-concept-references.json
+!docs/release-audit.md
+# Editable masters and superseded studies stay local; responsive exports ship.
+assets/**/originals/
+assets/learnings/*-original.png
+assets/work/monet/
+assets/work/*.webp
+assets/work/originals/
+assets/learnings/evidence-notebook-*.webp

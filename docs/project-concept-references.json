@@ -1,0 +1,14 @@
+{
+  "gotham": {
+    "reference": "https://sonubabu.framer.website/projects/gotham",
+    "imageSource": "https://framerusercontent.com/images/8DIviC6bFeWZtVQ0vekamMX5o8.jpg?width=769&height=327",
+    "localImage": "/assets/projects/gotham-origin.jpg",
+    "usage": "Original cinematic inspiration, not a product screenshot. User describes a Bruce Wayne-inspired personal intelligence terminal combining news, research, markets and analysis."
+  },
+  "openx": {
+    "reference": "https://open-x.framer.website/",
+    "imageSource": "https://framerusercontent.com/images/29GvjRn2fQXzA4alqG5EqqM.png",
+    "localImage": "/assets/projects/openx-origin.png",
+    "usage": "Identity from the original concept landing page, resized to 480px. Its five pillars are messaging, social, payments, health and e-commerce. Feature and security language is presented as intent, not verified implementation."
+  }
+}

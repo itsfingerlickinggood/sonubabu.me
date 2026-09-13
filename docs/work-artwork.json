@@ -1,0 +1,721 @@
+{
+  "version": 2,
+  "generatedWith": "Built-in image_gen tool. One original daylight generation and one image-referenced blue-hour edit per subject.",
+  "purpose": "Twelve conceptual image icons shared by the Projects/Research indexes and their twelve detail pages. Not experimental evidence or product screenshots.",
+  "style": "Original Claude Monet-inspired impressionist oil studies: broken colour, visible brushwork, softly painted environments, distinct subjects and matching daylight/blue-hour palettes. Not works by Claude Monet.",
+  "commonPrompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. ",
+  "darkEditPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. ",
+  "items": [
+    {
+      "key": "framing",
+      "page": "research/alignment-faking.html",
+      "title": "Training-aware compliance",
+      "subject": "Two identical folded ivory paper boats resting side by side on still pond water. The left boat lies in a warm patch of sunlight; the right boat lies in cool blue willow shadow. Both have the same simple shape and scale. Quiet ripples and soft reflections, no other objects.",
+      "alt": "Two matching paper boats on a pond, separated by reflected light and willow shade.",
+      "caption": "One prompt, two evaluation frames. The two boats are a metaphor for comparing framing conditions, not a visualization of measured compliance.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Two identical folded ivory paper boats resting side by side on still pond water. The left boat lies in a warm patch of sunlight; the right boat lies in cool blue willow shadow. Both have the same simple shape and scale. Quiet ripples and soft reflections, no other objects.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Two identical folded ivory paper boats resting side by side on still pond water. The left boat lies in a warm patch of sunlight; the right boat lies in cool blue willow shadow. Both have the same simple shape and scale. Quiet ripples and soft reflections, no other objects.",
+      "full": "/assets/work/monet-v2/framing-light.webp",
+      "thumbnail": "/assets/work/monet-v2/framing-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/framing-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/framing-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/framing-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/framing-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/framing-light.webp",
+          "thumbnail": "/assets/work/monet-v2/framing-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/framing-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/framing-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/framing-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/framing-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Two identical folded ivory paper boats resting side by side on still pond water. The left boat lies in a warm patch of sunlight; the right boat lies in cool blue willow shadow. Both have the same simple shape and scale. Quiet ripples and soft reflections, no other objects.",
+          "originalSha256": "f9aab3713c77aa02bd31cf60e614d576d95502136976e67d0331d04d0f49b16c"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/framing-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/framing-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/framing-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/framing-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/framing-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/framing-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Two identical folded ivory paper boats resting side by side on still pond water. The left boat lies in a warm patch of sunlight; the right boat lies in cool blue willow shadow. Both have the same simple shape and scale. Quiet ripples and soft reflections, no other objects.",
+          "originalSha256": "7af6143a9bd2f4b7271738db0fb462ddc90fc11c5bc04cbee847abbdeaf5c5ee"
+        }
+      }
+    },
+    {
+      "key": "trajectory",
+      "page": "research/temporal-refusal-timing.html",
+      "title": "Trajectory-sensitive refusal timing",
+      "subject": "Three broad stepping stones curve across a shallow blue-green stream. One warm ochre leaf floats just before the third stone. Cropped close, the first two stones remain clearly visible. The three stones and the leaf are the whole subject, softened water reflections behind.",
+      "alt": "Three stepping stones crossing a stream, with an ochre leaf beside the middle stone.",
+      "caption": "An unfolding path and a point of hesitation. A visual metaphor for refusal timing across a conversation, not a measured trajectory.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Three broad stepping stones curve across a shallow blue-green stream. One warm ochre leaf floats just before the third stone. Cropped close, the first two stones remain clearly visible. The three stones and the leaf are the whole subject, softened water reflections behind.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Three broad stepping stones curve across a shallow blue-green stream. One warm ochre leaf floats just before the third stone. Cropped close, the first two stones remain clearly visible. The three stones and the leaf are the whole subject, softened water reflections behind.",
+      "full": "/assets/work/monet-v2/trajectory-light.webp",
+      "thumbnail": "/assets/work/monet-v2/trajectory-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/trajectory-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/trajectory-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/trajectory-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/trajectory-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/trajectory-light.webp",
+          "thumbnail": "/assets/work/monet-v2/trajectory-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/trajectory-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/trajectory-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/trajectory-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/trajectory-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Three broad stepping stones curve across a shallow blue-green stream. One warm ochre leaf floats just before the third stone. Cropped close, the first two stones remain clearly visible. The three stones and the leaf are the whole subject, softened water reflections behind.",
+          "originalSha256": "912a8dc2b57e3bb30f73e5d50098f07cff078ab6d6ba2ae68108426c73bc437c"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/trajectory-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/trajectory-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/trajectory-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/trajectory-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/trajectory-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/trajectory-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Three broad stepping stones curve across a shallow blue-green stream. One warm ochre leaf floats just before the third stone. Cropped close, the first two stones remain clearly visible. The three stones and the leaf are the whole subject, softened water reflections behind.",
+          "originalSha256": "06ef31197cbf01576e511f43f5316d46119812779e3065a47e25a56bf96cb6bc"
+        }
+      }
+    },
+    {
+      "key": "trust",
+      "page": "research/prompt-injection.html",
+      "title": "Prompt injection & authority confusion",
+      "subject": "A simple low sage-green garden gate between two pale stone posts, gently closed across a narrow path. One folded ivory paper sheet rests on the outside of the threshold. Soft blue-green foliage beyond. A clear readable boundary, intimate garden scale, not a fortress.",
+      "alt": "A folded paper sheet outside a closed green garden gate.",
+      "caption": "Content is not authority. The garden gate represents a trust boundary; the painting is conceptual, not evidence of a specific exploit.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A simple low sage-green garden gate between two pale stone posts, gently closed across a narrow path. One folded ivory paper sheet rests on the outside of the threshold. Soft blue-green foliage beyond. A clear readable boundary, intimate garden scale, not a fortress.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A simple low sage-green garden gate between two pale stone posts, gently closed across a narrow path. One folded ivory paper sheet rests on the outside of the threshold. Soft blue-green foliage beyond. A clear readable boundary, intimate garden scale, not a fortress.",
+      "full": "/assets/work/monet-v2/trust-light.webp",
+      "thumbnail": "/assets/work/monet-v2/trust-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/trust-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/trust-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/trust-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/trust-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/trust-light.webp",
+          "thumbnail": "/assets/work/monet-v2/trust-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/trust-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/trust-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/trust-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/trust-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A simple low sage-green garden gate between two pale stone posts, gently closed across a narrow path. One folded ivory paper sheet rests on the outside of the threshold. Soft blue-green foliage beyond. A clear readable boundary, intimate garden scale, not a fortress.",
+          "originalSha256": "63b2f683d92ae28ef6b295c095d767c8fcabe8b7b2858f3b81ad2089f13f8bb0"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/trust-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/trust-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/trust-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/trust-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/trust-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/trust-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A simple low sage-green garden gate between two pale stone posts, gently closed across a narrow path. One folded ivory paper sheet rests on the outside of the threshold. Soft blue-green foliage beyond. A clear readable boundary, intimate garden scale, not a fortress.",
+          "originalSha256": "48947fcfb9f8decba79c28b0efa54f8b6de8271fe18befd3725bc18bfbd6f4b4"
+        }
+      }
+    },
+    {
+      "key": "horizon",
+      "page": "research/long-horizon.html",
+      "title": "Long-horizon jailbreaks & goal drift",
+      "subject": "A pale ochre footpath makes a long gentle S-curve through a soft green orchard toward a distant blue opening. Three understated groups of trees mark successive parts of the path. The path is broad and obvious, receding with atmospheric depth. No buildings or people.",
+      "alt": "A winding path receding through a green orchard toward a blue horizon.",
+      "caption": "Context accumulates along a long path. The orchard is a metaphor for extended conversations and goal drift, not a measured response curve.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A pale ochre footpath makes a long gentle S-curve through a soft green orchard toward a distant blue opening. Three understated groups of trees mark successive parts of the path. The path is broad and obvious, receding with atmospheric depth. No buildings or people.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A pale ochre footpath makes a long gentle S-curve through a soft green orchard toward a distant blue opening. Three understated groups of trees mark successive parts of the path. The path is broad and obvious, receding with atmospheric depth. No buildings or people.",
+      "full": "/assets/work/monet-v2/horizon-light.webp",
+      "thumbnail": "/assets/work/monet-v2/horizon-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/horizon-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/horizon-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/horizon-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/horizon-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/horizon-light.webp",
+          "thumbnail": "/assets/work/monet-v2/horizon-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/horizon-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/horizon-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/horizon-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/horizon-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A pale ochre footpath makes a long gentle S-curve through a soft green orchard toward a distant blue opening. Three understated groups of trees mark successive parts of the path. The path is broad and obvious, receding with atmospheric depth. No buildings or people.",
+          "originalSha256": "ccf345b0d168d355b9e7e7b7c0291c66161e2c8ea06d94b285f6fa2bf27eb673"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/horizon-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/horizon-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/horizon-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/horizon-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/horizon-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/horizon-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A pale ochre footpath makes a long gentle S-curve through a soft green orchard toward a distant blue opening. Three understated groups of trees mark successive parts of the path. The path is broad and obvious, receding with atmospheric depth. No buildings or people.",
+          "originalSha256": "38f1e34e81cef38061eac89b1a8155d02ac4abed3f9cba6d3d3598c1810e8d2a"
+        }
+      }
+    },
+    {
+      "key": "features",
+      "page": "research/mechanistic-interpretability.html",
+      "title": "Mechanistic interpretability",
+      "subject": "A single chunky triangular glass prism rests on a pale stone window ledge. Daylight enters from one side and falls on the ledge as three broad softly separated strokes of blue, sage and warm apricot. A soft out-of-focus green garden beyond. Prism silhouette very clear, colours restrained, no diagram arrows or rainbow spectacle.",
+      "alt": "A glass prism on a stone ledge separating light into blue, sage, and apricot strokes.",
+      "caption": "Distinguishing features within a dense representation. An optical metaphor for study notes on superposition and sparse autoencoders, not a discovered model circuit.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A single chunky triangular glass prism rests on a pale stone window ledge. Daylight enters from one side and falls on the ledge as three broad softly separated strokes of blue, sage and warm apricot. A soft out-of-focus green garden beyond. Prism silhouette very clear, colours restrained, no diagram arrows or rainbow spectacle.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A single chunky triangular glass prism rests on a pale stone window ledge. Daylight enters from one side and falls on the ledge as three broad softly separated strokes of blue, sage and warm apricot. A soft out-of-focus green garden beyond. Prism silhouette very clear, colours restrained, no diagram arrows or rainbow spectacle.",
+      "full": "/assets/work/monet-v2/features-light.webp",
+      "thumbnail": "/assets/work/monet-v2/features-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/features-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/features-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/features-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/features-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/features-light.webp",
+          "thumbnail": "/assets/work/monet-v2/features-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/features-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/features-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/features-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/features-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A single chunky triangular glass prism rests on a pale stone window ledge. Daylight enters from one side and falls on the ledge as three broad softly separated strokes of blue, sage and warm apricot. A soft out-of-focus green garden beyond. Prism silhouette very clear, colours restrained, no diagram arrows or rainbow spectacle.",
+          "originalSha256": "19d91375092adfd94f4fd1dfd638e0402ac2c0b6b76e5fd12e982e1224de9696"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/features-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/features-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/features-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/features-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/features-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/features-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A single chunky triangular glass prism rests on a pale stone window ledge. Daylight enters from one side and falls on the ledge as three broad softly separated strokes of blue, sage and warm apricot. A soft out-of-focus green garden beyond. Prism silhouette very clear, colours restrained, no diagram arrows or rainbow spectacle.",
+          "originalSha256": "f120a5289448adf4087a21b7e64a379d19a91eec6f30f7d2d4ec5d121974a567"
+        }
+      }
+    },
+    {
+      "key": "market",
+      "page": "projects/market01.html",
+      "title": "market01",
+      "subject": "A single simple slate-blue graphics card with TWO broad recognisable cooling fans rests diagonally on a warm wooden table beside an open blank ivory inventory catalogue. Sunlight filtered through nearby leaves casts soft lavender shadows. Hardware rendered in a few broad brush-painted shapes, no tiny circuitry, no writing, no logos.",
+      "alt": "A two-fan graphics card and open blank catalogue on a wooden table beside a garden window.",
+      "caption": "From provider listings to comparable inventory. A painted hardware-and-catalogue metaphor, not a screenshot of market01 or a new performance claim.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A single simple slate-blue graphics card with TWO broad recognisable cooling fans rests diagonally on a warm wooden table beside an open blank ivory inventory catalogue. Sunlight filtered through nearby leaves casts soft lavender shadows. Hardware rendered in a few broad brush-painted shapes, no tiny circuitry, no writing, no logos.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A single simple slate-blue graphics card with TWO broad recognisable cooling fans rests diagonally on a warm wooden table beside an open blank ivory inventory catalogue. Sunlight filtered through nearby leaves casts soft lavender shadows. Hardware rendered in a few broad brush-painted shapes, no tiny circuitry, no writing, no logos.",
+      "full": "/assets/work/monet-v2/market-light.webp",
+      "thumbnail": "/assets/work/monet-v2/market-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/market-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/market-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/market-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/market-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/market-light.webp",
+          "thumbnail": "/assets/work/monet-v2/market-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/market-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/market-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/market-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/market-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A single simple slate-blue graphics card with TWO broad recognisable cooling fans rests diagonally on a warm wooden table beside an open blank ivory inventory catalogue. Sunlight filtered through nearby leaves casts soft lavender shadows. Hardware rendered in a few broad brush-painted shapes, no tiny circuitry, no writing, no logos.",
+          "originalSha256": "86c33ed38b9cf7bab97eb99a3f6678810caf7c425692ea9a75c6b4d2f31c2a79"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/market-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/market-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/market-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/market-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/market-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/market-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A single simple slate-blue graphics card with TWO broad recognisable cooling fans rests diagonally on a warm wooden table beside an open blank ivory inventory catalogue. Sunlight filtered through nearby leaves casts soft lavender shadows. Hardware rendered in a few broad brush-painted shapes, no tiny circuitry, no writing, no logos.",
+          "originalSha256": "ec8a40d37640b6d5fb2ba71f47428200364dd67f777bf786a99e4cb192f51a29"
+        }
+      }
+    },
+    {
+      "key": "security",
+      "page": "projects/agent-security-ctf.html",
+      "title": "Agent-security challenge report",
+      "subject": "An open ivory field notebook with completely blank pages, six slim closed archival folders grouped behind it, and one brass magnifying glass lying across the foreground page. A softly lit wooden bench with a suggestion of garden foliage beyond. Large readable notebook and circular lens, folders as six simple masses, no writing or symbols.",
+      "alt": "An open notebook, magnifying glass, and six archival folders in a garden-lit still life.",
+      "caption": "Six challenge levels, documented carefully. A metaphor for review and reproducible reporting, with no private flags or exploit details.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: An open ivory field notebook with completely blank pages, six slim closed archival folders grouped behind it, and one brass magnifying glass lying across the foreground page. A softly lit wooden bench with a suggestion of garden foliage beyond. Large readable notebook and circular lens, folders as six simple masses, no writing or symbols.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: An open ivory field notebook with completely blank pages, six slim closed archival folders grouped behind it, and one brass magnifying glass lying across the foreground page. A softly lit wooden bench with a suggestion of garden foliage beyond. Large readable notebook and circular lens, folders as six simple masses, no writing or symbols.",
+      "full": "/assets/work/monet-v2/security-light.webp",
+      "thumbnail": "/assets/work/monet-v2/security-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/security-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/security-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/security-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/security-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/security-light.webp",
+          "thumbnail": "/assets/work/monet-v2/security-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/security-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/security-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/security-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/security-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: An open ivory field notebook with completely blank pages, six slim closed archival folders grouped behind it, and one brass magnifying glass lying across the foreground page. A softly lit wooden bench with a suggestion of garden foliage beyond. Large readable notebook and circular lens, folders as six simple masses, no writing or symbols.",
+          "originalSha256": "fdb5570a0127e7de6a2452e793c47b28a30204798a375e981b49e0315bbed157"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/security-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/security-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/security-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/security-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/security-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/security-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: An open ivory field notebook with completely blank pages, six slim closed archival folders grouped behind it, and one brass magnifying glass lying across the foreground page. A softly lit wooden bench with a suggestion of garden foliage beyond. Large readable notebook and circular lens, folders as six simple masses, no writing or symbols.",
+          "originalSha256": "f0d3fa92a819892fde41078d856cf07742ec8005b2c70861c9925d87e212b157"
+        }
+      }
+    },
+    {
+      "key": "evaluation",
+      "page": "projects/hud-evaluation-environment.html",
+      "title": "Verifier-grounded evaluation",
+      "subject": "Two separate small wooden worktables, close together but with a clear blue-shadow gap. One table holds a single folded ivory paper submission and a short pencil; the other holds a large upright circular inspection lens on a simple stand. A quiet garden-facing studio. Broad simple shapes, the separation between making and checking is visually obvious.",
+      "alt": "A paper submission on one worktable and an inspection lens on a separate table.",
+      "caption": "The workspace produces a submission; an independent verifier checks it. The separate tables are a metaphor, not a depiction of the implementation.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Two separate small wooden worktables, close together but with a clear blue-shadow gap. One table holds a single folded ivory paper submission and a short pencil; the other holds a large upright circular inspection lens on a simple stand. A quiet garden-facing studio. Broad simple shapes, the separation between making and checking is visually obvious.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Two separate small wooden worktables, close together but with a clear blue-shadow gap. One table holds a single folded ivory paper submission and a short pencil; the other holds a large upright circular inspection lens on a simple stand. A quiet garden-facing studio. Broad simple shapes, the separation between making and checking is visually obvious.",
+      "full": "/assets/work/monet-v2/evaluation-light.webp",
+      "thumbnail": "/assets/work/monet-v2/evaluation-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/evaluation-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/evaluation-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/evaluation-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/evaluation-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/evaluation-light.webp",
+          "thumbnail": "/assets/work/monet-v2/evaluation-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/evaluation-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/evaluation-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/evaluation-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/evaluation-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: Two separate small wooden worktables, close together but with a clear blue-shadow gap. One table holds a single folded ivory paper submission and a short pencil; the other holds a large upright circular inspection lens on a simple stand. A quiet garden-facing studio. Broad simple shapes, the separation between making and checking is visually obvious.",
+          "originalSha256": "4922e0bae632d8551a93db44c2dbdcc975f792fd7045af04d2286421c5a39f9b"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/evaluation-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/evaluation-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/evaluation-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/evaluation-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/evaluation-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/evaluation-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: Two separate small wooden worktables, close together but with a clear blue-shadow gap. One table holds a single folded ivory paper submission and a short pencil; the other holds a large upright circular inspection lens on a simple stand. A quiet garden-facing studio. Broad simple shapes, the separation between making and checking is visually obvious.",
+          "originalSha256": "c7ced43ce944aaaf87e91abc47871ed24ac4ed9b741637d600bd45d40f1bc6e9"
+        }
+      }
+    },
+    {
+      "key": "weather",
+      "page": "projects/weather-portal.html",
+      "title": "Weather intelligence portal",
+      "subject": "A compact river landscape with one distinct soft white cloud reflected in blue-green water, a low green riverbank, and a simple slender weather vane in the near foreground. Quiet layered sky, land and reflection; no floating diagram panels, no pin icons, no forecast numbers or writing. The cloud and vane are clearly readable small.",
+      "alt": "A cloud over a river landscape, with a slender weather vane in the foreground.",
+      "caption": "Sky, land, and observation. A metaphor for the weather frontend demo, which uses mock data with optional live-provider adapters; not a forecast.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A compact river landscape with one distinct soft white cloud reflected in blue-green water, a low green riverbank, and a simple slender weather vane in the near foreground. Quiet layered sky, land and reflection; no floating diagram panels, no pin icons, no forecast numbers or writing. The cloud and vane are clearly readable small.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A compact river landscape with one distinct soft white cloud reflected in blue-green water, a low green riverbank, and a simple slender weather vane in the near foreground. Quiet layered sky, land and reflection; no floating diagram panels, no pin icons, no forecast numbers or writing. The cloud and vane are clearly readable small.",
+      "full": "/assets/work/monet-v2/weather-light.webp",
+      "thumbnail": "/assets/work/monet-v2/weather-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/weather-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/weather-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/weather-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/weather-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/weather-light.webp",
+          "thumbnail": "/assets/work/monet-v2/weather-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/weather-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/weather-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/weather-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/weather-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A compact river landscape with one distinct soft white cloud reflected in blue-green water, a low green riverbank, and a simple slender weather vane in the near foreground. Quiet layered sky, land and reflection; no floating diagram panels, no pin icons, no forecast numbers or writing. The cloud and vane are clearly readable small.",
+          "originalSha256": "87a4f493728722adb1314a33b8ab960ed7df911d7e5c9f528052f585cef606c1"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/weather-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/weather-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/weather-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/weather-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/weather-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/weather-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A compact river landscape with one distinct soft white cloud reflected in blue-green water, a low green riverbank, and a simple slender weather vane in the near foreground. Quiet layered sky, land and reflection; no floating diagram panels, no pin icons, no forecast numbers or writing. The cloud and vane are clearly readable small.",
+          "originalSha256": "077a88767486f3f4f15d4c147d3ec59ebddbe6f4f7bc1593b9a3845afadcc152"
+        }
+      }
+    },
+    {
+      "key": "portfolio",
+      "page": "projects/sonubabu-site.html",
+      "title": "sonubabu.me",
+      "subject": "A small welcoming ivory cottage with a muted blue roof and one warm open doorway beside a garden pond. In the near foreground an open blank cream notebook rests on a wooden ledge with a short pencil. Cottage and book are the two large clear shapes. Quiet garden reflections, no signs, letters or people.",
+      "alt": "An open notebook in front of a small cottage beside a garden pond.",
+      "caption": "A small home for research and writing. The cottage and notebook represent this personal website, not a separate product.",
+      "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A small welcoming ivory cottage with a muted blue roof and one warm open doorway beside a garden pond. In the near foreground an open blank cream notebook rests on a wooden ledge with a short pencil. Cottage and book are the two large clear shapes. Quiet garden reflections, no signs, letters or people.",
+      "darkPrompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A small welcoming ivory cottage with a muted blue roof and one warm open doorway beside a garden pond. In the near foreground an open blank cream notebook rests on a wooden ledge with a short pencil. Cottage and book are the two large clear shapes. Quiet garden reflections, no signs, letters or people.",
+      "full": "/assets/work/monet-v2/portfolio-light.webp",
+      "thumbnail": "/assets/work/monet-v2/portfolio-light-320.webp",
+      "original": "/assets/work/monet-v2/originals/portfolio-light.png",
+      "responsive": [
+        {
+          "width": 160,
+          "src": "/assets/work/monet-v2/portfolio-light-160.webp"
+        },
+        {
+          "width": 320,
+          "src": "/assets/work/monet-v2/portfolio-light-320.webp"
+        },
+        {
+          "width": 640,
+          "src": "/assets/work/monet-v2/portfolio-light-640.webp"
+        }
+      ],
+      "themes": {
+        "light": {
+          "full": "/assets/work/monet-v2/portfolio-light.webp",
+          "thumbnail": "/assets/work/monet-v2/portfolio-light-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/portfolio-light-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/portfolio-light-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/portfolio-light-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/portfolio-light.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE square painted editorial icon for a minimal personal research and projects website, also viewable enlarged. Primary request: an ORIGINAL Claude Monet-inspired oil-paint study of the subject below. Genuine impressionist broken colour, varied confident short brushstrokes, soft lost-and-found edges, layered scumbling, dappled reflected light. It must read as a thoughtful hand-painted miniature, never a 3D icon with a texture filter. Full-bleed square painting with a quiet softly painted environmental background; no white or black studio void, no frame, no border, no bevel, no floating objects. Compose one strong central silhouette occupying about 65–70% of the image, a few large readable masses and uncomplicated edges. Readable at 104px. Shallow detail, no clutter. Muted sage, mineral blue, pale lavender, ivory and restrained warm ochre. Morning daylight with tonal separation. No text, letters, digits, labels, logo, signature, watermark, people, neural-network nodes or decorative swirls. Concept art, not data or an actual product screenshot. Subject: A small welcoming ivory cottage with a muted blue roof and one warm open doorway beside a garden pond. In the near foreground an open blank cream notebook rests on a wooden ledge with a short pencil. Cottage and book are the two large clear shapes. Quiet garden reflections, no signs, letters or people.",
+          "originalSha256": "e87f5ef93cfae81359a60c312409b2dcd88c0afc118f993487400f4b7a1f414e"
+        },
+        "dark": {
+          "full": "/assets/work/monet-v2/portfolio-dark.webp",
+          "thumbnail": "/assets/work/monet-v2/portfolio-dark-320.webp",
+          "responsive": [
+            {
+              "width": 160,
+              "src": "/assets/work/monet-v2/portfolio-dark-160.webp"
+            },
+            {
+              "width": 320,
+              "src": "/assets/work/monet-v2/portfolio-dark-320.webp"
+            },
+            {
+              "width": 640,
+              "src": "/assets/work/monet-v2/portfolio-dark-640.webp"
+            }
+          ],
+          "original": "/assets/work/monet-v2/originals/portfolio-dark.png",
+          "prompt": "Use case: lighting-weather. Input image: EDIT TARGET, the daylight painting. Repaint this exact composition as an original Claude Monet-inspired BLUE-HOUR NOCTURNE for a dark-mode editorial icon. Preserve every subject, its position, shape, scale, viewpoint, and meaning. Change only lighting and painted colours. Maintain authentic broken oil-paint brushstrokes and lost-and-found edges. Deep mineral blue, smoky teal, dusky sage, muted lavender and subtle warm reflections. Keep the central subject readable at 104px with restrained cool-ivory highlights; not uniformly dark. The environment fills the entire square. No pure black or white studio background, no neon, no stars added, no frame, no border, no inversion. No text, lettering, symbols, signatures or new objects. This must be a matching dusk study, not a different composition. Subject invariant: A small welcoming ivory cottage with a muted blue roof and one warm open doorway beside a garden pond. In the near foreground an open blank cream notebook rests on a wooden ledge with a short pencil. Cottage and book are the two large clear shapes. Quiet garden reflections, no signs, letters or people.",
+          "originalSha256": "4feebd350c3c608e36f72f5b0d0c8f1786ad048201628e1930b77b4a1e12bc48"
+        }
+      }
+    }
+  ],
+  "sourceMasters": "Editable PNG masters remain locally at original paths, excluded from Git and deployment. Responsive public WebP exports and source-master SHA-256 digests are retained."
+}

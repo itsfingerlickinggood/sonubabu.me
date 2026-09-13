@@ -1,2 +1,13 @@
 .agents
 skills-lock.json
+node_modules
+dist
+.local-archive
+docs/qa
+plans
+newest-research
+assets/**/originals
+assets/work/monet
+assets/work/*.webp
+assets/learnings/*-original.png
+assets/learnings/evidence-notebook-*.webp

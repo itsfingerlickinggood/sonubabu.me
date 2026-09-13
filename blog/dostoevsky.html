@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dostoevsky Ã¢â‚¬â€ Sonu Babu</title>
+    <title>Dostoevsky — Sonu Babu</title>
     <meta
       name="description"
       content="Fyodor Mikhailovich Dostoevsky, a titan of 19th-century Russian literature, plunged into the deepest recesses of the human psyche."
     />
-    <meta property="og:title" content="Dostoevsky Ã¢â‚¬â€ Sonu Babu" />
+    <meta property="og:title" content="Dostoevsky — Sonu Babu" />
     <meta
       property="og:description"
       content="Fyodor Mikhailovich Dostoevsky, a titan of 19th-century Russian literature, plunged into the deepest recesses of the human psyche."
@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://sonubabu.me/blog/dostoevsky" />
     <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dostoevsky Ã¢â‚¬â€ Sonu Babu" />
+    <meta name="twitter:title" content="Dostoevsky — Sonu Babu" />
     <meta
       name="twitter:description"
       content="Fyodor Mikhailovich Dostoevsky, a titan of 19th-century Russian literature, plunged into the deepest recesses of the human psyche."
@@ -25,26 +25,19 @@
     <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
     <link rel="canonical" href="https://sonubabu.me/blog/dostoevsky" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preload" href="/css/site.min.css" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/essay.min.css?v=57ea2f4a76dc" as="style" />
+    <link rel="stylesheet" href="/css/essay.min.css?v=57ea2f4a76dc" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-name">Sonu Babu</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/research.html">Research</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
         <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
@@ -82,18 +75,26 @@
         </button>
       </nav>
 
-      <main class="article-page research-article">
+      <main id="main-content" class="article-page research-article reading-article">
         <a href="/blog.html" class="back-link">Back to Blog</a>
 
-        <div class="viz-hero" data-viz="manuscript"></div>
 
         <header class="article-header">
           <h1>Dostoevsky</h1>
           <time class="article-meta" datetime="2025-05-02">May 2, 2025</time>
+          <p class="article-lede">A reading of freedom, responsibility, and characters who refuse to resolve into one voice.</p>
         </header>
 
+          <figure class="essay-art essay-opening">
+            <picture>
+              <source data-blog-dark media="not all" srcset="/assets/blog/dostoevsky-dark-360.webp 360w, /assets/blog/dostoevsky-dark-720.webp 720w, /assets/blog/dostoevsky-dark-1200.webp 1200w" sizes="(max-width: 540px) calc(100vw - 48px), 240px">
+              <img src="/assets/blog/dostoevsky-light-720.webp" srcset="/assets/blog/dostoevsky-light-360.webp 360w, /assets/blog/dostoevsky-light-720.webp 720w, /assets/blog/dostoevsky-light-1200.webp 1200w" sizes="(max-width: 540px) calc(100vw - 48px), 240px" width="1536" height="1024" loading="eager" decoding="async" alt="An imagined reading room with an open book, three empty chairs, and a window overlooking a canal.">
+            </picture>
+            <figcaption><strong>A room for more than one voice.</strong> An imagined Petersburg-inspired setting, not a reconstruction of Dostoevsky’s home. The empty chairs suggest the competing perspectives a novel asks us to inhabit.</figcaption>
+          </figure>
+
         <div class="article-body">
-          <nav class="article-toc">
+          <nav class="article-toc" aria-label="Article contents">
             <p class="toc-title">Contents</p>
             <ul>
               <li>
@@ -116,15 +117,9 @@
           </p>
 
           <p class="pull-quote">
-            "I say let the world go to hell, but I should always have my tea." Ã¢â‚¬â€ Notes from Underground
+            "I say let the world go to hell, but I should always have my tea." — Notes from Underground
           </p>
 
-          <figure class="distill-figure margin-caption wide" style="margin: 4rem 0;">
-            <div class="viz-container" data-viz="attractor" style="min-height: 350px; border-radius: var(--radius-md); overflow: hidden;"></div>
-            <figcaption class="distill-figcaption">
-              <strong>The Strange Attractor.</strong> An infinite, chaotic trajectory bound within a finite topology. This visualization reflects the Dostoevskian psyche: endlessly spiraling, predictably unpredictable, and profoundly entangled within its own contradictions.
-            </figcaption>
-          </figure>
 
           <h2 id="works">Major Works</h2>
           <p>
@@ -135,7 +130,7 @@
             <summary>Crime and Punishment (1866)</summary>
             <div class="expand-content">
               <p>
-                Raskolnikov, an impoverished intellectual, murders a pawnbroker to validate his thesis that exceptional individuals are untethered from conventional moralityÃ¢â‚¬â€an early foreshadowing of Nietszche's <em>ÃƒÅ“bermensch</em>. The homicide occurs in the opening act; the remainder of the narrative is an agonizing psychological dissection of guilt, paranoia, and the collapse of rationalist justification.
+                Raskolnikov, an impoverished intellectual, murders a pawnbroker to validate his thesis that exceptional individuals are untethered from conventional morality—an early foreshadowing of Nietszche's <em>Übermensch</em>. The homicide occurs in the opening act; the remainder of the narrative is an agonizing psychological dissection of guilt, paranoia, and the collapse of rationalist justification.
               </p>
             </div>
           </details>
@@ -159,7 +154,7 @@
                 portraying a &ldquo;positively beautiful&rdquo; human being and
                 discovered what he perhaps already suspected: that goodness, in
                 a fallen world, is indistinguishable from foolishness. The novel
-                is Dostoevsky at his most tragic Ã¢â‚¬â€ beauty does not save the
+                is Dostoevsky at his most tragic — beauty does not save the
                 world here; the world devours it.
               </p>
             </div>
@@ -170,8 +165,8 @@
             <div class="expand-content">
               <p>
                 The novella that launched existentialism a half-century before
-                the term existed. The unnamed narrator Ã¢â‚¬â€ spiteful, self-aware,
-                paralysed by consciousness Ã¢â‚¬â€ rails against the rationalist
+                the term existed. The unnamed narrator — spiteful, self-aware,
+                paralysed by consciousness — rails against the rationalist
                 utopia of the Crystal Palace and insists on humanity&rsquo;s
                 right to act against its own interests, simply to prove it
                 <em>can</em>. It is a short, venomous, brilliant text: the
@@ -182,7 +177,7 @@
           </details>
 
           <!-- Diagram 1: Major Works Comparison Grid -->
-          <div class="diagram-grid" style="grid-template-columns: 1.2fr 0.6fr 1.4fr 1.8fr;" aria-label="Comparison of Dostoevsky's major novels">
+          <div class="diagram-grid" style="grid-template-columns: minmax(7.5rem, 1.2fr) minmax(4rem, .6fr) minmax(8rem, 1.4fr) minmax(11rem, 1.8fr);" role="region" tabindex="0" aria-label="Comparison of Dostoevsky's major novels; scroll horizontally on small screens">
             <div class="grid-header">Novel</div>
             <div class="grid-header">Year</div>
             <div class="grid-header">Central Theme</div>
@@ -216,43 +211,27 @@
 
           <h2 id="chronology">Literary Chronology</h2>
           <p>
-            Dostoevsky&rsquo;s creative trajectory spans barely two decades, yet each major work represents a seismic philosophical escalation. From the corrosive monologue of the Underground to the symphonic theodicy of the Karamazovs, each novel layers more voices, more contradictions, more unanswered questions atop its predecessor.
+            These five later works, from 1864 to 1880, offer one route through Dostoevsky’s fiction—not a complete chronology of his career. Read them as different encounters with freedom, guilt, goodness, ideology, and faith, rather than steps toward a single answer.
           </p>
 
-          <!-- Diagram 2: Literary Chronology Timeline -->
-          <div class="diagram-timeline" aria-label="Dostoevsky's literary chronology">
-            <div class="tl-node">
-              <div class="tl-label">1864</div>
-              <div class="tl-content">
-                <strong>Notes from Underground</strong> Ã¢â‚¬â€ The foundational text. A nameless narrator dismantles rationalist utopianism through forty pages of spiteful brilliance, planting the seed for every novel that follows.
-              </div>
+          <figure class="blog-visual" data-blog-visual="timeline" aria-labelledby="books-title">
+            <header><span class="bv-kicker">01 / A reading route</span><h3 id="books-title">Five books, five questions</h3><p>Choose a year for a way into the novel. These are reading prompts, not plot summaries.</p></header>
+            <div class="bv-controls bv-years bv-library" role="group" aria-label="Choose a book by year" hidden>
+              <button type="button" data-choice="1864" aria-pressed="true" aria-label="1864 — Notes from Underground"><span class="bv-book bv-motion" aria-hidden="true"><svg viewBox="0 0 60 80"><path d="M16 57V22h28v35M25 57V33h11v24M12 57h36"/></svg></span><span>1864</span></button>
+              <button type="button" data-choice="1866" aria-pressed="false" aria-label="1866 — Crime and Punishment"><span class="bv-book bv-motion" aria-hidden="true"><svg viewBox="0 0 60 80"><path d="M30 18v43M14 29h32M18 29l-7 16h14l-7-16m24 0-7 16h14l-7-16M20 61h20"/></svg></span><span>1866</span></button>
+              <button type="button" data-choice="1869" aria-pressed="false" aria-label="1869 — The Idiot"><span class="bv-book bv-motion" aria-hidden="true"><svg viewBox="0 0 60 80"><path d="M30 63V40m0 7c-14 0-18-7-16-14 9-1 16 4 16 14Zm0 7c13 0 18-7 16-14-8 0-15 5-16 14Z"/><circle cx="30" cy="28" r="7"/></svg></span><span>1869</span></button>
+              <button type="button" data-choice="1872" aria-pressed="false" aria-label="1872 — Demons"><span class="bv-book bv-motion" aria-hidden="true"><svg viewBox="0 0 60 80"><path d="M30 61c-24-3-15-21-10-30 0 9 5 9 7 11-2-12 6-17 6-23 15 19 21 34-3 42Zm0 0c-9-4-7-11-2-16 0 5 8 6 2 16Z"/></svg></span><span>1872</span></button>
+              <button type="button" data-choice="1880" aria-pressed="false" aria-label="1880 — The Brothers Karamazov"><span class="bv-book bv-motion" aria-hidden="true"><svg viewBox="0 0 60 80"><circle cx="18" cy="30" r="5"/><circle cx="42" cy="30" r="5"/><circle cx="30" cy="51" r="5"/><path d="M23 30h14M20 35l7 11m13-11-7 11"/></svg></span><span>1880</span></button>
             </div>
-            <div class="tl-node">
-              <div class="tl-label">1866</div>
-              <div class="tl-content">
-                <strong>Crime and Punishment</strong> Ã¢â‚¬â€ Raskolnikov tests the limits of moral autonomy through murder; the novel subjects his thesis to 500 pages of psychological disintegration.
-              </div>
+            <div class="bv-stage bv-panels">
+              <div class="bv-panel" data-panel="1864"><span class="bv-book-number">01 / 05 · 1864</span><strong>Notes from Underground</strong><p><em>Freedom against the formula.</em> The Underground Man resists the idea that people can be reduced to rational self-interest. Read for the gap between what he argues and how he acts.</p></div>
+              <div class="bv-panel" data-panel="1866"><span class="bv-book-number">02 / 05 · 1866</span><strong>Crime and Punishment</strong><p><em>A theory meets its consequences.</em> Raskolnikov’s justification for murder collides with guilt and his relationships with others. Read for what an abstract argument leaves out.</p></div>
+              <div class="bv-panel" data-panel="1869"><span class="bv-book-number">03 / 05 · 1869</span><strong>The Idiot</strong><p><em>Goodness in an unwelcoming world.</em> Myshkin’s compassion enters a society of status, desire, and suspicion. Read for the difference between being good and being understood.</p></div>
+              <div class="bv-panel" data-panel="1872"><span class="bv-book-number">04 / 05 · 1872</span><strong>Demons</strong><p><em>When ideas become possessions.</em> Political conviction and personal ambition become difficult to separate. Read for the distance between professed ideals and the actions they excuse.</p></div>
+              <div class="bv-panel" data-panel="1880"><span class="bv-book-number">05 / 05 · 1880</span><strong>The Brothers Karamazov</strong><p><em>A family, many ways of seeing.</em> Faith, doubt, desire, and responsibility remain in conversation. Read for how one brother’s question changes when another voice answers it.</p></div>
             </div>
-            <div class="tl-node">
-              <div class="tl-label">1869</div>
-              <div class="tl-content">
-                <strong>The Idiot</strong> Ã¢â‚¬â€ An experiment in portraying absolute goodness. Prince Myshkin enters a world that systematically destroys what it cannot comprehend.
-              </div>
-            </div>
-            <div class="tl-node tl-warn">
-              <div class="tl-label label-warn">1872</div>
-              <div class="tl-content">
-                <strong>Demons</strong> Ã¢â‚¬â€ A prophetic anatomy of ideological possession. Revolutionary nihilism consumes a provincial town in what reads, a century later, as a warning against utopian fanaticism.
-              </div>
-            </div>
-            <div class="tl-node tl-danger">
-              <div class="tl-label label-danger">1880</div>
-              <div class="tl-content">
-                <strong>The Brothers Karamazov</strong> Ã¢â‚¬â€ The culmination. Faith and doubt, father and son, God and the devil&thinsp;&mdash;&thinsp;all brought into a polyphonic collision that Dostoevsky did not live to surpass. He died four months after publication.
-              </div>
-            </div>
-          </div>
-
+            <figcaption>Selected later works, dated by concluding publication year. The small book emblems are original interpretive drawings, not historical covers. <a href="https://en.wikisource.org/wiki/Author:Fyodor_Mikhailovich_Dostoevsky">Bibliography and public-domain editions</a>. Reading prompts are original to this page.</figcaption>
+          </figure>
           <h2 id="polyphony">Polyphonic Technique</h2>
           <p>
             The literary critic Mikhail Bakhtin identified something
@@ -263,7 +242,7 @@
             the same conviction and intellectual force as Father Zosima&rsquo;s
             faith. The narrator does not adjudicate; no character is reduced to
             a mouthpiece. The result is a novelistic form that mirrors the
-            irreducible plurality of human consciousness Ã¢â‚¬â€ what Bakhtin called
+            irreducible plurality of human consciousness — what Bakhtin called
             &ldquo;a plurality of independent and unmerged voices and
             consciousnesses.&rdquo;
           </p>
@@ -274,35 +253,30 @@
             must be <em>inhabited</em>, not decoded. Each reading surfaces
             different voices, different tensions, depending on where the reader
             stands. It is a form of writing that respects the reader&rsquo;s
-            intelligence Ã¢â‚¬â€ and demands it.
+            intelligence — and demands it.
           </p>
 
-          <!-- Diagram 3: Polyphonic vs Monologic Comparison -->
-          <div class="diagram-comparison" aria-label="Polyphonic versus monologic novel technique">
-            <div class="comp-panel">
-              <h4>Polyphonic Novel (Dostoevsky)</h4>
-              <ul>
-                <li>Multiple autonomous voices with equal authority</li>
-                <li>No single character serves as the author&rsquo;s mouthpiece</li>
-                <li>Ideas clash without final resolution</li>
-                <li>The reader must negotiate between competing truths</li>
-                <li>Meaning emerges from the <em>interaction</em> of voices</li>
-                <li>Form mirrors the plurality of consciousness</li>
-              </ul>
+          <figure class="blog-visual" data-blog-visual="voices" aria-labelledby="voices-title">
+            <header><span class="bv-kicker">02 / Reading polyphony</span><h3 id="voices-title">Listen without merging the voices</h3><p>Focus on one brother. The other voices remain present; none becomes the novel’s final verdict.</p></header>
+            <div class="bv-stage">
+              <div class="bv-voices"><div class="bv-voice" data-voice="ivan"><i class="bv-motion" aria-hidden="true"></i><strong>Ivan</strong><span>Doubt · justice</span></div><div class="bv-voice" data-voice="alyosha"><i class="bv-motion" aria-hidden="true"></i><strong>Alyosha</strong><span>Faith · care</span></div><div class="bv-voice" data-voice="dmitri"><i class="bv-motion" aria-hidden="true"></i><strong>Dmitri</strong><span>Desire · guilt</span></div></div>
+              <svg class="bv-conversation" viewBox="0 0 480 88" preserveAspectRatio="none" aria-hidden="true"><path class="bv-motion" data-pair="ivan alyosha" d="M80 0C80 65 240 65 240 0"/><path class="bv-motion" data-pair="alyosha dmitri" d="M240 0C240 65 400 65 400 0"/><path class="bv-motion" data-pair="ivan dmitri" d="M80 0C80 110 400 110 400 0"/></svg>
+              <p class="bv-center-note">Dialogue, not a single centre of authority</p>
             </div>
-            <div class="comp-panel">
-              <h4>Monologic Novel (Traditional)</h4>
-              <ul>
-                <li>A single authorial consciousness governs the text</li>
-                <li>Characters illustrate the author&rsquo;s thesis</li>
-                <li>Ideological conflicts resolve in favour of one position</li>
-                <li>The reader receives a unified moral or message</li>
-                <li>Meaning is <em>transmitted</em> from author to reader</li>
-                <li>Form imposes order on the plurality of experience</li>
-              </ul>
+            <div class="bv-controls " role="group" aria-label="Focus on a perspective" hidden>
+              <button type="button" data-choice="all" aria-pressed="true">All voices</button>
+              <button type="button" data-choice="ivan" aria-pressed="false">Ivan</button>
+              <button type="button" data-choice="alyosha" aria-pressed="false">Alyosha</button>
+              <button type="button" data-choice="dmitri" aria-pressed="false">Dmitri</button>
             </div>
-          </div>
-
+            <div class="bv-panels">
+              <div class="bv-panel" data-panel="all"><strong>Hold the disagreement open</strong><p>The diagram treats these voices as relationships, not inputs to be averaged into one message. Notice what each perspective makes difficult for the others.</p></div>
+              <div class="bv-panel" data-panel="ivan"><strong>Ivan: the pressure of the unanswered question</strong><p>His challenge about innocent suffering puts moral pressure on faith. Focusing on this question does not settle the novel’s response to it.</p></div>
+              <div class="bv-panel" data-panel="alyosha"><strong>Alyosha: belief expressed through attention</strong><p>His orientation toward faith and care offers a different response from an abstract proof. It does not make the questions raised by Ivan disappear.</p></div>
+              <div class="bv-panel" data-panel="dmitri"><strong>Dmitri: responsibility within contradiction</strong><p>Desire, remorse, and responsibility complicate any neat division into innocence and guilt. His lived conflict resists a tidy philosophical label.</p></div>
+            </div>
+            <figcaption>An interpretive sketch of <em>The Brothers Karamazov</em>, informed by <a href="https://www.upress.umn.edu/9781452900124/problems-of-dostoevskys-poetics/">Bakhtin’s account of Dostoevsky’s poetics</a>. Labels mark emphases, not complete character descriptions; lines denote dialogue, not measured influence.</figcaption>
+          </figure>
           <h2 id="legacy">Legacy</h2>
           <p>
             Dostoevsky&rsquo;s influence radiates outward in concentric circles
@@ -310,9 +284,9 @@
             him with being the &ldquo;only psychologist from whom I have
             anything to learn.&rdquo; Freud drew extensively on the novels in
             developing his theories of guilt, the unconscious, and the death
-            drive Ã¢â‚¬â€ his essay on <em>The Brothers Karamazov</em> treats the
+            drive — his essay on <em>The Brothers Karamazov</em> treats the
             novel as a clinical case study in parricide and repression. The
-            existentialists Ã¢â‚¬â€ Kierkegaard, Heidegger, Sartre, Camus Ã¢â‚¬â€ found in
+            existentialists — Kierkegaard, Heidegger, Sartre, Camus — found in
             Dostoevsky the raw material for their interrogation of freedom,
             absurdity, and authenticity.
           </p>
@@ -332,7 +306,7 @@
             In literature, the lineage is equally vast: Kafka&rsquo;s alienated
             protagonists, Camus&rsquo;s absurd heroes, Faulkner&rsquo;s tortured
             southerners, and Toni Morrison&rsquo;s morally complex narratives
-            all bear the imprint of Dostoevsky&rsquo;s method Ã¢â‚¬â€ the refusal to
+            all bear the imprint of Dostoevsky&rsquo;s method — the refusal to
             simplify, the insistence that fiction must confront what is most
             difficult in human experience.
           </p>
@@ -344,7 +318,7 @@
             rewarded. They do something more valuable: they make me feel less
             alone in my confusion. Every doubt I have entertained, every
             contradiction I have failed to resolve, every moment I have acted
-            against my own interest and known it Ã¢â‚¬â€ Dostoevsky has been there
+            against my own interest and known it — Dostoevsky has been there
             first, and he has written it down with a clarity that borders on the
             unbearable. Reading him is not pleasant; it is necessary.
           </p>
@@ -370,6 +344,11 @@
               </li>
             </ol>
           </section>
+          <nav class="essay-next" aria-label="More essays">
+            <p>Keep reading</p>
+            <a href="/blog/agi.html"><span>AGI <span aria-hidden="true">→</span></span><small>Intelligence, transfer, and the limits of capability.</small></a>
+            <a href="/blog/ideas.html"><span>Ideas <span aria-hidden="true">→</span></span><small>Connections, small trials, and room to reconsider.</small></a>
+          </nav>
         </div>
       </main>
 
@@ -378,7 +357,7 @@
       </footer>
     </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
+    <script defer src="/js/blog-visuals.min.js?v=3aee7fc85cac"></script>
+    <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
   </body>
 </html>

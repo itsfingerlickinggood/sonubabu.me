@@ -3,48 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Ã¢â‚¬â€ Sonu Babu</title>
+    <title>Blog — Sonu Babu</title>
     <meta
       name="description"
-      content="Thoughts on front-end design, AI, and building things that matter."
+      content="Essays on intelligence, literature, and the work of thinking."
     />
-    <meta property="og:title" content="Blog Ã¢â‚¬â€ Sonu Babu" />
+    <meta property="og:title" content="Blog — Sonu Babu" />
     <meta
       property="og:description"
-      content="Thoughts on front-end design, AI, and building things that matter."
+      content="Essays on intelligence, literature, and the work of thinking."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sonubabu.me/blog" />
     <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blog Ã¢â‚¬â€ Sonu Babu" />
+    <meta name="twitter:title" content="Blog — Sonu Babu" />
     <meta
       name="twitter:description"
-      content="Thoughts on front-end design, AI, and building things that matter."
+      content="Essays on intelligence, literature, and the work of thinking."
     />
     <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
     <link rel="canonical" href="https://sonubabu.me/blog" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preload" href="/css/site.min.css" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/collections.min.css?v=298048cbe365" as="style" />
+    <link rel="stylesheet" href="/css/collections.min.css?v=298048cbe365" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-name">Sonu Babu</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/research.html">Research</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
         <a href="/learnings.html">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
@@ -82,51 +75,57 @@
         </button>
       </nav>
 
-      <main class="blog-page">
+      <main id="main-content" class="blog-page reading-page collection-page">
         <header class="page-header">
           <h1>Blog</h1>
           <p>
-            Thoughts on design, technology, and building things that matter.
+            Essays on intelligence, literature, and the work of thinking.
           </p>
         </header>
 
-        <div class="viz-small" data-viz="thoughtStream"></div>
 
-        <div class="post-list">
-          <article class="post-item">
-            <div class="post-item-head">
-              <a href="/blog/agi.html">AGI</a>
-              <time datetime="2025-05-02">May 2, 2025</time>
-            </div>
-            <p class="post-item-desc">
-              Defining general intelligence, the orthogonality of competence,
-              four paradigms for emergence, and why the alignment problem must
-              be solved in parallel with capability.
-            </p>
+        <div class="essay-list" aria-label="Essays">
+          <article>
+            <a class="essay-entry" href="/blog/agi.html" aria-labelledby="agi-title" aria-describedby="agi-description">
+              <div class="essay-copy">
+                <div class="entry-meta"><span>Intelligence</span><time datetime="2025-05-02">May 2, 2025</time></div>
+                <h2 id="agi-title">AGI <span class="entry-arrow" aria-hidden="true">↗</span></h2>
+                <p id="agi-description">What does it mean to be generally intelligent—and what does capability leave unanswered?</p>
+              </div>
+              <picture class="essay-thumb">
+                <source data-index-dark media="not all" srcset="/assets/blog/agi-dark-360.webp">
+                <img src="/assets/blog/agi-light-360.webp" alt="" width="360" height="240" decoding="async">
+              </picture>
+            </a>
           </article>
-          <article class="post-item">
-            <div class="post-item-head">
-              <a href="/blog/dostoevsky.html">Dostoevsky</a>
-              <time datetime="2025-05-02">May 2, 2025</time>
-            </div>
-            <p class="post-item-desc">
-              The psychologist of the underground&mdash;polyphonic technique,
-              literary chronology, and why I keep returning to the most
-              uncomfortable novelist ever written.
-            </p>
+          <article>
+            <a class="essay-entry" href="/blog/dostoevsky.html" aria-labelledby="dostoevsky-title" aria-describedby="dostoevsky-description">
+              <div class="essay-copy">
+                <div class="entry-meta"><span>Literature</span><time datetime="2025-05-02">May 2, 2025</time></div>
+                <h2 id="dostoevsky-title">Dostoevsky <span class="entry-arrow" aria-hidden="true">↗</span></h2>
+                <p id="dostoevsky-description">Competing voices, uncomfortable questions, and the novels I keep returning to.</p>
+              </div>
+              <picture class="essay-thumb">
+                <source data-index-dark media="not all" srcset="/assets/blog/dostoevsky-dark-360.webp">
+                <img src="/assets/blog/dostoevsky-light-360.webp" alt="" width="360" height="240" loading="lazy" decoding="async">
+              </picture>
+            </a>
           </article>
-          <article class="post-item">
-            <div class="post-item-head">
-              <a href="/blog/ideas.html">Ideas</a>
-              <time datetime="2025-05-01">May 1, 2025</time>
-            </div>
-            <p class="post-item-desc">
-              On bisociation, incubation, the courage to think badly, and why
-              the creative process is not a lightning bolt but a disciplined
-              dialogue between divergence and convergence.
-            </p>
+          <article>
+            <a class="essay-entry" href="/blog/ideas.html" aria-labelledby="ideas-title" aria-describedby="ideas-description">
+              <div class="essay-copy">
+                <div class="entry-meta"><span>Creativity</span><time datetime="2025-05-01">May 1, 2025</time></div>
+                <h2 id="ideas-title">Ideas <span class="entry-arrow" aria-hidden="true">↗</span></h2>
+                <p id="ideas-description">Making unexpected connections, trying imperfect ideas, and learning from what happens next.</p>
+              </div>
+              <picture class="essay-thumb">
+                <source data-index-dark media="not all" srcset="/assets/blog/ideas-dark-360.webp">
+                <img src="/assets/blog/ideas-light-360.webp" alt="" width="360" height="240" loading="lazy" decoding="async">
+              </picture>
+            </a>
           </article>
         </div>
+
       </main>
 
       <footer class="site-footer">
@@ -134,7 +133,7 @@
       </footer>
     </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
+    <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
+    <script defer src="/js/reading-index.min.js?v=d88df2215554"></script>
   </body>
 </html>

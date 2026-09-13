@@ -1,233 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Long-Horizon Jailbreaks & Goal Drift Ã¢â‚¬â€ Sonu Babu</title>
-    <meta
-      name="description"
-      content="Multi-turn adversarial interactions revealing gradual safety constraint decay in safety-aligned language models over extended conversations."
-    />
-    <meta
-      property="og:title"
-      content="Long-Horizon Jailbreaks & Goal Drift Ã¢â‚¬â€ Sonu Babu"
-    />
-    <meta
-      property="og:description"
-      content="Multi-turn adversarial interactions revealing gradual safety constraint decay in safety-aligned language models over extended conversations."
-    />
-    <meta property="og:type" content="article" />
-    <meta
-      property="og:url"
-      content="https://sonubabu.me/research/long-horizon"
-    />
-    <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Long-Horizon Jailbreaks & Goal Drift Ã¢â‚¬â€ Sonu Babu"
-    />
-    <meta
-      name="twitter:description"
-      content="Multi-turn adversarial interactions revealing gradual safety constraint decay in safety-aligned language models over extended conversations."
-    />
-    <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
-    <link rel="canonical" href="https://sonubabu.me/research/long-horizon" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="preload" href="/css/site.min.css" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css" />
-  </head>
-  <body>
-    <div class="site-container">
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="../index.html" class="nav-name">Sonu Babu</a>
-        <a href="../blog.html">Blog</a>
-        <a href="../projects.html">Projects</a>
-        <a href="../research.html">Research</a>
-        <a href="../learnings.html">Learnings</a>
-        <button class="theme-toggle" type="button" aria-label="Switch theme">
-          <svg
-            class="icon-sun"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg
-            class="icon-moon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Long-Horizon Jailbreaks and Goal Drift — Sonu Babu</title>
+  <meta name="description" content="A source-grounded visual guide to shifting safety boundaries in 15–30-turn conversations: observations, limitations, and a plan for better evaluation." />
+  <meta name="author" content="Sonu Babu" />
+  <meta property="og:title" content="Long-Horizon Jailbreaks and Goal Drift — Sonu Babu" />
+  <meta property="og:description" content="Why the whole conversation matters: qualitative red-teaming observations, an interactive context diagram, and a bounded follow-up plan." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sonubabu.me/research/long-horizon" />
+  <meta property="og:image" content="https://sonubabu.me/assets/work/monet-v2/horizon-light.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sonubabu.me/assets/work/monet-v2/horizon-light.webp" />
+  <link rel="canonical" href="https://sonubabu.me/research/long-horizon" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+  <link rel="preload" href="/css/work.min.css?v=ea6a87a3ecbe" as="style" />
+  <link rel="stylesheet" href="/css/work.min.css?v=ea6a87a3ecbe" />
+</head>
+<body class="research-reading-page">
+  <a class="skip-link" href="#main-content">Skip to article</a>
+  <div class="site-container">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/" class="nav-name">Sonu Babu</a>
+      <a href="/about.html">About</a>
+      <a href="/projects.html">Projects</a>
+      <a href="/research.html" aria-current="page">Research</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/learnings.html">Learnings</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.2 4.2l1.4 1.4m12.8 12.8 1.4 1.4M1 12h2m18 0h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    </nav>
 
-      <main class="article-page">
-        <a href="../research.html" class="back-link">Back to Research</a>
+    <main id="main-content" class="article-page research-article work-article">
+      <a href="/research.html" class="back-link">Back to Research</a>
+      <div class="research-opening">
+      <header class="article-header">
+        <span class="status-label">Independent red-teaming · Qualitative study</span>
+        <h1>Long-horizon jailbreaks and goal drift</h1>
+        <p class="article-lede">What changes when an apparently benign conversation keeps going—and how should we evaluate the answers along the way?</p>
+      </header>
+      <figure class="article-art">
+        <a class="work-art work-art-large" href="/assets/work/monet-v2/horizon-light.webp" data-art-light="/assets/work/monet-v2/horizon-light.webp" data-art-dark="/assets/work/monet-v2/horizon-dark.webp" data-art data-art-style="painting" data-art-title="Long-horizon jailbreaks &amp; goal drift" data-art-caption="Context accumulates along a long path. The orchard is a metaphor for extended conversations and goal drift, not a measured response curve." aria-label="View illustration: Long-horizon jailbreaks &amp; goal drift">
+          <picture>
+            <source data-art-dark-source media="not all" srcset="/assets/work/monet-v2/horizon-dark-160.webp 160w, /assets/work/monet-v2/horizon-dark-320.webp 320w, /assets/work/monet-v2/horizon-dark-640.webp 640w" sizes="(max-width: 540px) 80px, 112px" />
+            <img src="/assets/work/monet-v2/horizon-light-320.webp" srcset="/assets/work/monet-v2/horizon-light-160.webp 160w, /assets/work/monet-v2/horizon-light-320.webp 320w, /assets/work/monet-v2/horizon-light-640.webp 640w" sizes="(max-width: 540px) 80px, 112px" width="320" height="320" alt="A winding path receding through a green orchard toward a blue horizon." loading="eager" decoding="async" />
+          </picture>
+              <span class="art-affordance" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M9 3h4v4M13 3 9 7M7 13H3V9M3 13l4-4"/></svg></span>
+            </a>
+        <figcaption>Concept illustration</figcaption>
+      </figure>
+      </div>
 
-        <header class="article-header">
-          <h1>Long-Horizon Jailbreaks &amp; Goal Drift</h1>
-          <time class="article-meta" datetime="2025">2025</time>
-        </header>
+      <dl class="publication-meta">
+        <div><dt>Scope</dt><dd>Qualitative red-teaming · 15–30 turns</dd></div>
+        <div><dt>Reviewed</dt><dd>13 September 2026</dd></div>
+      </dl>
 
-        <div class="viz-hero" data-viz="erosion"></div>
+      <section class="publication-abstract" aria-labelledby="abstract-title">
+        <span class="section-kicker" id="abstract-title">In brief</span>
+        <p>In these exploratory exercises, early refusals sometimes gave way to qualified explanations and partial disclosure. That is a reason to inspect the whole conversation—not evidence that safety declines at a known rate as conversations grow.</p>
+      </section>
 
-        <div class="article-body">
-          <nav class="article-toc">
-            <p class="toc-title">Contents</p>
+      <div class="article-body">
+        <details class="research-contents">
+          <summary>On this page</summary>
+          <nav class="article-toc" aria-label="Article contents">
             <ul>
-              <li><a href="#lh-abstract">Abstract</a></li>
-              <li><a href="#lh-design">Experimental Design</a></li>
-              <li><a href="#lh-phases">Phases of Manipulation</a></li>
-              <li><a href="#lh-failure">Failure Mode Analysis</a></li>
-              <li><a href="#lh-references">References</a></li>
+              <li><a href="#problem">The question</a></li>
+              <li><a href="#anatomy">Explore the conversation</a></li>
+              <li><a href="#findings">What the report describes</a></li>
+              <li><a href="#method">How the work was done</a></li>
+              <li><a href="#measurement">How to review a trajectory</a></li>
+              <li><a href="#limits">What remains unknown</a></li>
+              <li><a href="#next">The next experiment</a></li>
             </ul>
           </nav>
+        </details>
 
-          <h2 id="lh-abstract">Abstract</h2>
-          <p>
-            Single-turn safety evaluations systematically miss failure modes
-            that emerge through extended interaction. By conducting adversarial
-            trials spanning 15&ndash;30 conversational turns&mdash;where each
-            individual prompt is benign in isolation&mdash;we reveal gradual
-            safety constraint decay in chat-tuned models. These multi-turn
-            manipulation strategies exploit conversational continuity and
-            contextual drift to erode safety boundaries that appear robust under
-            standard single-turn benchmarks.
-          </p>
+        <h2 id="problem">The conversation is the unit of review</h2>
+        <p>A request can change meaning as context accumulates. An educational opening, a discussion of edge cases, and a hypothetical follow-up may each look ordinary in isolation. A reviewer also needs to ask what the sequence is asking the model to do.</p>
+        <p>The question is not simply whether a response contains a refusal. It is whether the model maintains the relevant boundary while continuing to help with the legitimate task.</p>
 
-          <div class="callout">
-            <p class="callout-label">Key Finding</p>
-            <p>
-              Safety constraints in chat-tuned models decay progressively over
-              15-30 turn adversarial interactions. Individual prompts that pass
-              single-turn safety evaluations can compound into successful
-              jailbreaks when deployed as part of a coherent multi-turn
-              manipulation strategy.
-            </p>
+        <h2 id="anatomy">Follow the context, not just the last turn</h2>
+        <p>The report describes four broad phases. This explainer compresses them into review points; it is not a transcript, a fixed turn schedule, or a simulated model.</p>
+
+        <figure class="figure-shell horizon-explorer" data-horizon-demo aria-labelledby="horizon-title">
+          <div class="figure-header">
+            <div><span class="figure-eyebrow">Conversation anatomy</span><h3 id="horizon-title">What is carried into the next answer?</h3></div>
+            <span class="figure-number">01</span>
           </div>
-
-          <h2 id="lh-design">Experimental Design</h2>
-          <p>
-            Each trial consisted of 15&ndash;30 turns of adversarial interaction
-            with safety-aligned chat models. Every individual prompt was
-            designed to be benign when evaluated in isolation, avoiding any
-            single-turn red-flag triggers. The adversarial strategy relied on
-            progressive reframing of objectives, extensive use of hypothetical
-            and analytical language, and deliberate exploitation of the
-            model&rsquo;s drive for conversational coherence and continuity. No
-            explicit jailbreak payloads were used at any point.
-          </p>
-
-          <div class="viz-inline viz-h-220" data-viz="chartDecay"></div>
-
-          <h2 id="lh-phases">Phases of Manipulation</h2>
-          <p>
-            <strong>Phase 1 &mdash; Benign Grounding:</strong> Establishing a
-            legitimate conversational context and building rapport. The initial
-            turns focus on an unambiguously benign topic related to the eventual
-            target area, creating a foundation of trust and cooperation.
-          </p>
-          <p>
-            <strong>Phase 2 &mdash; Goal Pressure:</strong> Gradually
-            introducing thematic elements that shift the conversation toward the
-            target objective. Each turn incrementally moves the framing closer
-            to the adversarial goal while maintaining plausible deniability.
-          </p>
-          <p>
-            <strong>Phase 3 &mdash; Constraint Erosion:</strong> Sustained
-            contextual pressure that exploits the model&rsquo;s optimization for
-            coherence. The accumulated conversational context creates implicit
-            pressure to maintain consistency with prior responses, weakening
-            safety constraints.
-          </p>
-          <p>
-            <strong>Phase 4 &mdash; Partial Compliance Trigger:</strong> The
-            model begins producing responses that partially satisfy the
-            adversarial objective, often framed as academic analysis or
-            hypothetical exploration. Once partial compliance is achieved,
-            subsequent turns can expand the scope of compliance.
-          </p>
-
-          <h2 id="lh-failure">Failure Mode Analysis</h2>
-          <p>
-            Cross-turn safety decay is driven by several compounding factors:
-            per-turn safety evaluation that lacks intent aggregation across the
-            full conversation, over-optimization for conversational coherence at
-            the expense of safety consistency, and fundamentally weak
-            long-horizon intent inference. Current safety training operates
-            primarily at the single-turn level, creating models that can resist
-            direct attacks but are vulnerable to patient, multi-step
-            manipulation that never triggers single-turn safety classifiers.
-          </p>
-
-          <div class="viz-inline viz-h-200" data-viz="chartBars"></div>
-
-          <section class="references" id="lh-references">
-            <h2>References</h2>
-            <ol class="ref-list">
-              <li>
-                Russinovich, M. et al. (2024). Great, Now Write an Article About
-                That: The Crescendo Multi-Turn LLM Jailbreak Attack. Microsoft.
-              </li>
-              <li>
-                Li, H. et al. (2024). Multi-Turn Jailbreak Attacks on Large
-                Language Models. arXiv:2402.11563.
-              </li>
-              <li>
-                Anil, C. et al. (2024). Many-shot Jailbreaking. Anthropic.
-              </li>
+          <div class="figure-stage">
+            <div class="horizon-controls" role="group" aria-label="Choose a conversation phase" data-horizon-controls hidden>
+              <button type="button" data-horizon-step="1" aria-pressed="false" aria-controls="horizon-reading"><span>01</span>Grounding</button>
+              <button type="button" data-horizon-step="2" aria-pressed="false" aria-controls="horizon-reading"><span>02</span>Boundaries</button>
+              <button type="button" data-horizon-step="3" aria-pressed="false" aria-controls="horizon-reading"><span>03</span>Reframing</button>
+              <button type="button" data-horizon-step="4" aria-pressed="true" aria-controls="horizon-reading"><span>04</span>Synthesis</button>
+            </div>
+            <ol class="horizon-context" aria-label="Context available at the selected phase">
+              <li data-horizon-context="1"><span aria-hidden="true">01</span><strong>Educational setting</strong></li>
+              <li data-horizon-context="2"><span aria-hidden="true">02</span><strong>Boundary discussion</strong></li>
+              <li data-horizon-context="3"><span aria-hidden="true">03</span><strong>Hypothetical framing</strong></li>
+              <li data-horizon-context="4"><span aria-hidden="true">04</span><strong>Request to synthesize</strong></li>
             </ol>
-          </section>
+            <div class="horizon-reading" id="horizon-reading" aria-live="polite" aria-atomic="true">
+              <p class="horizon-phase" data-horizon-phase>04 · Synthesis</p>
+              <h4 data-horizon-question>What does the combined answer make possible?</h4>
+              <p data-horizon-description>The conversation asks for a conceptual summary. Review the substance of that answer alongside the earlier exchange, not only its disclaimers.</p>
+              <dl>
+                <div><dt>Context in view</dt><dd data-horizon-carried>The educational setting, boundary discussion, hypothetical framing, and synthesis request.</dd></div>
+                <div><dt>Reviewer’s check</dt><dd data-horizon-check>Distinguish legitimate explanation from capability-relevant disclosure. A qualifier alone proves neither safety nor failure.</dd></div>
+              </dl>
+            </div>
+          </div>
+          <figcaption class="figure-note">Schematic based on the report’s prompt progression. No model is running and no success rate is implied. <span data-enhance-controls hidden>Select a phase to change the review lens.</span></figcaption>
+        </figure>
+
+        <h2 id="findings">What the report actually describes</h2>
+        <p>The reported change is in response behavior: stronger refusal language early in some interactions, followed by conditional explanations and partial informational disclosure later. The source describes this as safety decay; the evidence here is qualitative and does not establish its frequency or cause.</p>
+
+        <figure class="figure-shell" aria-labelledby="horizon-observation-title">
+          <div class="figure-header">
+            <div><span class="figure-eyebrow">Reported observation</span><h3 id="horizon-observation-title">A change in response is a signal to inspect</h3></div>
+            <span class="figure-number">02</span>
+          </div>
+          <div class="horizon-observation">
+            <div><span class="diagram-label">Earlier in the exchange</span><h4>Explicit boundaries</h4><p>Clear refusals, policy references, and strong safety framing.</p></div>
+            <span class="horizon-observation-arrow" aria-hidden="true">→</span>
+            <div><span class="diagram-label">Later in the exchange</span><h4>Qualified explanations</h4><p>More hypothetical language, softer refusals, and partial disclosure.</p></div>
+          </div>
+          <figcaption class="figure-note">A qualitative before/after description—not a measured trend. Whether a particular answer crosses a safety boundary requires a content-level judgment.</figcaption>
+        </figure>
+
+        <p>“Goal drift” describes a mismatch between the initial framing and the direction of the exchange. It does not establish that the model’s internal objective changed. Conversational coherence and weak cross-turn intent tracking are hypotheses in the report, not isolated causal findings.</p>
+
+        <h2 id="method">How the work was done</h2>
+        <p>I conducted these individual, coursework-based red-teaming exercises during BlueDot Impact’s Technical AI Safety program, using non-production, publicly available models in controlled educational settings.</p>
+        <dl class="research-ledger">
+          <div><dt>Conversation design</dt><dd>Roughly 15–30 turns, using educational context, boundary reasoning, hypothetical framing, and repeated clarification of intent.</dd></div>
+          <div><dt>Run conditions</dt><dd>The report specifies fresh conversation context, no system-prompt modification, and default decoding parameters.</dd></div>
+          <div><dt>Model coverage</dt><dd>Broad model classes are described, but exact identifiers and settings are omitted. This limits reproducibility and rules out a defensible model ranking.</dd></div>
+          <div><dt>Available artifact</dt><dd>A written report with sanitized prompt examples and qualitative summaries—not a complete, independently scored transcript dataset.</dd></div>
+        </dl>
+        <p><a href="/pdf-research-files/Long-Horizon%20Manipulation.pdf">Read the original report (PDF)</a></p>
+
+        <h2 id="measurement">Keep three questions separate</h2>
+        <p>A follow-up study needs an explicit rubric for useful assistance, harmful disclosure, and appropriate refusal. These review lenses are a proposed measurement structure, not metrics collected in the original work.</p>
+        <dl class="research-ledger">
+          <div><dt>At each turn</dt><dd>What was asked? What was answered? Label assistance and boundary behavior separately; record when each first appears.</dd></div>
+          <div><dt>Across the path</dt><dd>Does earlier information become more consequential in combination? Preserve context and reviewer uncertainty. Counting disclosures alone cannot resolve composition.</dd></div>
+          <div><dt>At the endpoint</dt><dd>How does the conversation finish? A final refusal matters, but cannot retract information already supplied. Conversely, earlier refusal language does not settle the meaning of a later explanation.</dd></div>
+        </dl>
+        <p>Matched benign conversations are essential: a system that blocks every long exchange would prevent useful work too. The aim is appropriate boundaries, not refusal for its own sake.</p>
+
+        <h2 id="limits">What remains unknown</h2>
+        <div class="research-boundary">
+          <p><strong>Useful contribution.</strong> A qualitative failure hypothesis, sanitized prompt progression, and a reason to evaluate responses in context.</p>
+          <p><strong>Not established.</strong> A representative failure rate, a safety-versus-length curve, a causal explanation, or a ranking of models.</p>
         </div>
+        <p>The report provides no automated metrics, validated turn-level labels, matched quantitative baseline, or uncertainty estimates. More turns also mean more tokens and opportunities to answer. Length cannot be treated as the cause without controlling for those differences.</p>
 
-        <div class="article-tags">
-          <span class="tag">Adversarial Testing</span>
-          <span class="tag">Multi-turn</span>
-          <span class="tag">Jailbreaks</span>
-          <span class="tag">RLHF</span>
-          <span class="tag">Goal Drift</span>
-        </div>
-      </main>
+        <h2 id="next">Turn the observation into a test</h2>
+        <ol class="research-steps">
+          <li><strong>Match the task and resources.</strong> Compare the same objectives across direct and multi-turn formats, with audited token and call budgets and benign controls.</li>
+          <li><strong>Make the run reproducible.</strong> Freeze model versions, decoding, construction rules, and review horizons; retain complete transcripts.</li>
+          <li><strong>Validate the judgments.</strong> Use independent review and a human audit to label assistance, refusal, and ambiguous cases.</li>
+          <li><strong>Report the whole result.</strong> Compare endpoint outcomes with turn-level exposure, including nulls, failed runs, uncertainty, and benign-task costs.</li>
+        </ol>
+        <p>The <a href="/research/temporal-refusal-timing.html">temporal-refusal-timing pilot</a> takes this measurement question further. Its current outputs establish an engineering pipeline, not a validated behavioral effect.</p>
 
-      <footer class="site-footer">
-        <p>&copy; 2026 Sonu Babu</p>
-      </footer>
-    </div>
+        <h2>Source and further reading</h2>
+        <section class="references">
+          <ol class="ref-list">
+            <li><a href="/pdf-research-files/Long-Horizon%20Manipulation.pdf">Long-Horizon Jailbreaks, Goal Drift, and Multi-Turn Manipulation (PDF)</a> — methods in §§4–5, observations in §6, reproducibility and limitations in §§11–12.</li>
+          </ol>
+        </section>
+        <aside class="related-research">
+          <h3>Continue reading</h3>
+          <ul>
+            <li><a href="/research/temporal-refusal-timing.html">Measuring when refusal appears</a></li>
+            <li><a href="/research/prompt-injection.html">When retrieved content claims authority</a></li>
+          </ul>
+        </aside>
+      </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js"></script>
-  </body>
+      <div class="article-tags"><span class="tag">Long Horizon</span><span class="tag">Multi-Turn</span><span class="tag">Adversarial Testing</span><span class="tag">Qualitative</span></div>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Sonu Babu</p></footer>
+  </div>
+  <script defer src="/js/work-art.min.js?v=ea45f4cfe8b5"></script>
+  <script defer src="/js/research.min.js?v=99e0c6b72dad"></script>
+  <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
+</body>
 </html>

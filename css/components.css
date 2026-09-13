@@ -1,22 +1,24 @@
 .site-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-4xl) var(--space-lg);
+  padding: clamp(2rem, 6vh, 4rem) var(--space-lg);
+  container: site-shell / inline-size;
 }
 
 /* Navigation */
 .site-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-3xl);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
   font-size: var(--text-sm);
 }
 
 .site-nav .nav-name {
   font-family: var(--font-heading);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: 550;
+  letter-spacing: var(--tracking-heading);
   text-decoration: none;
   margin-right: auto;
 }
@@ -28,7 +30,7 @@
 .site-nav a {
   color: var(--color-text-muted);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: none;
 }
 
 .site-nav a:hover {
@@ -44,8 +46,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
   border-radius: 50%;
   color: var(--color-text-muted);
   transition: color var(--transition-fast);
@@ -206,6 +211,26 @@
   border-radius: 9999px;
 }
 
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: var(--space-sm);
+  padding: 2px 8px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 9999px;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+.source-note {
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+  line-height: var(--leading-relaxed);
+}
+
 /* Footer */
 .site-footer {
   margin-top: var(--space-4xl);
@@ -245,20 +270,17 @@ a[target="_blank"]::after {
   height: 20px;
 }
 
-@media (max-width: 768px) {
-  .site-nav {
-    gap: var(--space-md);
-  }
+/* The same available-space breakpoint applies to every page and text size. */
+@container site-shell (max-width: 36em) {
+  .site-nav { flex-wrap: wrap; gap: .375rem .875rem; margin-bottom: 1.5rem; }
+  .site-nav .nav-name { order: 0; flex: 1 0 calc(100% - 4rem); }
+  .site-nav .theme-toggle { order: 1; }
+  .site-nav a:not(.nav-name) { order: 2; display: inline-flex; align-items: center; min-height: 44px; }
 }
 
 @media (max-width: 480px) {
   .site-container {
-    padding: var(--space-2xl) var(--space-md);
-  }
-
-  .site-nav {
-    flex-wrap: wrap;
-    gap: var(--space-sm) var(--space-md);
+    padding-inline: var(--space-md);
   }
 
   .post-item-head {

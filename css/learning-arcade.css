@@ -1,0 +1,113 @@
+/* A small painted study. The learning engine is unchanged; its UI stays secondary. */
+.learning-arcade {
+  --maze-wall: #718571;
+  --maze-bank-paint: .3;
+  --maze-wall-edge: #536f63;
+  --maze-water: #e6ece8;
+  --maze-grid: #7b938a;
+  --maze-food: #925364;
+  --maze-petal: #f4dce0;
+  --maze-agent: #956e28;
+  --maze-ghost: #796d95;
+  margin: 1.5rem auto 1rem;
+  width: min(360px, calc(100% - 32px));
+  font-size: .8125rem;
+  line-height: 1.6;
+}
+[data-theme="dark"] .learning-arcade { --maze-wall: #849984; --maze-bank-paint: .25; --maze-wall-edge: #9eb8a3; --maze-water: #1b3033; --maze-grid: #849e97; --maze-food: #f2c3cb; --maze-petal: #9d667f; --maze-agent: #e2bf73; --maze-ghost: #b8aad4; }
+.learning-arcade [hidden] { display: none !important; }
+.arcade-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1rem; margin-bottom: .625rem; }
+#arcade-title { font-size: .8125rem; font-weight: 500; letter-spacing: -.012em; }
+.arcade-kicker { color: var(--color-text-muted); font-size: .75rem; }
+.arcade-board { width: 100%; border-radius: .5rem; outline-offset: 5px; }
+.arcade-board:focus-visible { outline: 2px solid var(--color-text); }
+.arcade-maze { display: block; width: 100%; height: auto; overflow: visible; }
+.arcade-grid-dot { fill: var(--maze-grid); opacity: .45; }
+.arcade-water { fill: var(--maze-water); }
+.arcade-water-paint { opacity: .26; }
+.arcade-paint-dark { display: none; }
+[data-theme="dark"] .arcade-paint-light { display: none; }
+[data-theme="dark"] .arcade-paint-dark { display: inline; }
+.arcade-wall-edge, .arcade-walls, .arcade-painted-banks { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.arcade-wall-edge { stroke: var(--maze-wall-edge); stroke-width: 16; opacity: .35; }
+.arcade-walls { stroke: var(--maze-wall); stroke-width: 14.5; }
+.arcade-painted-banks { stroke: url(#arcade-brushwork); stroke-width: 14.5; opacity: var(--maze-bank-paint); }
+.arcade-food { fill: var(--maze-food); }
+.arcade-lily-petals { fill: var(--maze-petal); stroke: var(--maze-food); stroke-width: .75; }
+.arcade-agent { fill: var(--maze-agent); }
+.arcade-ghost { fill: var(--maze-ghost); }
+.arcade-eye { fill: #28231b; }
+.arcade-ghost-eyes { fill: #fafaf9; }
+.arcade-policy { fill: none; stroke: var(--color-text-muted); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.arcade-agent, .arcade-ghost { transition: none; }
+.learning-arcade[data-smooth="true"] :is(.arcade-agent, .arcade-ghost) { transition: transform var(--duration-press) var(--ease-in-out); }
+.arcade-round { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem .5rem; margin: .5rem 0 .375rem; color: var(--color-text-muted); font-size: .75rem; font-variant-numeric: tabular-nums; }
+.arcade-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .25rem .5rem; }
+.arcade-mode { display: flex; align-items: center; gap: .5rem; color: var(--color-text-muted); }
+.learning-arcade select { max-width: 100%; min-height: 44px; padding: .5rem .375rem; color: var(--color-text); background: var(--color-bg); border: 0; border-radius: .5rem; font: inherit; cursor: pointer; }
+.learning-arcade select:focus-visible, .learning-arcade input:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; }
+.arcade-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .375rem; }
+.learning-arcade button { display: inline-flex; justify-content: center; align-items: center; min-width: 44px; min-height: 44px; padding: .5rem .75rem; color: var(--color-text); background: var(--color-wash); border: 0; border-radius: .5rem; font: inherit; cursor: pointer; touch-action: manipulation; transition: transform var(--duration-press) var(--ease-out), background-color var(--duration-feedback) ease; }
+.learning-arcade .arcade-primary { min-width: 3.5rem; font-weight: 500; }
+.learning-arcade .arcade-reset { padding-inline: .5rem; color: var(--color-text-muted); background: none; }
+.learning-arcade button:disabled { opacity: .4; cursor: not-allowed; }
+html[data-input="pointer"] .learning-arcade button:active:not(:disabled) { transform: scale(.97); }
+.arcade-readout { margin-top: .875rem; }
+.arcade-stats { display: flex; flex-wrap: wrap; gap: .625rem 1.5rem; margin: 0; }
+.arcade-stats dt { color: var(--color-text-muted); font-size: .75rem; font-weight: 400; }
+.arcade-stats dd { margin: .125rem 0 0; font-size: .9375rem; font-variant-numeric: tabular-nums; }
+.arcade-policy-toggle { display: flex; align-items: center; gap: .5rem; min-height: 44px; color: var(--color-text-muted); cursor: pointer; }
+.arcade-policy-toggle input { width: 14px; height: 14px; accent-color: var(--color-text); }
+.arcade-sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; border: 0 !important; }
+.learning-arcade figcaption { margin-top: .125rem; color: var(--color-text-muted); font-size: .75rem; line-height: 1.75; text-align: left; }
+.learning-arcade figcaption a { color: inherit; }
+.arcade-method { margin-top: .375rem; }
+.arcade-method summary, .arcade-settings > summary { width: fit-content; min-height: 44px; display: flex; align-items: center; gap: .5rem; padding: .25rem 0; color: var(--color-text-muted); font-size: .75rem; cursor: pointer; list-style: none; }
+.arcade-method summary::-webkit-details-marker, .arcade-settings > summary::-webkit-details-marker { display: none; }
+.arcade-method summary::after, .arcade-settings > summary::after { content: '+'; }
+.arcade-method[open] summary::after, .arcade-settings[open] > summary::after { content: '−'; }
+.arcade-secondary-controls { display: flex; flex-wrap: wrap; gap: .375rem .5rem; align-items: center; }
+.arcade-settings[open] { margin-bottom: .5rem; }
+.learnings-page .arcade-method p { margin: .5rem 0 .875rem; font-size: .8125rem; line-height: 1.75; color: var(--color-text-muted); }
+.arcade-equation { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.arcade-play-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; margin: 1rem 0; color: var(--color-text-muted); }
+.arcade-dpad { display: grid; grid-template-columns: repeat(3,44px); gap: 4px; }
+.arcade-dpad [data-direction="0"] { grid-column: 2; }
+.arcade-dpad [data-direction="3"] { grid-column: 1; grid-row: 2; }
+.arcade-dpad [data-direction="2"] { grid-column: 2; grid-row: 2; }
+.arcade-dpad [data-direction="1"] { grid-column: 3; grid-row: 2; }
+@media (hover: hover) and (pointer: fine) {
+  .learning-arcade button:hover:not(:disabled):not(.arcade-primary) { background: var(--color-border); }
+  .arcade-method summary:hover { color: var(--color-text); }
+}
+/* Preserve text enlargement and the original notes/shelves below the figure. */
+@container site-shell (max-width: 36em) {
+  .learnings-page.collection-page .learning-item summary { grid-template-columns: minmax(0, 1fr) 1rem; }
+  .learnings-page.collection-page .learning-item time { grid-column: 1; grid-row: 2; justify-self: start; }
+  .learnings-page .note-toggle { grid-column: 2; }
+  .learnings-page.collection-page .learning-body { padding-right: 0; }
+}
+@container site-shell (max-width: 24em) {
+  .arcade-readout { gap: .25rem; }
+  .arcade-stats { justify-content: space-between; width: 100%; gap: .625rem; }
+  .arcade-kicker { font-size: .75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .learning-arcade[data-smooth="true"] :is(.arcade-agent,.arcade-ghost), .learning-arcade button { transition: none; }
+  html[data-input="pointer"] .learning-arcade button:active:not(:disabled) { transform: none; }
+}
+@media (forced-colors: active) {
+  .arcade-painted-banks, .arcade-water-paint { display: none; }
+  .arcade-water { fill: Canvas; }
+  .arcade-maze > g[filter] { filter: none; }
+  .arcade-walls { stroke: GrayText; }
+  .arcade-wall-edge { stroke: CanvasText; opacity: 1; }
+  .arcade-grid-dot { fill: GrayText; opacity: 1; }
+  .arcade-agent, .arcade-food { fill: CanvasText; }
+  .arcade-lily-petals { fill: Canvas; stroke: CanvasText; }
+  .arcade-ghost { fill: LinkText; }
+  .arcade-eye { fill: Canvas; }
+  .arcade-ghost-eyes { fill: CanvasText; }
+  .learning-arcade button, .learning-arcade select { outline: 1px solid ButtonText; }
+}
+@media print { .arcade-controls, .arcade-round, .arcade-method, .arcade-fallback { display: none; } }

@@ -1,0 +1,42 @@
+# sonubabu.me
+
+Static portfolio built with HTML, modular CSS, and vanilla JavaScript.
+
+## Start locally
+
+```bash
+npm ci
+npm run dev
+```
+
+The preview server requests port `3000`. If that port is already in use, `serve` prints the alternate local URL it selected.
+
+## Build and validate
+
+```bash
+npm run build
+npm run check
+npm run test:maze
+npm run test:motion
+npm run test:build
+```
+
+- `npm run build` creates page-family CSS bundles, minifies only live JavaScript, versions runtime URLs, and generates an allowlisted `dist/` deployment. Build tools are pinned in `package-lock.json`; there are no third-party browser runtime dependencies.
+- `npm run check` validates page metadata, internal links, duplicate IDs, visualization names, illustration assets/provenance, and common text-encoding corruption.
+- `npm run test:maze` tests the Learnings arcade environment, Q-learning updates, reproducibility, and actual policy improvement across four seeds. Open `/learnings.html` locally; choose **Train +500 → Watch → Run** to see a learned route, or **You play** for keyboard/touch controls.
+
+Use `npm run preview` to inspect the production output at `http://localhost:3001`. Vercel publishes `dist/`, not this repository root.
+
+## Browser regression checks
+
+The tests use a dedicated local Chrome profile, never your personal browser session. With Node.js 22 or newer, create a temporary directory with `mktemp -d`, then launch Chrome with `--headless=new --remote-debugging-port=0 --user-data-dir=<temporary-directory>/profile`. Keep the production preview running.
+
+Set `QA_CHROME_PROFILE` to that profile directory and `QA_OUTPUT` to a separate screenshot/report directory, then run `npm run test:browser`. Optional `QA_URL` overrides the default `http://127.0.0.1:3001`.
+
+The suites cover all 23 pages, five widths, both palettes, shared navigation geometry, 200% text, keyboard use, no-JavaScript fallbacks, image failure, the maze, and research interactions. They save JSON results and screenshots locally; neither is deployed.
+
+## Artwork and archived work
+
+Responsive WebP exports and the original Gotham/OpenX screenshots are included. Editable PNG masters, superseded artwork, historical audits, internal claim-review notes, and local agent tooling are excluded from Git and deployment; existing local copies are preserved. Artwork prompts, source credits and master-image digests remain in [docs/work-artwork.json](docs/work-artwork.json) and the other current artwork manifests.
+
+See [the release evaluation](docs/release-audit.md) for the design decisions, measured budgets, testing scope and limitations.

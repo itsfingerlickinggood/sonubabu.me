@@ -1,11 +1,14 @@
+/* Reserve the scrollbar lane before a long page loads. */
+html { scrollbar-gutter: stable; }
+
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
+  font-optical-sizing: auto;
+  letter-spacing: var(--tracking-body);
   line-height: var(--leading-normal);
   color: var(--color-text);
   background-color: var(--color-bg);
-  transition: background-color var(--transition-base),
-    color var(--transition-base);
 }
 
 h1,
@@ -46,9 +49,7 @@ a:hover {
   text-decoration-color: var(--color-text);
 }
 
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
+:where(a, button, summary, input, select, [tabindex]):focus-visible {
   outline: 2px solid var(--color-link);
   outline-offset: 2px;
 }

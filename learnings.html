@@ -3,49 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learnings Ã¢â‚¬â€ Sonu Babu</title>
+    <title>Learnings — Sonu Babu</title>
     <meta
       name="description"
-      content="Competitions, reinforcement learning notes, music and books I'm into."
+      content="Competition notes, music on repeat, and books I return to."
     />
-    <meta property="og:title" content="Learnings Ã¢â‚¬â€ Sonu Babu" />
+    <meta property="og:title" content="Learnings — Sonu Babu" />
     <meta
       property="og:description"
-      content="Competitions, reinforcement learning notes, music and books I'm into."
+      content="Competition notes, music on repeat, and books I return to."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sonubabu.me/learnings" />
     <meta property="og:image" content="https://sonubabu.me/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Learnings Ã¢â‚¬â€ Sonu Babu" />
+    <meta name="twitter:title" content="Learnings — Sonu Babu" />
     <meta
       name="twitter:description"
-      content="Competitions, reinforcement learning notes, music and books I'm into."
+      content="Competition notes, music on repeat, and books I return to."
     />
     <meta name="twitter:image" content="https://sonubabu.me/og-image.svg" />
     <link rel="canonical" href="https://sonubabu.me/learnings" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script>
-      (function () {
-        var t =
-          localStorage.getItem("theme") ||
-          (matchMedia("(prefers-color-scheme:dark)").matches
-            ? "dark"
-            : "light");
-        document.documentElement.setAttribute("data-theme", t);
-      })();
-    </script>
-    <link rel="preload" href="/css/site.min.css?v=20260407-1" as="style" />
-    <link rel="stylesheet" href="/css/site.min.css?v=20260407-1" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/learnings.min.css?v=4b362e81823a" as="style" />
+    <link rel="stylesheet" href="/css/learnings.min.css?v=4b362e81823a" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-container">
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class="nav-name">Sonu Babu</a>
-        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/projects.html">Projects</a>
         <a href="/research.html">Research</a>
-        <a href="/learnings.html">Learnings</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/learnings.html" aria-current="page">Learnings</a>
         <button class="theme-toggle" type="button" aria-label="Switch theme">
           <svg
             class="icon-sun"
@@ -82,23 +75,132 @@
         </button>
       </nav>
 
-      <main class="learnings-page">
+      <main id="main-content" class="learnings-page reading-page collection-page">
         <header class="page-header">
           <h1>Learnings</h1>
-          <p>
-            Competitions, RL notes, and rotating shelves for music and books.
-          </p>
+          <p>Notes from practice, and the music and books I return to.</p>
+          <figure class="learning-arcade" data-learning-arcade aria-labelledby="arcade-title" aria-describedby="arcade-description">
+            <div class="arcade-heading">
+              <span id="arcade-title">Trial &amp; error</span>
+              <span class="arcade-kicker">Water lilies</span>
+            </div>
+            <div class="arcade-board" data-arcade-board>
+              <svg viewBox="0 0 360 216" width="360" height="216" class="arcade-maze" role="img" aria-labelledby="maze-title maze-description">
+                <title id="maze-title">A reward-collecting maze</title>
+                <desc id="maze-description">A fifteen-column painted pond maze. A gold agent collects three pink lily blossoms while avoiding a lavender ghost that patrols the right-hand loop.</desc>
+                <defs><pattern id="arcade-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r=".9" class="arcade-grid-dot"/></pattern></defs>
+                <defs>
+                  <pattern id="arcade-brushwork" patternUnits="userSpaceOnUse" width="360" height="216">
+                    <image class="arcade-paint-light" href="/assets/learnings/pond-light.webp" width="360" height="216" preserveAspectRatio="xMidYMid slice"/>
+                    <image class="arcade-paint-dark" href="/assets/learnings/pond-dark.webp" width="360" height="216" preserveAspectRatio="xMidYMid slice"/>
+                  </pattern>
+                  <filter id="arcade-paint-edge" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+                    <feTurbulence type="fractalNoise" baseFrequency=".045 .12" numOctaves="2" seed="12" result="grain"/>
+                    <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+                  </filter>
+                  <g id="arcade-lily">
+                    <path class="arcade-lily-petals" d="M0 1C-6 1-6-3-5-4Q-1-4 0-1Q-2-6 0-7Q3-5 2-2Q5-5 6-3Q7 1 2 2Q2 5-1 4Q-4 4-4 2Z"/>
+                    <circle cx=".5" cy=".5" r="1.7"/>
+                  </g>
+                </defs>
+                <rect x="4" y="4" width="352" height="208" rx="9" class="arcade-water"/>
+                <rect x="4" y="4" width="352" height="208" rx="9" fill="url(#arcade-brushwork)" class="arcade-water-paint"/>
+                <rect width="360" height="216" fill="url(#arcade-grid)"/>
+                <defs><path id="arcade-wall-shape" d="M12 12h.01M12 12h24M12 12v24M36 12h.01M36 12h24M60 12h.01M60 12h24M84 12h.01M84 12h24M108 12h.01M108 12h24M132 12h.01M132 12h24M156 12h.01M156 12h24M156 12v24M180 12h.01M180 12h24M204 12h.01M204 12h24M228 12h.01M228 12h24M252 12h.01M252 12h24M276 12h.01M276 12h24M300 12h.01M300 12h24M324 12h.01M324 12h24M348 12h.01M348 12v24M12 36h.01M12 36v24M156 36h.01M156 36v24M348 36h.01M348 36v24M12 60h.01M12 60v24M60 60h.01M60 60h24M84 60h.01M156 60h.01M204 60h.01M204 60h24M228 60h.01M228 60h24M252 60h.01M300 60h.01M348 60h.01M348 60v24M12 84h.01M12 84v24M348 84h.01M348 84v24M12 108h.01M12 108v24M60 108h.01M60 108h24M84 108h.01M84 108h24M108 108h.01M156 108h.01M156 108h24M180 108h.01M180 108h24M204 108h.01M252 108h.01M252 108h24M276 108h.01M276 108h24M300 108h.01M348 108h.01M348 108v24M12 132h.01M12 132v24M348 132h.01M348 132v24M12 156h.01M12 156v24M60 156h.01M108 156h.01M108 156h24M132 156h.01M132 156h24M156 156h.01M204 156h.01M204 156v24M252 156h.01M252 156h24M276 156h.01M348 156h.01M348 156v24M12 180h.01M12 180v24M204 180h.01M204 180v24M348 180h.01M348 180v24M12 204h.01M12 204h24M36 204h.01M36 204h24M60 204h.01M60 204h24M84 204h.01M84 204h24M108 204h.01M108 204h24M132 204h.01M132 204h24M156 204h.01M156 204h24M180 204h.01M180 204h24M204 204h.01M204 204h24M228 204h.01M228 204h24M252 204h.01M252 204h24M276 204h.01M276 204h24M300 204h.01M300 204h24M324 204h.01M324 204h24M348 204h.01"/></defs>
+                <g filter="url(#arcade-paint-edge)">
+                  <use href="#arcade-wall-shape" class="arcade-wall-edge"/>
+                  <use href="#arcade-wall-shape" class="arcade-walls"/>
+                  <use href="#arcade-wall-shape" class="arcade-painted-banks"/>
+                </g>
+                <g data-arcade-policy class="arcade-policy" aria-hidden="true"></g>
+                <g class="arcade-food">
+                  <g data-food="0" transform="translate(324 36)"><use href="#arcade-lily"/></g>
+                  <g data-food="1" transform="translate(132 84)"><use href="#arcade-lily"/></g>
+                  <g data-food="2" transform="translate(36 180)"><use href="#arcade-lily"/></g>
+                </g>
+                <g data-arcade-agent class="arcade-agent" style="transform:translate(36px,36px)">
+                  <g data-agent-facing><path d="M6.4-4.8A8 8 0 1 0 6.4 4.8L0 0Z"/><circle cx="-1" cy="-4" r="1" class="arcade-eye"/></g>
+                </g>
+                <g data-arcade-ghost class="arcade-ghost" style="transform:translate(228px,84px)">
+                  <path d="M-7 7V-1a7 7 0 0 1 14 0v8L3.5 4.5 0 7-3.5 4.5Z"/>
+                  <g class="arcade-ghost-eyes"><ellipse cx="-2.5" cy="-1" rx="1.7" ry="2.1"/><ellipse cx="2.5" cy="-1" rx="1.7" ry="2.1"/></g>
+                  <g class="arcade-eye"><circle cx="-2.1" cy="-1" r=".75"/><circle cx="2.9" cy="-1" r=".75"/></g>
+                </g>
+              </svg>
+            </div>
+            <div class="arcade-round" aria-hidden="true">
+              <span data-arcade-round>Collect all three. Avoid the ghost.</span>
+              <span data-arcade-score>0 / 3 blooms</span>
+            </div>
+            <div class="arcade-controls" data-arcade-controls hidden>
+              <div class="arcade-toolbar">
+                <label class="arcade-mode"><span class="arcade-sr-only">Mode</span>
+                  <select data-arcade-mode aria-label="Maze mode">
+                    <option value="learn">Learn</option>
+                    <option value="watch">Watch</option>
+                    <option value="play">You play</option>
+                  </select>
+                </label>
+                <div class="arcade-actions">
+                  <button type="button" data-arcade-run class="arcade-primary">Run</button>
+                  <button type="button" data-arcade-train>Train +500</button>
+                </div>
+              </div>
+              <div class="arcade-play-controls" data-arcade-play hidden>
+                <span>Arrow keys on the maze, or tap a direction.<br>The ghost moves when you do.</span>
+                <div class="arcade-dpad" role="group" aria-label="Move through the maze">
+                  <button type="button" data-direction="0" aria-label="Move up">↑</button>
+                  <button type="button" data-direction="3" aria-label="Move left">←</button>
+                  <button type="button" data-direction="2" aria-label="Move down">↓</button>
+                  <button type="button" data-direction="1" aria-label="Move right">→</button>
+                </div>
+              </div>
+              <details class="arcade-settings">
+                <summary>Explore the simulation</summary>
+                <div class="arcade-secondary-controls">
+                  <button type="button" data-arcade-step>One step</button>
+                  <button type="button" data-arcade-reset class="arcade-reset">Reset learning</button>
+                  <label class="arcade-policy-toggle"><input type="checkbox" data-arcade-show-policy> Policy arrows</label>
+                </div>
+              <div class="arcade-readout">
+                <dl class="arcade-stats">
+                  <div><dt>Episodes</dt><dd data-arcade-episodes>0</dd></div>
+                  <div><dt>Training wins <span>· last 50</span></dt><dd data-arcade-wins>—</dd></div>
+                  <div><dt>Exploration</dt><dd data-arcade-epsilon>85%</dd></div>
+                </dl>
+              </div>
+
+              <details class="arcade-method">
+                <summary>Under the hood</summary>
+                <div>
+                  <p>State = position + remaining blossoms + ghost phase. Four actions: up, right, down, left. Arrows show the highest table value for the current blossom set and ghost position; blank cells have not been visited. Untried actions start at zero. Ties use a fixed display direction, but the agent breaks ties randomly.</p>
+                  <p>Rewards: +2 per blossom, +5 for clearing the maze, −5 if caught, −0.04 per move, −0.12 for a wall. Learning rate 0.35; discount 0.97. Exploration falls from 85% to 6% with training.</p>
+                  <p class="arcade-equation">Q(s,a) ← Q(s,a) + α[r + γ max Q(s′,a′) − Q(s,a)]</p>
+                  <p>Caught and cleared rounds are terminal. Rounds also stop at 220 steps; that time limit truncates the rollout, but does not zero the next-state value. The ghost follows a fixed 12-step patrol. This is a toy, fully observed environment—not a general game-playing model. Training wins include exploratory moves, not just the learned policy. Reset clears this session; nothing is saved or sent.</p>
+                </div>
+              </details>
+              </details>
+              <p class="arcade-status arcade-sr-only" data-arcade-status role="status" aria-atomic="true">Start with Run, or train 500 episodes and switch to Watch.</p>
+            </div>
+            <figcaption id="arcade-description">A little <a href="https://incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noopener noreferrer">Q-learning</a>, among the water lilies.</figcaption>
+            <noscript><p class="arcade-fallback">Enable JavaScript to train the agent or play. The notes and shelves below work without it.</p></noscript>
+          </figure>
+          <nav class="section-nav" aria-label="On this page">
+            <a href="#competitions">Competitions</a>
+            <a href="#music">Music</a>
+            <a href="#books">Books</a>
+          </nav>
         </header>
 
-        <div class="viz-small" data-viz="asciiMaze"></div>
 
-        <section class="learning-category">
-          <h2>Competitions</h2>
+        <section class="learning-category" id="competitions" aria-labelledby="competitions-title">
+          <header class="collection-heading"><h2 id="competitions-title">Competitions</h2><span>2 notes</span></header>
 
-          <details class="learning-item" open>
+          <details class="learning-item" id="gray-swan">
             <summary>
-              <span class="learning-title">Gray Swan Staged Attack</span>
+              <span class="note-heading"><span class="learning-title">Gray Swan Staged Attack</span><span class="note-preview">Staged attacks, reproducibility, and evidence collection.</span></span>
               <time datetime="2026-03">Mar 2026</time>
+              <svg class="note-toggle" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3 8h10"/><path class="note-toggle-v" d="M8 3v10"/></svg>
             </summary>
             <div class="learning-body">
               <p>
@@ -108,362 +210,132 @@
                   rel="noopener noreferrer"
                   >Gray Swan Arena</a
                 >
-                ran a two wave challenge (11&ndash;25 March 2026): break layered
-                AI defenses (model only, input filter, output filter, full
-                pipeline, extended transcript), in the spirit of staged attacks
-                on stacked safeguards. Judging involved UK AISI and US CAISI;
-                sponsors included frontier labs.
+                provided a competitive environment for testing staged attacks
+                against layered model safeguards. I participated under the
+                callsign “da vinci,” working on reproducible multi-turn attacks
+                and evidence collection.
+              </p>
+              <p class="note-evidence">
+                Earlier versions of this page listed a rank and prize. Those
+                details are withheld here until the final track-specific
+                leaderboard and payment records are attached to the claim.
+              </p>
+              <a class="note-permalink" href="#gray-swan">Link to this note</a>
+            </div>
+          </details>
+
+          <details class="learning-item" id="arkx-ctf">
+            <summary>
+              <span class="note-heading"><span class="learning-title">ARKX AI Agent Security CTF</span><span class="note-preview">Findings from an intentionally vulnerable agent environment.</span></span>
+              <time datetime="2026-06">Jun 2026</time>
+              <svg class="note-toggle" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3 8h10"/><path class="note-toggle-v" d="M8 3v10"/></svg>
+            </summary>
+            <div class="learning-body">
+              <p>
+                Completed all six assigned advanced and expert levels in an
+                intentionally vulnerable private environment. The resulting
+                report documents reproducible findings across unsafe evaluation,
+                exposed MCP capabilities, command injection, unsafe
+                deserialization, shared-state authorization, and a TOCTOU race.
               </p>
               <p>
-                I placed <strong>29th on the overall leaderboard</strong> and
-                received <strong>$100</strong> from the overall prize pool.
+                <a href="/projects/agent-security-ctf.html">Read the sanitized case study</a>.
               </p>
+              <a class="note-permalink" href="#arkx-ctf">Link to this note</a>
             </div>
           </details>
         </section>
 
-        <section class="learning-category">
-          <h2>Reinforcement learning</h2>
-
-          <details class="learning-item">
-            <summary>
-              <span class="learning-title">Policy gradients and variance</span>
-              <time datetime="2026-03">Mar 2026</time>
-            </summary>
-            <div class="learning-body">
-              <p>
-                REINFORCE and actor&ndash;critic methods optimize expected
-                return by pushing action probabilities in directions that
-                improve rewards. Baselines and advantage estimates cut gradient
-                variance so learning does not drown in noise.
-              </p>
-            </div>
-          </details>
-
-          <details class="learning-item">
-            <summary>
-              <span class="learning-title"
-                >Exploration versus exploitation</span
-              >
-              <time datetime="2026-02">Feb 2026</time>
-            </summary>
-            <div class="learning-body">
-              <p>
-                Bandits formalize the tradeoff: explore to discover better arms,
-                exploit what already pays. In MDPs, epsilon&ndash;greedy,
-                entropy bonuses, and count&ndash;based curiosity reshape how
-                often the agent tries the unfamiliar.
-              </p>
-            </div>
-          </details>
-
-          <details class="learning-item">
-            <summary>
-              <span class="learning-title">Offline RL and shift</span>
-              <time datetime="2026-01">Jan 2026</time>
-            </summary>
-            <div class="learning-body">
-              <p>
-                Policies trained only on logged behavior suffer when they visit
-                states the dataset barely covers. Conservative objectives and
-                uncertainty&ndash;aware critics aim to keep updates inside the
-                data manifold.
-              </p>
-            </div>
-          </details>
-        </section>
-
-        <section class="learning-category">
-          <h2>Music</h2>
-          <p class="coverflow-intro">
-            Cover art from the Apple iTunes catalog. A rotating shelf of albums
-            on repeat.
-          </p>
-
-          <div
-            class="coverflow-stage"
-            data-coverflow
-            aria-label="Music carousel"
-          >
-            <button
-              type="button"
-              class="coverflow-nav"
-              data-coverflow-prev
-              aria-label="Previous track"
-            >
-              <svg
-                class="coverflow-nav-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M15 6l-6 6 6 6" />
-              </svg>
-            </button>
-            <div class="coverflow-viewport">
-              <div class="coverflow-track">
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/82/f7/2b/82f72ba4-524c-fc9d-cb8c-5a96d2ddf536/22UM1IM35267.rgb.jpg/600x600bb.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title"
-                      >HEROES &amp; VILLAINS</span
-                    >
-                    <span class="coverflow-card-meta"
-                      >Metro Boomin Ã‚Â· Too Many Nights</span
-                    >
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/39/25/2d/39252d65-2d50-b991-0962-f7a98a761271/00602517483507.rgb.jpg/600x600bb.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title">Graduation</span>
-                    <span class="coverflow-card-meta">Kanye West</span>
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/4d/eb/244deb4a-74a6-e8ec-183b-220c3c21dc06/8903431190659_cover.jpg/600x600bb.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title"
-                      >Dhurandhar: The Revenge</span
-                    >
-                    <span class="coverflow-card-meta"
-                      >Shashwat Sachdev et al.</span
-                    >
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e7/49/8f/e7498f65-df8f-bead-d6e3-2a8d4d642a79/886447235317.jpg/600x600bb.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title">ASTROWORLD</span>
-                    <span class="coverflow-card-meta"
-                      >Travis Scott Ã‚Â· Skeletons</span
-                    >
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f9/13/99/f91399b1-231f-9746-d52a-6244b6a9e400/cover.jpg/600x600bb.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title">NPCB</span>
-                    <span class="coverflow-card-meta">Rex Vijayan</span>
-                  </div>
-                </article>
+        <section class="learning-category personal-shelf" id="music" aria-labelledby="music-title">
+          <header class="collection-heading"><h2 id="music-title">Music</h2><span>5 picks</span></header>
+          <p class="shelf-intro">A few records and tracks on repeat.</p>
+          <div class="shelf-grid record-list">
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/heroes-villains-240.webp" srcset="/assets/learnings/heroes-villains-240.webp 240w, /assets/learnings/heroes-villains-480.webp 480w" sizes="(max-width: 496px) calc((100vw - 68px) / 2), (max-width: 640px) calc((100vw - 111px) / 3), 182px" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
               </div>
-            </div>
-            <button
-              type="button"
-              class="coverflow-nav"
-              data-coverflow-next
-              aria-label="Next track"
-            >
-              <svg
-                class="coverflow-nav-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-            </button>
-          </div>
-        </section>
-
-        <section class="learning-category">
-          <h2>Books</h2>
-          <p class="coverflow-intro">
-            Covers from
-            <a
-              href="https://openlibrary.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Open Library</a
-            >
-            by ISBN (public catalog).
-          </p>
-
-          <div
-            class="coverflow-stage"
-            data-coverflow
-            aria-label="Books carousel"
-          >
-            <button
-              type="button"
-              class="coverflow-nav"
-              data-coverflow-prev
-              aria-label="Previous book"
-            >
-              <svg
-                class="coverflow-nav-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M15 6l-6 6 6 6" />
-              </svg>
-            </button>
-            <div class="coverflow-viewport">
-              <div class="coverflow-track">
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://covers.openlibrary.org/b/isbn/9780198739838-L.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title">Superintelligence</span>
-                    <span class="coverflow-card-meta">Nick Bostrom</span>
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://covers.openlibrary.org/b/isbn/9780262035613-L.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title">Deep Learning</span>
-                    <span class="coverflow-card-meta"
-                      >Goodfellow, Bengio &amp; Courville</span
-                    >
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://covers.openlibrary.org/b/isbn/9780262039246-L.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title"
-                      >Reinforcement Learning</span
-                    >
-                    <span class="coverflow-card-meta">Sutton &amp; Barto</span>
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://covers.openlibrary.org/b/isbn/9780747532699-L.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title"
-                      >Harry Potter and the Philosopher&rsquo;s Stone</span
-                    >
-                    <span class="coverflow-card-meta">J.K. Rowling</span>
-                  </div>
-                </article>
-                <article class="coverflow-card">
-                  <img
-                    class="coverflow-card-art"
-                    src="https://covers.openlibrary.org/b/isbn/9780747538493-L.jpg"
-                    alt=""
-                    width="163"
-                    height="163"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div class="coverflow-card-overlay">
-                    <span class="coverflow-card-title"
-                      >Harry Potter and the Chamber of Secrets</span
-                    >
-                    <span class="coverflow-card-meta">J.K. Rowling</span>
-                  </div>
-                </article>
+              <div class="shelf-copy"><h3>HEROES &amp; VILLAINS</h3><p>Metro Boomin · Too Many Nights</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/graduation-240.webp" srcset="/assets/learnings/graduation-240.webp 240w, /assets/learnings/graduation-480.webp 480w" sizes="(max-width: 496px) calc((100vw - 68px) / 2), (max-width: 640px) calc((100vw - 111px) / 3), 182px" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
               </div>
-            </div>
-            <button
-              type="button"
-              class="coverflow-nav"
-              data-coverflow-next
-              aria-label="Next book"
-            >
-              <svg
-                class="coverflow-nav-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-            </button>
+              <div class="shelf-copy"><h3>Graduation</h3><p>Kanye West</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/dhurandhar-revenge-240.webp" srcset="/assets/learnings/dhurandhar-revenge-240.webp 240w, /assets/learnings/dhurandhar-revenge-480.webp 480w" sizes="(max-width: 496px) calc((100vw - 68px) / 2), (max-width: 640px) calc((100vw - 111px) / 3), 182px" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Dhurandhar: The Revenge</h3><p>Shashwat Sachdev et al.</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/astroworld-240.webp" srcset="/assets/learnings/astroworld-240.webp 240w, /assets/learnings/astroworld-480.webp 480w" sizes="(max-width: 496px) calc((100vw - 68px) / 2), (max-width: 640px) calc((100vw - 111px) / 3), 182px" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>ASTROWORLD</h3><p>Travis Scott · Skeletons</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/npcb-240.webp" srcset="/assets/learnings/npcb-240.webp 240w, /assets/learnings/npcb-480.webp 480w" sizes="(max-width: 496px) calc((100vw - 68px) / 2), (max-width: 640px) calc((100vw - 111px) / 3), 182px" alt="" width="240" height="240" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>NPCB</h3><p>Rex Vijayan</p></div>
+            </article>
           </div>
+          <p class="shelf-credit">Cover art from the Apple iTunes catalog.</p>
         </section>
+
+        <section class="learning-category personal-shelf" id="books" aria-labelledby="books-title">
+          <header class="collection-heading"><h2 id="books-title">Books</h2><span>5 books</span></header>
+          <p class="shelf-intro">Technical references, and other worlds to spend time in.</p>
+          <h3 class="shelf-group-title" id="reference-books">References</h3>
+          <div class="shelf-grid book-list" role="group" aria-labelledby="reference-books">
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/superintelligence-240.webp" srcset="/assets/learnings/superintelligence-240.webp 240w, /assets/learnings/superintelligence-480.webp 480w" sizes="(max-width: 496px) 64px, 128px" alt="" width="240" height="360" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Superintelligence</h3><p>Nick Bostrom</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/deep-learning-240.webp" srcset="/assets/learnings/deep-learning-240.webp 240w, /assets/learnings/deep-learning-480.webp 480w" sizes="(max-width: 496px) 64px, 128px" alt="" width="240" height="360" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Deep Learning</h3><p>Goodfellow, Bengio &amp; Courville</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/reinforcement-learning-240.webp" srcset="/assets/learnings/reinforcement-learning-240.webp 240w, /assets/learnings/reinforcement-learning-480.webp 480w" sizes="(max-width: 496px) 64px, 128px" alt="" width="240" height="360" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Reinforcement Learning</h3><p>Sutton &amp; Barto</p></div>
+            </article>
+          </div>
+          <h3 class="shelf-group-title" id="story-books">Other worlds</h3>
+          <div class="shelf-grid story-list" role="group" aria-labelledby="story-books">
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/philosophers-stone-240.webp" srcset="/assets/learnings/philosophers-stone-240.webp 240w, /assets/learnings/philosophers-stone-480.webp 480w" sizes="64px" alt="" width="240" height="360" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Harry Potter and the Philosopher’s Stone</h3><p>J.K. Rowling</p></div>
+            </article>
+            <article class="shelf-item">
+              <div class="shelf-cover">
+                <img src="/assets/learnings/chamber-secrets-240.webp" srcset="/assets/learnings/chamber-secrets-240.webp 240w, /assets/learnings/chamber-secrets-480.webp 480w" sizes="64px" alt="" width="240" height="360" loading="lazy" decoding="async">
+                <span class="shelf-placeholder" aria-hidden="true">Cover unavailable</span>
+              </div>
+              <div class="shelf-copy"><h3>Harry Potter and the Chamber of Secrets</h3><p>J.K. Rowling</p></div>
+            </article>
+          </div>
+          <p class="shelf-credit">Cover art from <a href="https://openlibrary.org/">Open Library</a>, matched by ISBN.</p>
+        </section>
+        <div class="collection-followup"><p>For longer-form thoughts, <a href="/blog.html">read the essays <span aria-hidden="true">→</span></a>.</p></div>
       </main>
 
       <footer class="site-footer">
@@ -471,8 +343,9 @@
       </footer>
     </div>
 
-    <script defer src="/js/viz.min.js"></script>
-    <script defer src="/js/main.min.js?v=20260407-1"></script>
-    <script defer src="/js/learnings.min.js?v=20260407-1"></script>
+    <script defer src="/js/main.min.js?v=e9d10da3e68d"></script>
+    <script defer src="/js/learnings.min.js?v=d371b433ab51"></script>
+    <script type="module" src="/js/learning-arcade.min.js?v=5854ba5876a7"></script>
+    <script defer src="/js/reading-index.min.js?v=d88df2215554"></script>
   </body>
 </html>
