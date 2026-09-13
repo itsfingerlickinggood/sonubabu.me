@@ -46,6 +46,14 @@
       "light": "Unmodified original transparent artwork.",
       "dark": "The same original, rendered with CSS brightness(0.9) saturate(0.86) to soften cloud glare against charcoal. No invert, crop, matte, glow or shadow."
     },
+    "defaultTheme": "Light regardless of operating-system preference. An explicit saved dark choice is respected; missing, invalid or inaccessible storage defaults to light.",
+    "privacyAndDefaultThemeVerification": {
+      "date": "2026-09-13",
+      "browser": "2479/2479 checks passed: 1736 full-site, 335 research, 118 tab identity and 290 navigation/default-theme/privacy checks.",
+      "privacy": "Removed the About contact email and Home structured email property. Repository text and production output scans found no remaining email addresses. All four downloadable PDFs were checked for text, metadata and link contact details and did not require changes.",
+      "scope": "Current source and generated deployment files. Existing Git history is not rewritten.",
+      "regressions": "Source validation rejects email contact details in HTML and operating-system theme defaults. Production checks reject email addresses in published text assets. Browser checks cover fresh and invalid preferences on a dark OS, explicit saved choices, blocked storage, artwork selection and native keyboard controls."
+    },
     "layout": "32px visual, rem-scaled, in a shared 5.5rem desktop brand slot with a 44px minimum-height target. Existing mobile wrapping is retained.",
     "interaction": "Native link; visible keyboard focus; immediate opacity press feedback. No entry animation, spinning, filter transition or extra JavaScript.",
     "performance": "Reuses the already versioned 96px favicon asset across every page. No new public artwork, libraries or runtime scripts.",

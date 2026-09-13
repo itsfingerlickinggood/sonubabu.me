@@ -21,6 +21,18 @@ const visibleEarth = `(() => {
 })()`;
 
 try {
+  for (const stored of [null, 'invalid']) {
+    await b.navigate(base + '/');
+    await b.evaluate(stored === null ? `localStorage.removeItem('theme')` : `localStorage.setItem('theme','invalid')`);
+    for (const page of Object.keys(tabTitles)) {
+      await b.navigate(base + '/' + page, 390, 'dark');
+      check(page + ' ' + (stored ?? 'unset') + ' choice defaults to light on dark OS', await b.evaluate(`document.documentElement.dataset.theme==='light'&&document.querySelector('.theme-toggle').getAttribute('aria-label')==='Switch to dark mode'`));
+      check(page + ' has no email link or structured contact property', await b.evaluate(`!document.querySelector('a[href^="mailto:"]')&&[...document.querySelectorAll('script[type="application/ld+json"]')].every(s=>!('email' in JSON.parse(s.textContent)))`));
+      if (page.startsWith('blog/')) {
+        check(page + ' artwork follows light default', await b.evaluate(`[...document.querySelectorAll('[data-blog-dark]')].every(s=>s.media==='not all')`));
+      }
+    }
+  }
   for (const theme of ['light', 'dark']) {
     await b.navigate(base + '/');
     await b.evaluate(`localStorage.setItem('theme',${JSON.stringify(theme)})`);
@@ -95,7 +107,7 @@ try {
 
   const {identifier} = await b.call('Page.addScriptToEvaluateOnNewDocument', {source:`Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Blocked','SecurityError')}})`});
   await b.navigate(base + '/about.html', 390, 'dark');
-  check('Blocked storage follows dark system preference', (await b.evaluate(visibleEarth)).filter === 'brightness(0.9) saturate(0.86)');
+  check('Blocked storage defaults to light despite dark system preference', (await b.evaluate(visibleEarth)).filter === 'none');
   await b.call('Page.removeScriptToEvaluateOnNewDocument', {identifier});
   await b.call('Emulation.setEmulatedMedia', {features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   await b.evaluate(`document.querySelector('.theme-toggle').click()`);

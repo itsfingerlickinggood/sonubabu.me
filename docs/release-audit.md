@@ -14,7 +14,7 @@ This applies the `emil-design-eng` and `apple-design` skills: predictable placem
 | Different Home title size and mobile illustration preceding the heading | The Home heading aligns with the five other main-page headings; mobile artwork follows the introduction | Stable hierarchy and reading order |
 | Tiny album thumbnails beside cramped copy | Three cover-led columns on desktop, two on narrow screens | Artwork is recognizable without sacrificing complete titles |
 | Five mixed-height book cards in one grid | Three references with aligned caption baselines; two fiction entries in a separate group; compact rows on phones | Clear relationships and readable titles without cropping originals |
-| Email link on Home and redundant Blog follow-up | Removed | Less competing navigation; the About contact address is retained |
+| Email link on Home and redundant Blog follow-up | Removed | Follow-up privacy update also removes the About email link and Home structured email property; LinkedIn and GitHub remain |
 | A large canvas library containing unused renderers | Only the live Home dot field and 404 grid | Smaller download and parse cost |
 | One large stylesheet on every page | Seven page-family bundles, retaining shared logical-selector rules | Lower first-page cost while preserving the cascade |
 | Repository root configured as deployment output | Explicit public-file allowlist in `dist/` | No source masters, QA screenshots, internal notes or research working files in the deployed site |

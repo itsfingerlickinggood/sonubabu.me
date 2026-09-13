@@ -2,12 +2,11 @@
 (() => {
   'use strict';
   const root = document.documentElement;
-  const scheme = matchMedia('(prefers-color-scheme: dark)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const figures = [...document.querySelectorAll('[data-blog-visual]')];
 
   function syncArtwork() {
-    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : scheme.matches;
+    const dark = root.dataset.theme === 'dark';
     document.querySelectorAll('[data-blog-dark]').forEach(source => {
       const media = dark ? 'all' : 'not all';
       if (source.media !== media) source.media = media;
@@ -15,7 +14,6 @@
   }
   syncArtwork();
   new MutationObserver(syncArtwork).observe(root, {attributes: true, attributeFilter: ['data-theme']});
-  scheme.addEventListener('change', syncArtwork);
 
   function select(figure, name, announce = true) {
     figure.querySelectorAll('[data-choice]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.choice === name)));

@@ -56,8 +56,8 @@ function initThemeToggle() {
 
   let stored;
   try { stored = localStorage.getItem("theme"); } catch { /* Storage is optional. */ }
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+  // Light is the default; only an explicit saved choice enables dark mode.
+  const theme = stored === "dark" ? "dark" : "light";
 
   document.documentElement.setAttribute("data-theme", theme);
   updateToggleLabel(toggle, theme);

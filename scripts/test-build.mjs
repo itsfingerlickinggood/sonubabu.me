@@ -29,6 +29,9 @@ for(const page of pages) {
   }
 }
 for(const file of files) {
+  if (/\.(?:html|css|js|mjs|svg|txt)$/.test(file)) {
+    assert.ok(!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(readFileSync(file,'utf8')),`Public email address in ${file}`);
+  }
   assert.ok(!/\/(?:originals|docs|node_modules|scripts|newest-research)\//.test(file),`Non-public directory: ${file}`);
   assert.ok(!/\.(?:json|md|zip|log)$/.test(file),`Non-public file: ${file}`);
   if(file.endsWith('.png'))assert.ok(['dist/assets/projects/openx-origin.png','dist/assets/brand/earth-32.png','dist/assets/brand/earth-96.png'].includes(file),`Unexpected published PNG: ${file}`);

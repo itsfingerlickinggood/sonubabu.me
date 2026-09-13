@@ -46,6 +46,8 @@ for (const path of htmlFiles) {
   const label = relative(root, path);
   const html = readFileSync(path, "utf8");
 
+  if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}|mailto:/i.test(html)) errors.push(`${label}: public email contact details must not be included`);
+  if (html.includes('prefers-color-scheme') || !html.includes('if(t!=="dark")t="light";')) errors.push(`${label}: theme bootstrap must default to light`);
   if (!/^<!DOCTYPE html>/i.test(html)) errors.push(`${label}: missing doctype`);
   if (!/<html[^>]+lang="en"/i.test(html)) errors.push(`${label}: missing lang=en`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${label}: missing title`);
