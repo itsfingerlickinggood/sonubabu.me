@@ -37,6 +37,36 @@
     }
   ],
   "favicon": "favicon.ico",
+  "navigation": {
+    "updated": "2026-09-13",
+    "home": "Keep Sonu Babu as text on index.html.",
+    "innerPages": "All 22 other pages use a native, icon-only Home link named Sonu Babu — Home.",
+    "asset": "assets/brand/earth-96.png",
+    "appearance": {
+      "light": "Unmodified original transparent artwork.",
+      "dark": "The same original, rendered with CSS brightness(0.9) saturate(0.86) to soften cloud glare against charcoal. No invert, crop, matte, glow or shadow."
+    },
+    "layout": "32px visual, rem-scaled, in a shared 5.5rem desktop brand slot with a 44px minimum-height target. Existing mobile wrapping is retained.",
+    "interaction": "Native link; visible keyboard focus; immediate opacity press feedback. No entry animation, spinning, filter transition or extra JavaScript.",
+    "performance": "Reuses the already versioned 96px favicon asset across every page. No new public artwork, libraries or runtime scripts.",
+    "designBasis": "emil-design-eng: consistent geometry, restrained repeated interactions, immediate keyboard response and small, purposeful details.",
+    "verification": {
+      "browser": "2381/2381 checks passed: 1736 full-site, 335 research, 118 tab identity and 192 navigation checks, in a dedicated local Chrome profile.",
+      "layout": "All 23 pages have identical navigation rectangles at 1280, 768, 540, 390 and 320px in light and dark modes. 200% text reflow passes.",
+      "visual": "Reviewed desktop and mobile Home, About and Research screenshots in both themes. The globe remains uncropped and has no background tile.",
+      "fallbacks": "Saved theme, blocked storage, no JavaScript, keyboard activation, rapid toggling, reduced motion and real transparent alpha verified.",
+      "build": "23 pages, 693 local production references and all size budgets pass. 19 maze tests and 11 motion-clock assertions pass.",
+      "preservation": "All 23 HTML pages preserve content outside the brand link and versioned asset URLs. Existing artwork and tab titles are unchanged. No new public images or JavaScript."
+    },
+    "rejectedGeneration": {
+      "mode": "Built-in image_gen",
+      "reason": "Two dark raster exports were rejected because they had opaque checkerboard backgrounds rather than an alpha channel. Neither is referenced, published or committed. Original transparent artwork is preserved.",
+      "prompts": [
+        "Use case: lighting-weather. Asset type: transparent website navigation Earth icon for dark mode. Input image 1 is the EDIT TARGET: the existing Monet-inspired painted Earth. Primary request: create a matching dark-mode edition by changing ONLY its lighting and colour values, not its identity or geography. Keep the same circular silhouette, centered framing, margin, Africa/Europe/Asia viewpoint, continents, cloud shapes, scale, and impressionist oil brushwork. Give it restrained, softly moonlit colour: luminous blue-teal oceans, sage/soft ochre land, subdued pearly clouds. Keep enough midtone lightness and a clear blue edge to read at 32px against near-black #0c0a09, without bright white glare. This is still the same visible Earth, not a dark hemisphere or night-city satellite view. Genuine transparent RGBA background outside the globe; preserve transparent corners. No background colour, sky, stars, checkerboard, glow, halo, drop shadow, border, lettering, signature, new elements, or mockup. Single square PNG artwork.",
+        "Use case: background-extraction. Input image is the edit target. Remove the entire checkerboard background outside the painted Earth and export an actual transparent RGBA PNG cutout with an alpha channel. The previous file accidentally had a painted gray-white checkerboard; every pixel of that background must now be truly transparent (alpha zero), not replaced with white, black, grey, or another drawn pattern. Preserve the globe itself unchanged: same centered position, circular shape, size, Africa-Europe-Asia geography, dark-mode blue/teal/ochre painterly colours and brushwork. Keep the square canvas and the existing thin margin. Change only the background to genuine transparency. Clean anti-aliased edges, no halo, no new scene, no new elements, no text."
+      ]
+    }
+  },
   "packaging": "sips resizing preserves the generated alpha. scripts/package-favicon.mjs packages 16, 32 and 48px PNGs into the ICO. 32px and 96px PNGs are linked by all 23 pages with content-versioned URLs.",
   "tabTitles": {
     "index.html": "Sonu",

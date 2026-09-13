@@ -15,6 +15,10 @@
 }
 
 .site-nav .nav-name {
+  display: flex;
+  align-items: center;
+  flex: 0 0 5.5rem;
+  min-height: 44px;
   font-family: var(--font-heading);
   font-size: var(--text-base);
   font-weight: 550;
@@ -26,6 +30,23 @@
 .site-nav .nav-name:hover {
   text-decoration: none;
 }
+
+/* The same brand slot on Home and inner pages keeps every nav link still.
+   Reuse the transparent favicon artwork, with no second image or theme script. */
+.nav-earth {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  object-fit: contain;
+}
+
+/* Reduce cloud glare against charcoal; never invert, crop or add a matte.
+   Theme changes are immediate, including keyboard and reduced-motion use. */
+[data-theme="dark"] .nav-earth { filter: brightness(.9) saturate(.86); }
+
+/* A quiet, immediate press state: no spin, entrance or keyboard delay. */
+.nav-name:active .nav-earth { opacity: .8; }
 
 .site-nav a {
   color: var(--color-text-muted);

@@ -55,6 +55,13 @@ for (const path of htmlFiles) {
     if (!html.includes(`/assets/brand/earth-${size}.png`) || !html.includes(`sizes="${size}x${size}"`)) errors.push(`${label}: missing ${size}px Earth favicon`);
   }
   if (html.includes('/favicon.svg')) errors.push(`${label}: obsolete letter favicon`);
+  const brand = html.match(/<a\b[^>]*class="nav-name"[^>]*>[\s\S]*?<\/a>/g) ?? [];
+  if (brand.length !== 1 || !brand[0].includes('href="/"')) errors.push(`${label}: expected one native Home link`);
+  if (label === 'index.html') {
+    if (!brand[0]?.includes('aria-current="page">Sonu Babu</a>')) errors.push(`${label}: Home must keep the name`);
+  } else if (!brand[0]?.includes('aria-label="Sonu Babu — Home"') || !brand[0]?.includes('class="nav-earth"') || !brand[0]?.includes('alt=""') || !brand[0]?.includes('/assets/brand/earth-96.png')) {
+    errors.push(`${label}: inner pages need an accessible, theme-aware Earth Home link`);
+  }
   if (!/<meta\s+name="description"/i.test(html)) errors.push(`${label}: missing meta description`);
   if (!/<link\s+rel="canonical"/i.test(html)) errors.push(`${label}: missing canonical URL`);
   if ((html.match(/<h1(?:\s|>)/gi) ?? []).length !== 1) errors.push(`${label}: expected exactly one h1`);
