@@ -1,0 +1,74 @@
+{
+  "updated": "2026-09-13",
+  "generatedWith": "Built-in image_gen tool; no API/CLI fallback.",
+  "purpose": "Transparent Claude Monet-inspired Earth identity for browser tabs. An original generated illustration, not a painting attributed to Monet.",
+  "prompt": "Use case: stylized-concept. Asset type: one website favicon and small browser identity icon. Primary request: a single Earth globe painted as an original Claude Monet-inspired impressionist miniature, on a genuinely transparent RGBA background. Subject: our planet seen from space, with recognizable Africa, Europe and part of Asia, blue oceans, sage-green land and a few soft ivory cloud brushstrokes. Style: confident broken-colour oil brushwork, softly interwoven blue, teal, green, muted ochre and ivory; human, warm and painterly, not a 3D render, emoji or flat vector. Composition: exactly one near-circular globe centered in a square canvas, fully visible, occupying about 92 percent of the width and height. Use large simplified land/ocean masses and a clear rounded silhouette so the Earth remains recognizable at 16 and 32 pixels. Keep the outer silhouette predominantly medium blue/teal so it remains legible on white and near-black browser chrome. Transparent pixels everywhere outside the planet, including all four corners. No background scene, no sky, no stars, no rectangle or tile, no painted paper backdrop, no checkerboard baked into the artwork, no shadow outside the globe, no glow or halo. No text, lettering, border, signature or watermark. Output one square transparent PNG asset, not a presentation mockup or a sheet of icons.",
+  "original": "assets/brand/originals/earth-monet.png",
+  "originalSha256": "ab7bf40ee0ac93619c3f91359937026f1dee4f96f63d4d877f89df7dabb34319",
+  "originalDimensions": [
+    1254,
+    1254
+  ],
+  "sourceMaster": "Retained locally and excluded from Git/deployment; optimized PNG exports are included.",
+  "exports": [
+    {
+      "path": "assets/brand/earth-16.png",
+      "width": 16,
+      "height": 16,
+      "alpha": true
+    },
+    {
+      "path": "assets/brand/earth-32.png",
+      "width": 32,
+      "height": 32,
+      "alpha": true
+    },
+    {
+      "path": "assets/brand/earth-48.png",
+      "width": 48,
+      "height": 48,
+      "alpha": true
+    },
+    {
+      "path": "assets/brand/earth-96.png",
+      "width": 96,
+      "height": 96,
+      "alpha": true
+    }
+  ],
+  "favicon": "favicon.ico",
+  "packaging": "sips resizing preserves the generated alpha. scripts/package-favicon.mjs packages 16, 32 and 48px PNGs into the ICO. 32px and 96px PNGs are linked by all 23 pages with content-versioned URLs.",
+  "tabTitles": {
+    "index.html": "Sonu",
+    "about.html": "About",
+    "projects.html": "Projects",
+    "research.html": "Research",
+    "blog.html": "Blog",
+    "learnings.html": "Learnings",
+    "404.html": "Lost",
+    "blog/agi.html": "AGI",
+    "blog/dostoevsky.html": "Dostoevsky",
+    "blog/ideas.html": "Ideas",
+    "projects/market01.html": "market01",
+    "projects/agent-security-ctf.html": "ARKX",
+    "projects/hud-evaluation-environment.html": "Verifier",
+    "projects/weather-portal.html": "Weather",
+    "projects/gotham.html": "Gotham",
+    "projects/openx.html": "OpenX",
+    "projects/arkham-studio.html": "Arkham",
+    "projects/sonubabu-site.html": "Portfolio",
+    "research/alignment-faking.html": "Compliance",
+    "research/temporal-refusal-timing.html": "Timing",
+    "research/prompt-injection.html": "Injection",
+    "research/long-horizon.html": "Horizon",
+    "research/mechanistic-interpretability.html": "Mechanisms"
+  },
+  "verification": {
+    "browser": "118/118 identity checks passed in a separate local Chrome profile.",
+    "build": "23 HTML files validated; 671 production references, icon exports and size budgets passed.",
+    "preservation": "All 23 pages preserve non-title/favicon content.",
+    "appearance": "Reviewed at 16, 32, 48 and 96px on light and dark backgrounds. Generated alpha preserved.",
+    "recovery": "The replaced letter icon is retained locally at .local-archive/2026-09-13/favicon.svg.",
+    "scope": "Browser favicon and HTML title only; Chrome account/profile settings were not changed."
+  }
+}

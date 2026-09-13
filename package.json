@@ -9,7 +9,8 @@
     "test:maze": "node scripts/test-maze.mjs",
     "test:motion": "node scripts/test-motion-clock.mjs",
     "test:build": "node scripts/test-build.mjs",
-    "test:browser": "node scripts/test-browser.mjs && node scripts/test-research-browser.mjs"
+    "test:browser": "node scripts/test-browser.mjs && node scripts/test-research-browser.mjs",
+    "test:identity": "node scripts/test-identity-browser.mjs"
   },
   "devDependencies": {
     "clean-css": "5.3.3",

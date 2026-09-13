@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { PurgeCSS } from 'purgecss';
 import CleanCSS from 'clean-css';
 import { minify } from 'terser';
+import './package-favicon.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = path => readFileSync(join(root, path), 'utf8');
@@ -30,6 +31,9 @@ const scripts = ['main', 'viz', 'research', 'explainers', 'work-art', 'learnings
 // State attributes are set at runtime. Keep their value selectors and JS-built UI.
 const dynamicAttributes = [...new Set([...stylesheet.matchAll(/\[((?:data-|aria-)[\w-]+|open|hidden)\b/g)].map(match => match[1]))];
 const revisions = new Map();
+for (const path of ['favicon.ico', 'assets/brand/earth-32.png', 'assets/brand/earth-96.png']) {
+  revisions.set('/' + path, hash(readFileSync(join(root, path))));
+}
 const cssBytes = {};
 for (const [name, files] of Object.entries(groups)) {
   const htmlSources = files.map(file => ({ raw: read(file), extension: 'html' }));
@@ -67,7 +71,7 @@ for (const [name, files] of Object.entries(groups)) {
   for (const file of files) {
     const html = read(file)
       .replace(/\/css\/[\w-]+\.min\.css(?:\?v=[\w]+)?/g, `/css/${name}.min.css`)
-      .replace(/\/(?:css|js)\/[\w-]+\.min\.(?:css|js)(?:\?v=[\w]+)?/g, url => {
+      .replace(/\/(?:(?:css|js)\/[\w-]+\.min\.(?:css|js)|favicon\.ico|assets\/brand\/earth-(?:32|96)\.png)(?:\?v=[\w]+)?/g, url => {
         const path = url.split('?')[0];
         if (!revisions.has(path)) throw new Error(`Unbuilt runtime file: ${path}`);
         return `${path}?v=${revisions.get(path)}`;
@@ -77,7 +81,7 @@ for (const [name, files] of Object.entries(groups)) {
 }
 
 // Publish an allowlist, never the repository root (notes, source PNGs or tools).
-const publicFiles = new Set([...pages, 'robots.txt', 'sitemap.xml', 'favicon.svg', 'og-image.svg', 'js/maze-engine.mjs']);
+const publicFiles = new Set([...pages, 'robots.txt', 'sitemap.xml', 'favicon.ico', 'og-image.svg', 'js/maze-engine.mjs']);
 for (const file of pages) {
   for (const [, attribute, value] of read(file).matchAll(/\b(href|src|srcset|data-art-light|data-art-dark|content)="([^"]+)"/g)) {
     const urls = attribute === 'srcset' ? value.split(',').map(part => part.trim().split(/\s+/)[0]) : [value];
@@ -86,7 +90,7 @@ for (const file of pages) {
       if (!url.startsWith('/') || url.startsWith('//')) continue;
       const path = decodeURIComponent(url.split(/[?#]/)[0]).slice(1);
       if (!path || !existsSync(join(root, path)) || !statSync(join(root, path)).isFile()) continue;
-      if (!/^(assets\/|pdf-research-files\/|css\/[\w-]+\.min\.css$|js\/[\w-]+\.min\.js$|favicon\.svg$|og-image\.svg$|[\w/-]+\.html$)/.test(path)) {
+      if (!/^(assets\/|pdf-research-files\/|css\/[\w-]+\.min\.css$|js\/[\w-]+\.min\.js$|favicon\.ico$|og-image\.svg$|[\w/-]+\.html$)/.test(path)) {
         throw new Error(`Review unexpected public dependency: ${path}`);
       }
       publicFiles.add(path);

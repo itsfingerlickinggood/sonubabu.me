@@ -20,6 +20,7 @@ docs/*
 !docs/learnings-pond-artwork.json
 !docs/project-concept-references.json
 !docs/release-audit.md
+!docs/favicon-artwork.json
 # Editable masters and superseded studies stay local; responsive exports ship.
 assets/**/originals/
 assets/learnings/*-original.png

@@ -40,3 +40,5 @@ The suites cover all 23 pages, five widths, both palettes, shared navigation geo
 Responsive WebP exports and the original Gotham/OpenX screenshots are included. Editable PNG masters, superseded artwork, historical audits, internal claim-review notes, and local agent tooling are excluded from Git and deployment; existing local copies are preserved. Artwork prompts, source credits and master-image digests remain in [docs/work-artwork.json](docs/work-artwork.json) and the other current artwork manifests.
 
 See [the release evaluation](docs/release-audit.md) for the design decisions, measured budgets, testing scope and limitations.
+
+The transparent Earth favicon is documented in [the identity artwork record](docs/favicon-artwork.json), including its generation prompt and the one-word tab titles. `npm run build` packages the checked-in PNG exports into `favicon.ico`; it does not require the original painting. Run `npm run test:identity` with the same dedicated Chrome environment to verify titles, icon loading and transparency.

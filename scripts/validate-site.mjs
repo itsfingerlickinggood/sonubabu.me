@@ -49,6 +49,12 @@ for (const path of htmlFiles) {
   if (!/^<!DOCTYPE html>/i.test(html)) errors.push(`${label}: missing doctype`);
   if (!/<html[^>]+lang="en"/i.test(html)) errors.push(`${label}: missing lang=en`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${label}: missing title`);
+  const tabTitle = html.match(/<title>([^<]+)<\/title>/)?.[1] ?? '';
+  if (!/^[A-Za-z][A-Za-z0-9]{0,11}$/.test(tabTitle)) errors.push(`${label}: tab title must be one short word`);
+  for (const size of [32, 96]) {
+    if (!html.includes(`/assets/brand/earth-${size}.png`) || !html.includes(`sizes="${size}x${size}"`)) errors.push(`${label}: missing ${size}px Earth favicon`);
+  }
+  if (html.includes('/favicon.svg')) errors.push(`${label}: obsolete letter favicon`);
   if (!/<meta\s+name="description"/i.test(html)) errors.push(`${label}: missing meta description`);
   if (!/<link\s+rel="canonical"/i.test(html)) errors.push(`${label}: missing canonical URL`);
   if ((html.match(/<h1(?:\s|>)/gi) ?? []).length !== 1) errors.push(`${label}: expected exactly one h1`);
