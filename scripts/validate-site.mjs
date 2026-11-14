@@ -181,7 +181,7 @@ for (const path of htmlFiles) {
     }
     if (!html.includes('collection-page') || !html.includes('/js/reading-index.min.js')) errors.push(`${label}: use the shared Blog composition and theme enhancement`);
     const entries = [...html.matchAll(/<a class="essay-entry"([^>]*)>([\s\S]*?)<\/a>/g)];
-    const expectedCount = label === 'projects.html' ? 7 : 5;
+    const expectedCount = label === 'projects.html' ? 7 : 6;
     if (entries.length !== expectedCount) errors.push(`${label}: expected ${expectedCount} entries`);
     for (const [, attributes, entry] of entries) {
       const heading = attributes.match(/aria-labelledby="([^"]+)"/)?.[1];
@@ -209,7 +209,7 @@ for (const path of htmlFiles) {
   }
   if (label === 'blog.html') {
     const entries = [...html.matchAll(/<a class="essay-entry"([^>]*)>([\s\S]*?)<\/a>/g)];
-    if (entries.length !== 4) errors.push('Blog: expected all four current essays');
+    if (entries.length !== 3) errors.push('Blog: expected all three current essays');
     for (const [, attributes, body] of entries) {
       const heading = attributes.match(/aria-labelledby="([^"]+)"/)?.[1];
       if (!heading || !ids.includes(heading)) errors.push('Blog: each entry needs a linked title');
