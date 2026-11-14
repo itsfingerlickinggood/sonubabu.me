@@ -97,8 +97,21 @@ for (const path of htmlFiles) {
   }
   if (label.startsWith('blog/')) {
     if (/data-viz=|\/js\/viz.min.js/.test(html)) errors.push(`${label}: obsolete ambient blog visualization remains`);
-    if ((html.match(/data-blog-visual=/g) ?? []).length !== 2) errors.push(`${label}: expected two article-specific explanations`);
-    if (!/class="essay-art essay-opening"/.test(html) || !/data-blog-dark media="not all"/.test(html)) errors.push(`${label}: expected themed editorial opening with a light no-JS fallback`);
+    // Evidence essays use static, theme-aware charts instead of interactive blog visuals.
+    const evidence = /data-blog-format="evidence"/.test(html);
+    if (evidence) {
+      const charts = [...html.matchAll(/<figure class="essay-chart"[^>]*aria-labelledby="([^"]+)"[^>]*>([\s\S]*?)<\/figure>/g)];
+      if (charts.length < 2) errors.push(`${label}: evidence essays need at least two static charts`);
+      for (const [, heading, body] of charts) {
+        if (!ids.includes(heading)) errors.push(`${label}: chart needs a linked title`);
+        if (!/<svg[^>]+role="img"[^>]+aria-label="[^"]+"/.test(body)) errors.push(`${label}: chart needs an accessible summary`);
+        if (!/<figcaption>[\s\S]+<\/figcaption>/.test(body)) errors.push(`${label}: chart needs a caption`);
+      }
+      if (/data-blog-visual=|\/js\/blog-visuals.min.js/.test(html)) errors.push(`${label}: evidence essays must not load interactive blog visuals`);
+    } else {
+      if ((html.match(/data-blog-visual=/g) ?? []).length !== 2) errors.push(`${label}: expected two article-specific explanations`);
+      if (!/class="essay-art essay-opening"/.test(html) || !/data-blog-dark media="not all"/.test(html)) errors.push(`${label}: expected themed editorial opening with a light no-JS fallback`);
+    }
     if (!/<p class="article-lede">/.test(html)) errors.push(`${label}: expected a short article introduction`);
     if (!/class="essay-next" aria-label="More essays"/.test(html)) errors.push(`${label}: expected a route to the other essays`);
     if (label === 'blog/agi.html' && (!html.includes('bv-loss-history') || !html.includes('data-update-equation'))) errors.push(`${label}: missing calculated learning-step explanation`);
@@ -196,13 +209,13 @@ for (const path of htmlFiles) {
   }
   if (label === 'blog.html') {
     const entries = [...html.matchAll(/<a class="essay-entry"([^>]*)>([\s\S]*?)<\/a>/g)];
-    if (entries.length !== 3) errors.push('Blog: expected all three current essays');
+    if (entries.length !== 4) errors.push('Blog: expected all four current essays');
     for (const [, attributes, body] of entries) {
       const heading = attributes.match(/aria-labelledby="([^"]+)"/)?.[1];
       if (!heading || !ids.includes(heading)) errors.push('Blog: each entry needs a linked title');
       if (!/data-index-dark media="not all"/.test(body)) errors.push('Blog: thumbnail needs a light no-JS fallback');
       if (!/<img[^>]+alt=""[^>]+width="360" height="240"/.test(body)) errors.push('Blog: decorative thumbnail needs reserved dimensions');
-      if (!/<time datetime="2025-05-0[12]">/.test(body)) errors.push('Blog: preserve original publication dates');
+      if (!/<time datetime="(?:2025-05-0[12]|2026-11-14)">/.test(body)) errors.push('Blog: preserve original publication dates');
     }
   }
   if (label === 'learnings.html') {

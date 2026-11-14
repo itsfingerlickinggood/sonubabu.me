@@ -33,7 +33,7 @@ The tests use a dedicated local Chrome profile, never your personal browser sess
 
 Set `QA_CHROME_PROFILE` to that profile directory and `QA_OUTPUT` to a separate screenshot/report directory, then run `npm run test:browser`. Optional `QA_URL` overrides the default `http://127.0.0.1:3001`.
 
-The suites cover all 23 pages, five widths, both palettes, shared navigation geometry, 200% text, keyboard use, no-JavaScript fallbacks, image failure, the maze, and research interactions. They save JSON results and screenshots locally; neither is deployed.
+The suites cover all 24 pages, five widths, both palettes, shared navigation geometry, 200% text, keyboard use, no-JavaScript fallbacks, image failure, the maze, and research interactions. They save JSON results and screenshots locally; neither is deployed.
 
 ## Artwork and archived work
 

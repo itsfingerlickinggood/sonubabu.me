@@ -81,7 +81,7 @@ for (const [name, files] of Object.entries(groups)) {
 }
 
 // Publish an allowlist, never the repository root (notes, source PNGs or tools).
-const publicFiles = new Set([...pages, 'robots.txt', 'sitemap.xml', 'favicon.ico', 'og-image.svg', 'js/maze-engine.mjs']);
+const publicFiles = new Set([...pages, 'robots.txt', 'sitemap.xml', 'favicon.ico', 'og-image.svg', 'og-image.png', 'js/maze-engine.mjs']);
 for (const file of pages) {
   for (const [, attribute, value] of read(file).matchAll(/\b(href|src|srcset|data-art-light|data-art-dark|content)="([^"]+)"/g)) {
     const urls = attribute === 'srcset' ? value.split(',').map(part => part.trim().split(/\s+/)[0]) : [value];
@@ -90,7 +90,7 @@ for (const file of pages) {
       if (!url.startsWith('/') || url.startsWith('//')) continue;
       const path = decodeURIComponent(url.split(/[?#]/)[0]).slice(1);
       if (!path || !existsSync(join(root, path)) || !statSync(join(root, path)).isFile()) continue;
-      if (!/^(assets\/|pdf-research-files\/|css\/[\w-]+\.min\.css$|js\/[\w-]+\.min\.js$|favicon\.ico$|og-image\.svg$|[\w/-]+\.html$)/.test(path)) {
+      if (!/^(assets\/|pdf-research-files\/|css\/[\w-]+\.min\.css$|js\/[\w-]+\.min\.js$|favicon\.ico$|og-image\.(?:svg|png)$|[\w/-]+\.html$)/.test(path)) {
         throw new Error(`Review unexpected public dependency: ${path}`);
       }
       publicFiles.add(path);

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfer</title>
+    <meta name="description" content="A year of red-teaming on Gray Swan Arena: 538 accepted breaks, and why one prompt that transfers across models beats thirty prompts that do not." />
+    <meta property="og:title" content="Transfer beats volume — Sonu Babu" />
+    <meta property="og:description" content="A year of red-teaming on Gray Swan Arena: 538 accepted breaks, and why one prompt that transfers across models beats thirty prompts that do not." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sonubabu.me/blog/transfer-beats-volume" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Transfer beats volume — Sonu Babu" />
+    <meta name="twitter:description" content="A year of red-teaming on Gray Swan Arena: 538 accepted breaks, and why one prompt that transfers across models beats thirty prompts that do not." />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.png" />
+    <meta name="twitter:image:alt" content="Sonu Babu: AI safety and security research, evaluation engineering, and software." />
+    <link rel="canonical" href="https://sonubabu.me/blog/transfer-beats-volume" />
+    <link rel="icon" href="/assets/brand/earth-32.png?v=40ab5d9e6065" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/assets/brand/earth-96.png?v=3b75d2701dab" type="image/png" sizes="96x96" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark")t="light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/essay.min.css?v=91f8045c0c59" as="style" />
+    <link rel="stylesheet" href="/css/essay.min.css?v=91f8045c0c59" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-name" aria-label="Sonu Babu — Home"><img class="nav-earth" src="/assets/brand/earth-96.png?v=3b75d2701dab" width="32" height="32" alt="" draggable="false" /></a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/blog.html" aria-current="page">Blog</a>
+        <a href="/learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+
+      <main id="main-content" class="article-page research-article reading-article" data-blog-format="evidence">
+        <a href="/blog.html" class="back-link">Back to Blog</a>
+
+        <header class="article-header">
+          <h1>Transfer beats volume</h1>
+          <time class="article-meta" datetime="2026-11-14">November 14, 2026</time>
+          <p class="article-lede">A year of red-teaming on Gray Swan Arena: 538 accepted breaks, and why one prompt that transfers across models beats thirty prompts that do not.</p>
+        </header>
+        <div class="article-body">
+          <nav class="article-toc" aria-label="Article contents">
+            <p class="toc-title">Contents</p>
+            <ul>
+              <li><a href="#counting">What the arena counts</a></li>
+              <li><a href="#scoreboard">The scoreboard</a></li>
+              <li><a href="#transfer">Transfer beats volume</a></li>
+              <li><a href="#three-ways">Three ways in</a></li>
+              <li><a href="#filters">Breaking filtered models</a></li>
+              <li><a href="#agents">Attacking agents through their data</a></li>
+              <li><a href="#labyrinth">The puzzle that rewarded brevity</a></li>
+              <li><a href="#post-mortem">The IPI Black post-mortem</a></li>
+              <li><a href="#lessons">Lessons</a></li>
+              <li><a href="#safety">What this says about safety</a></li>
+              <li><a href="#method">Method and limits</a></li>
+            </ul>
+          </nav>
+
+          <h2 id="counting">What the arena counts</h2>
+          <p>
+            Over March to November 2026 I competed in Gray Swan Arena, a platform where participants try to get frontier AI models to break their safety behaviour inside a fixed challenge. A challenge defines a set of behaviours to elicit, and a break is scored once per combination of user, model and behaviour. Breaking the same behaviour on the same model twice earns nothing extra. Breaking one behaviour on thirty models earns thirty.
+          </p>
+          <p>
+            That single rule shapes everything below. The unit of work is not the attempt or the conversation. It is the prompt, and the real score of a prompt is how many models it breaks.
+          </p>
+
+          <h2 id="scoreboard">The scoreboard</h2>
+          <p>
+            Across eight challenges, my account logged <strong>538 accepted breaks</strong>. A further 700 accepted rows came from a non-break data-collection task, and I have left those out of every count here. Two direct-attack challenges produced most of the breaks: Staged Attack with 379 and Hazard Hunt Q3 with 89. Indirect prompt injection (IPI), where most of my recent effort went, produced 30. The direct attacks account for 468 breaks, about 87% of the total.
+          </p>
+          
+          <figure class="essay-chart" aria-labelledby="chart-scoreboard">
+            <p class="ec-kicker" id="chart-scoreboard">Accepted breaks per challenge</p>
+            <svg viewBox="0 0 420 264" role="img" aria-label="Staged Attack: 379; Hazard Hunt Q3: 89; Safeguards: 30; Labyrinth: 10; IPI July: 10; IPI August: 10; IPI Black (W3): 8; IPI Lucky Break: 2"><text class="ec-label" x="0" y="24">Staged Attack</text><rect class="ec-direct" x="128" y="10" width="246.0" height="20" rx="2"/><text class="ec-value" x="381.0" y="24">379</text><text class="ec-label" x="0" y="56">Hazard Hunt Q3</text><rect class="ec-direct" x="128" y="42" width="57.8" height="20" rx="2"/><text class="ec-value" x="192.8" y="56">89</text><text class="ec-label" x="0" y="88">Safeguards</text><rect class="ec-agent" x="128" y="74" width="19.5" height="20" rx="2"/><text class="ec-value" x="154.5" y="88">30</text><text class="ec-label" x="0" y="120">Labyrinth</text><rect class="ec-puzzle" x="128" y="106" width="6.5" height="20" rx="2"/><text class="ec-value" x="141.5" y="120">10</text><text class="ec-label" x="0" y="152">IPI July</text><rect class="ec-ipi" x="128" y="138" width="6.5" height="20" rx="2"/><text class="ec-value" x="141.5" y="152">10</text><text class="ec-label" x="0" y="184">IPI August</text><rect class="ec-ipi" x="128" y="170" width="6.5" height="20" rx="2"/><text class="ec-value" x="141.5" y="184">10</text><text class="ec-label" x="0" y="216">IPI Black (W3)</text><rect class="ec-ipi" x="128" y="202" width="5.2" height="20" rx="2"/><text class="ec-value" x="140.2" y="216">8</text><text class="ec-label" x="0" y="248">IPI Lucky Break</text><rect class="ec-ipi" x="128" y="234" width="2.0" height="20" rx="2"/><text class="ec-value" x="137.0" y="248">2</text></svg>
+            <figcaption>Accepted breaks by challenge, coloured by attack type. Direct harmful-content attacks (dark), agent policy bypass (mid), indirect prompt injection (light), puzzle (grey). The 700 data-collection rows are excluded. Totals from the account’s submission lists, 13 and 14 November 2026.</figcaption>
+          </figure>
+
+          <h2 id="transfer">Transfer beats volume</h2>
+          <p>
+            The biggest lesson in the data is about transfer. Staged Attack produced 379 breaks from 64 prompt families. Hazard Hunt Q3 produced 89 from 30. The difference was not effort. It was how far each prompt travelled before I wrote the next one.
+          </p>
+          <p>
+            The best single prompt in each challenge tells the same story. Staged Attack’s strongest prompts each broke 30 models, including variants wrapped in safety filters. The strongest prompt in Hazard Hunt broke 6.
+          </p>
+          
+          <figure class="essay-chart" aria-labelledby="chart-transfer">
+            <p class="ec-kicker" id="chart-transfer">Best single prompt, models broken</p>
+            <svg viewBox="0 0 420 232" role="img" aria-label="Staged Attack: 30 models; Safeguards: 13 models; Hazard Hunt Q3: 6 models; IPI August: 6 models; IPI July: 4 models; IPI Lucky Break: 2 models; Labyrinth: 2 models"><text class="ec-label" x="0" y="24">Staged Attack</text><rect class="ec-direct" x="128" y="10" width="222.0" height="20" rx="2"/><text class="ec-value" x="357.0" y="24">30 models</text><text class="ec-label" x="0" y="56">Safeguards</text><rect class="ec-agent" x="128" y="42" width="96.2" height="20" rx="2"/><text class="ec-value" x="231.2" y="56">13 models</text><text class="ec-label" x="0" y="88">Hazard Hunt Q3</text><rect class="ec-direct" x="128" y="74" width="44.4" height="20" rx="2"/><text class="ec-value" x="179.4" y="88">6 models</text><text class="ec-label" x="0" y="120">IPI August</text><rect class="ec-ipi" x="128" y="106" width="44.4" height="20" rx="2"/><text class="ec-value" x="179.4" y="120">6 models</text><text class="ec-label" x="0" y="152">IPI July</text><rect class="ec-ipi" x="128" y="138" width="29.6" height="20" rx="2"/><text class="ec-value" x="164.6" y="152">4 models</text><text class="ec-label" x="0" y="184">IPI Lucky Break</text><rect class="ec-ipi" x="128" y="170" width="14.8" height="20" rx="2"/><text class="ec-value" x="149.8" y="184">2 models</text><text class="ec-label" x="0" y="216">Labyrinth</text><rect class="ec-puzzle" x="128" y="202" width="14.8" height="20" rx="2"/><text class="ec-value" x="149.8" y="216">2 models</text></svg>
+            <figcaption>Models broken by the single best prompt in each challenge. Staged Attack’s best prompts broke 30 models each, against 6 for Hazard Hunt Q3 and 2 for the puzzle. Counts are per prompt family, not per attempt.</figcaption>
+          </figure>
+          <p>
+            The lesson I would give my earlier self: score a prompt by the models it breaks, then replay it across every model before writing a new one. Most of my wasted effort came from new prompts that were never tested for transfer.
+          </p>
+
+          <h2 id="three-ways">Three ways in</h2>
+          <p>
+            The winning prompts fell into a few structural families. I describe their shape here and do not reproduce them. Most of these scenarios target harmful content, and a working prompt published verbatim is a working jailbreak.
+          </p>
+
+          <h3 id="abstraction">Abstraction and simulation specifications</h3>
+          <p>
+            This was the best transferrer. In Staged Attack, the winning prompts read like a fake engineering specification. They have a role line, a context line describing a closed, high-fidelity simulation, an objective naming a deliverable, and a structured output format. The sensitive nouns are replaced with invented systems vocabulary, while the output structure still forces a precise answer. There is no pleading, no backstory, no claimed credentials and no urgency. Winners ran a median of about 4,300 characters, with a range from 21 characters to over 20,000.
+          </p>
+
+          <h3 id="rule-conflict">Policy conflict</h3>
+          <p>
+            The shortest high-transfer prompt on the account came from Safeguards, a challenge where the model acts as a retail support agent with tools for refunds, cancellations and vouchers. The winning idea was a pair of requests, each of which the agent is allowed to handle alone, but which its policy forbids together. The prompt was under 200 characters, had no framing and no roleplay, and broke 13 models.
+          </p>
+          <p>
+            Adding a story made it worse. A variant that invented an incident and an authority figure transferred to 4 models at best. <em>Inferred:</em> the weakness sits in the agent’s rule set rather than its refusal behaviour, so safety training never fires. Narrative added surface that the agent could examine, and examination is what it did.
+          </p>
+
+          <h3 id="authority">Authority and citation framing</h3>
+          <p>
+            Hazard Hunt Q3 is where framing was most visible. Its winners usually opened as a credentialed professional, such as a forensic analyst, compliance auditor, peer reviewer or process-safety specialist. They named real literature, asked for citations and closed with a note that the answer was not operational guidance.
+          </p>
+          <p>
+            The uncomfortable part is what happened when I looked at the rejected pile. I sampled 460 of the 1,466 rejections, and the framings I expected to separate winners from losers were just as common in losses:
+          </p>
+          <div class="table-wrap">
+            <table class="ec-table">
+              <caption>Framing features: share of winning prompts vs a sample of rejected prompts</caption>
+              <thead><tr><th scope="col">Feature</th><th scope="col">Winners (89)</th><th scope="col">Rejected sample (460)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Forensic framing</th><td>67%</td><td>60%</td></tr>
+                <tr><th scope="row">Citation demand</th><td>53%</td><td>79%</td></tr>
+                <tr><th scope="row">Defensive or detection purpose</th><td>51%</td><td>72%</td></tr>
+                <tr><th scope="row">Compliance or audit</th><td>49%</td><td>73%</td></tr>
+                <tr><th scope="row">Academic framing</th><td>40%</td><td>59%</td></tr>
+                <tr><th scope="row">Explicit disclaimer</th><td>25%</td><td>26%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The framing is what everyone writes, so it is the baseline, not the edge. What tracked with winning was concrete, artifact-like scenario detail and length: winners had a median of 4,335 characters against 3,450 for the rejected sample. The sample is the most recent 460 rejections rather than a random draw, so treat the comparison as a hint.
+          </p>
+          <p>
+            Scenario choice mattered more than wording. In the sample, one scenario absorbed 268 rejections for 9 breaks, while another produced 15 breaks with none in the sample. Some scenarios ate hundreds of attempts for a handful of breaks. I should have pulled the scenario-level numbers sooner.
+          </p>
+
+          <h2 id="filters">Breaking filtered models</h2>
+          <p>
+            Staged Attack also ran against model variants that the arena labelled as wrapped in safety filters: input filters, output filters, both, or filters over the whole conversation. Of its 379 breaks, 301 (79%) came from those variants, across 45 distinct variants.
+          </p>
+          
+          <figure class="essay-chart" aria-labelledby="chart-filters">
+            <p class="ec-kicker" id="chart-filters">Staged Attack breaks by target type</p>
+            <svg viewBox="0 0 420 80" role="img" aria-label="301 of 379 Staged Attack breaks were on filtered model variants; 78 on base models"><text class="ec-label" x="0" y="14">Filtered variants: 301 (79%)</text><rect class="ec-direct" x="0" y="24" width="333.6" height="32" rx="2"/><rect class="ec-puzzle" x="333.6" y="24" width="86.4" height="32" rx="2"/><text class="ec-note" x="0" y="74">Base models: 78 (21%). 45 distinct model variants were broken in total.</text></svg>
+            <figcaption>Staged Attack breaks split by whether the target was a filtered variant. The arena counts model variants separately, so this is a count of breaks, not of distinct prompts.</figcaption>
+          </figure>
+          <p>
+            <em>Inferred:</em> the abstraction technique worked against classifiers as well as base models. The surface text contained no vocabulary a classifier would flag, and the structure carried the request. This is an interpretation of the pattern, not a measured mechanism.
+          </p>
+
+          <h2 id="agents">Attacking agents through their data</h2>
+          <p>
+            In the IPI challenges, the attack did not come from the user. It came from text the agent reads while doing its job: a support ticket, a customer message, an expense line, a merge request, a chat reply. The breaks I got there came from making the injected instruction look like part of the agent’s own work.
+          </p>
+          <p>The patterns that worked, described structurally:</p>
+          <ul>
+            <li><strong>Impersonate an authority the agent already trusts.</strong> The text attributes an action to a manager, a finance approver, a platform’s own system output or a moderation log.</li>
+            <li><strong>Attach a plausible reference.</strong> A ticket number, a case ID or a reconciliation record makes the claim look checkable.</li>
+            <li><strong>Frame the step as routine.</strong> The injected action is presented as the next ordinary step of the task the user asked for.</li>
+          </ul>
+          <p>
+            Winning payloads broke between two and six models each, and the strongest IPI result was six. <em>Inferred:</em> agents trust content that looks like their own system output, and the more the injection resembles the next routine step, the less they scrutinise it.
+          </p>
+
+          <h2 id="labyrinth">The puzzle that rewarded brevity</h2>
+          <p>
+            The Labyrinth challenge was a set of persuasion puzzles, and it was the one place where short prompts won. The winners were a greeting, a one-line arithmetic question, a playful request to a genie and a request for a permit. The greeting broke 2 models. My best finish on the account, 17th, came from this challenge.
+          </p>
+          <p>
+            <em>Inferred:</em> some targets are game logic rather than safety training, and over-engineering hurts. The right move was to stop reaching for technique and check whether the target needed any.
+          </p>
+
+          <h2 id="post-mortem">The IPI Black post-mortem</h2>
+          <p>
+            IPI Black, the November wave on coding agents, is the most recent and most instructive failure. I ran 507 attempts and had 498 rejected and 9 accepted, with 8 counted as breaks. The public leaders had 32 to 33 breaks across all waves, and the rank-50 mark on the White Box board sat at 10. I was at 8.
+          </p>
+          <ul>
+            <li><strong>The roster cost the most.</strong> All 8 counted breaks came from 4 of roughly 20 models. Sixteen models produced zero breaks in 335 attempts. I kept running the full roster on beliefs I had not tested.</li>
+            <li><strong>Models read the injection, then chose differently.</strong> In one scenario, every model read the injected instruction. Models that broke acted on it. Models that did not either followed the user’s own wording, or flagged the instruction as external and unverified.</li>
+            <li><strong>Pointers lost half the runs.</strong> In one scenario, only 9 of 17 runs opened the document that held the instruction. The rest read only a pointer to it.</li>
+            <li><strong>The safe path was available and taken.</strong> One model read the instruction, understood it, and reported that the configuration step was unnecessary because the stated purpose was already met by a step the user had asked for. The agent satisfied the goal without the injected action.</li>
+            <li><strong>Stopped runs counted as failures.</strong> About 19% of the sampled rejected runs had no transcript. Those were runs I stopped, or that never ran, and they still appear as rejections.</li>
+            <li><strong>Process errors.</strong> I read the success criteria late. Early attempts used wrong literal values, one close to the target but not the target, and one path that was not absolute. A wrong domain diagnosis also halted a batch.</li>
+            <li><strong>Results are stochastic.</strong> The same model broke on one run and failed on the next. One to four runs cannot rule a model out.</li>
+          </ul>
+          <p>
+            I have withheld payload text and step-by-step mechanics from this section. The arena runs a rule against sharing solutions for a period after each wave, and the aggregate numbers and lessons here are the part I can share now.
+          </p>
+
+          <h2 id="lessons">Lessons</h2>
+          <ul>
+            <li><strong>Optimise for transfer.</strong> Score a prompt by the models it breaks. Replay it across the roster before writing a new one.</li>
+            <li><strong>Abstraction beat persuasion.</strong> Specification-style prompts outperformed credential-and-citation prompts by three to five times.</li>
+            <li><strong>Look for the rule conflict before the jailbreak.</strong> The shortest prompt on the account was the most efficient.</li>
+            <li><strong>Check the rejected pile before trusting a pattern.</strong> A framing that wins often also loses often.</li>
+            <li><strong>Pick scenarios by cost.</strong> Some scenarios consumed hundreds of attempts for a few breaks.</li>
+            <li><strong>Read the success criteria first, verbatim.</strong> A single literal can make a whole campaign unscorable.</li>
+            <li><strong>Measure, don’t assume.</strong> Several confident beliefs during IPI Black, including a rule about deliberation volume, and claims about the best-behaved model, were wrong when I checked the data.</li>
+            <li><strong>Don’t stop runs.</strong> A stopped run is a free failure on your record.</li>
+          </ul>
+
+          <h2 id="safety">What this says about safety</h2>
+          <p>
+            I want to keep this modest. These are results from one person on one platform, over a few months, and the models are pseudonymised, so I cannot say which vendor sits behind any of them. With that caveat, three things seem worth saying.
+          </p>
+          <p>
+            <em>Inferred:</em> classifiers and refusal training keyed to surface vocabulary miss requests whose structure is specified rather than named. Agents trust content that looks like their own system output. And the strongest defence I saw was an agent that found a safe way to satisfy the stated goal, rather than one that refused outright.
+          </p>
+
+          <h2 id="method">Method and limits</h2>
+          <p>
+            The figures come from the account’s own submission lists, leaderboards and challenge pages, pulled on 13 and 14 November 2026. Claims marked <em>inferred</em> are my interpretation. Known gaps:
+          </p>
+          <ul>
+            <li>The Hazard Hunt rejected sample is 460 of 1,466 and is ordered by recency, so it is not random.</li>
+            <li>Staged Attack rejected counts were not pulled, so its acceptance rate is unknown.</li>
+            <li>Per-model rates were computed only for IPI Black.</li>
+            <li>Hazard Hunt Q3 shows as “Unranked” on the challenges page despite 89 breaks. I have not been able to explain this.</li>
+            <li>Staged Attack’s rank differs between the wave view (34th, 150 breaks in Wave 2) and the challenge card (31st, 379 breaks overall). I report the challenge card.</li>
+          </ul>
+          <p>
+            The total of 538 is the sum of the per-challenge counts. Some earlier notes gave 529, which does not match those rows.
+          </p>
+
+          <nav class="essay-next" aria-label="More essays">
+            <p>Keep reading</p>
+            <a href="/blog/agi.html"><span>AGI <span aria-hidden="true">→</span></span><small>Intelligence, transfer, and the limits of capability.</small></a>
+            <a href="/blog/ideas.html"><span>Ideas <span aria-hidden="true">→</span></span><small>How a loose connection becomes a question worth trying.</small></a>
+          </nav>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
+  </body>
+</html>

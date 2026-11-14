@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 const walk = dir => readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(join(dir,e.name)):[join(dir,e.name)]);
 const files = walk('dist');
 const pages = files.filter(f=>f.endsWith('.html'));
-assert.equal(pages.length,23);
+assert.equal(pages.length,24);
 let references=0;
 for(const page of pages) {
   const html=readFileSync(page,'utf8');
@@ -34,7 +34,7 @@ for(const file of files) {
   }
   assert.ok(!/\/(?:originals|docs|node_modules|scripts|newest-research)\//.test(file),`Non-public directory: ${file}`);
   assert.ok(!/\.(?:json|md|zip|log)$/.test(file),`Non-public file: ${file}`);
-  if(file.endsWith('.png'))assert.ok(['dist/assets/projects/openx-origin.png','dist/assets/brand/earth-32.png','dist/assets/brand/earth-96.png'].includes(file),`Unexpected published PNG: ${file}`);
+  if(file.endsWith('.png'))assert.ok(['dist/assets/projects/openx-origin.png','dist/assets/brand/earth-32.png','dist/assets/brand/earth-96.png','dist/og-image.png','dist/assets/blog/transfer-light-360.png','dist/assets/blog/transfer-dark-360.png'].includes(file),`Unexpected published PNG: ${file}`);
 }
 assert.ok(!existsSync('dist/favicon.svg'),'The old letter favicon must not ship');
 const icon=readFileSync('dist/favicon.ico');

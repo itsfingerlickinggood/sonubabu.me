@@ -210,3 +210,24 @@
   .bv-enhanced .bv-panels .bv-panel + .bv-panel { margin-top: 1rem; }
   .blog-visual, .essay-opening { break-inside: avoid; }
 }
+
+/* Evidence essays: static, theme-aware charts drawn from the account's data. */
+.reading-article .essay-chart { margin: 2.75rem 0; }
+.reading-article .essay-chart .ec-kicker { font: 600 .875rem/1.4 var(--font-body); color: var(--color-text); margin: 0 0 .875rem; }
+.reading-article .essay-chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.reading-article .essay-chart .ec-label { font: 400 13px/1.2 var(--font-body); fill: var(--color-prose); }
+.reading-article .essay-chart .ec-value { font: 600 13px/1.2 var(--font-body); fill: var(--color-text); }
+.reading-article .essay-chart .ec-note { font: 400 12px/1.2 var(--font-body); fill: var(--color-text-muted); }
+.reading-article .essay-chart .ec-direct { fill: var(--color-text); }
+.reading-article .essay-chart .ec-agent { fill: var(--color-text-subtle); }
+.reading-article .essay-chart .ec-ipi { fill: var(--color-border-strong); }
+.reading-article .essay-chart .ec-puzzle { fill: var(--color-border); }
+.reading-article .essay-chart figcaption {
+  margin: .875rem 0 0; color: var(--color-text-muted); font: 400 .8125rem/1.7 var(--font-body);
+}
+.reading-article .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.reading-article .ec-table { width: 100%; border-collapse: collapse; font: 400 .9375rem/1.5 var(--font-body); }
+.reading-article .ec-table caption { text-align: left; color: var(--color-text-muted); font-size: .8125rem; padding-bottom: .5rem; }
+.reading-article .ec-table th, .reading-article .ec-table td { text-align: left; padding: .625rem .75rem; border-bottom: 1px solid var(--color-border); }
+.reading-article .ec-table thead th { color: var(--color-text-muted); font-weight: 500; font-size: .8125rem; }
+.reading-article .ec-table td { font-variant-numeric: tabular-nums; }
