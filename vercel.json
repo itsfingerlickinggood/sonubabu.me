@@ -18,6 +18,9 @@
     { "source": "/projects/:slug", "destination": "/projects/:slug.html" },
     { "source": "/research/:slug", "destination": "/research/:slug.html" }
   ],
+  "redirects": [
+    { "source": "/blog/transfer-beats-volume", "destination": "/research/transfer-beats-volume", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/js/(.*)",
