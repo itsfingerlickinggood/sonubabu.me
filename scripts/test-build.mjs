@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 const walk = dir => readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(join(dir,e.name)):[join(dir,e.name)]);
 const files = walk('dist');
 const pages = files.filter(f=>f.endsWith('.html'));
-assert.equal(pages.length,24);
+assert.equal(pages.length,25);
 let references=0;
 for(const page of pages) {
   const html=readFileSync(page,'utf8');

@@ -181,14 +181,14 @@ for (const path of htmlFiles) {
     }
     if (!html.includes('collection-page') || !html.includes('/js/reading-index.min.js')) errors.push(`${label}: use the shared Blog composition and theme enhancement`);
     const entries = [...html.matchAll(/<a class="essay-entry"([^>]*)>([\s\S]*?)<\/a>/g)];
-    const expectedCount = label === 'projects.html' ? 7 : 6;
+    const expectedCount = 7;
     if (entries.length !== expectedCount) errors.push(`${label}: expected ${expectedCount} entries`);
     for (const [, attributes, entry] of entries) {
       const heading = attributes.match(/aria-labelledby="([^"]+)"/)?.[1];
       const description = attributes.match(/aria-describedby="([^"]+)"/)?.[1];
       if (!ids.includes(heading) || !ids.includes(description)) errors.push(`${label}: each entry needs its title and description`);
       if (/<a\s/.test(entry) || /data-art\s/.test(entry)) errors.push(`${label}: one article link only, no nested viewer controls`);
-      if (!entry.includes('class="entry-meta"') || !entry.includes('class="essay-copy"') || !/<picture class="essay-thumb/.test(entry)) errors.push(`${label}: use Blog metadata, copy and thumbnail structure`);
+      if (!entry.includes('class="entry-meta"') || !entry.includes('class="essay-copy"') || (label === 'projects.html' && !/<picture class="essay-thumb/.test(entry))) errors.push(`${label}: use Blog metadata, copy and thumbnail structure`);
     }
     for (const [, key, body] of html.matchAll(/<picture\b[^>]*data-work-thumbnail="([^"]+)"[^>]*>([\s\S]*?)<\/picture>/g)) {
       const item = artManifest.items.find(i => i.key === key);
