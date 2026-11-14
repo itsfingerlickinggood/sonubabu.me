@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engine</title>
+    <meta name="description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta property="og:title" content="A red-team engine for agents — Sonu Babu" />
+    <meta property="og:description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sonubabu.me/research/red-team-engine" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A red-team engine for agents — Sonu Babu" />
+    <meta name="twitter:description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.png" />
+    <meta name="twitter:image:alt" content="Sonu Babu: AI safety and security research, evaluation engineering, and software." />
+    <link rel="canonical" href="https://sonubabu.me/research/red-team-engine" />
+    <link rel="icon" href="/assets/brand/earth-32.png?v=40ab5d9e6065" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/assets/brand/earth-96.png?v=3b75d2701dab" type="image/png" sizes="96x96" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark")t="light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/work.min.css?v=b74866609f36" as="style" />
+    <link rel="stylesheet" href="/css/work.min.css?v=b74866609f36" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-name" aria-label="Sonu Babu — Home"><img class="nav-earth" src="/assets/brand/earth-96.png?v=3b75d2701dab" width="32" height="32" alt="" draggable="false" /></a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/research.html" aria-current="page">Research</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+
+      <main id="main-content" class="article-page research-article reading-article" data-blog-format="evidence">
+        <a href="/research.html" class="back-link">Back to Research</a>
+
+        <header class="article-header">
+          <h1>A red-team engine for agents</h1>
+          <time class="article-meta" datetime="2026-11-15">November 15, 2026</time>
+          <p class="article-lede">A harness for attacking tool-using AI agents, what it solved across two sanctioned engagements, where it failed, and what I am leaving out.</p>
+        </header>
+        <div class="article-body">
+          <nav class="article-toc" aria-label="Article contents">
+        <p class="toc-title">Contents</p>
+        <ul>
+          <li><a href="#why">Why build one</a></li>
+          <li><a href="#design">How it is put together</a></li>
+          <li><a href="#results">What it solved</a></li>
+          <li><a href="#worked">What actually worked</a></li>
+          <li><a href="#failed">Where it failed</a></li>
+          <li><a href="#withheld">What I am withholding</a></li>
+          <li><a href="#method">Method and limits</a></li>
+        </ul>
+      </nav>
+
+      
+
+      <h2 id="why">Why build one</h2>
+      <p>
+        Over two sanctioned engagements I attacked AI agents that read untrusted text while doing a job: one a multi-level capture-the-flag where an assistant handles chat, email, files and messages, the other an indirect prompt-injection work test on an email-triage agent. Both reward the same thing. The score is not what the model says. It is what the agent <em>does</em>: a reply that gets sent, a tool call that fires. That makes the work an engineering problem as much as a prompting one, so I built a harness around it.
+      </p>
+
+      <h2 id="design">How it is put together</h2>
+      <p>
+        The design rule is that <strong>generation and admission are separate</strong>. Attacker models only write candidate text. They never touch the browser, the session or any credential. A single submitter sends, and only after a rules-of-engagement linter has passed the candidate.
+      </p>
+      <ul>
+        <li><strong>Generate.</strong> An ensemble of attacker models in several roles: generator, single-change mutator, disagreement probe and reviewer. A refusal detector watches each model, because a window that quietly turns into refusals looks exactly like a strong defence.</li>
+        <li><strong>Gate.</strong> A linter blocks anything that is not one-shot and self-contained, that tries to obfuscate, or that smuggles in information the player should not have.</li>
+        <li><strong>Rank and schedule.</strong> Spend the remaining budget on payload families nobody has sent yet, from families that have worked before. The deadline is an absolute instant stored on disk, so a crash cannot reset the clock.</li>
+        <li><strong>Submit.</strong> A paced state machine with a host allowlist, so a session token cannot travel to another origin.</li>
+        <li><strong>Grade and record.</strong> Deterministic grading that says "unknown" rather than guessing, a database that checkpoints every attempt, and a journal entry for every accepted break.</li>
+      </ul>
+      <p>
+        The code is about 6,600 lines with a test suite that pins the seams between stages. Around it sits a research layer: roughly 78 short-lived research agents over about 48 hours, none of which were allowed to fire a run.
+      </p>
+
+      <h2 id="results">What it solved</h2>
+      <div class="table-wrap">
+            <table class="ec-table">
+              <caption>Results by target across the two engagements</caption>
+              <thead><tr><th scope="col">Target</th><th scope="col">Result</th><th scope="col">Attempts to first pass</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Capture-the-flag, levels 1–2</th><td>Solved</td><td>11 and 1</td></tr>
+                <tr><th scope="row">Capture-the-flag, level 3</th><td>Solved</td><td>1 (replayed from the first engagement)</td></tr>
+                <tr><th scope="row">Capture-the-flag, levels 4–5</th><td>Solved</td><td>about 740 and about 260</td></tr>
+                <tr><th scope="row">Capture-the-flag, level 6</th><td>Not solved</td><td>about 1,900, no passes</td></tr>
+                <tr><th scope="row">Email-agent injection work test</th><td>Passed</td><td>0 of 40 epochs on the first four runs, then 9 of 10 twice</td></tr>
+              </tbody>
+            </table>
+          </div>
+      <p>
+        Two of those numbers need context. Levels 2 and 3 passed on the first attempt only because I replayed payloads banked from the earlier engagement. That tests portability, not discovery. And in that first engagement the breaks came from payloads I wrote by hand, not from the generator ensemble. I count that as a finding about the engine rather than a flattering omission.
+      </p>
+
+      <h2 id="worked">What actually worked</h2>
+      <p>
+        The useful parts were the loop and the forensics, not the generator.
+      </p>
+      <ul>
+        <li><strong>Score the artifact.</strong> Every graded outcome came from a specific field the judge reads, such as a sent message body or a tool-call argument. Optimising the chat text was wasted effort.</li>
+        <li><strong>Reframe, don't escalate.</strong> Wins made the target action the natural way to finish the task the user had already asked for. Stronger wording never beat that.</li>
+        <li><strong>Belief is not obedience.</strong> The agents often believed a forged message and still declined to act on it. What changed the outcome was supplying the missing authorisation in a voice the agent already trusted.</li>
+        <li><strong>Read why each run failed.</strong> On the work test, the jump from low single digits to 9 of 10 came from reading the refusal in every failed epoch and removing one objection at a time, not from new tricks.</li>
+        <li><strong>Use pass math.</strong> With ten epochs per run, one variable per run and a pre-registered read, a 10 of 10 result is a lottery at a per-epoch rate near 0.9. I treated it that way.</li>
+      </ul>
+      <p>
+        Inferred: the agents resist instruction strength far better than they resist structure. The things that moved them were a changed task, not a louder command.
+      </p>
+
+      <h2 id="failed">Where it failed</h2>
+      <p>
+        Level 6 stayed shut after roughly 1,900 attempts. The picture is of three compounding barriers rather than one missing trick, and my budget ran out first, so I cannot say it is impossible. The best remaining idea is untested.
+      </p>
+      <p>
+        On the work test, a residual refusal based on the agent's distrust of an unfamiliar domain never went away. I treat it as a floor for that design, not a bug to fix.
+      </p>
+
+      <h2 id="withheld">What I am withholding</h2>
+      <p>
+        I do not publish payload text, the specific weaknesses in how the targets built their context, grader details, platform internals, credentials, or the identities of the targets and models. A working payload is a working attack, and both platforms run assessments that are not mine to disclose. What is here is the shape of the engine and the aggregate results.
+      </p>
+
+      <h2 id="method">Method and limits</h2>
+      <p>
+        Figures come from my own run logs and the platforms' attempt histories. Claims marked inferred are my interpretation.
+      </p>
+      <ul>
+        <li>Two engagements by one person are an anecdote, not a benchmark.</li>
+        <li>Attempt counts mix hand-written, ensemble and replayed payloads, so they do not measure the generator alone.</li>
+        <li>Some captures are duplicated or superseded across runs, so attempt counts are approximate.</li>
+        <li>Agent behaviour is stochastic; one passing run does not establish a rate, and a failing run does not rule a design out.</li>
+      </ul>
+
+          <nav class="essay-next" aria-label="More research">
+            <p>Keep reading</p>
+            <a href="/research/transfer-beats-volume.html"><span>Transfer beats volume <span aria-hidden="true">→</span></span><small>A year of red-teaming on Gray Swan Arena.</small></a>
+            <a href="/research/prompt-injection.html"><span>Prompt injection &amp; authority confusion <span aria-hidden="true">→</span></span><small>Where trust boundaries break.</small></a>
+          </nav>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
+  </body>
+</html>
