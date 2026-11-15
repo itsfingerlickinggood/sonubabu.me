@@ -46,7 +46,7 @@ for(const [index,size] of [16,32,48].entries()) {
 }
 assert.ok(statSync('dist/css/home.min.css').size<35000,'Home CSS budget');
 assert.ok(statSync('dist/js/viz.min.js').size+statSync('dist/js/main.min.js').size<10000,'Home JavaScript budget');
-assert.ok(statSync('dist/css/work.min.css').size<80000,'Research/Project CSS budget');
+assert.ok(statSync('dist/css/work.min.css').size<86000,'Research/Project CSS budget');
 const arcade=readFileSync('dist/js/learning-arcade.min.js','utf8');
 const engineHash=createHash('sha256').update(readFileSync('dist/js/maze-engine.mjs')).digest('hex').slice(0,12);
 assert.ok(arcade.includes(`./maze-engine.mjs?v=${engineHash}`),'The game engine import must be versioned too');

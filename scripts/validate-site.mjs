@@ -181,7 +181,7 @@ for (const path of htmlFiles) {
     }
     if (!html.includes('collection-page') || !html.includes('/js/reading-index.min.js')) errors.push(`${label}: use the shared Blog composition and theme enhancement`);
     const entries = [...html.matchAll(/<a class="essay-entry"([^>]*)>([\s\S]*?)<\/a>/g)];
-    const expectedCount = 7;
+    const expectedCount = label === 'projects.html' ? 8 : 6;
     if (entries.length !== expectedCount) errors.push(`${label}: expected ${expectedCount} entries`);
     for (const [, attributes, entry] of entries) {
       const heading = attributes.match(/aria-labelledby="([^"]+)"/)?.[1];
@@ -245,8 +245,8 @@ for (const path of htmlFiles) {
 
 for (const item of artManifest.items) {
   if (artManifest.version === 2) {
-    const expected = [item.page.split('/')[0] + '.html', item.page].sort().join(',');
-    if (artOccurrences.get(item.key).sort().join(',') !== expected) errors.push(`Artwork ${item.key}: expected one index icon and one matching detail-page image`);
+    const expected = (item.page.startsWith('projects/') ? [item.page] : [item.page.split('/')[0] + '.html', item.page]).sort().join(',');
+    if (artOccurrences.get(item.key).sort().join(',') !== expected) errors.push(`Artwork ${item.key}: expected a matching detail-page image (and an index icon for research items)`);
     if (!item.full.startsWith('/assets/work/monet-v2/')) errors.push(`Artwork ${item.key}: obsolete cutout path`);
   }
   for (const theme of ["light", "dark"]) {
