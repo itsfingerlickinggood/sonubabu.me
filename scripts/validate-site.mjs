@@ -239,7 +239,7 @@ for (const path of htmlFiles) {
     if (!/data-arcade-controls[^>]+hidden/.test(html)) errors.push('Learnings: hide game controls until enhancement succeeds');
     if (!html.includes('js/learning-arcade.min.js') || !html.includes('arcade-fallback')) errors.push('Learnings: expected game module and no-JS explanation');
     if (/<img[^>]+src="https?:/.test(html)) errors.push('Learnings: use locally cached catalog covers');
-    if (!html.includes('Those\n                details are withheld')) errors.push('Learnings: preserve the qualification on unverified competition claims');
+    if (!html.includes('href="https://app.grayswan.ai/arena/user/69934e833bc5fc0639d0b16a"')) errors.push('Learnings: competition rankings must cite the public Gray Swan profile');
   }
 }
 
