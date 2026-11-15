@@ -19,7 +19,8 @@
     { "source": "/research/:slug", "destination": "/research/:slug.html" }
   ],
   "redirects": [
-    { "source": "/blog/transfer-beats-volume", "destination": "/research/transfer-beats-volume", "permanent": true }
+    { "source": "/blog/transfer-beats-volume", "destination": "/research/transfer-beats-volume", "permanent": true },
+    { "source": "/research/red-team-engine", "destination": "/projects/red-team-engine", "permanent": true }
   ],
   "headers": [
     {

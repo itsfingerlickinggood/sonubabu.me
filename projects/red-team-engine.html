@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engine</title>
+    <meta name="description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta property="og:title" content="A red-team engine for agents — Sonu Babu" />
+    <meta property="og:description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://sonubabu.me/projects/red-team-engine" />
+    <meta property="og:image" content="https://sonubabu.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A red-team engine for agents — Sonu Babu" />
+    <meta name="twitter:description" content="An evaluation harness for agent red-teaming: how it is built, what it solved, where it failed, and what I am withholding." />
+    <meta name="twitter:image" content="https://sonubabu.me/og-image.png" />
+    <meta name="twitter:image:alt" content="Sonu Babu: AI safety and security research, evaluation engineering, and software." />
+    <link rel="canonical" href="https://sonubabu.me/projects/red-team-engine" />
+    <link rel="icon" href="/assets/brand/earth-32.png?v=40ab5d9e6065" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/assets/brand/earth-96.png?v=3b75d2701dab" type="image/png" sizes="96x96" />
+    <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark")t="light";document.documentElement.dataset.theme=t})();</script>
+    <link rel="preload" href="/css/work.min.css?v=70dbbf4e8f02" as="style" />
+    <link rel="stylesheet" href="/css/work.min.css?v=70dbbf4e8f02" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-container">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class="nav-name" aria-label="Sonu Babu — Home"><img class="nav-earth" src="/assets/brand/earth-96.png?v=3b75d2701dab" width="32" height="32" alt="" draggable="false" /></a>
+        <a href="/about.html">About</a>
+        <a href="/projects.html" aria-current="page">Projects</a>
+        <a href="/research.html">Research</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/learnings.html">Learnings</a>
+        <button class="theme-toggle" type="button" aria-label="Switch theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+
+      <main id="main-content" class="article-page work-article engine-page">
+      <a href="/projects.html" class="back-link">Back to Projects</a>
+
+      <header class="article-header">
+        <span class="status-label">Evaluation engine · 2026</span>
+        <h1>A red-team engine for agents</h1>
+        <p class="article-lede">A harness for attacking tool-using AI agents. It is scored on what the agent does, not on what it says.</p>
+      </header>
+
+      <ul class="engine-stats" aria-label="Headline numbers">
+        <li><strong>5 of 6</strong><span>capture-the-flag levels broken</span></li>
+        <li><strong>9 of 10</strong><span>epochs passed, twice, on the email-agent test</span></li>
+        <li><strong>~1,900</strong><span>attempts on level 6, no pass</span></li>
+        <li><strong>~6,600</strong><span>lines of code, with tests</span></li>
+      </ul>
+
+      <div class="article-body">
+        <h2>One rule shapes the design</h2>
+        <p class="engine-rule"><strong>Writing attacks and sending them are separate jobs.</strong> Attacker models only write text. They never touch the browser, a session or a credential.</p>
+
+        <ol class="engine-flow" aria-label="Pipeline">
+          <li><div class="engine-head"><h3>Generate</h3><span class="engine-badge">text only</span></div><p>Several attacker models in different roles. A refusal detector watches each one.</p></li>
+          <li><div class="engine-head"><h3>Gate</h3><span class="engine-badge engine-badge-gate">checkpoint</span></div><p>A rules linter blocks anything out of bounds before it can be sent.</p></li>
+          <li><div class="engine-head"><h3>Rank</h3><span class="engine-badge">text only</span></div><p>Spend the budget on payload families not yet tried. The deadline lives on disk.</p></li>
+          <li><div class="engine-head"><h3>Submit</h3><span class="engine-badge engine-badge-act">acts</span></div><p>One paced sender with a host allowlist, so a token cannot leave its origin.</p></li>
+          <li><div class="engine-head"><h3>Grade</h3><span class="engine-badge engine-badge-rec">records</span></div><p>Deterministic grading that says “unknown” rather than guessing. Every attempt is saved.</p></li>
+        </ol>
+
+        <h2>What it solved</h2>
+        <figure class="engine-figure">
+          <figcaption class="engine-kicker">Attempts until the first pass, per capture-the-flag level <span>log scale</span></figcaption>
+          <svg viewBox="0 0 560 250" role="img" aria-label="Attempts to first pass, log scale: level 1, 11; level 2, 1 (replayed); level 3, 1 (replayed); level 4, about 740; level 5, about 260; level 6, about 1,900 with no pass"><text class="e-label" x="0" y="29">Level 1</text><rect class="e-bar" x="70" y="10" width="131.6" height="26" rx="3"/><text class="e-value" x="209.6" y="29">11</text><text class="e-label" x="0" y="69">Level 2</text><rect class="e-bar" x="70" y="50" width="36.7" height="26" rx="3"/><text class="e-value" x="114.7" y="69">1</text><text class="e-note" x="132.7" y="69">replayed payload</text><text class="e-label" x="0" y="109">Level 3</text><rect class="e-bar" x="70" y="90" width="36.7" height="26" rx="3"/><text class="e-value" x="114.7" y="109">1</text><text class="e-note" x="132.7" y="109">replayed payload</text><text class="e-label" x="0" y="149">Level 4</text><rect class="e-bar" x="70" y="130" width="350.1" height="26" rx="3"/><text class="e-value" x="428.1" y="149">~740</text><text class="e-label" x="0" y="189">Level 5</text><rect class="e-bar" x="70" y="170" width="294.8" height="26" rx="3"/><text class="e-value" x="372.8" y="189">~260</text><text class="e-label" x="0" y="229">Level 6</text><rect class="e-bar-open" x="71" y="211" width="398.0" height="24" rx="3"/><text class="e-value" x="478.0" y="229">~1,900</text><text class="e-note" x="536.0" y="229">no pass</text></svg>
+          <p class="engine-footnote">Levels 2 and 3 passed first time only because I replayed payloads from an earlier engagement. That tests portability, not discovery.</p>
+        </figure>
+        <figure class="engine-figure">
+          <figcaption class="engine-kicker">Email-agent injection test, ten epochs per run</figcaption>
+          <svg viewBox="0 0 552 96" role="img" aria-label="Email-agent injection test, ten epochs per run: runs 1 to 4 passed 0 of 10 each; runs 5 and 6 passed 9 of 10 each"><circle class="e-dot-open" cx="10" cy="14" r="6"/><circle class="e-dot-open" cx="26" cy="14" r="6"/><circle class="e-dot-open" cx="42" cy="14" r="6"/><circle class="e-dot-open" cx="58" cy="14" r="6"/><circle class="e-dot-open" cx="74" cy="14" r="6"/><circle class="e-dot-open" cx="10" cy="32" r="6"/><circle class="e-dot-open" cx="26" cy="32" r="6"/><circle class="e-dot-open" cx="42" cy="32" r="6"/><circle class="e-dot-open" cx="58" cy="32" r="6"/><circle class="e-dot-open" cx="74" cy="32" r="6"/><text class="e-note" x="0" y="70">Run 1</text><text class="e-value" x="0" y="88">0/10</text><circle class="e-dot-open" cx="102" cy="14" r="6"/><circle class="e-dot-open" cx="118" cy="14" r="6"/><circle class="e-dot-open" cx="134" cy="14" r="6"/><circle class="e-dot-open" cx="150" cy="14" r="6"/><circle class="e-dot-open" cx="166" cy="14" r="6"/><circle class="e-dot-open" cx="102" cy="32" r="6"/><circle class="e-dot-open" cx="118" cy="32" r="6"/><circle class="e-dot-open" cx="134" cy="32" r="6"/><circle class="e-dot-open" cx="150" cy="32" r="6"/><circle class="e-dot-open" cx="166" cy="32" r="6"/><text class="e-note" x="92" y="70">Run 2</text><text class="e-value" x="92" y="88">0/10</text><circle class="e-dot-open" cx="194" cy="14" r="6"/><circle class="e-dot-open" cx="210" cy="14" r="6"/><circle class="e-dot-open" cx="226" cy="14" r="6"/><circle class="e-dot-open" cx="242" cy="14" r="6"/><circle class="e-dot-open" cx="258" cy="14" r="6"/><circle class="e-dot-open" cx="194" cy="32" r="6"/><circle class="e-dot-open" cx="210" cy="32" r="6"/><circle class="e-dot-open" cx="226" cy="32" r="6"/><circle class="e-dot-open" cx="242" cy="32" r="6"/><circle class="e-dot-open" cx="258" cy="32" r="6"/><text class="e-note" x="184" y="70">Run 3</text><text class="e-value" x="184" y="88">0/10</text><circle class="e-dot-open" cx="286" cy="14" r="6"/><circle class="e-dot-open" cx="302" cy="14" r="6"/><circle class="e-dot-open" cx="318" cy="14" r="6"/><circle class="e-dot-open" cx="334" cy="14" r="6"/><circle class="e-dot-open" cx="350" cy="14" r="6"/><circle class="e-dot-open" cx="286" cy="32" r="6"/><circle class="e-dot-open" cx="302" cy="32" r="6"/><circle class="e-dot-open" cx="318" cy="32" r="6"/><circle class="e-dot-open" cx="334" cy="32" r="6"/><circle class="e-dot-open" cx="350" cy="32" r="6"/><text class="e-note" x="276" y="70">Run 4</text><text class="e-value" x="276" y="88">0/10</text><circle class="e-dot" cx="378" cy="14" r="6"/><circle class="e-dot" cx="394" cy="14" r="6"/><circle class="e-dot" cx="410" cy="14" r="6"/><circle class="e-dot" cx="426" cy="14" r="6"/><circle class="e-dot" cx="442" cy="14" r="6"/><circle class="e-dot" cx="378" cy="32" r="6"/><circle class="e-dot" cx="394" cy="32" r="6"/><circle class="e-dot" cx="410" cy="32" r="6"/><circle class="e-dot" cx="426" cy="32" r="6"/><circle class="e-dot-open" cx="442" cy="32" r="6"/><text class="e-note" x="368" y="70">Run 5</text><text class="e-value" x="368" y="88">9/10</text><circle class="e-dot" cx="470" cy="14" r="6"/><circle class="e-dot" cx="486" cy="14" r="6"/><circle class="e-dot" cx="502" cy="14" r="6"/><circle class="e-dot" cx="518" cy="14" r="6"/><circle class="e-dot" cx="534" cy="14" r="6"/><circle class="e-dot" cx="470" cy="32" r="6"/><circle class="e-dot" cx="486" cy="32" r="6"/><circle class="e-dot" cx="502" cy="32" r="6"/><circle class="e-dot" cx="518" cy="32" r="6"/><circle class="e-dot-open" cx="534" cy="32" r="6"/><text class="e-note" x="460" y="70">Run 6</text><text class="e-value" x="460" y="88">9/10</text></svg>
+          <p class="engine-footnote">Each dot is one epoch; filled means it passed. The jump came from reading every failed run, not from new tricks.</p>
+        </figure>
+
+        <h2>What worked</h2>
+        <ul class="engine-cards">
+          <li><h3>Score the artifact</h3><p>Every pass came from one field the judge reads, such as a sent message or a tool-call argument.</p></li>
+          <li><h3>Reframe, don’t escalate</h3><p>Wins made the target action the natural way to finish the user’s task. Louder wording never beat that.</p></li>
+          <li><h3>Belief is not obedience</h3><p>Agents believed a forged message and still declined. Supplying the missing authorisation changed the result.</p></li>
+          <li><h3>Read why each run failed</h3><p>Removing one objection at a time took the email test from 0 to 9 of 10.</p></li>
+        </ul>
+
+        <h2>Where it failed</h2>
+        <div class="engine-fails">
+          <div><strong>Level 6</strong><p>About 1,900 attempts and no pass. Three barriers compounded, and the budget ran out first. That is not proof it is impossible.</p></div>
+          <div><strong>Email test</strong><p>A refusal over an unfamiliar domain never went away. I treat it as a floor for that design, not a bug.</p></div>
+        </div>
+
+        <h2>What is withheld</h2>
+        <ul class="engine-chips" aria-label="Withheld">
+          <li>Payload text</li><li>Target weaknesses</li><li>Grader details</li><li>Platform internals</li><li>Credentials</li><li>Target and model names</li>
+        </ul>
+        <p class="engine-footnote">A working payload is a working attack. Only the shape of the engine and the aggregate results are public.</p>
+
+        <h2>Limits</h2>
+        <ul class="engine-limits">
+          <li>Two engagements by one person: an anecdote, not a benchmark.</li>
+          <li>Attempt counts mix hand-written, ensemble and replayed payloads, so they do not measure the generator alone.</li>
+          <li>Some captures are duplicated across runs, so counts are approximate.</li>
+          <li>Agents are stochastic. One passing run is not a rate.</li>
+        </ul>
+
+        <nav class="engine-next" aria-label="Related research">
+          <p>Keep reading</p>
+          <a href="/research/transfer-beats-volume.html"><span>Transfer beats volume <span aria-hidden="true">→</span></span><small>A year of red-teaming on Gray Swan Arena.</small></a>
+          <a href="/research/prompt-injection.html"><span>Prompt injection &amp; authority confusion <span aria-hidden="true">→</span></span><small>Where trust boundaries break.</small></a>
+        </nav>
+      </div>
+      <div class="article-tags"><span class="tag">Agent Security</span><span class="tag">Red Teaming</span><span class="tag">Evaluation</span><span class="tag">Python</span></div>
+    </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2026 Sonu Babu</p>
+      </footer>
+    </div>
+  </body>
+</html>

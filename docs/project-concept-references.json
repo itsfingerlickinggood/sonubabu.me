@@ -10,5 +10,29 @@
     "imageSource": "https://framerusercontent.com/images/29GvjRn2fQXzA4alqG5EqqM.png",
     "localImage": "/assets/projects/openx-origin.png",
     "usage": "Identity from the original concept landing page, resized to 480px. Its five pillars are messaging, social, payments, health and e-commerce. Feature and security language is presented as intent, not verified implementation."
+  },
+  "portfolio-thumbnail": {
+    "reference": "https://commons.wikimedia.org/wiki/File:Monet_-_Impression,_Sunrise.jpg",
+    "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/1280px-Monet_-_Impression%2C_Sunrise.jpg",
+    "localImage": "/assets/projects/portfolio-light-360.webp",
+    "usage": "Claude Monet, Impression, Sunrise (1872). Public domain. Cropped to 3:2 for the sonubabu.me Projects thumbnail; the dark variant is the same crop at 86% brightness."
+  },
+  "weather-thumbnail": {
+    "reference": "https://commons.wikimedia.org/wiki/File:Cumulus24_-_NOAA.jpg (light), https://commons.wikimedia.org/wiki/File:Cumulus22_-_NOAA.jpg (dark)",
+    "imageSource": "NOAA Photo Library via Wikimedia Commons, 1280px thumbnails",
+    "localImage": "/assets/projects/weather-light-360.webp",
+    "usage": "NOAA photographs, public domain (US federal government work). Cropped to 3:2 for the Weather portal Projects thumbnail."
+  },
+  "market-thumbnail": {
+    "reference": "https://commons.wikimedia.org/wiki/File:%27The_Fair_in_Dieppe,_Sunny_Morning%27_by_Camille_Pissarro,_1901,_Hermitage.JPG (light), https://commons.wikimedia.org/wiki/File:Camille_Pissarro_-_The_Fish_Market_in_Dieppe,_Grey_Weather,_Morning_-_1902_-_Dallas_Museum_of_Art.jpg (dark)",
+    "imageSource": "Wikimedia Commons, 1920px thumbnails",
+    "localImage": "/assets/projects/market-light-360.webp",
+    "usage": "Camille Pissarro, The Fair in Dieppe, Sunny Morning (1901, Hermitage; public domain) and The Fish Market in Dieppe, Grey Weather, Morning (1902, Dallas Museum of Art; CC0). Cropped to 3:2 for the market01 Projects thumbnail."
+  },
+  "evaluation-thumbnail": {
+    "reference": "https://commons.wikimedia.org/wiki/File:Quentin_Massys_001.jpg (light), https://commons.wikimedia.org/wiki/File:Johannes_Vermeer,_Woman_Holding_a_Balance,_c._1664,_NGA_1236.jpg (dark)",
+    "imageSource": "Wikimedia Commons, 1920px thumbnails",
+    "localImage": "/assets/projects/evaluation-light-360.webp",
+    "usage": "Quentin Massys, The Moneylender and His Wife (1514, Louvre; public domain) and Johannes Vermeer, Woman Holding a Balance (c. 1664, National Gallery of Art; CC0). Both show weighing and checking, a metaphor for verification. Cropped to 3:2 for the Verifier-grounded evaluation Projects thumbnail."
   }
 }
